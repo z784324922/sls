@@ -1,6 +1,6 @@
 # JSON格式 {#concept_y4l_34q_zdb .concept}
 
-本文档主要介绍日志服务投递OSS使用JSON存储的相关配置，关于投递日志到OSS的其它内容请参考[投递日志到OSS](intl.zh-CN/用户指南/数据投递/投递日志到OSS.md)。
+本文档主要介绍日志服务投递OSS使用JSON存储的相关配置，关于投递日志到OSS的其它内容请参考[投递日志到OSS](cn.zh-CN/用户指南/数据投递/投递日志到OSS.md)。
 
 OSS文件压缩类型及文件地址见下表。
 
@@ -15,7 +15,7 @@ Object由多条日志拼接而成，文件的每一行是一条JSON格式的日�
 
 ```
 {"__time__":1453809242,"__topic__":"","__source__":"10.170.148.237","ip":"10.200.98.220","time":"26/Jan/2016:19:54:02 +0800","url":"POST
-              /PutData?Category=YunOsAccountOpLog&AccessKeyId=U0UjpekFQOVJW45A&Date=Fri%2C%2028%20Jun%202013%2006%3A53%3A30%20GMT&Topic=raw&Signature=pD12XYLmGxKQ%2Bmkd6x7hAgQ7b1c%3D
+              /PutData?Category=YunOsAccountOpLog&AccessKeyId=U0**********5A&Date=Fri%2C%2028%20Jun%202013%2006%3A53%3A30%20GMT&Topic=raw&Signature=pD12XYLmGxKQ%2Bmkd6x7hAgQ7b1c%3D
               HTTP/1.1","status":"200","user-agent":"aliyun-sdk-java"}
 ```
 
