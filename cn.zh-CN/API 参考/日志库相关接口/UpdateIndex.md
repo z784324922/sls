@@ -45,8 +45,8 @@ Content-Length: <ContentLength>
 |token|array|是|分词符列表。|
 |caseSensitive|bool|否|是否大小写敏感。|
 |chn|bool|否|是否包含中文。|
-|include\_keys|array|否|包含的字段列表。|
-|exclude\_keys|array|否|排除的字段列表。|
+|include\_keys|array|否|包含的字段列表，不能与exclude\_keys同时指定。|
+|exclude\_keys|array|否|排除的字段列表，不能与include\_keys同时指定。|
 
 字段索引配置包含如下属性：
 
@@ -84,6 +84,8 @@ HTTP 状态码返回 200。
 |404|ProjectNotExist|The Project does not exist : \{Project\}|
 |404|LogStoreNotExist|logstore \{logstoreName\} dose not exist|
 |500|InternalServerError|Specified Server Error Message|
+
+## 示例 {#section_t3z_rfh_f2b .section}
 
 -   请求示例
 
