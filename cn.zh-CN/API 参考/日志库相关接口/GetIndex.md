@@ -12,15 +12,15 @@ GET /logstores/{logstoreName}/index
 
 ```
 GET /logstores/<logstoreName>/index HTTP/1.1
-                Authorization: <AuthorizationString>
-                x-log-bodyrawsize: 0
-                User-Agent: <UserAgent>
-                x-log-apiversion: 0.6.0
-                Host: <Project Endpoint>
-                x-log-signaturemethod: hmac-sha1
-                Date: <GMT Date>
-                Content-Type: application/x-protobuf
-                Connection: Keep-Alive
+Authorization: <AuthorizationString>
+x-log-bodyrawsize: 0
+User-Agent: <UserAgent>
+x-log-apiversion: 0.6.0
+Host: <Project Endpoint>
+x-log-signaturemethod: hmac-sha1
+Date: <GMT Date>
+Content-Type: application/x-protobuf
+Connection: Keep-Alive
 ```
 
 ## 请求参数 {#section_m3m_vch_f2b .section}
@@ -82,140 +82,141 @@ GetIndex 请求成功，其响应 Body 会包括指定 Project和Logstore的Inde
 |404|LogStoreNotExist|logstore \{logstoreName\} dose not exist|
 |500|InternalServerError|Specified Server Error Message|
 
--   请求示例
+## 示例 {#section_oht_5fh_f2b .section}
 
-    ```
-    GET /logstores/logstore-4/index HTTP/1.1
-    Authorization: LOG LTRTfdR7fbosJYad:OK7Sldsxcv/8gz6YtrrmzR19Tgh=
-    x-log-bodyrawsize: 0
-    User-Agent: sls-java-sdk-v-0.6.1
-    x-log-apiversion: 0.6.0
-    Host: my-project.cn-shanghai.log.aliyuncs.com
-    x-log-signaturemethod: hmac-sha1
-    Date: Sun, 06 May 2018 13:08:42 GMT
-    Content-Type: application/x-protobuf
-    Connection: Keep-Alive
-    ```
+**请求示例**
 
--   响应示例
+```
+GET /logstores/logstore-4/index HTTP/1.1
+Authorization: LOG LTRTfdR7fbosJYad:OK7Sldsxcv/8gz6YtrrmzR19Tgh=
+x-log-bodyrawsize: 0
+User-Agent: sls-java-sdk-v-0.6.1
+x-log-apiversion: 0.6.0
+Host: my-project.cn-shanghai.log.aliyuncs.com
+x-log-signaturemethod: hmac-sha1
+Date: Sun, 06 May 2018 13:08:42 GMT
+Content-Type: application/x-protobuf
+Connection: Keep-Alive
+```
 
-    ```
-    HTTP/1.1 200
-    Server: nginx/1.12.1
-    Content-Type: application/json
-    Content-Length: 712
-    Connection: close
-    Access-Control-Allow-Origin: *
-    Date: Sun, 06 May 2018 13:08:42 GMT
-    x-log-requestid: 5AEEFE5A8B8AEB5E6C82B395
-    {
-      "index_mode": "v2",
-      "keys": {
-        "agent": {
-          "alias": "",
-          "caseSensitive": false,
-          "chn": false,
-          "doc_value": true,
-          "token": [
-            ",",
-            " ",
-            "'",
-            "\"",
-            ";",
-            "=",
-            "(",
-            ")",
-            "[",
-            "]",
-            "{",
-            "}",
-            "?",
-            "@",
-            "&",
-            "<",
-            ">",
-            "/",
-            ":",
-            "\n",
-            "\t",
-            "\r"
-          ],
-          "type": "text"
-        },
-        "bytes": {
-          "alias": "",
-          "doc_value": true,
-          "type": "long"
-        },
-        "remote_ip": {
-          "alias": "",
-          "caseSensitive": false,
-          "chn": false,
-          "doc_value": true,
-          "token": [
-            ",",
-            " ",
-            "'",
-            "\"",
-            ";",
-            "=",
-            "(",
-            ")",
-            "[",
-            "]",
-            "{",
-            "}",
-            "?",
-            "@",
-            "&",
-            "<",
-            ">",
-            "/",
-            ":",
-            "\n",
-            "\t",
-            "\r"
-          ],
-          "type": "text"
-        },
-        "response": {
-          "alias": "",
-          "doc_value": true,
-          "type": "long"
-        }
-      },
-      "line": {
-        "caseSensitive": false,
-        "chn": false,
-        "token": [
-          ",",
-          " ",
-          "'",
-          "\"",
-          ";",
-          "=",
-          "(",
-          ")",
-          "[",
-          "]",
-          "{",
-          "}",
-          "?",
-          "@",
-          "&",
-          "<",
-          ">",
-          "/",
-          ":",
-          "\n",
-          "\t",
-          "\r"
-        ]
-      },
-      "storage": "pg",
-      "ttl": 30,
-      "lastModifyTime": 1524155379
+**响应示例**
+
+```
+HTTP/1.1 200
+Server: nginx/1.12.1
+Content-Type: application/json
+Content-Length: 712
+Connection: close
+Access-Control-Allow-Origin: *
+Date: Sun, 06 May 2018 13:08:42 GMT
+x-log-requestid: 5AEEFE5A8B8AEB5E6C82B395
+{
+  "index_mode": "v2",
+  "keys": {
+    "agent": {
+      "alias": "",
+      "caseSensitive": false,
+      "chn": false,
+      "doc_value": true,
+      "token": [
+        ",",
+        " ",
+        "'",
+        "\"",
+        ";",
+        "=",
+        "(",
+        ")",
+        "[",
+        "]",
+        "{",
+        "}",
+        "?",
+        "@",
+        "&",
+        "<",
+        ">",
+        "/",
+        ":",
+        "\n",
+        "\t",
+        "\r"
+      ],
+      "type": "text"
+    },
+    "bytes": {
+      "alias": "",
+      "doc_value": true,
+      "type": "long"
+    },
+    "remote_ip": {
+      "alias": "",
+      "caseSensitive": false,
+      "chn": false,
+      "doc_value": true,
+      "token": [
+        ",",
+        " ",
+        "'",
+        "\"",
+        ";",
+        "=",
+        "(",
+        ")",
+        "[",
+        "]",
+        "{",
+        "}",
+        "?",
+        "@",
+        "&",
+        "<",
+        ">",
+        "/",
+        ":",
+        "\n",
+        "\t",
+        "\r"
+      ],
+      "type": "text"
+    },
+    "response": {
+      "alias": "",
+      "doc_value": true,
+      "type": "long"
     }
-    ```
-
+  },
+  "line": {
+    "caseSensitive": false,
+    "chn": false,
+    "token": [
+      ",",
+      " ",
+      "'",
+      "\"",
+      ";",
+      "=",
+      "(",
+      ")",
+      "[",
+      "]",
+      "{",
+      "}",
+      "?",
+      "@",
+      "&",
+      "<",
+      ">",
+      "/",
+      ":",
+      "\n",
+      "\t",
+      "\r"
+    ]
+  },
+  "storage": "pg",
+  "ttl": 30,
+  "lastModifyTime": 1524155379
+}
+```
 
