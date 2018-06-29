@@ -1,33 +1,29 @@
 # Collect ECS logs {#concept_tr2_2yr_xdb .concept}
 
-This document describes the procedure for collecting Elastic Compute Service \(ECS\) logs by using Logtail in the ECS Log Service console. 
-
-## Getting started {#section_zsl_lws_xdb .section}
-
-[http://cloud.video.taobao.com/play/u/2450842572/p/1/e/6/t/1/56329486.mp4](http://cloud.video.taobao.com/play/u/2450842572/p/1/e/6/t/1/56329486.mp4)
+This document describes the procedure for collecting Elastic Compute Service \(ECS\) logs by using Logtail in the ECS Log Service console.
 
 ## Configuration procedure {#section_jq2_pzr_xdb .section}
 
 1.  Install Logtail on the ECS instance.
-2.  Configure the collection, and 
-3.  apply the configuration to the machine group.
+2.  Configure the Logtail machine group.
+3.  Configure the collection, and apply the configuration to the machine group.
 
 ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13802/3871_en-US.png "Configuration procedure")
 
-## Prerequisite {#section_f34_lys_xdb .section}
+## Prerequisites {#section_f34_lys_xdb .section}
 
 -   You have activated ECS and Log Service.
--   You have created a project and Logstore in Log Service.  For more information, see [Preparation](../../../../intl.en-US/User Guide/Preparation/Preparation.md).
+-   You have created the Project and Logstore in Log Service. For more information, see [Preparation](../../../../intl.en-US/User Guide/Preparation/Preparation.md).
 
-    **Note:** Make sure that the Log Service project and the ECS instance are located in the same region if the ECS instance runs in the classic network or virtual private cloud \(VPC\).
+    **Note:** Make sure that the Log Service Project and the ECS instance are located in the same region if the ECS instance runs in the classic network or virtual private cloud \(VPC\).
 
--   Your Log Service cannot automatically obtain owner information of the ECS if the Log Service and the ECS instance do not belong to the same account. You need to [set AliUid](https://help.aliyun.com/document_detail/49007.html).
+-   Your Log Service cannot automatically obtain owner information of the ECS if the Log Service and the ECS instance do not belong to the same account. You need to [Collect logs from non-Alibaba Cloud ECS instances or ECS instances not in your account](../../../../intl.en-US/User Guide/Logtail collection/Machine Group/Collect logs from non-Alibaba Cloud ECS instances or ECS instances not in your account.md). 
 
 ## Step 1: Install Logtail. {#section_xqh_bxs_xdb .section}
 
 1.  Run the installation command.
 
-    Select the Logtail installation script that corresponds to the ECS instance region.  For more information, see [Linux ](../../../../intl.en-US/User Guide/Logtail collection/Install/Linux .md)和[Install Logtail on Windows](../../../../intl.en-US/User Guide/Logtail collection/Install/Install Logtail on Windows.md).
+    Select the Logtail installation script according to the ECS instance region. For more information, see [Linux ](../../../../intl.en-US/User Guide/Logtail collection/Install/Linux .md)和[Install Logtail on Windows](../../../../intl.en-US/User Guide/Logtail collection/Install/Install Logtail on Windows.md).
 
     For example, to install Logtail for a Linux instance that operates in the classic network in the China \(Hangzhou\) region, run the following command:
 
@@ -54,7 +50,7 @@ This document describes the procedure for collecting Elastic Compute Service \(E
 
     **Note:** 
 
-    -   Log Service only supports ECS instances that run in the same region as the current project.
+    -   Log Service only supports ECS instances that run in the same region as the current Project.
     -   Windows and Linux ECS instances cannot exist in the same machine group at the same time.
 
 ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13802/3874_en-US.png "Configuring the machine group")
