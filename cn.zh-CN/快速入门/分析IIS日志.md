@@ -61,7 +61,7 @@ logExtFileFlags="Date, Time, ClientIP, UserName, SiteName, ComputerName, ServerI
 
         ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/15250/6665_zh-CN.png "查看日志路径")
 
-4.  选择**日志格式**。 选择您的ISS服务器日志采用的日志格式。
+4.  选择**日志格式**。 选择您的IIS服务器日志采用的日志格式。
     -   IIS：Microsoft IIS日志文件格式。
     -   NCSA：NCSA公用日志文件格式。
     -   W3C：W3C扩展日志文件格式。
@@ -78,11 +78,11 @@ logExtFileFlags="Date, Time, ClientIP, UserName, SiteName, ComputerName, ServerI
     2.  找到`logFile logExtFileFlags`字段，并复制引号内的字段内容。 
     3.  粘贴字段内容到**IIS配置字段**输入框中的引号内。 
 
-         
+        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/15250/6667_zh-CN.png "配置数据源")
 
 6.  确认IIS键名称。 IIS日志服务会自动提取出相应的键名称。
 
-     
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/15250/6668_zh-CN.png "IIS键名称")
 
 7.  酌情配置高级选项（可选）。 
 
