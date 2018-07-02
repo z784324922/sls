@@ -39,7 +39,7 @@
     |:--|:-|
     |数据源名称|由英文字母、数字、下划线组成且须以字符或下划线开头，长度不超过60个字符。|
     |数据源描述|对数据源进行简单描述，长度不超过80个字符。|
-    |LOG Endpoint|日志服务的Endpoint，根据您的Region确定，格式为：http://yyy.com 。详细说明请参考[服务入口](../../../../intl.zh-CN/API 参考/服务入口.md)。|
+    |LOG Endpoint|日志服务的Endpoint，根据您的Region确定，格式为：http://yyy.com 。详细说明请参考[服务入口](../../../../cn.zh-CN/API 参考/服务入口.md)。|
     |LOG Project|您想要投递至MaxCompute的日志服务Project。必须是已创建的Project。|
     |Access Id/Access Key|数据源账号的访问密钥AccessKey（AK）相当于登录密码。您可以填写数据源主账号的AK或是子账号的AK，成功配置后，当前账号具备访问数据源账号日志数据的权限，可以将数据源账号的日志通过正在创建的同步任务进行投递。|
 
@@ -96,6 +96,8 @@
 3.  字段映射。
 
     选择字段的映射关系。需对字段映射关系进行配置，左侧源头表字段和右侧目标表字段默认为一一对应的关系，您也可以单击右侧的**同行映射**以选择或取消**同行映射**。
+
+    **说明：** 如您需要将手动添加的日志字段作为同步列，请使用[脚本模式](cn.zh-CN/用户指南/数据投递/通过DataWorks投递数据到MaxCompute.md#section_gnq_k4f_vdb)配置。
 
     在**源头表字段列**一列的末尾单击**增加一行+**，可以配置日志服务中的元数据作为同步列，源头表字段填写`C_Topic`、`C_MachineUUID`、 `C_HostName`、`C_Path`、`C_LogTime`等，分别表示日志主题、采集机器唯一标识，主机名，路径，日志时间。
 
@@ -187,9 +189,9 @@
 
 -   调度运行
 
-    单击**提交**按钮，将同步任务提交到调度系统中，调度系统会按照配置属性在从第二天开始自动定时执行。
+    单击**提交**按钮，将同步任务提交到调度系统中，调度系统会按照配置属性在从第二天开始自动定时执行。相关调度的配置请参见[调度配置](https://help.aliyun.com/document_detail/50130.html)。
 
-    设置5分钟调度一次，从00：00到23:59，startTime=$\[yyyymmddhh24miss-10/24/60\]系统前10分钟到 endTime=$\[yyyymmddhh24miss-5/24/60\]系统前5分钟时间。关于自定义参数设置请参见[参数配置](https://help.aliyun.com/document_detail/30281.html)。
+    设置5分钟调度一次，从00：00到23:59，startTime=$\[yyyymmddhh24miss-10/24/60\]系统前10分钟到 endTime=$\[yyyymmddhh24miss-5/24/60\]系统前5分钟时间。
 
     ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13185/5825_zh-CN.png "调度配置")
 
@@ -212,7 +214,7 @@
 
         如您需要通过子账号投递主账号名下的所有日志数据，需要按照以下步骤授权并配置AK。
 
-        1.  主账号A为其名下的子账号A1赋予日志服务的管理权限，即`AliyunLogFullAccess`和`AliyunLogReadOnlyAccess`。详情请参见[RAM 用户](intl.zh-CN/用户指南/访问控制 RAM/RAM 用户.md)。
+        1.  主账号A为其名下的子账号A1赋予日志服务的管理权限，即`AliyunLogFullAccess`和`AliyunLogReadOnlyAccess`。详情请参见[RAM 用户](cn.zh-CN/用户指南/访问控制 RAM/RAM 用户.md)。
         2.  B账号配置数据集成任务，并在**新增LogHub数据源**步骤中，填入数据源子账号的AK。
         完成以上步骤后，B账号有权限读取A账号下的所有日志数据。
 
@@ -220,7 +222,7 @@
 
         如您需要通过子账号投递主账号名下的部分日志数据，需要按照以下步骤授权并配置AK。
 
-        1.  主账号A为其子账号A1配置自定义授权策略。相关的授权请参见[授权-简介](intl.zh-CN/用户指南/访问控制 RAM/授权-简介.md)和[概览](../../../../intl.zh-CN/API 参考/RAM子用户访问/概览.md)。
+        1.  主账号A为其子账号A1配置自定义授权策略。相关的授权请参见[授权-简介](cn.zh-CN/用户指南/访问控制 RAM/授权-简介.md)和[概览](../../../../cn.zh-CN/API 参考/RAM子用户访问/概览.md)。
         2.  B账号配置数据集成任务，并在**新增LogHub数据源**步骤中，填入数据源子账号的AK。
         完成以上步骤后，B账号有权限读取A账号下的部分日志数据。
 
