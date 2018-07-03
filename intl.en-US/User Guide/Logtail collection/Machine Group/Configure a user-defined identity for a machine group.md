@@ -24,7 +24,7 @@ To use the user-defined identity to dynamically define the machine group, proced
 
     -   **Windows Logtail**
 
-        Set the user-defined ID by using the `C:\LogtailData\user_defined_id` file. 
+        Set the user-defined ID by using the `C:\LogtailData\user_defined_id` file.  
 
         For example, set a user-defined machine ID as follows:
 
@@ -40,7 +40,7 @@ To use the user-defined identity to dynamically define the machine group, proced
 2.  Create a machine group.
     1.  On the Machine Groups page, click **Create Machine Group** in the upper-right corner.
     2.  Complete the configurations for the machine group.
-        -   Group Name:  Enter a name for the machine group.
+        -   Group Name: Enter a name for the machine group.
         -   Machine Group Identification:   Select **User-defined Identity**. 
         -   User-defined Identity:   Enter the user-defined ID configured in step 1.
     3.  Click **Confirm** to create the machine group.  To expand machines, complete step 1 on the server to be added.
@@ -68,7 +68,7 @@ rm -f /etc/ilogtail/user_defined_id
 -   **Windows Logtail**
 
     ```
-    del C:\LogtailData\user_defined_id
+    Del c: \ logtaildata \ user_defined_id
     ```
 
 
@@ -80,22 +80,22 @@ To bring the configuration into effect immediately, run the following command to
 
 ```
 /etc/init.d/ilogtaild stop
-/etc/init.d/ilogtaild start.
+/etc/init.d/ilogtaild start
 ```
 
 -   **Linux operating system**
 
     ```
     /etc/init.d/ilogtaild stop
-    /etc/init.d/ilogtaild start.
+    /etc/init.d/ilogtaild start
     ```
 
 -   **Windows Logtail**
 
-    **Navigate to Windows Control Panel \> ** \> **Administrative Tools ** \> **Service **, right-click the LogtailWorker service in the service list and select **Restart** to bring the configuration into effect.
+    **Navigate to Windows Control Panel** \> **Administrative Tools ** \> **Service **, right-click the LogtailWorker service in the service list and select **Restart** to bring the configuration into effect.
 
 
-## Example  {#section_qjz_2dy_pdb .section}
+## Examples {#section_qjz_2dy_pdb .section}
 
 Generally, the system is composed of multiple modules. Each module can contain multiple machines, for example, a common website is composed of frontend HTTP request processing module, cache module, logic processing module, and storage module. Each part is horizontally scalable. Therefore, logs must be collected in real time when machines are being added.
 
@@ -110,11 +110,5 @@ Generally, the system is composed of multiple modules. Each module can contain m
     ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13078/5254_en-US.png "Create a machine group. ")
 
 3.  Click Machine Status at the right of the machine group to view the list of machines that use the same user-defined identity and their heartbeat status.
-
-    ![](images/5255_en-US.png "View the machine group status")
-
 4.  If the frontend module has a machine 10.1.1.3 added, complete step 1 on the newly added machine. After the successful operation, you can view the added machine in the **Machine Group Status** dialog box.
-
-    ![](images/5256_en-US.png "Viewing new servers")
-
 
