@@ -6,7 +6,7 @@ We recommend you use the CRD method for collection configuration management, as 
 
 ## Implementation principles {#section_ff4_drr_zdb .section}
 
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13059/2686_en-US.png "Implementation principles")
+![](images/2686_en-US.png "Implementation principles")
 
 Run the installation command to install the `alibaba-log-controller` Helm package.  The Helm package mainly run the following operations:
 
@@ -51,7 +51,7 @@ After the configuration is completed and applied, alibaba-log-controller is crea
 
 You can check the configuration on the Kubernetes CRD or console.
 
-For how to view configuration on the console, see [Manage a collection configuration](intl.en-US/User Guide/Logtail collection/Machine Group/Create a Logtail configuration.md).
+For how to view configuration on the console, see [Create a Logtail configuration](intl.en-US/User Guide/Logtail collection/Machine Group/Create a Logtail configuration.md).
 
 **Note:** If you use the CRD method to manage configuration, the configuration changes you have made on the console will be overwritten when you update configuration on the CRD.
 
@@ -153,7 +153,7 @@ In the container standard output, set `inputType` to `plugin` and fill the detai
 
     Grafana container has environment variable configuration `GF_INSTALL_PLUGINS=grafana-piechart-....`. You can set `IncludeEnv` to `GF_INSTALL_PLUGINS: ''` to enable the Logtail to collect standard outputs from this container only.
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13059/2687_en-US.png "Custom collection mode")
+    ![](images/2687_en-US.png "Custom collection mode")
 
     The access log of Grafana is in the following format:
 
@@ -210,7 +210,7 @@ In the container standard output, set `inputType` to `plugin` and fill the detai
 
     After the configuration is applied, the data collected by Log Service is as follows:
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13059/2689_en-US.png "Collected log data")
+    ![](images/2689_en-US.png "Collected log data")
 
 
 ## Container file {#section_qlv_zm1_f2b .section}
@@ -299,7 +299,7 @@ In the container standard output, set `inputType` to `plugin` and fill the detai
 
     After the configuration is applied, the data collected by Log Service is as follows:
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13059/5237_en-US.png "Collected log data")
+    ![](images/5237_en-US.png "Collected log data")
 
 -   **Delimiter pattern file**
 
