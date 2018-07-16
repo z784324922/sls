@@ -173,6 +173,15 @@ We recommend you use the CRD method for collection configuration management, as 
 
 Create Logtail collection configurations on the console as required. For configuration steps, see:
 
+-   [Container text log \(recommended\)](intl.en-US/User Guide/Logtail collection/Data Source/Container text logs.md)
+-   [Container standard output \(recommended\)](intl.en-US/User Guide/Logtail collection/Data Source/Containers-standard output.md)
+
+-   [Host text file](intl.en-US/User Guide/Logtail collection/Data Source/Collect text logs.md)
+
+    By default, the root directory of the host is mounted to the `/logtail_host` directory of the Logtail container. You must add this prefix when configuring the path.  For example, to collect data in the `/home/logs/app_log/` directory of the host, you must set the log path on the configuration page to `/logtail_host/home/logs/app_log/`.
+
+-   [Syslog](intl.en-US/User Guide/Logtail collection/Data Source/Syslog.md)
+
 ## Acquisition configuration through CRD Management {#section_lwy_5n1_f2b .section}
 
 For the kubernetes microservice development model, the logging service also provides a way to configure the CRD, you can directly use kubectl to manage the configuration, the integration of this approach with the kubernetes deployment and release process is more complete.
