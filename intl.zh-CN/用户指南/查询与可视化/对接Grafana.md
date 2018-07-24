@@ -85,7 +85,7 @@ service grafana-server restart
     |配置项|配置内容|
     |:--|:---|
     |datasource|Name表示名称，请自定义一个新数据源的名称。Type请选择**LogService**。|
-    |Http Setting|Url输入样例：`http://dashboard-demo.cn-hangzhou.log.aliyuncs.com`。`dashboard-demo`是project名称，`n-hangzhou.log.aliyuncs.com`c是project所在地域的endpoint，在配置自己的数据源时，需要特别的替换成自己的project和region地址。Access可以选择Direct，也可以选择Proxy。|
+    |Http Setting|Url输入样例：`http://dashboard-demo.cn-hangzhou.log.aliyuncs.com`。`dashboard-demo`是project名称，`cn-hangzhou.log.aliyuncs.com`是project所在地域的endpoint，在配置自己的数据源时，需要替换成自己的project和region地址。Access可以选择Direct，也可以选择Proxy。|
     |Http Auth|采用默认配置。|
     |log service details|日志服务详细配置，分别填写Project和Logstore，以及具备读取权限的AccessKey。AccessKey可以是主账号的AccessKey，也可以是子帐号的AccessKey。|
 
