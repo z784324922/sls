@@ -58,7 +58,7 @@ Analyze the ratio of the access `status` :
 * | select status, count(1) as c group by status order by c limit 10
 ```
 
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13148/5719_en-US.png "Pie chart")
+![](images/5719_en-US.png "Pie chart")
 
 ## Cycle graph {#section_ffc_kvv_tdb .section}
 
@@ -68,7 +68,7 @@ Analyze the ratio of the access `request_method`:
 * | select request_method, count(1) as c group by request_method order by c limit 10
 ```
 
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13148/5721_en-US.png "Cycle graph")
+![](images/5721_en-US.png "Cycle graph")
 
 ## Nightingale rose diagram {#section_q3d_lvv_tdb .section}
 
@@ -78,5 +78,5 @@ Analyze the ratio of the access `request_uri`:
 * | select request_uri, count(1) as c group by request_uri order by c
 ```
 
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13148/5722_en-US.png "Nightingale rose diagram ")
+![](images/5722_en-US.png "Nightingale rose diagram ")
 
