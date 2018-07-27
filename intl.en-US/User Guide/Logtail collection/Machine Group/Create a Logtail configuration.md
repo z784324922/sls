@@ -22,7 +22,7 @@ For how to create a Logtail configuration in the Log Service console, see  [Col
 ## Modify a Logtail configuration {#section_omw_pm1_ry .section}
 
 1.  Log on to the Log Service console.
-2.  On the Project List page, click the project name, or click **Manage** on the right.
+2.  On the Project List page, click the project name.
 3.  On the Logstore List page, click **Manage**  at the right of the Logstore. The Logtail Configuration List page appears.
 4.  Click the name of the Logtail configuration to be modified.
 
@@ -32,7 +32,7 @@ For how to create a Logtail configuration in the Log Service console, see  [Col
 ## Delete a Logtail configuration {#section_vgw_rm1_ry .section}
 
 1.  Log on to the Log Service console.
-2.  On the Project List page, click the project name, or click **Manage** on the right.
+2.  On the Project List page, click the project name.
 3.  On the Logstore List page, click **Manage** at the right of the Logstore. The Logtail Configuration List page appears.
 4.  Click **Remove** at the right of the Logtail configuration to be deleted.
 
