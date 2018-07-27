@@ -37,5 +37,5 @@ The flow chart is applicable to displaying the three-dimensional relationship \(
 
 Select `minute` as the X Axis, `c` as the Y Axis, and `request_method` as the Aggregate Column.
 
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13152/5737_en-US.png "Flow chart")
+![](images/5737_en-US.png "Flow chart")
 
