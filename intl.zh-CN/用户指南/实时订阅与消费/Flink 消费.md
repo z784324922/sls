@@ -1,6 +1,6 @@
 # Flink 消费 {#concept_aqh_c4q_zdb .concept}
 
-Flink log connector是阿里云日志服务提供的，用于对接Flink的工具，包括两部分，消费者\(Consumer\)和生产者\(Producer\)。
+Flink log connector是阿里云日志服务提供的，用于对接Flink的工具，包括两部分，消费者（Consumer）和生产者（Producer）。
 
 消费者用于从日志服务中读取数据，支持exactly once语义，支持Shard负载均衡。
 
