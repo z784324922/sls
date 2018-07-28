@@ -165,7 +165,7 @@ env.enableCheckpointing(5000);
 
 FlinkLogProducer 用于将数据写到阿里云日志服务中。
 
-**说明：** Producer只支持Flink at-least-once语义，在发生作业失败的情况下，写入日志服务中的数据有可能会重复，但是绝对不会丢失。
+**说明：** Producer只支持Flink at-least-once语义，在发生作业失败的情况下，写入日志服务中的数据有可能会重复，但是不会丢失。
 
 ## 子用户权限 {#section_kxq_nhd_f2b .section}
 
