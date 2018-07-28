@@ -77,7 +77,7 @@ service grafana-server restart
 For the deployment in a local machine, the default installation location is Port 3000. Open the Port 3000 in a browser.
 
 1.  Click on Grafana’s logo in the upper left corner and select Data Sources in the pop-up window.
-2.  Click **Add data source**, and use Grafana and Alibaba Cloud Log Service for log visual analysis. Log Visualization Analysis Using grazana and Ali cloud logging services.
+2.  Click **Add data source**, and use Grafana and Alibaba Cloud Log Service for log visual analysis.
 3.  Complete the configuration items for the new data source.
 
     Each part is configured as follows:
