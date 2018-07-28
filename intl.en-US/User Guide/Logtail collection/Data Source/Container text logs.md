@@ -20,7 +20,7 @@ Compared with the basic log file collection, Docker file collection has the foll
 -    **Policy of stopping collection**. When the container is stopped, Logtail stops collecting logs from the container after listening to the `die` event of the container \(with a delay of 1–3 seconds\). If a collection delay occurs during this time, it is possible to lose part of the logs before the stop.
 -    **Logtail running methods**. Logtail must be run as a container and follow the Logtail deployment method.
 -   **Label**. The label is the label information in the Docker inspect, not the label in the Kubernetes configuration.
--    **Environment** The environment is the environment information configured in the container startup.
+-    **Environment**. The environment is the environment information configured in the container startup.
 
 ## Procedure {#section_hmq_krx_pdb .section}
 
@@ -41,14 +41,14 @@ Compared with the basic log file collection, Docker file collection has the foll
 ## 2. Collection configuration in Log Service {#section_kzk_rrx_pdb .section}
 
 1.  On the Logstore List page, click the **Data Import Wizard** icon to enter the configuration process.
-2.  Select the data source.
+2.  Select a data source. 
 
     Select **Docker File** under **Third-Party Software** and then click Next.
 
 3.  Configure the data source.
 
-    |Configuration item|Required|Description|
-    |:-----------------|:-------|:----------|
+    |Configuration item| Required|Description|
+    |:-----------------|:--------|:----------|
     |Docker file|Yes|Confirm if the target file being collected is a Docker file.|
     |Label whitelist|Optional|LabelKey is required. If LabelValue is not empty, only containers whose label includes LabelKey = LabelValue are collected. If LabelValue is empty, all the containers whose label includes the LabelKey are collected.**Note:** 
 
@@ -68,7 +68,7 @@ Compared with the basic log file collection, Docker file collection has the foll
     |Environment blacklist|Optional|EnvKeyis required. If EnvValue is not empty, only containers whose environment includes EnvKey=EnvValue are excluded. If EnvValue is empty, all the containers whose environment includes EnvKey are excluded.**Note:** 
 
     1.  Key-value pairs have an OR relationship between each other, that is, a container is collected if its environment includes any of the key-value pairs. 
-    2.  The environment is the environment information configured in the container startup.
+    2.  Here the environment is the environment information configured in the container startup.
 |
     |Other configurations|-|For other collection configurations and parameter descriptions, see [Collect text logs](intl.en-US/User Guide/Logtail collection/Data Source/Collect text logs.md).|
 
@@ -97,7 +97,7 @@ Compared with the basic log file collection, Docker file collection has the foll
 
 -   **Label configuration**
 
-    Collect the logs of containers whose label is `app=monitor` , and is not `type=pre` . The log file path is `/data/logs/monitor.log` , and the logs are parsed in the simple mode.
+    Collect the logs of containers whose label is `io.kubernetes.container.name=nginx` , and is not type=pre . The log file path is  `/var/log/nginx/access.log` , and the logs are parsed in the simple mode.
 
     **Note:** The label is the label information in the Docker inspect, not the label in the Kubernetes configuration.
 
@@ -108,14 +108,14 @@ Compared with the basic log file collection, Docker file collection has the foll
     ![](images/2947_en-US.png "Data source configurations")
 
 
-## Default fields {#section_wgq_cvx_pdb .section}
+## Default field {#section_wgq_cvx_pdb .section}
 
 **Normal Docker**
 
 The following fields are uploaded by each log by default.
 
-|Field name|Description|
-|:---------|:----------|
+|Field|Description:|
+|:----|:-----------|
 | `_image_name_` |The image name.|
 | `_container_name_` |The container name.|
 
@@ -123,8 +123,8 @@ The following fields are uploaded by each log by default.
 
 If the cluster is a Kubernetes cluster, the following fields are uploaded by each log by default.
 
-|Field|Description|
-|:----|:----------|
+|Field|Description:|
+|:----|:-----------|
 | `_image_name_` |The image name.|
 | `_container_name_` |The container name.|
 | `_pod_name_` |The pod name.|
