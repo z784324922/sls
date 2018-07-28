@@ -16,12 +16,8 @@ LogSearch query conditions support the following keywords.
 |Name|Meaning|
 |:---|:------|
 |and|Binary operator. Format: query1 and  query2. Indicates the intersection of the query results of query1 and query2.  With no syntax keyword among  multiple words, the relation is and by default.|
-|or|Binary operator. Format: `````
-query1 or query2
-```
-
-Indicates the union of the query results of `query1` and `query2` .|
-|not|Binary operator. Format: `query1 not query2`. Indicates a result that matches `query1`  and does not match `query2`, which is equivalent to `query1–query2`.  If only `not  query1` exists, it indicates to select the results excluding `query1` from all the logs.|
+|or|Binary operator. Format:`query1 or query2`. Indicates the union of the query results of `query1` and `query2` .|
+|not|Binary operator. Format: `query1 not query2`. Indicates a result that matches `query1`  and does not match `query2`, which is equivalent to `query1–query2`.  If only `not query1` exists, it indicates to select the results excluding `query1` from all the logs.|
 |\( , \)|Parentheses \(\) are used to merge one or more sub-queries into one query to increase the priority of the query in the parentheses \(\).|
 |:|Used to query the key-value pairs. `term1:term2` makes up a key-value pair.  If the key or value  contains reserved characters such as spaces and colons \(:\), use quotation marks \(“\) to enclose the entire key or value.|
 |“|Converts a keyword to a common query character.   Each term enclosed in quotation marks \(“\) can be queried and is not be considered as a syntax keyword. Or all the terms enclosed in quotation marks \(“\) are regarded  as a whole in the key-value query.|
@@ -29,11 +25,13 @@ Indicates the union of the query results of `query1` and `query2` .|
 |||The pipeline operator indicates more calculations based on the previous calculation, such as query1 | timeslice 1h | count.|
 |timeslice|The time-slice operator indicates how long the data is calculated as a whole. Timeslice 1h, 1m, 1s indicates 1 hour, 1  minute, and 1 second respectively. For example, query1 | timeslice 1h | count represents the query query condition, and returns to the total number of hours divided by 1 hour.|
 |count|The count operator indicates the number of log lines.|
-|\*|Fuzzy query keyword. Used to replace zero or multiple characters. For example, the query results of `que*` start with `que` . Note: At most 100 query results can be returned.|
+|\*|Fuzzy query keyword. Used to replace zero or multiple characters. For example, the query results of `que*` start with `que`.**Note:** At most 100 query results can be returned.
+
+|
 |?|Fuzzy query keyword. Used to replace one character. For example, the query results of `qu? ry` start with `qu`, end with `ry`, and have a character in the middle.|
 |`__topic__`|Topic data query. With the new syntax, you can query the data of zero or multiple topics  in the query. For example, `__topic__:mytopicname`.|
 |`__tag__`|Query a tag value in a tag key. For example, `__tag__:tagkey:tagvalue`.|
-|source|Query the data of an IP. For example, `source:127.0.0.1`.|
+|Source|Query the data of an IP. For example, `source:127.0.0.1`.|
 |\>|Query the logs with a field value greater than a specific number. For example, `latency > 100`.|
 |\>=|Query the logs with a field value greater than or equal to a specific number. For example, `latency >= 100`.|
 |<|Query the logs with a field value less than a specific number. For example, `latency < 100`.|
@@ -88,11 +86,21 @@ With one or more topics specified, the query is only performed in the topics tha
 
 For example, use topic to classify logs with the different domain names:  
 
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13099/5523_en-US.png "Log topic")
+![](images/5523_en-US.png "Log topic")
 
 Topic query syntax:
 
 -   Data of all the topics can be queried. If no topic is specified in the query syntax and parameter, data of all the topics is queried.
 -   Supports query by topic. The query syntax is `__topic__:topicName`.  The old mode \(specify the topic in the URL parameter\)  is still supported.
 -   Multiple topics can be queried. For example, `__topic__:topic1 or __topic__:topic2` indicates the union query of data from Topic1 and Topic2 .
+
+## Fuzzy search {#section_zst_xlv_m2b .section}
+
+Log Service support fuzzy search. Specify a word within 64 characters, and add fuzzy search keywords such as `*` and `?` in the middle or in the end of the word. 100 eligible words will be searched out, in the meantime, all the logs eligible and contain the 100 words will be returned.
+
+**Limits**：
+
+-   Prefix must be specified when query logs, that is, the word can not begin with `*` and `?`  .
+-   Precise the specified word, you will get a more accurate result.
+-   Fuzzy search cannot be used to search for words that exceeds 64 characters. It is recommended that you specified a word under 64 characters.
 
