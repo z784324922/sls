@@ -59,10 +59,6 @@ Log Service supports real-time collection of [Alibaba Cloud Anti-DDoS Pro](https
 __topic__: ddos_access_log | select count(1) as PV
 ```
 
-    The analysis results are displayed in a dashboard:
-
-    ![](images/6720_en-US.png "PV access")
-
 -   **Website operation analysis**
 
     DDoS access log records the website access data in real time. You can perform SQL query analysis of the collected access log data to obtain real-time access status, such as determining the website popularity, the source and channel of the access, the client distribution, and assist in website operation analysis.
