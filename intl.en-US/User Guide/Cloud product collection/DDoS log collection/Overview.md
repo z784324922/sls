@@ -43,10 +43,6 @@ Log Service supports real-time collection of [Alibaba Cloud Anti-DDoS Pro](https
     __topic__: ddos_access_log
     ```
 
-    Query results
-
-    ![](images/6718_en-US.png "DDoS access log")
-
 -   **Track CC attack source**
 
     The distribution and source of CC attacks are recorded in the DDoS access log. By performing real-time query and analysis on the DDoS access log, you can conduct source tracking, trace CC attacks, and provide a reference for response strategy. 
@@ -56,10 +52,6 @@ Log Service supports real-time collection of [Alibaba Cloud Anti-DDoS Pro](https
     ```
     __topic__: ddos_access_log and cc_blocks > 0| SELECT ip_to_country(if(real_client_ip='-', remote_addr, real_client_ip)) as country, count(1) as "number of attacks" group by country
     ```
-
-    The analysis results are displayed in a dashboard:
-
-    ![](images/6719_en-US.png "CC attack source")
 
 -   For example, view the PV access by the following statement:
 
@@ -80,9 +72,5 @@ __topic__: ddos_access_log | select count(1) as PV
     ```
     __topic__: ddos_access_log | select ip_to_provider(if(real_client_ip='-', remote_addr, real_client_ip)) as provider, round(sum(request_length)/1024.0/1024.0, 3) as mb_in group by provider having ip_to_provider(if(real_client_ip='-', remote_addr, real_client_ip)) <> '' order by mb_in desc limit 10
     ```
-
-    Analysis results are displayed in the dashboard:
-
-    ![](images/6721_en-US.png "Access client distribution")
 
 
