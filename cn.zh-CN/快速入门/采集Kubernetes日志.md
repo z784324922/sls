@@ -10,20 +10,22 @@
     根据您的需求选择使用控制台或CRD（CustomResourceDefinition）创建采集配置，本文以控制台为例。
 
 
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13801/3793_zh-CN.png "采集流程")
+![](images/3793_zh-CN.png "采集流程")
+
+**视频教程**：[http://cloud.video.taobao.com/play/u/3220778205/p/1/e/6/t/1/50145086346.mp4](http://cloud.video.taobao.com/play/u/3220778205/p/1/e/6/t/1/50145086346.mp4)
 
 ## 步骤1 安装软件包 {#section_pc2_1pr_xdb .section}
 
 1.  登录您的阿里云容器服务Kubernetes的Master节点。
 
-    如何登录参考[SSH密钥对访问Kubernetes集群](../../../../intl.zh-CN/用户指南/Kubernetes 集群/集群管理/SSH密钥对访问Kubernetes集群.md)。
+    如何登录参考[SSH密钥对访问Kubernetes集群](../../../../cn.zh-CN/用户指南/Kubernetes 集群/集群管理/SSH密钥对访问Kubernetes集群.md)。
 
 2.  替换参数后执行以下安装命令。
 
     将下述命令中的`${your_k8s_cluster_id}`替换为您的Kubernetes集群ID，并执行此命令。
 
     ```
-     wget http://logtail-release.oss-cn-hangzhou.aliyuncs.com/linux64/alicloud-log-k8s-install.sh -O alicloud-log-k8s-install.sh; chmod 744 ./alicloud-log-k8s-install.sh; sh ./alicloud-log-k8s-install.sh ${your_k8s_cluster_id}
+     wget http://logtail-release-cn-hangzhou.oss-cn-hangzhou.aliyuncs.com/kubernetes/alicloud-log-k8s-install.sh -O alicloud-log-k8s-install.sh; chmod 744 ./alicloud-log-k8s-install.sh; sh ./alicloud-log-k8s-install.sh ${your_k8s_cluster_id}
     ```
 
 
@@ -33,7 +35,7 @@
 
 ```
 
-[root@iZbp******biaZ ~]# wget http://logtail-release.oss-cn-hangzhou.aliyuncs.com/linux64/alicloud-log-k8s-install.sh -O alicloud-log-k8s-install.sh; chmod 744 ./alicloud-log-k8s-install.sh; sh ./alicloud-log-k8s-install.sh c12ba20**************86939f0b
+[root@iZbp******biaZ ~]# wget http://logtail-release-cn-hangzhou.oss-cn-hangzhou.aliyuncs.com/kubernetes/alicloud-log-k8s-install.sh -O alicloud-log-k8s-install.sh; chmod 744 ./alicloud-log-k8s-install.sh; sh ./alicloud-log-k8s-install.sh c12ba20**************86939f0b
 ....
 ....
 ....
@@ -108,7 +110,7 @@ alibaba-log-controller 0s
 
     单击右上角的**创建**按钮，在弹出的页面中创建一个Logstore。
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13801/3794_zh-CN.png "创建Logstore")
+    ![](images/3794_zh-CN.png "创建Logstore")
 
 3.  创建采集配置。
 
@@ -117,26 +119,26 @@ alibaba-log-controller 0s
 
         在配置页面中直接单击**下一步**。无需做任何修改，即可实现采集所有容器的stdout文件。
 
-        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13801/3796_zh-CN.png "Docker标准输出")
+        ![](images/3796_zh-CN.png "Docker标准输出")
 
 4.  将配置应用到机器组。
 
     在机器组配置页面，勾选机器组并单击**下一步**。
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13801/3797_zh-CN.png "应用到机器组")
+    ![](images/3797_zh-CN.png "应用到机器组")
 
 
 数据采集配置已经完成，如您需要配置索引和数据投递，请根据页面提示在后续步骤中填写配置。您也可以直接退出当前页面，结束配置。
 
-## 查看采集到日志数据 {#section_h4p_dsr_xdb .section}
+## 查看采集到的日志数据 {#section_h4p_dsr_xdb .section}
 
-完成数据采集配置后，若您的集群中有容器在输入stdout，则一分钟后即可采集到stdout日志。在**Logstore列表**页面中单击**预览** 可以快速预览当前采集到的日志数据；或者单击**查询**对采集到的日志数据进行自定义查询和分析。
+完成数据采集配置后，若您的集群中有容器在输入stdout，则一分钟后即可采集到stdout日志。在**Logstore列表**页面中单击**预览**可以快速预览当前采集到的日志数据；或者单击**查询**对采集到的日志数据进行自定义查询和分析。
 
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13801/3798_zh-CN.png "预览和查询")
+![](images/3798_zh-CN.png "预览和查询")
 
 如下图所示，查询页面中可直接单击日志中的关键字进行快速查询，也可以再查询输入框中输入指定的关键字进行查询。
 
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13801/3804_zh-CN.png "查询日志")
+![](images/3804_zh-CN.png "查询日志")
 
 ## 其他采集配置方式 {#section_e3x_qsr_xdb .section}
 
@@ -146,14 +148,15 @@ alibaba-log-controller 0s
 
 控制台配置方式请参见：
 
--   [容器内文本文件（推荐）](../../../../intl.zh-CN/用户指南/Logtail 采集/数据源/容器-文本日志.md)
--   [容器标准输出（推荐）](../../../../intl.zh-CN/用户指南/Logtail 采集/数据源/容器-标准输出.md)
--   [宿主机文本文件](../../../../intl.zh-CN/用户指南/Logtail 采集/数据源/文本日志.md)
+-   [容器内文本文件（推荐）](../../../../cn.zh-CN/用户指南/Logtail 采集/数据源/容器-文本日志.md)
+-   [容器标准输出（推荐）](../../../../cn.zh-CN/用户指南/Logtail 采集/数据源/容器-标准输出.md)
+-   [宿主机文本文件](../../../../cn.zh-CN/用户指南/Logtail 采集/数据源/文本日志.md)
 
     默认宿主机根目录挂载到Logtail容器的/logtail\_host目录，配置路径时，您需要加上此前缀。例如需要采集宿主机上/home/logs/app\_log/目录下的数据，配置页面中日志路径设置为/logtail\_host/home/logs/app\_log/。
 
+-   [自定义插件](../../../../cn.zh-CN/用户指南/Logtail 采集/数据源/自定义插件.md)
 
 ## CRD配置方式 {#section_gvy_r5r_g2b .section}
 
-CRD（CustomResourceDefinition）配置方式请参考[Kubernetes-CRD配置日志采集](../../../../intl.zh-CN/用户指南/Logtail 采集/数据源/Kubernetes-CRD配置日志采集.md#)。
+CRD（CustomResourceDefinition）配置方式请参考[Kubernetes-CRD配置日志采集](../../../../cn.zh-CN/用户指南/Logtail 采集/数据源/Kubernetes-CRD配置日志采集.md#)。
 
