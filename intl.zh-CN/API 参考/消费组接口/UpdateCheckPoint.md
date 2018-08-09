@@ -66,7 +66,7 @@ HTTP 状态码返回 200。
 
 **细节描述**
 
-当不指定消费者时，必须指定 forceSuccss 为 true 才能更新 checkpoint。
+当不指定消费者时，必须指定 forceSuccess 为 true 才能更新 checkpoint。
 
 ## 示例 {#section_p5z_ghh_f2b .section}
 
