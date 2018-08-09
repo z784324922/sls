@@ -10,7 +10,7 @@ In the Log Service console, you can: Create a project.  Delete a project.
 -   The project name must be globally unique among all Alibaba Cloud regions.  The message “**Project XXX  already exists**” is displayed if the project name you entered has already been used by another user. Enter another project name and try again. 
 -   To create a project, you must specify the Alibaba Cloud region based on the  source of the logs to be collected and other actual conditions. To collect logs from an Alibaba Cloud Elastic Compute Service \(ECS\) instance, we recommend  that you create the project in the same region as the ECS  instance to speed up log collection, and collect logs by using Alibaba Cloud intranet \(without occupying the Internet bandwidth of the ECS instance\).
 -   The region in which the project resides cannot be changed after the project is created. Log Service currently does not support migrating projects, so proceed with caution when selecting the region in which the project resides.
--   You can create up to 10 projects in all Alibaba Cloud regions.
+-   You can create up to 50 projects in all Alibaba Cloud regions.
 
 **Procedure**
 
