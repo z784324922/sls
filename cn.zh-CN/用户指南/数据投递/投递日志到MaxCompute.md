@@ -5,7 +5,7 @@
 ## 使用限制 {#section_olr_xqd_5cb .section}
 
 -   **数加控制台创建、修改投递配置必须由主账号完成，不支持子账号操作。**
--   投递MaxCompute是批量任务，请谨慎设置分区列：保证一个同步任务内处理的数据分区数小于512个；用作分区列的字段值不能包括`/`等MaxCompute保留字段 。配置细节请参考下文投递配置说明。
+-   投递MaxCompute是批量任务，请谨慎设置分区列及其类型：保证一个同步任务内处理的数据分区数小于512个；用作分区列的字段值不能为空或包括`/`等MaxCompute保留字段 。配置细节请参考下文投递配置说明。
 -   不支持海外Region的MaxCompute投递，海外Region的MaxCompute请使用[dataworks进行数据同步](https://help.aliyun.com/document_detail/66089.html)。国内Region投递支持如下：
 
     |日志服务Region|MaxCompute Region|
@@ -80,13 +80,13 @@ user-agent:aliyun-sdk-java
 |MaxCompute 列类型|MaxCompute 列名（可自定义）|MaxCompute 列类型（可自定义）|日志服务字段名（投递配置里填写）|日志服务字段类型|日志服务字段语义|
 |:-------------|:------------------|:-------------------|:---------------|:-------|:-------|
 |数据列|log\_source|string|\_\_source\_\_|系统保留字段|日志来源的机器 IP。|
-| |log\_time|bigint|\_\_time\_\_|系统保留字段|日志的 Unix 时间戳（是从1970 年 1 月 1 日开始所经过的秒数），由用户日志的 time 字段计算得到。|
+| |log\_time|bigint|\_\_time\_\_|系统保留字段|日志的 Unix 时间戳（是从1970 年 1 月 1 日开始所经过的秒数），对应数据模型中的Time域。|
 | |log\_topic|string|\_\_topic\_\_|系统保留字段|日志主题。|
-| |time|string|time|日志内容字段|解析自日志。|
+| |time|string|time|日志内容字段|解析自日志，对应数据模型中的key-value，例如Logtail采集的数据在很多时候\_\_time\_\_与time取值相同。|
 | |ip|string|ip|日志内容字段|解析自日志。|
 | |thread|string|thread|日志内容字段|解析自日志。|
 | |log\_extract\_others|string|\_\_extract\_others\_\_|系统保留字段|未在配置中进行映射的其他日志内字段会通过 key-value 序列化到json，该 json 是一层结构，不支持字段内部 json 嵌套。|
-|分区列|log\_partition\_time|string|\_\_partition\_time\_\_|系统保留字段|由日志的 time 字段对齐计算而得，分区粒度可配置，在配置项部分详述。|
+|分区列|log\_partition\_time|string|\_\_partition\_time\_\_|系统保留字段|由日志的 \_\_time\_\_ 字段对齐计算而得，分区粒度可配置，在配置项部分详述。|
 | |status|string|status|日志内容字段|解析自日志，该字段取值应该是可以枚举的，保证分区数目不会超出上限。|
 
 -   MaxCompute 表至少包含一个数据列、一个分区列。
@@ -94,7 +94,8 @@ user-agent:aliyun-sdk-java
 -   MaxCompute 单表有分区数目 6 万的限制，分区数超出后无法再写入数据，所以日志服务导入 MaxCompute表至多支持3个分区列。请谨慎选择自定义字段作为分区列，保证其值是可枚举的。
 -   系统保留字段 \_\_extract\_others\_\_ 历史上曾用名 \_extract\_others\_，填写后者也是兼容的。
 -   MaxCompute 分区列的值不支持”/“等特殊字符，这些是 MaxCompute 的保留字段。
--   MaxCompute 分区列取值不支持空，所以映射到分区列的字段必须要在日志里存在，空分区列的日志会在投递中被丢弃。
+-   MaxCompute 分区列取值不支持空，所以映射到分区列的字段必须出自保留字段或日志字段，且可以通过cast运算符将string类型字段值转换为对应分区列类型，空分区列的日志会在投递中被丢弃。
+-   日志服务数据的一个字段最多允许映射到一个MaxCompute表的列（数据列或分区列），不支持字段冗余，同一个字段名第二次使用时其投递的值为null，如果null出现在分区列会导致数据无法被投递。
 
 ## 步骤3 配置投递规则 {#section_wbv_b4h_tbb .section}
 
@@ -104,13 +105,13 @@ user-agent:aliyun-sdk-java
 
     您也可以在MaxCompute（原ODPS）投递管理页面选择需要投递的Logstore，并单击**开启投递**以进入LogHub —— 数据投递页面。
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13184/5814_zh-CN.png "开启投递")
+    ![](images/5814_zh-CN.png "开启投递")
 
 2.  配置投递规则。
 
     在LogHub —— 数据投递页面配置**字段关联**等相关内容。
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13184/5816_zh-CN.png "配置投递规则")
+    ![](images/5816_zh-CN.png "配置投递规则")
 
     配置项含义：
 
@@ -126,7 +127,6 @@ user-agent:aliyun-sdk-java
 
     -   该步会默认为客户创建好新的MaxCompute Project和Table，其中如果已经是MaxCompute老客户，可以下拉选择其他已创建Project。
     -   日志服务投递MaxCompute功能按照字段与列的顺序进行映射，修改MaxCompute表列名不影响数据导入，如更改MaxCompute表schema，请重新配置字段与列映射关系。
-    -   日志服务数据的一个字段最多允许映射到一个MaxCompute表的列（数据列或分区列），不支持字段冗余。
 
 ## 参考信息 {#section_o2c_cmf_vdb .section}
 
@@ -134,7 +134,7 @@ user-agent:aliyun-sdk-java
 
 将日志时间作为分区字段，通过日期来筛选数据是MaxCompute常见的过滤数据方法。
 
-`__partition_time__`是根据日志time字段值计算得到（不是日志写入服务端时间，也不是日志投递时间），结合分区时间格式，向下取整（为避免触发MaxCompute单表分区数目的限制，日期分区列的值会按照导入MaxCompute间隔对齐）计算出日期作为分区列。
+`__partition_time__`是根据日志\_\_time\_\_值计算得到（不是日志写入服务端时间，也不是日志投递时间），结合分区时间格式，向下取整（为避免触发MaxCompute单表分区数目的限制，日期分区列的值会按照导入MaxCompute间隔对齐）计算出日期作为分区列。
 
 举例来说，日志提取的time字段是“27/Jan/2016:20:50:13 +0800”，日志服务据此计算出保留字段\_\_time\_\_为1453899013（Unix时间戳），不同配置下的时间分区列取值如下：
 
