@@ -15,6 +15,8 @@ x-log-signaturemethod: hmac-sha1
     "logstoreName": <logstoreName>,
     "ttl": <ttl>,
     "shardCount": <shardCount>
+    "autoSplit": true,
+    "maxSplitShard": 64
 }
 ```
 
@@ -77,6 +79,8 @@ Body :
     "logstoreName": "test-logstore",
     "ttl": 1,
     "shardCount": 2
+    "autoSplit": true,
+    "maxSplitShard": 64
 }
 ```
 
