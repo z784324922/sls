@@ -25,7 +25,7 @@ The producer writes data into Log Service. When using the connector, you must ad
  <dependency>
             <groupId>com.aliyun.openservices</groupId>
             <artifactId>aliyun-log</artifactId>
-            <version>0.6.10</version>
+            <version>0.6.19</version>
  </dependency>
 <dependency>
             <groupId>com.aliyun.openservices</groupId>
@@ -55,7 +55,7 @@ The Flink log consumer uses the following Alibaba Cloud Log Service APIs:
 
     ```
     configProps.put(ConfigConstants.LOG_FETCH_DATA_INTERVAL_MILLIS， "100");
-      configProps.put(ConfigConstants.LOG_MAX_NUMBER_PER_FETCH， "100");
+    configProps.put(ConfigConstants.LOG_MAX_NUMBER_PER_FETCH， "100");
     ```
 
 -   ListShards
@@ -64,7 +64,7 @@ The Flink log consumer uses the following Alibaba Cloud Log Service APIs:
 
     ```
     // Call ListShards every 30s
-       configProps.put(ConfigConstants.LOG_SHARDS_DISCOVERY_INTERVAL_MILLIS， "30000");
+    configProps.put(ConfigConstants.LOG_SHARDS_DISCOVERY_INTERVAL_MILLIS， "30000")
     ```
 
 -   CreateConsumerGroup

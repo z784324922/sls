@@ -25,7 +25,7 @@ Flink log connector是阿里云日志服务提供的，用于对接Flink的工�
  <dependency>
             <groupId>com.aliyun.openservices</groupId>
             <artifactId>aliyun-log</artifactId>
-            <version>0.6.10</version>
+            <version>0.6.19</version>
  </dependency>
 <dependency>
             <groupId>com.aliyun.openservices</groupId>
@@ -55,7 +55,7 @@ Flink log consumer 会用到的阿里云日志服务接口如下：
 
     ```
     configProps.put(ConfigConstants.LOG_FETCH_DATA_INTERVAL_MILLIS， "100");
-      configProps.put(ConfigConstants.LOG_MAX_NUMBER_PER_FETCH， "100");
+    configProps.put(ConfigConstants.LOG_MAX_NUMBER_PER_FETCH， "100");
     ```
 
 -   ListShards
@@ -64,7 +64,7 @@ Flink log consumer 会用到的阿里云日志服务接口如下：
 
     ```
     // 设置每30s调用一次ListShards
-       configProps.put(ConfigConstants.LOG_SHARDS_DISCOVERY_INTERVAL_MILLIS， "30000");
+    configProps.put(ConfigConstants.LOG_SHARDS_DISCOVERY_INTERVAL_MILLIS， "30000");
     ```
 
 -   CreateConsumerGroup
