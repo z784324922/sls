@@ -21,8 +21,8 @@ x-log-signaturemethod: hmac-sha1
     "logstoreName" : <logStoreName>,
     "ttl": <ttl>,
     "shardCount": <shardCount>,
-    "autoSplit": true,
-    "maxSplitShard": 64
+    "autoSplit": <autoSplit>,
+    "maxSplitShard": <maxSplitShard>
 }
 ```
 
