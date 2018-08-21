@@ -28,30 +28,30 @@ Logtail采用覆盖安装模式，若您之前已安装过Logtail，那么安装
 
 各区域下不同网络环境安装参数如下（建议直接拷贝对应章节的安装方式）：
 
-|区域|经典网|VPC|公网（自建IDC）|
-|:-|:--|:--|:--------|
-|华北 2（北京）|cn-beijing|cn-beijing\_vpc|cn-beijing\_internet|
-|华北 1（青岛）|cn-qingdao|cn-qingdao\_vpc|cn-qingdao\_internet|
-|华东 1（杭州）|cn-hangzhou|cn-hangzhou\_vpc|cn-hangzhou\_internet|
-|华东 2（上海）|cn-shanghai|cn-shanghai\_vpc|cn-shanghai\_internet|
-|华南 1（深圳）|cn-shenzhen|cn-shenzhen\_vpc|cn-shenzhen\_internet|
-|华北 3（张家口）|cn-zhangjiakou|cn-zhangjiakou\_vpc|cn-zhangjiakou\_internet|
-|华北 5（呼和浩特）|无此类型网络|cn-huhehaote|cn-huhehaote\_internet|
-|西南 1（成都）|无此类型网络|cn-chengdu|cn-chengdu\_internet|
-|香港|cn-hongkong|cn-hongkong\_vpc|cn-hongkong\_internet|
-|美国西部 1（硅谷）|us-west-1|us-west-1\_vpc|us-west-1\_internet|
-|美国东部 1（弗吉尼亚）|无此类型网络|us-east-1|us-east-1\_internet|
-|亚太东南 1（新加坡）|ap-southeast-1|ap-southeast-1\_vpc|ap-southeast-1\_internet|
-|亚太东南 2（悉尼）|ap-southeast-2|ap-southeast-2\_vpc|ap-southeast-2\_internet|
-|亚太东南 3（吉隆坡）|无此类型网络|ap-southeast-3|ap-southeast-3\_internet|
-|亚太东南 5（雅加达）|无此类型网络|ap-southeast-5|ap-southeast-5\_internet|
-|亚太南部 1（孟买）|无此类型网络|ap-south-1|ap-south-1\_internet|
-|亚太东北 1（日本）|ap-northeast-1|ap-northeast-1\_vpc|ap-northeast-1\_internet|
-|欧洲中部 1（法兰克福）|eu-central-1|eu-central-1\_vpc|eu-central-1\_internet|
-|中东东部 1（迪拜）|me-east-1|me-east-1\_vpc|me-east-1\_internet|
-|华东 1金融云（杭州）|无此类型网络|cn-hangzhou-finance|无此类型网络|
-|华东 2金融云（上海）|无此类型网络|cn-shanghai-finance|无此类型网络|
-|华南 1金融云（深圳）|无此类型网络|cn-shenzhen-finance|无此类型网络|
+|区域|经典网络/VPC|公网（自建IDC）|
+|:-|:-------|:--------|
+|华北 1（青岛）|cn-qingdao|cn-qingdao-internet|
+|华北 2（北京）|cn-beijing|cn-beijing-internet|
+|华东 1（杭州）|cn-hangzhou|cn-hangzhou-internet|
+|华东 2（上海）|cn-shanghai|cn-shanghai-internet|
+|华北 3（张家口）|cn-zhangjiakou|cn-zhangjiakou-internet|
+|华北 5（呼和浩特）|cn-huhehaote|cn-huhehaote-internet|
+|华南 1（深圳）|cn-shenzhen|cn-shenzhen-internet|
+|西南 1（成都）|cn-chengdu|cn-chengdu-internet|
+|香港|cn-hongkong|cn-hongkong-internet|
+|美国西部 1（硅谷）|us-west-1|us-west-1-internet|
+|美国东部 1（弗吉尼亚）|us-east-1|us-east-1-internet|
+|亚太东南 1（新加坡）|ap-southeast-1|ap-southeast-1-internet|
+|亚太东南 2（悉尼）|ap-southeast-2|ap-southeast-2-internet|
+|亚太东南 3（吉隆坡）|ap-southeast-3|ap-southeast-3-internet|
+|亚太东南 5（雅加达）|ap-southeast-5|ap-southeast-5-internet|
+|亚太南部 1（孟买）|ap-south-1|ap-south-1-internet|
+|亚太东北 1（日本）|ap-northeast-1|ap-northeast-1-internet|
+|欧洲中部 1（法兰克福）|eu-central-1|eu-central-1-internet|
+|中东东部 1（迪拜）|me-east-1|me-east-1-internet|
+|华东 1金融云（杭州）|cn-hangzhou-finance|无此类型网络|
+|华东 2金融云（上海）|cn-shanghai-finance|无此类型网络|
+|华南 1金融云（深圳）|cn-shenzhen-finance|无此类型网络|
 
 ## ECS（经典网络、VPC） {#section_m32_rmv_vdb .section}
 
@@ -59,7 +59,7 @@ ECS上的数据通过阿里云内网写入日志服务，不消耗公网带宽�
 
 **自动选择安装参数**：
 
-如果您不清楚您的 ECS 所在的区域或其标识，可以使用 Logtail 安装器的 auto 参数进行安装，当指定该参数后，Logtail 安装器会通过服务器获取您的[实例元数据](../../../../intl.zh-CN/用户指南/实例/实例自定义数据和元数据/实例元数据.md)，自动确定所在区域。
+如果您无法确定ECS所在的区域或其标识，可以使用Logtail安装器的auto参数进行安装，当指定该参数后，Logtail 安装器会通过服务器获取您的[实例元数据](../../../../intl.zh-CN/用户指南/实例/实例自定义数据和元数据/实例元数据.md)，自动确定所在区域。
 
 使用步骤如下：
 
@@ -289,7 +289,7 @@ wget http://logtail-release-$\{your\_region\_name\}.oss-$\{your\_region\_name\}.
 -   亚太东南 1 （新加坡）
 
     ```
-    wget http://logtail-release.oss-cn-hangzhou.aliyuncs.com/linux64/logtail.sh -O logtail.sh; chmod 755 logtail.sh; sh logtail.sh install ap-southeast-1_internet
+    wget http://logtail-release.oss-cn-hangzhou.aliyuncs.com/linux64/logtail.sh -O logtail.sh; chmod 755 logtail.sh; sh logtail.sh install ap-southeast-1-internet
     ```
 
 -   亚太东南 2 （悉尼）
