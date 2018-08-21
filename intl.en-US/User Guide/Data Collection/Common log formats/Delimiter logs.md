@@ -58,7 +58,7 @@ A delimiter log is divided into several fields by delimiters, and supports two m
 
 ## Configure Logtail to collect delimiter logs {#section_hth_dzb_ry .section}
 
-For the complete process of collecting logs by using Logtail, see [Apache logs](intl.en-US/User Guide/Data Collection/Common log formats/Apache logs.md). Select the corresponding configuration based on your network deployment and actual situation. 
+For the complete process of collecting logs by using Logtail, see [Python logs](intl.en-US/User Guide/Data Collection/Common log formats/Python logs.md). Select the corresponding configuration based on your network deployment and actual situation. 
 
 1.  On the Logstore List page, click the **Data Import Wizard**.
 2.  Select the data source. 
@@ -71,7 +71,7 @@ For the complete process of collecting logs by using Logtail, see [Apache logs](
 
         Select the correct delimiter based on your log format. Otherwise, the log data will fail to be parsed. 
 
-        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13046/2631_en-US.png "Select the data source. ")
+        ![](images/2631_en-US.png "Select the data source. ")
 
     3.  Specify the key in the log extraction results. 
 
@@ -83,10 +83,10 @@ For the complete process of collecting logs by using Logtail, see [Apache logs](
 
         You can select to use the system time or a log field \(such as the time field,  05/May/2016:13:30:29\) as the log time. For how to configure the date format, see [Text logs - Configure time format](intl.en-US/User Guide/Logtail collection/Data Source/Text logs - Configure time format.md). 
 
-        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13046/2632_en-US.png "Specify log time ")
+        ![](images/2632_en-US.png "Specify log time ")
 
     5.  Preview logs in the console, and confirm whether logs are successfully collected.
 
-        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13046/2633_en-US.png "Previewing logs")
+        ![](images/2633_en-US.png "Previewing logs")
 
 
