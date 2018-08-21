@@ -24,13 +24,13 @@ Logstore读写日志必定保存在某一个分区（Shard）上。每个日志�
 3.  在Logstore列表页面，选择所需的日志库并单击操作列下的**修改**。
 4.  选择要分裂的分区，单击右侧的**分裂**。
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13025/2594_zh-CN.png)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13025/15348425712594_zh-CN.png)
 
 5.  单击**确认** 并关闭对话框。
 
     分裂操作完成后，原分区变为readonly状态，两个新生成的分区的MD5范围覆盖了原来分区的范围。
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13025/2595_zh-CN.png)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13025/15348425712595_zh-CN.png)
 
 
 ## 合并Shard {#section_tqj_l5f_vdb .section}
@@ -48,11 +48,11 @@ Logstore读写日志必定保存在某一个分区（Shard）上。每个日志�
 3.  在Logstore列表页面，选择所需的日志库并单击操作列下的**修改**。
 4.  选择要合并的分区，单击右侧的**合并** 并关闭对话框即可。
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13025/2596_zh-CN.png)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13025/15348425712596_zh-CN.png)
 
     在合并完成后，所指定的分区和其右侧相邻分区变成只读（readonly）状态，新生成的readwrite分区的MD5范围覆盖了原来两个分区的范围。
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13025/2597_zh-CN.png)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13025/15348425712597_zh-CN.png)
 
 
 ## 删除Shard {#section_m3g_45f_vdb .section}
