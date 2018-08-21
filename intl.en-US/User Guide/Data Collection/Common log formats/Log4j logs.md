@@ -9,7 +9,7 @@ Log Service supports collecting Log4j logs by using:
 
 ## Collect Log4j logs by using LogHub Log4j Appender {#section_wjz_fvb_ry .section}
 
-For more information, see [Log4j Appender](intl.en-US/User Guide/Data Collection/Log4j Appender.md).
+For more information, see [Log4j Appender](intl.en-US/User Guide/Data Collection/SDK collection/Log4j Appender.md).
 
 ## Collect Log4j logs by using Logtail {#section_scp_h23_dbb .section}
 
@@ -33,7 +33,7 @@ The log4j log consists of the first and second generations, and this document ta
 </Configuration>
 ```
 
-For how to configure Logtail to collect Log4j logs, see [Apache logs](intl.en-US/User Guide/Data Collection/Common log formats/Apache logs.md). Select the corresponding configuration based on your network deployment and actual situation. 
+For how to configure Logtail to collect Log4j logs, see [Python logs](intl.en-US/User Guide/Data Collection/Common log formats/Python logs.md). Select the corresponding configuration based on your network deployment and actual situation. 
 
 The automatically generated regular expression is only based on the log sample and does not cover all the situations of logs. Therefore, you must adjust the regular expression slightly after it is automatically generated.
 
