@@ -29,7 +29,7 @@ Time conversion format:
 Extraction results of the log sample:
 
 |Key|Value|
-|---|-----|
+|:--|:----|
 |ip|10.10.10.1|
 |time|07/Jan/2016:21:06:39 +0800|
 |method|GET|
