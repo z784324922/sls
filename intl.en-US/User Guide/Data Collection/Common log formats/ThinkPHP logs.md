@@ -36,7 +36,7 @@ ERR: D method instantiation does not find the model class
 
 ## Configure Logtail to collect ThinkPHP logs {#section_yt4_1cc_ry .section}
 
-For the complete process of collecting ThinkPHP logs by using Logtail, see [Apache logs](intl.en-US/User Guide/Data Collection/Common log formats/Apache logs.md). Select the corresponding configuration based on your network deployment and actual situation. 
+For the complete process of collecting ThinkPHP logs by using Logtail, see [Python logs](intl.en-US/User Guide/Data Collection/Common log formats/Python logs.md). Select the corresponding configuration based on your network deployment and actual situation. 
 
 The automatically generated regular expression is only based on the log sample and does not cover all the situations of logs. Therefore, you must adjust the regular expression slightly after it is automatically generated. 
 
