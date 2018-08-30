@@ -5,7 +5,7 @@
 -   已开启日志服务。
 -   已创建了Project和Logstore。
 
-个人站长选用apache作为服务器搭建网站，需要通过分析Apache访问日志来获取PV、UV、IP区域分布、流量流入流出、错误请求、客户端类型和来源页面等，以评估网站访问情况。
+个人站长选用Apache作为服务器搭建网站，需要通过分析Apache访问日志来获取PV、UV、IP区域分布、错误请求、客户端类型和来源页面等，以评估网站访问情况。
 
 日志服务支持通过数据接入向导一站式配置采集Apache日志与设置索引，并为Apache日志默认创建访问分析仪表盘。
 
@@ -15,32 +15,32 @@
 LogFormat "%h %l %u %t \"%r\" %>s %b \"%{Referer}i\" \"%{User-Agent}i\" %D %f %k %p %q %R %T %I %O" customized
 ```
 
-**说明：** ：在某些配置字段最终打印出来的日志信息内会存在空格，所以请用\\"来进行分隔，如`\"%t\"`、`\"%{User-Agent}i\"`、`\"%{Referer}i\"`等。
+**说明：** 请根据您的日志内容判断是否有部分字段对应的日志内容中存在空格，例如`%t`、`%{User-Agent}i`、`%{Referer}i`等。若有存在空格的字段，请在配置信息中用`\"`包裹该字段，以免影响日志解析。
 
 各个字段含义如下：
 
 |字段|字段名|说明|
 |:-|:--|:-|
-|％h|remote\_addr|客户端地址。|
+|％h|remote\_addr|客户端IP地址。|
 |％l|remote\_ident|客户端日志名称，来自identd。|
-|％u|remote\_user|客户端用户名字。|
+|％u|remote\_user|客户端用户名。|
 |％t|time\_local|服务器时间。|
 |％r|request|请求内容，包括方法名、地址和http协议。|
 |％\>s|status|返回的http状态码。|
 |％b|response\_size\_bytes|返回的大小。|
 |％\{Rererer\}i|http\\u0008\_referer|来源页。|
 |％\{User-Agent\}i|http\_user\_agent|客户端信息。|
-|％D|request\_time\_msec|请求时间，毫秒为单位。|
+|％D|request\_time\_msec|请求时间，单位为毫秒。|
 |％f|filename|带路径的请求文件名。|
 |％k|keep\_alive|keep-alive请求数。|
 |％p|remote\_port|服务器端口号。|
 |％q|request\_query|查询字符串，如果不存在则为空字符串。|
 |％R|response\_handler|服务器响应的处理程序。|
-|％T|request\_time\_sec|请求时间，秒为单位。|
+|％T|request\_time\_sec|请求时间，单位为秒。|
 |％I|bytes\_received|服务器接收的字节数，需要启用mod\_logio模块。|
 |％O|bytes\_sent|服务器发送的字节数，需要启用mod\_logio模块。|
 
-1.  登录日志服务控制台，单击Project名称。 
+1.  登录[日志服务控制台](https://sls.console.aliyun.com)，单击Project名称。 
 2.  在Logstore列表页面单击对应Logstore的数据接入向导图标。 
 3.  选择数据类型为**APACHE访问日志**，并单击**下一步**。 
 4.  配置数据源。 
@@ -49,15 +49,15 @@ LogFormat "%h %l %u %t \"%r\" %>s %b \"%{Referer}i\" \"%{User-Agent}i\" %D %f %k
     3.  选择**日志格式**。 请按照您的Apache日志配置文件中声明的格式选择**日志格式**。为了便于日志数据的查询分析，日志服务推荐您使用自定义的Apache日志格式。
     4.  填写**Apache配置字段**。 若您的**日志格式**为**common**或**combined**，此处会自动填写对应的配置。若您选择了**自定义**日志格式，请在此处填写您的自定义配置。建议填写上文中日志服务的推荐配置。
 
-        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/17637/15343214859380_zh-CN.png)
+        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/17637/15356095719380_zh-CN.png)
 
     5.  确认**APACHE键名称**。 日志服务会自动解析您的APACHE键名称，您可以在页面中确认。
 
         **说明：** %r会被提取为`request_method`、`request_uri`和`request_protocol`三个键。
 
-        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/17637/15343214859381_zh-CN.png)
+        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/17637/15356095719381_zh-CN.png)
 
-    6.  酌情配置高级选项，并单击下一步。 
+    6.  配置高级选项，并单击下一步。 
 
         |配置项|详情|
         |:--|:-|
@@ -91,13 +91,41 @@ LogFormat "%h %l %u %t \"%r\" %>s %b \"%{Referer}i\" \"%{User-Agent}i\" %D %f %k
 
 6.  配置**查询分析&可视化**。 确保日志机器组心跳正常的情况下，可以点击右侧**浏览**按钮获取到采集上来的数据。
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/17637/15343214859382_zh-CN.png)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/17637/15356095719382_zh-CN.png)
 
     如您需要对采集到日志服务的日志数据进行实时查询与分析，请在当前页面中确认您的索引属性配置。单击**展开**可查看键值索引属性。
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/17637/15343214859383_zh-CN.png)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/17637/15356095719383_zh-CN.png)
 
     系统已为您预设了名为LogstoreName-apache-dashboard的仪表盘。配置完成后，您可以在仪表盘页面中查看来源IP分布、请求状态占比等实时动态。
+
+    -   **访问地域分析（ip\_distribution）**：统计访问IP来源情况，统计语句如下：
+
+        ```
+        * | select ip_to_province(remote_addr) as address,
+                    count(1) as c
+                    group by address limit 100
+        ```
+
+    -   **请求状态占比（http\_status\_percentage）**：统计最近一天各种http状态码的占比，统计语句如下：
+
+        ```
+        status>0 | select status,
+                        count(1) as pv 
+                        group by status
+        ```
+
+        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/17637/15356095719388_zh-CN.png)
+
+    -   **请求方法占比（http\_method\_percentage）**：统计最近一天各种请求方法的占比，统计语句如下：
+
+        ```
+        * | select request_method,
+                    count(1) as pv 
+                    group by request_method
+        ```
+
+        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/17637/15356095719387_zh-CN.png)
 
     -   **PV/UV统计（pv\_uv）**：统计最近的PV数和UV数，统计语句如下：
 
@@ -110,46 +138,20 @@ LogFormat "%h %l %u %t \"%r\" %>s %b \"%{Referer}i\" \"%{User-Agent}i\" %D %f %k
                     limit 1000
         ```
 
-        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/17637/15343214869385_zh-CN.png)
+        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/17637/15356095719385_zh-CN.png)
 
-    -   **访问前十地址（top\_page）**：统计最近一天访问pv前十的地址，统计语句如下：
-
-        ```
-        * | select split_part(request_uri,'?',1) as path, 
-                    count(1) as pv  
-                    group by path
-                    order by pv desc limit 10
-        ```
-
-        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/17637/15343214869386_zh-CN.png)
-
-    -   **请求方法占比（http\_method\_percentage）**：统计最近一天各种请求方法的占比，统计语句如下：
+    -   **出入流量统计（net\_in\_net\_out）**：统计流量的流入和流出情况，统计语句如下：
 
         ```
-        * | select request_method,
-                    count(1) as pv 
-                    group by request_method
+        * | select date_format(date_trunc('hour', __time__), '%m-%d %H:%i') as time, 
+                    sum(bytes_sent) as net_out, 
+                    sum(bytes_received) as net_in 
+                    group by time 
+                    order by time 
+                    limit 10000mit 10
         ```
 
-        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/17637/15343214869387_zh-CN.png)
-
-    -   **请求状态占比（http\_status\_percentage）**：统计最近一天各种http状态码的占比，统计语句如下：
-
-        ```
-        status>0 | select status,
-                        count(1) as pv 
-                        group by status
-        ```
-
-        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/17637/15343214869388_zh-CN.png)
-
-    -   **访问地域分析（ip\_distribution）**：统计访问IP来源情况，统计语句如下：
-
-        ```
-        * | select ip_to_province(remote_addr) as address,
-                    count(1) as c
-                    group by address limit 100
-        ```
+        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/17637/15356095719391_zh-CN.png)
 
     -   **请求UA占比（http\_user\_agent\_percentage）**：统计最近一天各种浏览器的占比，统计语句如下：
 
@@ -163,19 +165,38 @@ LogFormat "%h %l %u %t \"%r\" %>s %b \"%{Referer}i\" \"%{User-Agent}i\" %D %f %k
                     limit 10
         ```
 
-        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/17637/15343214869390_zh-CN.png)
+        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/17637/15356095719390_zh-CN.png)
 
-    -   **出入流量统计（net\_in\_net\_out）**：统计流量的流入和流出情况，统计语句如下：
+    -   **前十访问来源（top\_10\_referer）**：统计最近一天访问PV最高的前十个访问来源页面，统计语句如下：
 
         ```
-        * | select date_format(date_trunc('hour', __time__), '%m-%d %H:%i') as time, 
-                    sum(bytes_sent) as net_out, 
-                    sum(bytes_received) as net_in 
-                    group by time 
-                    order by time 
-                    limit 10000mit 10
+        * | select  http_referer, 
+                    count(1) as pv 
+                    group by http_referer 
+                    order by pv desc limit 10
         ```
 
-        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/17637/15343214869391_zh-CN.png)
+        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/17637/153560957110098_zh-CN.png)
+
+    -   **访问前十地址（top\_page）**：统计最近一天访问pv前十的地址，统计语句如下：
+
+        ```
+        * | select split_part(request_uri,'?',1) as path, 
+                    count(1) as pv  
+                    group by path
+                    order by pv desc limit 10
+        ```
+
+        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/17637/15356095719386_zh-CN.png)
+
+    -   **请求时间前十地址（top\_10\_latency\_request\_uri）**：统计最近一天请求响应延时最长的前十个地址，统计语句如下：
+
+        ```
+        * | select request_uri as top_latency_request_uri,
+                    request_time_sec 
+                    order by request_time_sec desc limit 10 10
+        ```
+
+        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/17637/153560957110099_zh-CN.png)
 
 
