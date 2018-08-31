@@ -2,6 +2,8 @@
 
 The GetCursor API is used to get the cursor based on the time. The following figure shows the relationship among the project, Logstore, shard, and cursor.
 
+![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13233/15357051046710_en-US.png)
+
 -   A project has multiple Logstores.
 -   Each Logstore has multiple shards.
 -   You can get the location of a specified log by using the cursor.
