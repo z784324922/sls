@@ -10,7 +10,7 @@ Logtail支持通过自定义插件采集syslog。
 
 通过插件对指定的地址和端口进行监听后，Logtail能够作为syslog服务器采集来自各个数据源的日志，包括通过rsyslog采集的系统日志、 [Nginx](http://nginx.org/en/docs/syslog.html)转发的访问日志或错误日志，以及[Java](https://github.com/CloudBees-community/syslog-java-client)等语言的syslog客户端库转发的日志。
 
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/19015/153570471610990_zh-CN.png)
+![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/19015/153667839310990_zh-CN.png)
 
 ## 注意事项 {#section_agj_zh2_z2b .section}
 
@@ -109,7 +109,7 @@ Logtail支持通过自定义插件采集syslog。
      }
     ```
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/19015/153570471710991_zh-CN.png)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/19015/153667839310991_zh-CN.png)
 
 8.  应用到机器组。
 
@@ -125,7 +125,7 @@ Logtail支持通过自定义插件采集syslog。
 
     如果您后续需要对采集到的syslog进行实时查询与分析，可以单击**展开**，根据日志内容和格式配置键值索引，后续可以按照指定字段进行查询和分析。
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/19015/153570471710992_zh-CN.png)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/19015/153667839310992_zh-CN.png)
 
 
 ## 配置Logtail插件采集Nginx访问日志 {#section_rcs_bj2_z2b .section}
