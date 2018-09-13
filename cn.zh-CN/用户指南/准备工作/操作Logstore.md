@@ -36,17 +36,17 @@
 
 |
     |Shard数目|日志库的分区数量，每个Logstore可以创建1~10个分区。每个Project中可以创建最多200个分区。|
-    |自动分裂Shard|确认是否开启**自动分裂Shard**功能，默认为开启状态。当数据量超过已有分区（Shard）服务能力后，开启自动分裂功能可自动根据数据量增加分区数量。关于自动分裂Shard的详细说明，请参考[操作Shard](cn.zh-CN/用户指南/准备工作/操作Shard.md)。
+    |自动分裂Shard|确认是否开启**自动分裂Shard**功能，默认为开启状态。当数据量超过已有分区（Shard）服务能力后，开启自动分裂功能可自动根据数据量增加分区数量。关于自动分裂Shard的详细说明，请参考[操作Shard](intl.zh-CN/用户指南/准备工作/操作Shard.md)。
 
 |
     |最大分裂数|最大Shard自动分裂后的最大数目，最大可支持自动分裂至64个分区。如果您开启了**自动分裂Shard**功能，则需要设置**最大分裂数**。
 
 |
-    |记录外网IP|开启[记录外网IP](#)功能，服务端接收到日志数据之后，自动把以下信息添加到日志的Tag字段中。    -   `__client_ip__`：日志来源设备的公网IP地址。
+    |记录外网IP|开启后，服务端接收到日志数据之后，自动把以下信息添加到日志的Tag字段中。    -   `__client_ip__`：日志来源设备的公网IP地址。
     -   `__receive_time__`：日志到达服务端的时间，格式为Unix时间戳。
 |
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13024/15368094812585_zh-CN.png)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13024/15368198582585_zh-CN.png)
 
 
 ## 修改Logstore配置 {#section_evc_rjx_ndb .section}
@@ -58,7 +58,7 @@
 3.  在 Logstore列表 页面，选择所需的日志库并单击操作列下的 **修改**。
 4.  在弹出的对话框中修改日志库的配置并关闭对话框。
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13024/15368094812586_zh-CN.png)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13024/15368198582586_zh-CN.png)
 
 
 ## 删除Logstore {#section_ezq_vjx_ndb .section}
@@ -69,16 +69,12 @@
 
 -   一旦 Logstore 删除，其存储的日志数据将会被永久丢失，不可恢复，请谨慎操作。
 -   删除指定 Logstore 前必须删除其对应的所有 Logtail 配置。
--   如果该 Logstore 上还启用了日志投递的消费模式，则不保证删除前 Logstore 里的所有数据都会成功投递到 MaxCompute 中。如果您需要保证被删除的 Logstore 内所有数据都能投递到 MaxCompute，请按照如下流程操作：
-    1.  删除前先停止向该 Logstore 写入新日志。
-    2.  确认 Logstore 里的所有日志数据都成功导入到 MaxCompute。
-    3.  删除 Logstore。
 
 1.  登录日志服务控制台。
 2.  选择所需的项目，单击项目名称。
 3.  在 Logstore列表 页面，选择要删除的日志库并单击右侧的 **删除**。
 4.  在弹出的确认对话框中，单击 **确定**。
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13024/15368094812587_zh-CN.png)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13024/15368198582587_zh-CN.png)
 
 
