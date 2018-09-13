@@ -6,7 +6,7 @@
 
 -   [创建Logstore](cn.zh-CN/用户指南/准备工作/操作Logstore.md#section_v52_2jx_ndb)
 -   [修改Logstore配置](#section_evc_rjx_ndb)
--   [删除Logstore](#section_ezq_vjx_ndb)
+-   [删除Logstore](#)
 
 ## 创建Logstore {#section_v52_2jx_ndb .section}
 
@@ -46,7 +46,7 @@
     -   `__receive_time__`：日志到达服务端的时间，格式为Unix时间戳。
 |
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13024/15368080832585_zh-CN.png)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13024/15368083462585_zh-CN.png)
 
 
 ## 修改Logstore配置 {#section_evc_rjx_ndb .section}
@@ -58,7 +58,7 @@
 3.  在 Logstore列表 页面，选择所需的日志库并单击操作列下的 **修改**。
 4.  在弹出的对话框中修改日志库的配置并关闭对话框。
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13024/15368080832586_zh-CN.png)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13024/15368083462586_zh-CN.png)
 
 
 ## 删除Logstore {#section_ezq_vjx_ndb .section}
@@ -79,6 +79,6 @@
 3.  在 Logstore列表 页面，选择要删除的日志库并单击右侧的 **删除**。
 4.  在弹出的确认对话框中，单击 **确定**。
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13024/15368080832587_zh-CN.png)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13024/15368083462587_zh-CN.png)
 
 
