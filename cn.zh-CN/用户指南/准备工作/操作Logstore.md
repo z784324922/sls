@@ -42,11 +42,11 @@
     |最大分裂数|最大Shard自动分裂后的最大数目，最大可支持自动分裂至64个分区。如果您开启了**自动分裂Shard**功能，则需要设置**最大分裂数**。
 
 |
-    |记录外网IP|开启后，服务端接收到日志数据之后，自动把以下信息添加到日志的Tag字段中。    -   `__client_ip__`：日志来源设备的公网IP地址。
+    |记录外网IP|开启[记录外网IP](#)功能，服务端接收到日志数据之后，自动把以下信息添加到日志的Tag字段中。    -   `__client_ip__`：日志来源设备的公网IP地址。
     -   `__receive_time__`：日志到达服务端的时间，格式为Unix时间戳。
 |
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13024/15368089962585_zh-CN.png)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13024/15368094812585_zh-CN.png)
 
 
 ## 修改Logstore配置 {#section_evc_rjx_ndb .section}
@@ -58,7 +58,7 @@
 3.  在 Logstore列表 页面，选择所需的日志库并单击操作列下的 **修改**。
 4.  在弹出的对话框中修改日志库的配置并关闭对话框。
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13024/15368089962586_zh-CN.png)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13024/15368094812586_zh-CN.png)
 
 
 ## 删除Logstore {#section_ezq_vjx_ndb .section}
@@ -79,6 +79,6 @@
 3.  在 Logstore列表 页面，选择要删除的日志库并单击右侧的 **删除**。
 4.  在弹出的确认对话框中，单击 **确定**。
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13024/15368089962587_zh-CN.png)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13024/15368094812587_zh-CN.png)
 
 
