@@ -12,11 +12,11 @@ To enable Global Acceleration for Log Service, see the following steps.
 
 After HTTP Global Acceleration is enabled for the project, you can also configure Global Acceleration of Logtail, SDK, and other methods according to your needs.
 
-1.  4.
+1.  [Enable HTTP acceleration](#).
 2.  Enable Global Acceleration of Logtail, SDK, and other methods.
     -   HTTPS
 
-        If you use HTTPS to access Log Service, make sure that HTTPS acceleration is enabled. To configure HTTPS acceleration, see 5.
+        If you use HTTPS to access Log Service, make sure that HTTPS acceleration is enabled. To configure HTTPS acceleration, see [Enable HTTPS acceleration](#).
 
     -   Logtail log collection
 
@@ -29,7 +29,7 @@ After HTTP Global Acceleration is enabled for the project, you can also configur
 
 ## Enable HTTP acceleration {#section_sst_dsz_q2b .section}
 
-1.  Log on to the 6. Click **Domain Names** in the left-side navigation pane to enter the Domain Names page.
+1.  Log on to the [Dynamic Route for CDN Console](https://dcdn.console.aliyun.com/). Click **Domain Names** in the left-side navigation pane to enter the Domain Names page.
 2.  Click **Add Domain Name** in the upper left corner to enter the Add Domain Name page.
 3.  Enter the DCDN Domain and other information, and click **Next**.
 
@@ -45,18 +45,18 @@ After your application is approved, you can select an acceleration region based 
 
     For more information about adding domain names, see 8.
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/16815/15368956988063_en-US.png)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/16815/15368957468063_en-US.png)
 
 4.  Go to the Domain management page as prompted.
 
     You can view the **CNAME** of each corresponding domain name in the Domain name management page.
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/16815/15368956988064_en-US.png)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/16815/15368957468064_en-US.png)
 
 5.  Log on to the Log Service console and click **Global Acceleration** at the right of a specified project in the Project list.
 6.  Enter the **CNAME** corresponding to the accelerated domain name in the dialog box. Click **Enable acceleration**.
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/16815/15368956988065_en-US.png)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/16815/15368957468065_en-US.png)
 
     After you complete the preceding steps, Global Acceleration for Log Service is enabled.
 
@@ -72,7 +72,7 @@ After enabling HTTP acceleration, if you have HTTPS access requirements, you can
 
     -   Enable SSL Acceleration.
     -   Select Free Certificate for Certificate Type.
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/16815/15368956988066_en-US.png)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/16815/15368957468066_en-US.png)
 
     After the configuration is completed, select **Agree to grant Alibaba Cloud permission to apply for a free certificate.**, and click **Confirm**.
 
