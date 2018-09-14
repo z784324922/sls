@@ -43,20 +43,20 @@ After HTTP Global Acceleration is enabled for the project, you can also configur
 
 After your application is approved, you can select an acceleration region based on your needs.|
 
-    For more information about adding domain names, see .
+    For more information about adding domain names, see [AddCdnDomain](../../../../intl.en-US/.md).
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/16815/15368961148063_en-US.png)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/16815/15368963388063_en-US.png)
 
 4.  Go to the Domain management page as prompted.
 
     You can view the **CNAME** of each corresponding domain name in the Domain name management page.
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/16815/15368961148064_en-US.png)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/16815/15368963388064_en-US.png)
 
 5.  Log on to the Log Service console and click **Global Acceleration** at the right of a specified project in the Project list.
 6.  Enter the **CNAME** corresponding to the accelerated domain name in the dialog box. Click **Enable acceleration**.
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/16815/15368961148065_en-US.png)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/16815/15368963388065_en-US.png)
 
     After you complete the preceding steps, Global Acceleration for Log Service is enabled.
 
@@ -65,18 +65,18 @@ After your application is approved, you can select an acceleration region based 
 
 After enabling HTTP acceleration, if you have HTTPS access requirements, you can use the following steps to enable HTTPS acceleration.
 
-1.  Log on to the 9. Click **Domain Names** in the left-side navigation pane to enter the Domain Names page.
+1.  Log on to the [Dynamic Route for CDN Console](https://dcdn.console.aliyun.com/). Click **Domain Names** in the left-side navigation pane to enter the Domain Names page.
 2.  Click **Configure** to the right of a specified domain name.
 3.  Click **HTTPS Settings** in the left-side navigation pane and click **Modify** in the column of **SSL Certificate** to enter the HTTPS Settings page.
 4.  Configure SSL Acceleration and Certificate Type.
 
     -   Enable SSL Acceleration.
     -   Select Free Certificate for Certificate Type.
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/16815/15368961148066_en-US.png)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/16815/15368963388066_en-US.png)
 
     After the configuration is completed, select **Agree to grant Alibaba Cloud permission to apply for a free certificate.**, and click **Confirm**.
 
-    For more information about HTTPS settings, see 10.
+    For more information about HTTPS settings, see [HTTPS设置](../../../../intl.en-US/.md).
 
 
 ## Verify if the acceleration configuration takes effect {#section_tgs_nhm_q2b .section}
@@ -95,11 +95,11 @@ After enabling HTTP acceleration, if you have HTTPS access requirements, you can
     
     ```
 
-    For more information about checking methods, see 11.
+    For more information about checking methods, see [How to verify if the acceleration takes effect](https://help.aliyun.com/knowledge_detail/65163.html).
 
 -   **How to handle the error of** `project not exist` reported in accessing accelerated domain name?
 
-    This problem is caused usually by an invalid source site address. Log on to the Dynamic Route for CDN console and change the source site address to  the public network address of the region to which your project belongs. For information about address list, see 12.
+    This problem is caused usually by an invalid source site address. Log on to the Dynamic Route for CDN console and change the source site address to  the public network address of the region to which your project belongs. For information about address list, see [Service endpoint](../../../../intl.en-US/API Reference/Service endpoint.md).
 
     **Note:** Changing the source site address has a synchronization delay of several minutes.
 
