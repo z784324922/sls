@@ -45,18 +45,18 @@ After your application is approved, you can select an acceleration region based 
 
     For more information about adding domain names, see 8.
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/16815/15368967288063_en-US.png)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/16815/15368967838063_en-US.png)
 
 4.  Go to the Domain management page as prompted.
 
     You can view the **CNAME** of each corresponding domain name in the Domain name management page.
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/16815/15368967298064_en-US.png)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/16815/15368967838064_en-US.png)
 
 5.  Log on to the Log Service console and click **Global Acceleration** at the right of a specified project in the Project list.
 6.  Enter the **CNAME** corresponding to the accelerated domain name in the dialog box. Click **Enable acceleration**.
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/16815/15368967298065_en-US.png)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/16815/15368967838065_en-US.png)
 
     After you complete the preceding steps, Global Acceleration for Log Service is enabled.
 
@@ -72,7 +72,7 @@ After enabling HTTP acceleration, if you have HTTPS access requirements, you can
 
     -   Enable SSL Acceleration.
     -   Select Free Certificate for Certificate Type.
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/16815/15368967298066_en-US.png)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/16815/15368967848066_en-US.png)
 
     After the configuration is completed, select **Agree to grant Alibaba Cloud permission to apply for a free certificate.**, and click **Confirm**.
 
@@ -99,7 +99,7 @@ After enabling HTTP acceleration, if you have HTTPS access requirements, you can
 
 -   **How to handle the error of** `project not exist` reported in accessing accelerated domain name?
 
-    This problem is caused usually by an invalid source site address. Log on to the Dynamic Route for CDN console and change the source site address to  the public network address of the region to which your project belongs. For information about address list, see 12.
+    This problem is caused usually by an invalid source site address. Log on to the Dynamic Route for CDN console and change the source site address to  the public network address of the region to which your project belongs. For information about address list, see [Service endpoint](../../../../intl.en-US/API Reference/Service endpoint.md).
 
     **Note:** Changing the source site address has a synchronization delay of several minutes.
 
