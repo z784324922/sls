@@ -5,8 +5,8 @@ To enable Global Acceleration for Log Service, see the following steps.
 ## Prerequisite {#section_r43_1sz_q2b .section}
 
 -   You have enabled Log Service and created the project and Logstore.
--   You have enabled 1.
--   To 2, 3 first.
+-   You have enabled [Dynamic Route for CDN](https://dcdn.console.aliyun.com/).
+-   To [Enable HTTPS acceleration](#), [Enable HTTP acceleration](#) first.
 
 ## Configuration {#section_emc_bw1_r2b .section}
 
@@ -45,18 +45,18 @@ After your application is approved, you can select an acceleration region based 
 
     For more information about adding domain names, see 8.
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/16815/15368956448063_en-US.png)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/16815/15368956988063_en-US.png)
 
 4.  Go to the Domain management page as prompted.
 
     You can view the **CNAME** of each corresponding domain name in the Domain name management page.
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/16815/15368956448064_en-US.png)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/16815/15368956988064_en-US.png)
 
 5.  Log on to the Log Service console and click **Global Acceleration** at the right of a specified project in the Project list.
 6.  Enter the **CNAME** corresponding to the accelerated domain name in the dialog box. Click **Enable acceleration**.
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/16815/15368956458065_en-US.png)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/16815/15368956988065_en-US.png)
 
     After you complete the preceding steps, Global Acceleration for Log Service is enabled.
 
@@ -72,7 +72,7 @@ After enabling HTTP acceleration, if you have HTTPS access requirements, you can
 
     -   Enable SSL Acceleration.
     -   Select Free Certificate for Certificate Type.
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/16815/15368956458066_en-US.png)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/16815/15368956988066_en-US.png)
 
     After the configuration is completed, select **Agree to grant Alibaba Cloud permission to apply for a free certificate.**, and click **Confirm**.
 
