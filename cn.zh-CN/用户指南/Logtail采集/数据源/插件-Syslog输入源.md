@@ -6,15 +6,17 @@ Logtail支持通过自定义插件采集syslog。
 
 在Linux上，本地的syslog数据可以通过rsyslog等syslog agent转发到指定服务器IP地址和端口。为指定服务器添加Logtail配置之后，Logtail插件会以TCP或UDP协议接收转发过来的syslog数据。并且，插件能够将接收到的数据按照指定的syslog协议进行解析，提取日志中的facility、tag\(program\)、severity、content等字段。syslog协议支持[RFC3164](https://tools.ietf.org/html/rfc3164)和[RFC5424](https://tools.ietf.org/html/rfc5424)。
 
+**说明：** Windows Logtail不支持该插件。
+
 ## 实现原理 {#section_tj1_kh2_z2b .section}
 
 通过插件对指定的地址和端口进行监听后，Logtail能够作为syslog服务器采集来自各个数据源的日志，包括通过rsyslog采集的系统日志、 [Nginx](http://nginx.org/en/docs/syslog.html)转发的访问日志或错误日志，以及[Java](https://github.com/CloudBees-community/syslog-java-client)等语言的syslog客户端库转发的日志。
 
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/19015/153667839310990_zh-CN.png)
+![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/19015/153786003810990_zh-CN.png)
 
 ## 注意事项 {#section_agj_zh2_z2b .section}
 
--   Logtail 0.16.13及以上版本支持该功能。
+-   Linux版 Logtail 0.16.13及以上版本支持该功能。
 -   Logtail可同时配置多个syslog插件，比如同时使用TCP和UDP监听127.0.0.1:9999。
 
 ## Logtail配置项 {#section_vnx_kh2_z2b .section}
@@ -109,7 +111,7 @@ Logtail支持通过自定义插件采集syslog。
      }
     ```
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/19015/153667839310991_zh-CN.png)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/19015/153786003810991_zh-CN.png)
 
 8.  应用到机器组。
 
@@ -125,7 +127,7 @@ Logtail支持通过自定义插件采集syslog。
 
     如果您后续需要对采集到的syslog进行实时查询与分析，可以单击**展开**，根据日志内容和格式配置键值索引，后续可以按照指定字段进行查询和分析。
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/19015/153667839310992_zh-CN.png)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/19015/153786003810992_zh-CN.png)
 
 
 ## 配置Logtail插件采集Nginx访问日志 {#section_rcs_bj2_z2b .section}
