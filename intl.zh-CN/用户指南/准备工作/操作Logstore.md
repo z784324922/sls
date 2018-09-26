@@ -13,7 +13,7 @@
 **说明：** 
 
 -   任何一个 Logstore 必须在某一个 Project 下创建。
--   每个日志服务项目可创建最多 100个日志库。
+-   每个日志服务项目可创建最多200个日志库。
 -   Logstore 名称在其所属Project内必须唯一。
 -   数据保存时间创建后还可以进行修改。您可以在 Logstore 页面，在**操作**列下单击**操作** \> **修改** ，修改 **数据保存时间** 并单击**修改** ，然后关闭对话框即可。
 
@@ -46,7 +46,7 @@
     -   `__receive_time__`：日志到达服务端的时间，格式为Unix时间戳。
 |
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13024/15368198582585_zh-CN.png)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13024/15379430202585_zh-CN.png)
 
 
 ## 修改Logstore配置 {#section_evc_rjx_ndb .section}
@@ -58,7 +58,7 @@
 3.  在 Logstore列表 页面，选择所需的日志库并单击操作列下的 **修改**。
 4.  在弹出的对话框中修改日志库的配置并关闭对话框。
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13024/15368198582586_zh-CN.png)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13024/15379430202586_zh-CN.png)
 
 
 ## 删除Logstore {#section_ezq_vjx_ndb .section}
@@ -75,6 +75,6 @@
 3.  在 Logstore列表 页面，选择要删除的日志库并单击右侧的 **删除**。
 4.  在弹出的确认对话框中，单击 **确定**。
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13024/15368198582587_zh-CN.png)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13024/15379430202587_zh-CN.png)
 
 
