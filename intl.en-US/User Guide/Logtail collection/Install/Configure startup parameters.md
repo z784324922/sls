@@ -33,11 +33,6 @@ In the following scenarios, you must configure the Logtail startup configuration
         "max_bytes_per_sec" : 2097152,
         "process_thread_count" : 1,
         "send_request_concurrency" : 4,
-        "streamlog_open" : false,
-        "streamlog_pool_size_in_mb" : 50,
-        "streamlog_rcv_size_each_call" : 1024,
-        "streamlog_formats":[],
-        "streamlog_tcp_port" : 11111,
         "buffer_file_num" : 25,
         "buffer_file_size" : 20971520,
         "buffer_file_path" : "",
@@ -79,15 +74,6 @@ In the following scenarios, you must configure the Logtail startup configuration
 | Int type. Measured in units. The range is 1 - 1000, default value is 20.
 
  |
-|streamlog\_open |Whether to enable the syslog collection function.  For more information, see [Reference for collecting syslog data](intl.en-US/User Guide/Logtail collection/Data Source/Reference for collecting syslog data.md).|Bool type, wherein:-   true indicates that the syslog collection feature is enabled.
--   false indicates that the sysylog collection feature is disabled.
-
-The default value is false.|
-|streamlog\_pool\_size\_in\_mb |Size of the cache storing received syslog data.  Logtail requests a specified size of memory at one time when started. Configure the size according to the memory size of your machine and your actual requirements.|Int type. Measured in MBs.  The range is 10 - 2048, default value is  50.|
-|streamlog\_rcv\_size\_each\_call |Size of the buffer Logtail uses when calling the Linux socket rcv interface. Measured in bytes. You can increase the value if the syslog traffic is heavy.  |Int type. Measured in bytes. The range is 32 - 524288, default value is 1024.|
-|streamlog\_formats |The method of parsing received syslogs.  For more information, see [Reference for collecting syslog data](intl.en-US/User Guide/Logtail collection/Data Source/Reference for collecting syslog data.md).|The parameter is empty by default.|
-|streamlog\_tcp\_addr |The binding address that Logtail uses to receive syslogs. For more information, see [Reference for collecting syslog data](intl.en-US/User Guide/Logtail collection/Data Source/Reference for collecting syslog data.md).|The default value is 0.0.0.0. |
-|streamlog\_tcp\_port |The TCP port that Logtail uses to receive syslogs. |Can be set to any valid port number that is occupied. The default value is 11111.|
 |buffer\_file\_num |When a network exception occurs or the writing quota is exceeded, Logtail writes the logs that are parsed in real time to a local file \(located in the installation directory\) as a cache and then tries to resend the logs to Log Service after the recovery.  This parameter indicates the maximum number of cached files.|Int type. Measured in units. The range is 1 - 100, default value is 25.|
 |buffer\_file\_size |The maximum number of bytes that a cached file allows. The \(buffer\_file\_num \* buffer\_file\_size\) indicates the maximum disk space available for cached files. |Int type. Measured in bytes. The range is 1048576 - 104857600, the default is 20971520 Bytes \(20 MB\).|
 |buffer\_file\_path |The directory that stores cached files. After modifying this parameter value, you must manually move the files named in the format of  logtail\\\_buffer\\\_file\_\* in the old cache directory to the new cache directory so that  Logtail can read the cached files and delete them after sending logs.|The default value is null, indicating the cached files are stored in the Logtail installation directory \(/usr/local/ilogtail\).|
