@@ -4,8 +4,6 @@ As a one-stop service for log data, Log Service \(Log for short\) experiences ma
 
 ## Log Service learning path {#section_nkt_wqr_n2b .section}
 
-[Log Service learning path](https://www.alibabacloud.com/getting-started/learningpath/log) recommends documents of hot functions, and helps you quickly have a knowlege of Log Service. Combined with video and documents, Log Service learning path optimizes the user experience of user and document reading experience.
-
 ## Real-time log collection and consumption \(LogHub\) {#section_ox2_dcd_jbb .section}
 
 Functions:
@@ -15,7 +13,7 @@ Functions:
 
 Purposes: ETL, Stream Compute, monitoring and alarm, machine learning, and iterative computing.
 
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13002/15327716822357_en-US.png)
+![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13002/15381280012357_en-US.png)
 
 ## LogShipper {#section_prt_5hd_jbb .section}
 
@@ -23,7 +21,7 @@ Stable and reliable log shipping ships LogHub data to storage services for stora
 
 Purposes: Data warehouse + data analysis, audit, recommendation system, and user profiling.
 
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13002/15327716822363_en-US.png)
+![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13002/15381280012363_en-US.png)
 
 ## Query and real-time analysis \(Search/Analytics\) {#section_z3x_mcd_jbb .section}
 
@@ -36,5 +34,5 @@ Index, query, and analyze data in real time.
 
 Purposes: DevOps/online O&M, real-time log data analysis, security diagnosis and analysis, and operation and customer service systems.
 
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13002/15327716822364_en-US.png)
+![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13002/15381280012364_en-US.png)
 
