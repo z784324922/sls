@@ -8,7 +8,7 @@ This document describes the procedure for collecting Elastic Compute Service \(E
 2.  Configure the Logtail machine group.
 3.  Configure the collection, and apply the configuration to the machine group.
 
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13802/3871_en-US.png "Configuration procedure")
+![](images/3871_en-US.png "Configuration procedure")
 
 ## Prerequisites {#section_f34_lys_xdb .section}
 
@@ -40,7 +40,7 @@ This document describes the procedure for collecting Elastic Compute Service \(E
     ```
 
 
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13802/3872_en-US.png "Installing Logtail")
+![](images/3872_en-US.png "Installing Logtail")
 
 ## Step 2 Configure the machine group. {#section_uy3_vxs_xdb .section}
 
@@ -53,7 +53,7 @@ This document describes the procedure for collecting Elastic Compute Service \(E
     -   Log Service only supports ECS instances that run in the same region as the current Project.
     -   Windows and Linux ECS instances cannot exist in the same machine group at the same time.
 
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13802/3874_en-US.png "Configuring the machine group")
+![](images/3874_en-US.png "Configuring the machine group")
 
 ## Step 3: Configure collection. {#section_wt2_vzs_xdb .section}
 
@@ -71,13 +71,13 @@ This document describes the procedure for collecting Elastic Compute Service \(E
 
     Enter the path of the ECS logs, and click **Next**.
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13802/3873_en-US.png "Basic mode")
+    ![](images/3873_en-US.png "Basic mode")
 
 4.  Apply the configuration to the machine group.
 
     Select the machine group that you created in **step 2**, and click **Apply to Machine Group**.
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13802/3875_en-US.png "Apply to Machine Group")
+    ![](images/3875_en-US.png "Apply to Machine Group")
 
 
 Now you have configured the machine group to collect ECS logs by using Logtail. To create indexes for collected logs and configure log shipping, continue with the follow-up steps.
@@ -88,9 +88,9 @@ After the configuration, you can log on to the ECS instance again, or run echo "
 
 On the Logstore List page, click **Search** or **Preview** to view logs collected by Logtail.
 
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13802/3876_en-US.png "Viewing logs")
+![](images/3876_en-US.png "Viewing logs")
 
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13802/3877_en-US.png "Previewing logs")
+![](images/3877_en-US.png "Previewing logs")
 
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13802/3878_en-US.png "Retrieving logs")
+![](images/3878_en-US.png "Retrieving logs")
 
