@@ -2,9 +2,9 @@
 
 Log Service supports collecting logs from HTML, H5, iOS, and Android platforms by using Web Tracking, and customizing dimensions and metrics. 
 
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13028/15342155912604_en-US.png)
+![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13028/15381294802604_en-US.png)
 
-As shown in the preceding figure, you can collect user information from various browsers, iOS apps, and Android apps \(apart from [iOS/Android  SDK](../../../../intl.en-US/SDK Reference/Basic Descriptions /Overview .md) \) by using Web Tracking. For example: 
+As shown in the preceding figure, you can collect user information from various browsers, iOS apps, and Android apps \(apart from [iOS/Android  SDK](../../../../reseller.en-US/SDK Reference/Basic Descriptions /Overview .md) \) by using Web Tracking. For example: 
 
 -   Browsers, operating systems, and resolutions used by users.
 -   Browsing behaviors of users, such as the clicking behaviors and purchasing behaviors on the website.
@@ -22,11 +22,11 @@ You can enable Web Tracking in the console or by using Java SDK.
     1.  On the Logstore List page,  click **Modify** at the right of the Logstore that must enable the Web Tracking function.
     2.  Turn on the Web Tracking switch.
 
-        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13028/15342155922605_en-US.png)
+        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13028/15381294812605_en-US.png)
 
 -   **Enable Web Tracking by using **
 
-    [Java SDK](../../../../intl.en-US/SDK Reference/Basic Descriptions /Overview .md):
+    [Java SDK](../../../../reseller.en-US/SDK Reference/Basic Descriptions /Overview .md):
 
     ```
     import com.aliyun.openservices.log.Client;
@@ -147,5 +147,5 @@ After the Web Tracking function is enabled for Logstore, you can use any of the 
         ```
 
 
-After data is uploaded to Log Service, you can use Log Service to[ship](intl.en-US/User Guide/Index and query/Overview.md) data to Object Storage Service \(OSS\).  You can also use the Consumer Library provided by Log Service to consume data.
+After data is uploaded to Log Service, you can use Log Service to[ship](reseller.en-US/User Guide/Index and query/Overview.md) data to Object Storage Service \(OSS\).  You can also use the Consumer Library provided by Log Service to consume data.
 
