@@ -5,11 +5,11 @@ In recent years, the advent of stateless programming, containers, and serverless
 -   The application architecture is changing from a single system to microservices. Then, the business logic changes to the call and request between microservices.
 -   In terms of resources, traditional physical servers are fading out and changing to the invisible virtual resources.
 
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13020/5904_en-US.png "Architectural Evolution")
+![](images/5904_en-US.png "Architectural Evolution")
 
 The preceding two changes show that behind the elastic and standardized architecture, the Operation & Maintenance \(O&M\) and diagnosis requirements are becoming more and more complex. Ten years ago, you could log on to a server and fetch logs quickly. However, the attach process mode no longer exists. Currently, we are facing with a standardized black box.
 
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13020/5905_en-US.png "Changing Trends")
+![](images/5905_en-US.png "Changing Trends")
 
 To respond to these changes, a series of DevOps-oriented diagnosis and analysis tools have emerged. These include centralized monitors, centralized log systems, and various SaaS deployment, monitoring, and other services.
 
@@ -22,7 +22,7 @@ Centralizing logs solves the preceding issues. To do this, after applications pr
 -   Lower costs: Centralized log storage can perform load shifting to reserve more resources.
 -   Security: In case of hacker intrusion or a disaster, critical data is retained as the evidence.
 
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13020/5907_en-US.png "Advantages of centralisation")
+![](images/5907_en-US.png "Advantages of centralisation")
 
 ## Collector \(Java series\) {#section_l1k_fqq_12b .section}
 
@@ -123,7 +123,7 @@ You must enable the query and analysis function before querying and analyzing da
 4.  Click Enable in the**upper-right** \> **Modify.**.
 5.  If you have enabled the index before, click Index Attributes \> Modify. The Search & Analysis page appears.
 
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13020/5909_en-US.png "Specify a Query field")
+![](images/5909_en-US.png "Specify a Query field")
 
 ## Step 4 Analyze logs {#section_q41_vqq_12b .section}
 
