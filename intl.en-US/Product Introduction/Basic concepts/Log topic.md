@@ -6,5 +6,5 @@ Logs in a Logstore can be classified by log topics. You can specify the topic wh
 
 The relationship among Logstores, log topics, and logs is as follows.
 
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13012/2389_en-US.png)
+![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13012/15381281292389_en-US.png)
 
