@@ -90,7 +90,7 @@ log4j.appender.loghub.accessKey=[your accesskey]
 
 ## Step 2 Query and analysis {#section_hkt_mqq_12b .section}
 
-After configuring the Appender as described in the previous step, the logs produced by Java applications are automatically sent to Log Service. You can use  [LogSearch/Analytics](../../../../intl.en-US/User Guide/Index and query/Overview.md) to query and analyze these logs in real time. See the sample log format as follows. Log formats used in this example:
+After configuring the Appender as described in the previous step, the logs produced by Java applications are automatically sent to Log Service. You can use  [LogSearch/Analytics](../../../../reseller.en-US/User Guide/Index and query/Overview.md) to query and analyze these logs in real time. See the sample log format as follows. Log formats used in this example:
 
 -   Logs that record your logon behavior:
 
@@ -127,8 +127,6 @@ You must enable the query and analysis function before querying and analyzing da
 
 ## Step 4 Analyze logs {#section_q41_vqq_12b .section}
 
-[Video tutorial](http://cloud.video.taobao.com//play/u/2450842572/p/1/e/6/t/1/50073510333.mp4)
-
 1.  Count the top three locations where errors occurred most commonly in the last hour.
 
     ```
@@ -143,7 +141,7 @@ You must enable the query and analysis function before querying and analyzing da
 
 3.  Query the log context.
 
-    For any log, you can precisely reconstruct the log context information for the original log file. For more information, see [Context query](../../../../intl.en-US/User Guide/Index and query/Context query.md).
+    For any log, you can precisely reconstruct the log context information for the original log file. For more information, see [Context query](../../../../reseller.en-US/User Guide/Index and query/Context query.md).
 
 4.  Count the top three users who have logged on most frequently in the last hour.
 
