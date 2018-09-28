@@ -6,8 +6,8 @@ You must specify the Logstore for writing and querying logs. If you want to deli
 
 Specifically, Logstores provide the following functions:
 
--   Logstores can collect logs and support writing logs in real time.
--   Logstores can store logs and support using logs in real time.
--   Logstores can create indexes and support querying logs in real time. 
+-   Log collection, supports real-time logging.
+-   Log storage, supports real-time consumption.
+-   Index creation, supports real-time log query.
 -   Provides data channels delivered to maxcompute
 
