@@ -23,13 +23,13 @@ Split operations can split two other shards from one, that is, the number of sha
 3.  On the Logstore List page, click **Modify** at the right of the Logstore.
 4.  Click **Split** at the right of the shard to be split.
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13025/15348425722594_en-US.png)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13025/15381294052594_en-US.png)
 
 5.  Click **Confirm**  and close the dialog box.
 
     After the split, the status of the original shard is changed to readonly, and the MD5 range of the two newly generated shards covers the range of the original shard.
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13025/15348425722595_en-US.png)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13025/15381294062595_en-US.png)
 
 
 ## Merge shards {#section_tqj_l5f_vdb .section}
@@ -47,11 +47,11 @@ When merging shards, you must specify a shard in readwrite status. Make sure the
 3.  On the Logstore List page, click **Modify** at the right of the Logstore.
 4.  Click **Merge**  at the right of the shard to be merged.
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13025/15348425722596_en-US.png)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13025/15381294062596_en-US.png)
 
     After the merge, the specified shard and the adjacent shard on the right are changed to the readonly status, and the MD5 range of the newly generated shard in readwrite status covers the total range of the original two shards.
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13025/15348425732597_en-US.png)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13025/15381294062597_en-US.png)
 
 
 ## Delete a shard {#section_m3g_45f_vdb .section}
