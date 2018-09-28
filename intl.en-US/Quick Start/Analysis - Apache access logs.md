@@ -40,7 +40,7 @@ The meaning of each field is as follows:
 |％I|bytes\_received|The number of bytes received by the server, requiring the mod\_logio module to be enabled.|
 |％O|bytes\_sent|The number of bytes sent by the server, requiring the mod\_logio module to be enabled.|
 
-1.  Log on to the [Log Service console](https://sls.console.aliyun.com) and click the project name. 
+1.  Log on to the [Log Service console](https://partners-intl.console.aliyun.com/#/sls) and click the project name. 
 2.  On the Logstores page, click the data import wizard icon for a Logstore. 
 3.  Select data source as **APACHE Access Log**. 
 4.  Configure data source. 
@@ -49,13 +49,13 @@ The meaning of each field is as follows:
     3.  Select **Log format**. Select **Log format** according to the format stated in your Apache log configuration file. To facilitate query analysis of log data, we recommend that you use a customized Apache log format.
     4.  Enter **Apache Logformat Configuration**. If you select **Log format** as **common** or **combined**, the corresponding configuration is automatically entered here. If you select the Log format as **Customized**, enter your customized configuration here. We recommend that you enter the configuration recommended at the beginning of this document.
 
-        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/17637/15356100489380_en-US.png)
+        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/17637/15381285549380_en-US.png)
 
     5.  Confirm **APACHE Key Name**. Log Service automatically parses your Apache key name, which you can confirm on the page.
 
         **Note:** The %r field is extracted to three keys:`request_method`, `request_uri`, and `request_protocol`.
 
-        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/17637/15356100489381_en-US.png)
+        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/17637/15381285549381_en-US.png)
 
     6.  Configure advanced options and click Next. 
 
@@ -91,15 +91,15 @@ The meaning of each field is as follows:
 
 6.  Configure **Search, Analysis, and Visualization**. If you can make sure that the log machine group has a normal heartbreak, click the **Preview** button to obtain the collected data.
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/17637/15356100499382_en-US.png)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/17637/15381285549382_en-US.png)
 
     To query and analyze collected data of Log Service in real time, please confirm your index attribute configuration on the current page. Click **Open** to view the Key/Value Index Attributes.
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/17637/15356100499383_en-US.png)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/17637/15381285549383_en-US.png)
 
     A dashboard named LogstoreName-apache-dashboard is preconfigured. After configuration, you can view real-time dynamics such as source IP address distribution and request status ratios on the Dashboard page.
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/17637/15356100499384_en-US.png)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/17637/15381285549384_en-US.png)
 
     -   **Display source IP region distribution \(ip\_distribution\)**: Displays region distribution of the source IP addresses. The statistical statement is as follows:
 
@@ -109,7 +109,7 @@ The meaning of each field is as follows:
                     group by address limit 100
         ```
 
-        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/17637/15356100499389_en-US.png)
+        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/17637/15381285559389_en-US.png)
 
     -   **Count the ratios of request statuses \(http\_status\_percentage\)**: Counts the ratio of each HTTP status code on the last day. The statistical statement is as follows:
 
@@ -119,7 +119,7 @@ The meaning of each field is as follows:
                         group by status
         ```
 
-        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/17637/15356100499388_en-US.png)
+        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/17637/15381285559388_en-US.png)
 
     -   **Count the ratios of request methods \(http\_method\_percentage\)**: Counts the ratio of each request method used on the last day. The statistical statement is as follows:
 
@@ -129,7 +129,7 @@ The meaning of each field is as follows:
                     group by request_method
         ```
 
-        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/17637/15356100499387_en-US.png)
+        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/17637/15381285559387_en-US.png)
 
     -   **PV/UV statistics \(pv\_uv\)**: Counts the numbers of PVs and UVs on the last day. The statistical statement is as follows:
 
@@ -142,7 +142,7 @@ The meaning of each field is as follows:
                     limit 1000
         ```
 
-        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/17637/15356100499385_en-US.png)
+        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/17637/15381285559385_en-US.png)
 
     -   **Count inbound and outbound traffic \(net\_in\_net\_out\)**: Counts inbound and outbound traffic. The statistical statement is as follows:
 
@@ -155,7 +155,7 @@ The meaning of each field is as follows:
                     limit 10000mit 10
         ```
 
-        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/17637/15356100499391_en-US.png)
+        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/17637/15381285559391_en-US.png)
 
     -   **Count the ratios of request UA \(http\_user\_agent\_percentage\)**: Counts the ratio of each browser used on the last day. The statistical statement is as follows:
 
@@ -169,7 +169,7 @@ The meaning of each field is as follows:
                     limit 10
         ```
 
-        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/17637/15356100499390_en-US.png)
+        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/17637/15381285559390_en-US.png)
 
     -   **Count the top 10 referers \(top\_10\_referer\)**: Counts the top 10 referers on the last day. The statistical statement is as follows:
 
@@ -180,7 +180,7 @@ The meaning of each field is as follows:
                     order by pv desc limit 10
         ```
 
-        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/17637/153561004910098_en-US.png)
+        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/17637/153812855510098_en-US.png)
 
     -   **Count the top 10 access pages \(top\_page\)**: Counts the top 10 pages with the most PVs on the last day. The statistical statement is as follows:
 
@@ -191,7 +191,7 @@ The meaning of each field is as follows:
                     order by pv desc limit 10
         ```
 
-        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/17637/15356100499386_en-US.png)
+        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/17637/15381285559386_en-US.png)
 
     -   **Count the top 10 uri addresses with longest response latency \(top\_10\_latency\_request\_uri\)**: Counts the top 10 uri addresses with the longest response latency for requests on the last day. The statistical statement is as follows:
 
@@ -201,6 +201,6 @@ The meaning of each field is as follows:
                     order by request_time_sec desc limit 10 10
         ```
 
-        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/17637/153561005010099_en-US.png)
+        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/17637/153812855510099_en-US.png)
 
 
