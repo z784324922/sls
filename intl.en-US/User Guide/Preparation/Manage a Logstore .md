@@ -30,7 +30,7 @@ A Logstore is a collection of resources created in a project. All data in a Logs
     |Data Retention Time |The time \(in days\) the collected logs are kept in the Logstore. It can be 1–365 days. Logs are deleted if the specified time is exceeded. It can be 1–365 days.  Logs are deleted if the specified time is exceeded.|
     |Number of shards |The number of shards for the Logstore. Each Logstore can create 1–10 shards  and each project can create at most 200 shards.|
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13024/2585_en-US.png)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13024/15381293782585_en-US.png)
 
 
 ## Modify Logstore configurations  {#section_evc_rjx_ndb .section}
@@ -42,7 +42,7 @@ After a Logstore is created, you can modify the Logstore configurations as neede
 3.  On the Logstore List  page, click   **Modify** at the right of the Logstore.
 4.  The Modify Logstore Attributes dialog box appears. Modify the Logstore configurations and then close the dialog box.
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13024/2586_en-US.png)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13024/15381293782586_en-US.png)
 
 
 ## Delete a Logstore {#section_ezq_vjx_ndb .section}
@@ -59,6 +59,6 @@ You can delete a Logstore in some situations, such as abandoning a Logstore. Log
 3.  On the Logstore List  page, click  **Delete** at the right of the Logstore you are about to delete. 
 4.  Click **OK** in the displayed dialog box.
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13024/2587_en-US.png)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13024/15381293782587_en-US.png)
 
 
