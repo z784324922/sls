@@ -25,6 +25,7 @@ The Log Service endpoint is a URL used to access a project and logs within the p
 |EU Central 1 \(Frankfurt\) |eu-central-1.log.aliyuncs.com|
 |US East 1 \(Virginia\) |us-east-1.log.aliyuncs.com|
 |Asia Pacific SOU 1 \(Mumbai\) |ap-south-1.log.aliyuncs.com|
+|UK \(London\)|eu-west-1.log.aliyuncs.com|
 
 When accessing a specific project, you must give a final access address composed of the project name and the region where the project resides.  The specific format is as follows:
 
@@ -67,6 +68,7 @@ To use Log Service APIs on an Alibaba Cloud Elastic Compute Service \(ECS\) inst
 |EU Central 1 \(Frankfurt\) |eu-central-1-intranet.log.aliyuncs.com|
 |US East 1 \(Virginia\)|us-east-1-intranet.log.aliyuncs.com|
 |Asia Pacific SOU 1 \(Mumbai\) |ap-south-1-intranet.log.aliyuncs.com|
+|UK \(London\)|eu-west-1-intranet.log.aliyuncs.com|
 
 For example, then the intranet access address is as follows:
 
