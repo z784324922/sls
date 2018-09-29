@@ -6,11 +6,11 @@ Alibaba Cloud Anti-DDoS Pro is a paid service for Internet servers \(including n
 
 The security of the Internet community has been constantly facing challenges. Network threats represented by DDoS attacks have a serious impact on the network security.
 
-DDoS attacks are moving towards large-scale, mobile and global development. According to recent survey reports, the frequency of DDoS attacks is on the rise. The hacker attacks are concealed, and can control a large number of cloud service providers with poor security measures, IDC, and even [massive cameras](https://www.theinquirer.net/inquirer/news/2472432/iot-enabled-botnet-launches-record-15tbps-DDoS-attack) to launch attacks. The attacks have formed a mature black industry chain, which getting more organized. At the same time, the attack mode develops toward polarization, and the proportion of slow attacks, mixed attacks, especially CC attacks increases, which makes the detection of the defense more difficult. The peak of attacks exceeding 1Tbps are common \([Github suffers from 1.35Tbps DDoS attacks](https://githubengineering.com/DDoS-incident-report/)\), and the number of 100 GB attacks has doubled. However, application layer attacks are also increasing significantly \([Imperva 2017Q4 DDoS Risk Report](https://www.incapsula.com/DDoS-report/DDoS-report-q4-2017.html?_ga=2.139765171.1246111435.1527749645-1676000790.1527166554)\).
+DDoS attacks are moving towards large-scale, mobile and global development. According to recent survey reports, the frequency of DDoS attacks is on the rise. The hacker attacks are concealed, and can control a large number of cloud service providers with poor security measures, IDC, and even massive cameras to launch attacks. The attacks have formed a mature black industry chain, which getting more organized. At the same time, the attack mode develops toward polarization, and the proportion of slow attacks, mixed attacks, especially CC attacks increases, which makes the detection of the defense more difficult. The peak of attacks exceeding 1Tbps are common , and the number of 100 GB attacks has doubled. However, application layer attacks are also increasing significantly.
 
 According to [Kaspersky 2018Q1 DDoS Risk Report](https://securelist.com/DDoS-report-in-q1-2018/85373/), China remains the main source of DDoS attacks and targets. The main industries that have being attacked are Internet, games, software, and finance companies. More than 80% of DDoS attacks mix HTTP and CC attacks, and have a high level of concealment. Therefore, it is especially important to analyze the access and attack behavior by using logs, and apply a protection strategy.
 
-Log Service supports real-time collection of [Alibaba Cloud Anti-DDoS Pro](https://www.aliyun.com/product/DDoS/) website access logs, CC attack logs, and supports real-time query and analysis of collected log data. The results of the query are displayed in the form of dashboards.
+Log Service supports real-time collection of Alibaba Cloud Anti-DDoS Pro website access logs, CC attack logs, and supports real-time query and analysis of collected log data. The results of the query are displayed in the form of dashboards.
 
 ## Functional advantages {#section_tvv_wly_32b .section}
 
@@ -28,7 +28,7 @@ Log Service supports real-time collection of [Alibaba Cloud Anti-DDoS Pro](https
 
 -   **Pay-As-You-Go billing method  If DDoS log collection protection is not enabled for any website, no charge appears.**
 
-    DDOS log collection function is billed according to the charge item of Log Service. If DDoS log collection function is not enabled for any website, no charge appears. Log Service supports **Pay-As-You-Go** billing method, and provides **FreeTier quota**. For more information, see [Billing method](intl.en-US/User Guide/Cloud product collection/DDoS log collection/Billing method.md).
+    DDOS log collection function is billed according to the charge item of Log Service. If DDoS log collection function is not enabled for any website, no charge appears. Log Service supports **Pay-As-You-Go** billing method, and provides **FreeTier quota**. For more information, see [Billing method](reseller.en-US/User Guide/Cloud product collection/DDoS log collection/Billing method.md).
 
 
 ## Scenarios {#section_tbr_34y_32b .section}
