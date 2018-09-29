@@ -1,6 +1,6 @@
 # DeleteConfig {#reference_nt5_j5q_12b .reference}
 
-Delete a specific configuration. If the configuration has been [applied to the machine group](intl.en-US/API Reference/Logtail machine group related interfaces/ApplyConfigToMachineGroup.md), logs cannot be collected based  on this configuration.
+Delete a specific configuration. If the configuration has been [applied to the machine group](reseller.en-US/API Reference/Logtail machine group related interfaces/ApplyConfigToMachineGroup.md), logs cannot be collected based  on this configuration.
 
 Example:
 
@@ -29,11 +29,11 @@ URL parameters:
 
 **Request header**
 
-No special request header is available. For more information about the public request headers of Log Service APIs, see [Public request header](intl.en-US/API Reference/Public request header.md).
+No special request header is available. For more information about the public request headers of Log Service APIs, see [Public request header](reseller.en-US/API Reference/Public request header.md).
 
 **Response header**
 
-No special response header is available. For more information about the public response headers of Log Service APIs, see [Public response header](intl.en-US/API Reference/Public response header.md).
+No special response header is available. For more information about the public response headers of Log Service APIs, see [Public response header](reseller.en-US/API Reference/Public response header.md).
 
 **Response element**
 
