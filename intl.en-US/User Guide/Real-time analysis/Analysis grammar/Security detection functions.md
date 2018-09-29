@@ -43,11 +43,11 @@ Based on the global white hat shared security asset library, Log Service provide
     * | select ClientIP, ip_to_country(ClientIP) as country, ip_to_provider(ClientIP) as provider, count(1) as PV where security_check_ip(ClientIP) = 1 group by ClientIP order by PV desc
     ```
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/17042/15369087358689_en-US.png)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/17042/15381913238689_en-US.png)
 
     Set to map view display:
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/17042/15369087358690_en-US.png)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/17042/15381913238690_en-US.png)
 
 -   **Check internal suspicious access behavior and configure alarms**
 
@@ -59,6 +59,6 @@ Based on the global white hat shared security asset library, Log Service provide
 
     You can also save this statement as a quick query and configure a security alarm. When a client access dangerous websites frequently, the alarm is triggered. Configure 5-minute intervals for checking if someone has accessed dangerous websites frequently \(more than 5 times\) during the past one hour. Change parameters based on your needs. The configuration is as follows:
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/17042/15369087358691_en-US.png)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/17042/15381913248691_en-US.png)
 
 
