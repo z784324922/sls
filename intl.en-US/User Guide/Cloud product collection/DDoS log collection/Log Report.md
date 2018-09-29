@@ -11,18 +11,22 @@ Log Reports page is embedded in the dashboard of the Log Service. This page disp
     Dashboard page of Log Service is embedded in the current page, and the **filter condition** is automatically added. For example, use `matched_host: www.aliyun.com` to view log reports based on selected website.
 
 
-After the DDoS log collection function is enabled for the website, Log Service automatically creates two default instruments for reporting: operation center and access center. For more information about the default dashboard, see [Default dashboard](intl.en-US/User Guide/Cloud product collection/DDoS log collection/Log Report.md#section_qyt_prn_j2b).  
+![](images/6805_en-US.jpg "View reports")
+
+After the DDoS log collection function is enabled for the website, Log Service automatically creates two default instruments for reporting: operation center and access center. For more information about the default dashboard, see [Default dashboard](reseller.en-US/User Guide/Cloud product collection/DDoS log collection/Log Report.md#section_qyt_prn_j2b).  
 
 |Dashboard|Dashboard name|Description|
 |:--------|:-------------|:----------|
 |**ddos-pro-logstore\_**ddos\_operation\_center|DDoS operation center|Displays the current overall operational status of DDoS protected websites, including valid request status, traffic, trends, attack distributions, and traffic volumes and peaks attacked by CC.|
 |**ddos-pro-logstore\_**ddos\_access\_center|DDoS access center|Displays the current overall operational status of DDoS protected websites, including PV/UV trends and bandwidth peaks, visitors, traffic, client type, request, and visited websites distribution.|
 
+![](images/6806_en-US.jpg "Default dashboard")
+
 Besides viewing the report, the following operations can be performed: 
 
--   Select [time range](intl.en-US/User Guide/Cloud product collection/DDoS log collection/Log Report.md#section_uf1_hwn_j2b)
--   Add or edit [filter condition](intl.en-US/User Guide/Cloud product collection/DDoS log collection/Log Report.md#section_kht_4rn_j2b)
--   View [charts](intl.en-US/User Guide/Cloud product collection/DDoS log collection/Log Report.md#section_gt5_hwn_j2b)
+-   Select [time range](reseller.en-US/User Guide/Cloud product collection/DDoS log collection/Log Report.md#section_uf1_hwn_j2b)
+-   Add or edit [filter condition](reseller.en-US/User Guide/Cloud product collection/DDoS log collection/Log Report.md#section_kht_4rn_j2b)
+-   View [charts](reseller.en-US/User Guide/Cloud product collection/DDoS log collection/Log Report.md#section_gt5_hwn_j2b)
 
 ## Time picker {#section_uf1_hwn_j2b .section}
 
@@ -35,6 +39,8 @@ All charts on the dashboard page are based on statistical results for different 
 
 -   When the time range is modified, the time of all charts is changed to this time range.
 -   Time picker only provides a temporary view of the chart on the current page, and the system does not save the setting.  The next time you view the report, the system will display the default time range.
+
+![](images/6807_en-US.jpg "Set the time range")
 
 ## Filter conditions {#section_gh1_cxn_j2b .section}
 
@@ -50,10 +56,16 @@ You can modify the data display range of the report by setting **filter conditio
 
     You can filter the report data by setting **key** and **value**. `AND` relationship between multiple filters is supported.
 
+    For example, view the overall situation of access requests by telecommunications lines.
+
+    ![](images/6808_en-US.jpg "Add filter conditions")
+
+    **Note:** The `isp_line` is the field of the DDoS log, indicating the operator network connecting to the port. For more information about fields, see [DDoS log fields](reseller.en-US/User Guide/Cloud product collection/DDoS log collection/Collection procedure.md#table_irg_c1v_j2b). 
+
 
 ## Chart type {#section_gt5_hwn_j2b .section}
 
-The report display area shows multiple reports according to a predefined layout, including the following types. For more information about chart types, see [Graph description](intl.en-US/User Guide/Query and visualization/Analysis graph/Graph description.md).
+The report display area shows multiple reports according to a predefined layout, including the following types. For more information about chart types, see [Graph description](reseller.en-US/User Guide/Query and visualization/Analysis graph/Graph description.md).
 
 |Chart type|Description|
 |:---------|:----------|
