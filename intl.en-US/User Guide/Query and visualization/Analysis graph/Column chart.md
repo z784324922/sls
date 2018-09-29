@@ -43,7 +43,7 @@ To query the number of visits for each `http_referer` in the current time interv
 
 Select `http_referer` as the X Axis and `count` as the Y Axis.
 
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13146/5713_en-US.png "Simple column chart")
+![](images/5713_en-US.png "Simple column chart")
 
 ## Grouped column chart {#section_t2q_ltv_tdb .section}
 
@@ -55,5 +55,5 @@ To query the number of visits and the average bytes for each `http_referer` in t
 
 Select `http_referer` as the X Axis, and select `count` and `avg` as the Y Axis.
 
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13146/5714_en-US.png "Grouped column chart")
+![](images/5714_en-US.png "Grouped column chart")
 
