@@ -31,7 +31,7 @@ You can set a topic when using Logtail to collect logs or using APIs/SDKs to upl
 
 2.  Expand **Advanced Options** in the data import wizard and select a topic generation mode from the **Topic Generation Mode** drop-down list.
 
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13066/2904_en-US.png "Set log topic")
+![](images/2904_en-US.png "Set log topic")
 
 ## Modify log topic {#section_ptb_ynm_tcb .section}
 
