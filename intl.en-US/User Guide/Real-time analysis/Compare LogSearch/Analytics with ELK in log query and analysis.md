@@ -76,7 +76,7 @@ Elasticsearch supports more data types and more advanced query methods.  LogSea
 ## Comparison of analysis capability {#section_apk_cxy_zdb .section}
 
 -   [ES 5.5 aggregation](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations.html)
--   [Syntax description](intl.en-US/User Guide/Real-time analysis/Syntax description.md)
+-   [Syntax description](reseller.en-US/User Guide/Real-time analysis/Syntax description.md)
 
 |Type|Sub item|Self-built ELK|LogSearch/Analytics|
 |:---|:-------|:-------------|:------------------|
@@ -202,7 +202,7 @@ Use two common scenarios as an example: log query and aggregation.  The average
 
 Based on the preceding test data, this section calculates the average monthly cost in the case that 50 GB data is written on a daily basis and stored for 90 days \(the actual data size is 27 GB\).
 
-1.  1.The billing method of Log Service LogSearch/Analytics includes read and write traffic, indexing traffic, and storage space. The query function is free of charge. For more information, see [Billing method](../../../../intl.en-US/Pricing/Billing method.md)
+1.  1.The billing method of Log Service LogSearch/Analytics includes read and write traffic, indexing traffic, and storage space. The query function is free of charge. For more information, see [Billing method](../../../../reseller.en-US/Pricing/Billing method.md)
 
     |Billing item|Value|Unit price|Cost \(USD\)|
     |:-----------|:----|:---------|:-----------|
