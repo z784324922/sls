@@ -34,7 +34,7 @@ Log4js has six output levels, including trace, debug, info, warn, error, and fat
 
 ## Collect Node.js logs by using Logtail {#section_orl_wbp_tcb .section}
 
-For how to configure Logtail to collect Log4j logs, see [Python logs](intl.en-US/User Guide/Data Collection/Common log formats/Python logs.md). Select the corresponding configuration based on your network deployment and actual situation. 
+For how to configure Logtail to collect Log4j logs, see [Python logs](reseller.en-US/User Guide/Data Collection/Common log formats/Python logs.md). Select the corresponding configuration based on your network deployment and actual situation. 
 
 The automatically generated regular expression is only based on the log sample and does not cover all the situations of logs. Therefore, you must adjust the regular expression slightly after it is automatically generated. Therefore, you must adjust the regular expression slightly after it is automatically generated. See the following Node.js log samples for reference and write a correct and comprehensive regular expression for your log.
 
