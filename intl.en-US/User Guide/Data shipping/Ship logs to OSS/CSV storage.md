@@ -10,7 +10,7 @@ You can view multiple key-value pairs of one log on the Log Service data preview
 
 If the key name you entered cannot be found in the log, the corresponding column is set to null. 
 
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13182/5813_en-US.png "Configuration item")
+![](images/5813_en-US.png "Configuration item")
 
 **Configuration item**
 
