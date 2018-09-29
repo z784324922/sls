@@ -17,7 +17,7 @@ Configure the Log Service data field names and the target data types required by
 -   This field name does not exist in Log Service data.
 -   This field fails to be converted from a string to a non-string \(such as double and int64\).
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13181/5812_en-US.png "Field Configuration")
+    ![](images/5812_en-US.png "Field Configuration")
 
 
 **Configurable reserved fields**
