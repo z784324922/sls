@@ -63,7 +63,7 @@ Single value graph is displayed in a rectangular box diagram by default. Rectang
 
     To display the values of the proportional class, select a dial, and configure the dial.
 
-    **Note:** The Log Service numeric graph automatically perform normalization based on the numerical size. For example, `230000` is processed as `230K`. To define your own numeric format, please define the format in real-time analysis through [Mathematical calculation functions](intl.en-US/User Guide/Real-time analysis/Analysis grammar/Mathematical calculation functions.md).
+    **Note:** The Log Service numeric graph automatically perform normalization based on the numerical size. For example, `230000` is processed as `230K`. To define your own numeric format, please define the format in real-time analysis through [Mathematical calculation functions](reseller.en-US/User Guide/Real-time analysis/Analysis grammar/Mathematical calculation functions.md).
 
 
 ## Example {#section_yyy_lwv_tdb .section}
@@ -78,11 +78,11 @@ Show analysis results in charts:
 
 -   Rectangular box
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13149/15371506195729_en-US.png)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13149/15381932825729_en-US.png)
 
 -   Dial
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13149/15371506197726_en-US.png)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13149/15381932827726_en-US.png)
 
      
 
