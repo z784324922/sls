@@ -1,6 +1,6 @@
 # Query syntax {#concept_tnd_1jq_zdb .concept}
 
-To help you query logs more effectively, Log Service provides a set of query syntax to express query conditions.  You can specify query conditions by using the [GetLogs](../../../../intl.en-US/API Reference/Logstore related APIs/GetLogs.md) and [GetHistograms](../../../../intl.en-US/API Reference/Logstore related APIs/GetHistograms.md) interfaces in Log Service API  or on the query page of the Log Service console.  This document introduces the syntax of query conditions in details.
+To help you query logs more effectively, Log Service provides a set of query syntax to express query conditions.  You can specify query conditions by using the [GetLogs](../../../../reseller.en-US/API Reference/Logstore related APIs/GetLogs.md) and [GetHistograms](../../../../reseller.en-US/API Reference/Logstore related APIs/GetHistograms.md) interfaces in Log Service API  or on the query page of the Log Service console.  This document introduces the syntax of query conditions in details.
 
 ## Index types {#section_t32_m4v_1bb .section}
 
