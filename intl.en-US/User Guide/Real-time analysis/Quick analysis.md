@@ -14,7 +14,7 @@ The quick analysis  function of Log Service supports an interactive query with 
 
 You must specify the field query properties before using the quick analysis.
 
-1.  For specified field query, you must enable the index to activate the query and analysis function. For how to enable the index, see [Query and analysis](intl.en-US/User Guide/Index and query/Overview.md).
+1.  For specified field query, you must enable the index to activate the query and analysis function. For how to enable the index, see [Query and analysis](reseller.en-US/User Guide/Index and query/Overview.md).
 2.  Set the `key` in the log as the field name and set the type, alias, and separator.
 
     If the access log contains the `request_method` and `request_time`, you can configure the following settings.
