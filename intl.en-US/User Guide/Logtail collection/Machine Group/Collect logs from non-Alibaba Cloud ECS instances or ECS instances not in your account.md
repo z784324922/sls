@@ -4,7 +4,7 @@ To use Logtail to collect logs from non-Alibaba Cloud Elastic Compute Service \(
 
 1.   Install Logtail 
 
-    To install the Logtail client on the server where you want to collect logs, see [Linux ](intl.en-US/User Guide/Logtail collection/Install/Linux .md) if your operating system is Linux, and [Install Logtail on Windows](intl.en-US/User Guide/Logtail collection/Install/Install Logtail on Windows.md) if your operating system is Windows.
+    To install the Logtail client on the server where you want to collect logs, see [Linux ](reseller.en-US/User Guide/Logtail collection/Install/Linux .md) if your operating system is Linux, and [Install Logtail on Windows](reseller.en-US/User Guide/Logtail collection/Install/Install Logtail on Windows.md) if your operating system is Windows.
 
 2.   Configure a user identity 
     1.   View your Alibaba Cloud account ID 
