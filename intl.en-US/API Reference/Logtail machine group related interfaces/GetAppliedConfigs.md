@@ -29,11 +29,11 @@ URL parameters
 
 **Request header**
 
-The GetAppliedConfigs API does not have a special request header. For more information about the public request headers of Log Service APIs, see  [Public request header](intl.en-US/API Reference/Public request header.md).
+The GetAppliedConfigs API does not have a special request header. For more information about the public request headers of Log Service APIs, see  [Public request header](reseller.en-US/API Reference/Public request header.md).
 
 **Response header**
 
-The GetAppliedConfigs API does not have a special response header. see  [Public response header](intl.en-US/API Reference/Public response header.md).
+The GetAppliedConfigs API does not have a special response header. see  [Public response header](reseller.en-US/API Reference/Public response header.md).
 
 **Responsee element**
 
@@ -54,7 +54,7 @@ After the successful request, the response body contains a list of all machines 
 
 **Error code**
 
-Besides the  [common error codes](intl.en-US/API Reference/Common error codes.md) of Log Service APIs, the GetAppliedConfigs API may return the following special error codes.
+Besides the  [common error codes](reseller.en-US/API Reference/Common error codes.md) of Log Service APIs, the GetAppliedConfigs API may return the following special error codes.
 
 |HTTP status code|ErrorCode|ErrorMessage|
 |:---------------|:--------|:-----------|
