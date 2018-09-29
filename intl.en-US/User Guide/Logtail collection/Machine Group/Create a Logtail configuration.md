@@ -4,7 +4,7 @@ The Logtail client provides an easy way to collect logs from Elastic Compute Ser
 
 ## Create a Logtail configuration {#section_gmp_lm1_ry .section}
 
-For how to create a Logtail configuration in the Log Service console, see  [Collect text logs](intl.en-US/User Guide/Logtail collection/Data Source/Collect text logs.md) and [Syslog](intl.en-US/User Guide/Logtail collection/Data Source/Syslog.md).
+For how to create a Logtail configuration in the Log Service console, see  [Collect text logs](intl.en-US/User Guide/Logtail collection/Data Source/Collect text logs.md) and [Syslog](intl.en-US//Syslog.md).
 
 ## View Logtail configuration list {#section_jpr_mm1_ry .section}
 
