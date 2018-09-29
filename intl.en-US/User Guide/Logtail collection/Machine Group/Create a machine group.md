@@ -8,7 +8,7 @@ You can define a machine group by using:
 
 -   defines the name of the machine group and adds the intranet IP addresses of the machines in the group.
 
-    You can add multiple ECS instances to a machine group to unify their Logtail configurations by adding the intranet IP addresses of Alibaba Cloud ECS instances.  For how to create a machine group for non-ECS instances, see [Collect logs from non-Alibaba Cloud ECS instances or ECS instances not in your account](intl.en-US/User Guide/Logtail collection/Machine Group/Collect logs from non-Alibaba Cloud ECS instances or ECS instances not in your account.md) .
+    You can add multiple ECS instances to a machine group to unify their Logtail configurations by adding the intranet IP addresses of Alibaba Cloud ECS instances.  For how to create a machine group for non-ECS instances, see [Collect logs from non-Alibaba Cloud ECS instances or ECS instances not in your account](reseller.en-US/User Guide/Logtail collection/Machine Group/Collect logs from non-Alibaba Cloud ECS instances or ECS instances not in your account.md) .
 
 -   User-defined identity: Define an identity for the machine group and configure the identity on the corresponding machine for association.
 
@@ -29,23 +29,23 @@ You can define a machine group by using:
         -   Make sure that the entered ECS instance and the current Log Service project are in the same Alibaba Cloud region.
         -   Make sure that you use the intranet IP address of the ECS instance. Use a line break to separate multiple IP addresses.
         -   The Windows ECS instances and Linux ECS instances cannot be added to the same machine group.
-        -   Currently, Log Service has disabled the function of installing the Logtail client remotely by using the cloud shield. To install Logtail, see [Linux ](intl.en-US/User Guide/Logtail collection/Install/Linux .md).
-        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13080/5277_en-US.png "IP address")
+        -   Currently, Log Service has disabled the function of installing the Logtail client remotely by using the cloud shield. To install Logtail, see [Linux ](reseller.en-US/User Guide/Logtail collection/Install/Linux .md).
+        ![](images/5277_en-US.png "IP address")
 
     -   **User-defined Identity**
 
         Enter your custom identity in the  User-defined Identity field, With this option selected.
 
-        Before performing this step, confirm that you have created a user-defined identity on the server from which logs are to be collected.  For how to use the user-defined identity, see [Configure a user-defined identity for a machine group](intl.en-US/User Guide/Logtail collection/Machine Group/Configure a user-defined identity for a machine group.md).
+        Before performing this step, confirm that you have created a user-defined identity on the server from which logs are to be collected.  For how to use the user-defined identity, see [Configure a user-defined identity for a machine group](reseller.en-US/User Guide/Logtail collection/Machine Group/Configure a user-defined identity for a machine group.md).
 
         To expand machines for a module, for example, to add servers for a frontend module, install Logtail and create a file whose user-defined identity is `http_module` on the servers to be added to automatically synchronize the configurations of different machine groups. After the successful operation, clickMachine Status to view the added machines.
 
-        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13080/5278_en-US.png "Custom identity")
+        ![](images/5278_en-US.png "Custom identity")
 
 5.   er the  **Machine Group Topic**. 
 6.   Click **OK**. You can now view the machine group you just created on the machine group list.
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13080/5279_en-US.png "Machine Group list")
+    ![](images/5279_en-US.png "Machine Group list")
 
 
 After creating a machine group, you can view the machine group list, modify the machine group, view the status, manage configurations, and delete the machine group.
