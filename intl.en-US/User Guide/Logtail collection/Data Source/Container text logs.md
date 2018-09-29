@@ -31,11 +31,11 @@ Compared with the basic log file collection, Docker file collection has the foll
 
 -   **Kubernetes**
 
-    For more information on Kubernetes log collection, see [Collect Kubernetes logs](intl.en-US/User Guide/Logtail collection/Install/Kubernetes log collection.md).
+    For more information on Kubernetes log collection, see [Collect Kubernetes logs](reseller.en-US/User Guide/Logtail collection/Install/Kubernetes log collection.md).
 
 -   **Other container management methods**
 
-    For more information on other container management methods such as Swarm and Mesos, see [Collect standard Docker logs](intl.en-US/User Guide/Logtail collection/Install/Collect standard Docker logs.md).
+    For more information on other container management methods such as Swarm and Mesos, see [Collect standard Docker logs](reseller.en-US/User Guide/Logtail collection/Install/Collect standard Docker logs.md).
 
 
 ## 2. Collection configuration in Log Service {#section_kzk_rrx_pdb .section}
@@ -70,7 +70,7 @@ Compared with the basic log file collection, Docker file collection has the foll
     1.  Key-value pairs have an OR relationship between each other, that is, a container is collected if its environment includes any of the key-value pairs. 
     2.  Here the environment is the environment information configured in the container startup.
 |
-    |Other configurations|-|For other collection configurations and parameter descriptions, see [Collect text logs](intl.en-US/User Guide/Logtail collection/Data Source/Collect text logs.md).|
+    |Other configurations|-|For other collection configurations and parameter descriptions, see [Collect text logs](reseller.en-US/User Guide/Logtail collection/Data Source/Collect text logs.md).|
 
 4.  Apply to the machine group.
 
@@ -91,9 +91,7 @@ Compared with the basic log file collection, Docker file collection has the foll
 
     ![](images/2942_en-US.png "Example of Environment Configuration")
 
-    The data source configuration in this example is as follows.  For other collection configurations and parameter descriptions, see [Collect text logs](intl.en-US/User Guide/Logtail collection/Data Source/Collect text logs.md).
-
-    ![](images/2943_en-US.png "Data source configuration example")
+    The data source configuration in this example is as follows.  For other collection configurations and parameter descriptions, see [Collect text logs](reseller.en-US/User Guide/Logtail collection/Data Source/Collect text logs.md).
 
 -   **Label configuration**
 
@@ -103,9 +101,7 @@ Compared with the basic log file collection, Docker file collection has the foll
 
     ![](images/2944_en-US.png "Example label Mode")
 
-    The data source configuration in this example is as follows. For other collection configurations and parameter descriptions, see [Collect text logs](intl.en-US/User Guide/Logtail collection/Data Source/Collect text logs.md).
-
-    ![](images/2947_en-US.png "Data source configurations")
+    The data source configuration in this example is as follows. For other collection configurations and parameter descriptions, see [Collect text logs](reseller.en-US/User Guide/Logtail collection/Data Source/Collect text logs.md).
 
 
 ## Default field {#section_wgq_cvx_pdb .section}
