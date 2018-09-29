@@ -14,9 +14,9 @@ Log Service 的 Java SDK 让 Java 开发人员可以非常方便地使用 Java �
 
 ## 步骤 2 获取阿里云访问密钥 {#section_amg_r1r_12b .section}
 
-为了使用 Log Service Java SDK，您必须申请阿里云的 [访问秘钥](../../../../intl.zh-CN/API 参考/访问秘钥.md)。
+为了使用 Log Service Java SDK，您必须申请阿里云的[访问秘钥](../../../../intl.zh-CN/API 参考/访问秘钥.md)。
 
-登录阿里云 [密钥管理页面](https://ak-console.aliyun.com/#/accesskey)。选择一对用于 SDK 的访问密钥对。如果没有，请创建一对新访问密钥，且保证它处于**启用**状态。有关如何创建访问密钥，参见 [准备流程](../../../../intl.zh-CN/用户指南/准备工作/准备流程.md)。
+登录阿里云[秘钥管理页面](https://ak-console.aliyun.com/#/accesskey) 。选择一对用于 SDK 的访问密钥对。如果没有，请创建一对新访问密钥，且保证它处于**启用**状态。有关如何创建访问密钥，参见 [准备流程](../../../../intl.zh-CN/用户指南/准备工作/准备流程.md)。
 
 该密钥对会在下面的步骤使用，且需要保管好，不能对外泄露。另外，您可以参考 [配置](intl.zh-CN/SDK 参考/基本介绍/配置.md) 了解更多 SDK 如何使用访问密钥的信息。
 
@@ -244,6 +244,6 @@ public class sdksample {
 
 ## 注意事项 {#section_jqj_rrf_jdb .section}
 
-1.  为了提高您的系统的IO效率，请尽量不要直接使用SDK往日志服务中写数据，写数据标准做法参考文章[Producer Library](../../../../intl.zh-CN/用户指南/数据采集/Producer Library.md)。
+1.  为了提高您的系统的IO效率，请尽量不要直接使用SDK往日志服务中写数据，写数据标准做法参考文章[Producer Library](../../../../intl.zh-CN/用户指南/数据采集/SDK采集/Producer Library.md)。
 2.  要消费日志服务中的数据，请尽量不要直接使用SDK的拉数据接口，我们提供了一个高级消费库[消费组消费](../../../../intl.zh-CN/用户指南/实时订阅与消费/消费组消费.md)，该库屏蔽了日志服务的实现细节，并且提供了负载均衡、按序消费等高级功能。
 
