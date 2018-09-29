@@ -38,7 +38,7 @@ remote_addr: 42.0.192.0 | select date_format(date_trunc('hour', __time__), '%m-%
 
 Select `time` as the X Axis and `PV` as the Y Axis.
 
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13151/5735_en-US.png "Simple area chart")
+![](images/5735_en-US.png "Simple area chart")
 
 ## Stacked area chart {#section_ylc_ww1_5db .section}
 
@@ -48,5 +48,5 @@ Select `time` as the X Axis and `PV` as the Y Axis.
 
 Select `time` as the X Axis. Select `PV` and `UV` as the Y Axis.
 
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13151/5736_en-US.png "Stacked area chart")
+![](images/5736_en-US.png "Stacked area chart")
 
