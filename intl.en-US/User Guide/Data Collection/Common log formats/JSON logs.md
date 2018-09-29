@@ -2,12 +2,12 @@
 
 JSON logs are constructed in two structures:
 
--   Object: A collection of key/value pairs.Object: a collection of name/value pairs \).
--   ray: An ordered list of values.
+-   Object: A collection of key/value pairs.
+-   Array: An ordered list of values.
 
-Logtail supports JSON logs of the object type. Logtail automatically extracts the keys and values from the first layer of an object as the names and values of fields respectively. The field value can be the object, array, or  basic type,  for example, a string or number. \\n is used to separate the lines of JSON logs. Each line is extracted as a single log.
+Logtail supports JSON logs of the object type. Logtail automatically extracts the keys and values from the first layer of an object as the names and values of fields respectively.  The field value can be the object, array, or basic type, for example, a string or number.  `\n` is used to separate the lines of JSON logs. Each line is extracted as a single log.
 
-Logtail does not support automatically parsing non-object data such as JSON arrays. Use regular expressions to extract the fields or use the simple mode to collect logs by line.
+Logtail does not support automatic parsing of non-object data \(for example, JSON arrays\). You can use regular expressions for field extraction or use the simple mode for log collection by line.
 
 ## Log sample {#section_ets_2bc_ry .section}
 
@@ -18,26 +18,26 @@ Logtail does not support automatically parsing non-object data such as JSON arra
 
 ## Configure Logtail to collect JSON logs {#section_dpf_3bc_ry .section}
 
-For the complete process of collecting JSON logs by using Logtail, see [../../../../dita-oss-bucket/SP\_7/DNSLS11878107/EN-US\_TP\_13018.md](../../../../intl.en-US/Quick Start/5-minute quick start.md).  Select the corresponding configuration based on your network deployment and actual situation. This document only shows **how to configure data source** in Step 3 Configure data import wizard in details. Enter the Configuration Name and Log Path. Then, select JSON Mode as the log collection mode.
+For the complete process of collecting JSON logs by using Logtail, see [5-minute quick start](../../../../intl.en-US/Quick Start/5-minute quick start.md).  This document shows the detailed configuration  **Log Collection Mode** of Logtail.
 
-1.  Click the data access wizard chart in the logstore list interface to enter the data access wizard.
+1.  On the Logstore List, click the **Data Import Wizard**.
 2.  Select the data type.
 
-    Select the **text file** and click **Next**.
+    Select the **text file** and click **Next**. 
 
 3.  Configure the data source.
-    1.  Fill in the configuration name, Log Path, and select log collection mode as **JSON mode**.
-    2.  Select whether or not to use the system time as the log time according to your requirements. You can enable or disable the **Use System Time function**.
+    1.  Enter the configuration name, Log Path, and select log collection mode as **JSON mode**.
+    2.  Select whether to use the system time as the log time according to your requirements. You can enable or disable the **Use System Time function**.
         -   Enable **Use System Time function**
 
             Enabling this function means to use the time when Log Service collects the log as the log time, instead of extracting the time fields in the log.
 
-        -   Disable **the Use System Time function**
+        -   Disable **Use System Time function**
 
             Disabling this function means to extract the time fields from the log as the log time.
 
-            If you select to disable the  **Use System Time** function, you must define the key of the extracted time field, and the time conversion format.  For example,  the `time` field \(05/May/2016:13:30:29\) in  JSON Object can be extracted as log time.  For how to configure the date format, see Logtail date format.
+            If you select to disable the  **Use System Time** function, you must define the key of the extracted time field, and the time conversion format.  For example,  the `time` field \(05/May/2016:13:30:29\) in  JSON Object can be extracted as log time.  For how to configure the date format, see [Text logs - Configure time format](intl.en-US/User Guide/Logtail collection/Data Source/Text logs - Configure time format.md).
 
-             ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13047/2638_en-US.png "JSON logs") 
+             ![](images/2638_en-US.png "JSON logs") 
 
 
