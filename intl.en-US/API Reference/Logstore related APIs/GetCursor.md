@@ -2,7 +2,7 @@
 
 The GetCursor API is used to get the cursor based on the time. The following figure shows the relationship among the project, Logstore, shard, and cursor.
 
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13233/15357051046710_en-US.png)
+![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13233/15382029026710_en-US.png)
 
 -   A project has multiple Logstores.
 -   Each Logstore has multiple shards.
@@ -40,11 +40,11 @@ By using the parameter from, you can locate the logs within the lifecycle in the
 
 **Request header**
 
-The GetCursor API does not have a special request header.  For more information about  the public request headers of Log Service APIs, see  [Public request header](intl.en-US/API Reference/Public request header.md).
+The GetCursor API does not have a special request header.  For more information about  the public request headers of Log Service APIs, see  [Public request header](reseller.en-US/API Reference/Public request header.md).
 
 **Response header**
 
-The GetCursor API does not have a special response header.  For more information about the public response headers of Log Service APIs, see [Public response header](intl.en-US/API Reference/Public response header.md).
+The GetCursor API does not have a special response header.  For more information about the public response headers of Log Service APIs, see [Public response header](reseller.en-US/API Reference/Public response header.md).
 
 **Response element**
 
@@ -56,7 +56,7 @@ The GetCursor API does not have a special response header.  For more informatio
 
 **Error code**
 
-Besides  the  [common error codes](intl.en-US/API Reference/Common error codes.md) of Log Service APIs, the GetCursor API may return the following special error codes.
+Besides  the  [common error codes](reseller.en-US/API Reference/Common error codes.md) of Log Service APIs, the GetCursor API may return the following special error codes.
 
 |HTTP status code|ErrorCode|ErrorMessage|
 |:---------------|:--------|:-----------|
