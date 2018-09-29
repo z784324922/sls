@@ -20,7 +20,7 @@ In Log Service, you can troubleshoot the problem by following these steps:
 2.  On the log query page in the Log Service console, specify the time range, and find the order failure log according to the order ID.
 3.  Based on the found error log, page up until other related logs are found \(for example, the deduction failure of credit card\).
 
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13100/5524_en-US.png "Scenarios")
+![](images/5524_en-US.png "Scenarios")
 
 ## Benefits {#section_pqq_qpv_1bb .section}
 
@@ -39,7 +39,7 @@ In Log Service, you can troubleshoot the problem by following these steps:
 3.   On the Logstore List page, click **Query** at the right of the Logstore to enter the query interface. 
 4.   Enter your query and analysis statement and select the time range. Then, click **Search**. Click **Context View** at the left side of the log, and the window with the context information of the target log is displayed on the right.
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13100/5525_en-US.png "Query log")
+    ![](images/5525_en-US.png "Query log")
 
 5.   Select a log and click **Context View**. View the context log for the target log on the right pop-up page. 
 6.   Scroll with the mouse on the page to view the context information of the selected log. To view more context logs, click **Earlier**  or **Later**. 
