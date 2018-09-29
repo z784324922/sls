@@ -4,7 +4,7 @@ IP recognition function can recognize whether the IP is an intranet IP or an Int
 
 |Function name|Meaning|Example|
 |:------------|:------|:------|
-|`ip_to_domain(ip)`|Determines the domain in which the IP resides and whether the IP is an intranet IP or an Internet IP.  The returned value is intranet or Internet.|`SELECT ip_do_domain(ip)`|
+|`ip_to_domain(ip)`|Determines the domain in which the IP resides and whether the IP is an intranet IP or an Internet IP.  The returned value is intranet or Internet.|`SELECT ip_to_domain(ip)`|
 |`ip_to_country(ip)`|Determines the country in which the IP resides.|`SELECT ip_to_country(ip)`|
 |`ip_to_province(ip)`|Determines the province in which the IP resides.|`SELECT ip_to_province(ip)`|
 |`ip_to_city(ip)`|Determines the city in which the IP resides. |`SELECT ip_to_city(ip)`|
