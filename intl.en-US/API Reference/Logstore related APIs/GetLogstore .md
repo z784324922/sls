@@ -21,11 +21,11 @@ x-log-signaturemethod: hmac-sha1
 
 **Request header**
 
-The GetLogstore API does not have a special request header.  For more information about the public request headers of Log Service APIs, see [Public request header](intl.en-US/API Reference/Public request header.md).
+The GetLogstore API does not have a special request header.  For more information about the public request headers of Log Service APIs, see [Public request header](reseller.en-US/API Reference/Public request header.md).
 
 **Response header **
 
-The GetLogstore API does not have a special response header.  For more information about   the public response headers of Log Service APIs, see [Public response header](intl.en-US/API Reference/Public response header.md).
+The GetLogstore API does not have a special response header.  For more information about   the public response headers of Log Service APIs, see [Public response header](reseller.en-US/API Reference/Public response header.md).
 
 **Response element **
 
@@ -43,7 +43,7 @@ The returned HTTP status code is  200.
 
 **Error code **
 
-Besides the common error codes of Log Service APIs, the GetLogstore API may return the following special error codes. [common error codes](intl.en-US/API Reference/Common error codes.md) of Log Service APIs, the GetLogstore API may return the following special error codes.
+Besides the common error codes of Log Service APIs, the GetLogstore API may return the following special error codes. [common error codes](reseller.en-US/API Reference/Common error codes.md) of Log Service APIs, the GetLogstore API may return the following special error codes.
 
 |HTTP status code |Error code |Error message|
 |:----------------|:----------|:------------|
