@@ -2,9 +2,9 @@
 
 The Logtail client helps Log Service users collect text logs from Elastic Compute Service \(ECS\) instances or local servers in the console.
 
-## Prerequisite {#section_ehf_hbc_wdb .section}
+## Prerequisites {#section_ehf_hbc_wdb .section}
 
--   You must install Logtail before using it to collect logs. Logtail supports Windows and Linux operating systems.  For installation methods, see [Linux ](intl.en-US/User Guide/Logtail collection/Install/Linux .md) and [Install Logtail on Windows](intl.en-US/User Guide/Logtail collection/Install/Install Logtail on Windows.md).
+-   You must install Logtail before using it to collect logs. Logtail supports Windows and Linux operating systems.  For installation methods, see [Linux ](reseller.en-US/User Guide/Logtail collection/Install/Linux .md) and [Install Logtail on Windows](reseller.en-US/User Guide/Logtail collection/Install/Install Logtail on Windows.md).
 
 -   To collect logs from ECS instances or local servers, make sure you have opened the ports 80 and 443.
 
@@ -13,7 +13,7 @@ The Logtail client helps Log Service users collect text logs from Elastic Comput
 
 -   A file can only be collected by using one configuration.  To collect a file by using more than one configuration, we recommend that you use the soft link. For example, to collect files under `/home/log/nginx/log` by using two configurations, use the original path for one configuration, run the command `ln -s /home/log/nginx/log   /home/log/nginx/link_log` to create a soft link of this folder, and then use the soft link path for the other configuration.
 
--   For more information about the operating systems that the Logtail client supports, see [Overview](intl.en-US/User Guide/Logtail collection/Overview.md).
+-   For more information about the operating systems that the Logtail client supports, see [Overview](reseller.en-US/User Guide/Logtail collection/Overview.md).
 
 -   •The ECS instances of classic network or Virtual Private Cloud \(VPC\) and the Log Service project must be in the same region. You can select the region in which the Log Service project resides based on the region description if your source data is transmitted by means of Internet \(similar to the IDC usage\).
 
@@ -22,13 +22,13 @@ The Logtail client helps Log Service users collect text logs from Elastic Comput
 
 In the Log Service console, you can configure the Logtail to collect text logs in modes such as simple mode, delimiter mode, JSON  mode, and full mode.  Take the simple mode and full mode as examples. The configuration process is as follows.
 
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13062/2859_en-US.png "Configuration process")
+![](images/2859_en-US.png "Procedure")
 
 ## Procedure {#section_xss_pbc_wdb .section}
 
 1.  Click Project name to enter the Logstore List.
 2.  Select Logstore, and click the **Wizard** at the right side of the Logstore.
-3.  Select a data source.
+3.  Select the data source.
 
     Select **Text** under **Other Sources** and then click Next to go to the Configure Data Source step.
 
@@ -40,7 +40,7 @@ In the Log Service console, you can configure the Logtail to collect text logs i
 
 5.  Specify the log directory and the file name.
 
-    Make sure that the log monitoring directory and the log file name match with the files on the machine. The directory does not support fuzzy match and must be set to an absolute path, while the log file name supports fuzzy match.
+    The directory structure must be a full path or a path that contains wildcards.
 
     **Note:** Only  `*` and `?`can be used as wildcards in the directory.
 
@@ -52,21 +52,21 @@ In the Log Service console, you can configure the Logtail to collect text logs i
     -   `/var/logs/app_* … /*.log*` means the files whose file name contains `.log` and exist in all of the directories that conform to the `app_*` mode \(including their recursive subdirectories\) under the `/var/logs` directory.
     **Note:** A file can only be collected by one configuration.
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13062/2860_en-US.png "Specify the Directory and file name")
+    ![](images/2860_en-US.png "Specify the Directory and file name")
 
 6.  Set collection mode.
 
-    Logtail supports simple mode, delimiter mode, JSON mode, full mode, and other log collection methods. For more information, see [Collection methods](intl.en-US/User Guide/Data Collection/Collection methods.md). In this example, we use simple mode and complete regex mode to introduce the collection mode settings.
+    Logtail supports simple mode, delimiter mode, JSON mode, full mode, and other log collection methods. For more information, see [Collection methods](reseller.en-US/User Guide/Data Collection/Collection methods.md). In this example, we use simple mode and complete regex mode to introduce the collection mode settings.
 
-    -   Basic mode
+    -   Simple mode
 
-        Currently, simple mode is the single-line mode. By default, one line of data is a log, that is, two logs are separated by a line break in a log file.  The system does not extract log fields \(that is, the regular expression is \(. \*\) by default\), and uses the system time of the current server as the log generated time. To configure more detailed settings, you can change the configuration to the full mode and adjust the settings.  For how to change the Logtail configuration, see [Manage a collection configuration](intl.en-US/User Guide/Logtail collection/Machine Group/Create a Logtail configuration.md).
+        Currently, simple mode is the single-line mode. By default, one line of data is a log, that is, two logs are separated by a line break in a log file.  The system does not extract log fields \(that is, the regular expression is \(. \*\) by default\), and uses the system time of the current server as the log generated time. To configure more detailed settings, you can change the configuration to the full mode and adjust the settings.  For how to change the Logtail configuration, see [Create a Logtail configuration](reseller.en-US/User Guide/Logtail collection/Machine Group/Create a Logtail configuration.md).
 
         In the simple mode, specify the file directory and file name. Then, Logtail collects logs by line, uses the system time of the server when the log is collected as the log time, and does not extract fields from the log content. 
 
     -   Mode
 
-        To configure more personalized field extraction settings for log contents \(such as cross-line logs and field extraction\), select **Full Mode** . For more information on the specific meanings and setting methods for these parameters, see [Overview](intl.en-US/User Guide/Logtail collection/Overview.md).
+        To configure more personalized field extraction settings for log contents \(such as cross-line logs and field extraction\), select **Full Mode** . For more information on the specific meanings and setting methods for these parameters, see [Overview](reseller.en-US/User Guide/Logtail collection/Overview.md).
 
         1.  Enter  **the Log Sample**.
 
@@ -94,13 +94,14 @@ In the Log Service console, you can configure the Logtail to collect text logs i
 
         5.  Set **Use System Time**.
 
-            Default settings **Use System Time is set by default**.  If disabled, you must specify a certain field \(value\) as the time field during field extraction and  name this field `time`.  After selecting a `time` field, you  can click  **Auto Generate** in  **Time Format** to generate a  method to parse this time field.  For more information on log time format, see [Text logs - Configure time format](intl.en-US/User Guide/Logtail collection/Data Source/Text logs - Configure time format.md).
+            Default settings **Use System Time is set by default**.  If disabled, you must specify a certain field \(value\) as the time field during field extraction and  name this field `time`.  After selecting a `time` field, you  can click  **Auto Generate** in  **Time Format** to generate a  method to parse this time field.  For more information on log time format, see [Text logs - Configure time format](reseller.en-US/User Guide/Logtail collection/Data Source/Text logs - Configure time format.md).
 
 7.  Set **Advanced Options** as per your needs, and click **Next**.
 
-    Set **Local Cache**, **Upload Original Log**, [Topic](intl.en-US/User Guide/Logtail collection/Data Source/Log topic.md) Generation Mode, **Log File Encoding**, **Maximum Monitor Directory Depth**, **Timeout**, and **Filter Configuration** according to your requirements,  or keep the default configurations.
+    Set **Local Cache**, **Upload Original Log**, [Topic](reseller.en-US/User Guide/Logtail collection/Data Source/Log topic.md) Generation Mode, **Log File Encoding**, **Maximum Monitor Directory Depth**, **Timeout**, and **Filter Configuration** according to your requirements,  or keep the default configurations.
 
-    |Configuration item|Details|
+    |Config Maps|Details|
+    |:----------|:------|
     |Local Cache|Select whether to enable **Local Cache**.  If this function is enabled, logs can be cached in the local directory of the machine when Log Service is unavailable and continue to be sent to Log Service after the service recovery. By default, at most 1 GB logs can be cached.|
     |Upload Original Log|Select whether or not to upload the original log.  If enabled, the new field is added by default to upload the original log.|
     |Topic Generation Mode|     -     **Null - Do not generate topic**: The default option, which indicates to set the topic as a null string and you can query logs without entering the topic. 
@@ -115,20 +116,26 @@ In the Log Service console, you can configure the Logtail to collect text logs i
     |Timeout |A log file has timed out if it does not have any update within a specified time.  You can configure the following settings for **Timeout**.    -   Never Time out: Specify to monitor all log files persistently and the log files never time out. 
     -   30 minute timeout: A log file has timed out and is not monitored if it does not have any update within 30 minutes. 
 |
-    |Filter Configuration|Only logs that **completely** conform to the filter conditions can be collected. For example,`Key:level Regex:WARNING|ERROR` indicates to only collect logs whose level is WARNING or ERROR. You can also [filter logs](http://www.regular-expressions.info/lookaround.html) that do not conform to a condition. For example, `Key:level Regex:^(?!. *(INFO|DEBUG))`  indicates to not collect logs whose level is INFO or DEBUG. For similar examples, see [regex-exclude-word](https://stackoverflow.com/questions/2404010/match-everything-except-for-specified-strings) and [regex-exclude-pattern](https://stackoverflow.com/questions/2078915/a-regular-expression-to-exclude-a-word-string).
+    |Filter Configuration|Only logs that **completely** conform to the filter conditions can be collected. For example: 
+
+    -   **collect logs that conform to a condition** :  Key:level Regex:WARNING|ERROR indicates to only collect logs whose level is WARNING or ERROR.
+    -      **[filter logs that do not conform to a condition](http://www.regular-expressions.info/lookaround.html)** :
+        -   `Key:level Regex:^(?!. *(INFO|DEBUG))`,  indicates to not collect logs whose level is INFO or DEBUG.
+        -   `Key:url Regex:. *^(?!.*(healthcheck)). *`, indicates to filter logs with healthcheck in the url. Such as logs in which key is url  and value is `/inner/healthcheck/jiankong.html` will not be collected.
+ For similar examples, see[regex-exclude-word](https://stackoverflow.com/questions/2404010/match-everything-except-for-specified-strings) and [regex-exclude-pattern](https://stackoverflow.com/questions/2078915/a-regular-expression-to-exclude-a-word-string).
 
 |
 
 8.  Click **Next** after completing the configurations.
 
-    If you have not created a machine group, you must create one first. For how to create a machine group, see Create a machine [Create a machine group](intl.en-US/User Guide/Logtail collection/Machine Group/Create a machine group.md)group.
+    If you have not created a machine group, you must create one first. For how to create a machine group, see Create a machine [Create a machine group](reseller.en-US/User Guide/Logtail collection/Machine Group/Create a machine group.md)group.
 
     **Note:** 
 
     -   It takes up to three minutes for the Logtail configuration to take effect, so be patient.
-    -   To collect IIS access logs, see [Use Logstash to collect IIS logs](intl.en-US/User Guide/Data Collection/Common log formats/Use Logstash to collect IIS logs.md).
-    -   After creating the Logtail configuration, you can view the Logtail configuration list, modify the Logtail configuration, or delete the Logtail configuration. For more information, see [Manage a collection configuration](intl.en-US/User Guide/Logtail collection/Machine Group/Create a Logtail configuration.md).
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13062/2865_en-US.png "Applying the configuration to the machine group")
+    -   To collect IIS access logs, see [Use Logstash to collect IIS logs](reseller.en-US/User Guide/Data Collection/Common log formats/Use Logstash to collect IIS logs.md).
+    -   After creating the Logtail configuration, you can view the Logtail configuration list, modify the Logtail configuration, or delete the Logtail configuration. For more information, see [Create a Logtail configuration](reseller.en-US/User Guide/Logtail collection/Machine Group/Create a Logtail configuration.md).
+    ![](images/2865_en-US.png "Applying the configuration to the machine group")
 
     Log Service starts to collect logs after completing the configurations.
 
@@ -139,23 +146,23 @@ After completing the preceding configurations, you can configure the **Search, A
 
 Logs collected to Log Service in the simple mode are as follows. All the contents of each log are displayed under the key named **content**.
 
- ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13062/2866_en-US.png "Preview") 
+ ![](images/2866_en-US.png "Preview") 
 
 Logs collected to Log Service in the full mode are as follows. The contents of each log are collected to Log Service according to the configured key-value.
 
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13062/2867_en-US.png "Preview")
+![](images/2867_en-US.png "Preview")
 
 ## Logtail configuration items {#section_cph_gcc_wdb .section}
 
 You must complete the configuration items when configuring Logtail. The descriptions and limits of the commonly used configuration items are as follows.
 
-|Configuration item|Description|
+|Configuration item|Description |
 |Log path|Make sure that the log monitoring directory and the log file name match with the files on the machine. The directory does not support fuzzy match and must be set to an absolute path, while the log file name supports fuzzy match. The path that contains wildcards can match with directories of multiple levels, that is, under the specified folder \(including directories of all levels\), all the files that conform to the file name can be monitored.|
 |Log file name|The name of the file from which logs are collected, which is case-sensitive and can contain wildcards,  for example, `*.log` .  The file name wildcards in Linux include \* ,  “?”, and \[…\] .|
 |Local Storage|Whether or not to enable the local cache to temporarily store logs that cannot be sent because of short-term network interruption.|
 |First-line log header|Specifies the starting header of a multiline log by specifying a regular expression.  Lines cannot be used to separate individual logs when multiline log is collected \(such as the stack information in application logs\).  In this case, you must specify the start line of a multi-line log. When this line is discovered, this indicates the last log has ended and a new log has begun. Therefore, you must specify a matching rule for the starting header, that is, a regular expression here.|
 |Log parsing expression|Defines how to extract a piece of log information and convert it to a log format supported by Log Service. The user must specify a regular expression to extract the required log field information and define the name of each field to be extracted.|
-|Log time format|Defines how to parse the time format of the timestamp string in log data. For more information, see 见[Text logs - Configure time format](intl.en-US/User Guide/Logtail collection/Data Source/Text logs - Configure time format.md).|
+|Log time format|Defines how to parse the time format of the timestamp string in log data. For more information, see 见[Text logs - Configure time format](reseller.en-US/User Guide/Logtail collection/Data Source/Text logs - Configure time format.md).|
 
 ## Writing method of logs {#section_jqm_jcc_wdb .section}
 
@@ -163,10 +170,10 @@ In addition to using Logtail to collect logs, Log Service also provides APIs and
 
 -    APIs to write logs
 
-    Log Service provides RESTful APIs to help you write logs.  You can use the [PostLogstoreLogs](../../../../intl.en-US/API Reference/Logstore related APIs/PostLogstoreLogs.md) API to write data. For more information on a complete API reference, see [Overview](../../../../intl.en-US/API Reference/Overview.md).
+    Log Service provides RESTful APIs to help you write logs.  You can use the [PostLogstoreLogs](../../../../reseller.en-US/API Reference/Logstore related APIs/PostLogstoreLogs.md) API to write data. For more information on a complete API reference, see [Overview](../../../../reseller.en-US/API Reference/Overview.md).
 
 -   Use SDKs to write logs
 
-    In addition to APIs, Log Service also provides SDKs in multiple languages \(Java,  .NET, PHP, and Python\) to help you write logs. For more information on a  complete SDK reference, see SDK reference [Overview ](../../../../intl.en-US/SDK Reference/Basic Descriptions /Overview .md).
+    In addition to APIs, Log Service also provides SDKs in multiple languages \(Java,  .NET, PHP, and Python\) to help you write logs. For more information on a  complete SDK reference, see SDK reference [Overview ](../../../../reseller.en-US/SDK Reference/Basic Descriptions /Overview .md).
 
 
