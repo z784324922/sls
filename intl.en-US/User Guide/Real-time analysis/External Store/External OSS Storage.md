@@ -11,18 +11,18 @@ Log Service supports the joint query of OSS and Log Service by means of External
 
 -   You have activated Log Service and created the project and Logstore.
 
-    For information about the preparation of Log Service, see [Preparation](intl.en-US/User Guide/Preparation/Preparation.md).
+    For information about the preparation of Log Service, see [Preparation](reseller.en-US/User Guide/Preparation/Preparation.md).
 
 -   You have enabled OSS and created storage space.
 
-    For more information, see [Create a bucket](../../../../intl.en-US/Quick Start/Create a bucket.md).
+    For more information, see [Create a bucket](../../../../reseller.en-US/Quick Start/Create a bucket.md).
 
 
 ## Procedure {#section_obn_3d5_q2b .section}
 
 1.  Log on to the OSS console and upload the CSV format file to OSS.
 
-    For information about file upload procedures, see [Upload an object](../../../../intl.en-US/Quick Start/Upload an object.md).
+    For information about file upload procedures, see [Upload an object](../../../../reseller.en-US/Quick Start/Upload an object.md).
 
 2.  Define External Storage in Log Service.
 
@@ -49,7 +49,7 @@ Log Service supports the joint query of OSS and Log Service by means of External
     * | create table tableName ( userid bigint, nick varchar, gender varchar, province varchar, gender varchar,age bigint) with ( endpoint='oss-cn-hangzhou-internal.aliyuncs.com',accessid='**************************',accesskey ='****************************',bucket='testoss*********',objects=ARRAY['user.csv'],type='oss')
     ```
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/17023/15380421958538_en-US.png)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/17023/15381912748538_en-US.png)
 
     The preceding example specifies the table properties of as follows:
 
@@ -62,7 +62,7 @@ Log Service supports the joint query of OSS and Log Service by means of External
 
     Execute SQL `select * from user_meta` to check if the returned result is the table content that you previously defined.
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/17023/15380421958539_en-US.png)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/17023/15381912748539_en-US.png)
 
 4.  Complete the joint query of the OSS file and Log Service data by using the Join syntax.
 
@@ -72,6 +72,6 @@ Log Service supports the joint query of OSS and Log Service by means of External
 
     `* | select * from chiji_accesslog l join user_meta u on l.userid = u.userid`
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/17023/15380421958540_en-US.png)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/17023/15381912748540_en-US.png)
 
 
