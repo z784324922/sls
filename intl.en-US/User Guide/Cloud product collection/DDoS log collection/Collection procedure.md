@@ -3,7 +3,8 @@
 In the Anti-DDoS Pro console, you can enable DDos log collection function for the website.
 
 1.  Enable Anti-DDoS Pro function, purchase Anti-DDoS Pro instances, and [Online configuration](https://www.alibabacloud.com/help/doc-detail/35216.html).
-2.  Activate Log Service.
+2.  Enable Anti-DDoS Pro function, purchase Anti-DDoS Pro instances.
+3.  Activate Log Service.
 
 Log Service supports real-time collection of **Alibaba Cloud Anti-DDoS Pro** website access logs, CC attack logs, and supports real-time query and analysis of collected log data. The results of the query are displayed in the form of dashboards, and logs are used to analyze the access and attack behavior in real time, and assist the security department to formulate a protection strategy.
 
