@@ -51,7 +51,7 @@ After the configuration is completed and applied, alibaba-log-controller is crea
 
 You can check the configuration on the Kubernetes CRD or console.
 
-For how to view configuration on the console, see [Create a Logtail configuration](intl.en-US/User Guide/Logtail collection/Machine Group/Create a Logtail configuration.md).
+For how to view configuration on the console, see [Create a Logtail configuration](reseller.en-US/User Guide/Logtail collection/Machine Group/Create a Logtail configuration.md).
 
 **Note:** If you use the CRD method to manage configuration, the configuration changes you have made on the console will be overwritten when you update configuration on the CRD.
 
@@ -111,7 +111,7 @@ For how to view configuration on the console, see [Create a Logtail configuratio
 
 ## Container standard output {#section_c3g_wm1_f2b .section}
 
-In the container standard output, set `inputType` to `plugin` and fill the detailed information in the `plugin` field under `inputDetail`. For more information on the configuration fields, see [Containers-standard output](intl.en-US/User Guide/Logtail collection/Data Source/Containers-standard output.md).
+In the container standard output, set `inputType` to `plugin` and fill the detailed information in the `plugin` field under `inputDetail`. For more information on the configuration fields, see [Containers-standard output](reseller.en-US/User Guide/Logtail collection/Data Source/Containers-standard output.md).
 
 -   **Simple collection mode**
 
@@ -189,7 +189,7 @@ In the container standard output, set `inputType` to `plugin` and fill the detai
                   Stdout: true
                   Stderr: false
                   # Collect only stdout outputs whose key is "GF_INSTALL_PLUGINS" in the environment variable configuration from the container. 
-                  InluceEnv:
+                  IncludeEnv:
                     GF_INSTALL_PLUGINS: ''
             processors:
               -
