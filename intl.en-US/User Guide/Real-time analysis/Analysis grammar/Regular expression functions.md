@@ -6,7 +6,7 @@ The common regular expression functions and the meanings are as follows:
 
 |Function name|Meaning|Example|
 |:------------|:------|:------|
-|`regexp_extract_all(string, pattern)`|Returns all the substrings that match the regular expression in the string as a string array.|`|*SELECT regexp_extract_all('5a 67b 890m',   '\d+')`, results in `['5','67','890']`，`*|SELECT regexp_extract_all('5a 67a 890m', '(\d+)a')`returns `['5a','67a']`.|
+|`regexp_extract_all(string, pattern)`|Returns all the substrings that match the regular expression in the string as a string array.|`*|SELECT regexp_extract_all('5a 67b 890m',   '\d+')`, results in `['5','67','890']`，`*|SELECT regexp_extract_all('5a 67a 890m', '(\d+)a')`returns `['5a','67a']`.|
 |`regexp_extract_all(string, pattern, group)`|Returns the part of the string that hits the regular \(\) part of the group, returns the result as an array of strings.|`*| ` SELECT regexp_extract_all(‘5a 67a 890m’, ‘(\d+)a’,1)`returns `[‘5’,’67’]`|
 |`regexp_extract(string, pattern)`|Returns the first substring that matches the regular expression in the string.|`*|SELECT regexp_extract('5a 67b 890m', '\d+')`returns `'5'`|
 |`regexp_extract(string, pattern,group)`|Returns the first substring within the regular group \(\) that hit the string.|`*|SELECT regexp_extract('5a 67b 890m', '(\d+)([a-z]+)',2)`returns `'b'`|
