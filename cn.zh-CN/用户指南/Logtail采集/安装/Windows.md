@@ -56,6 +56,7 @@ Logtail客户端是日志服务提供的日志采集Agent，请参考本文档�
     |**亚太东北 1（日本）**|.\\logtail\_installer.exe install ap-northeast-1|.\\logtail\_installer.exe install ap-northeast-1-internet|.\\logtail\_installer.exe install ap-northeast-1-acceleration|
     |**欧洲中部 1（法兰克福）**|.\\logtail\_installer.exe install eu-central-1|.\\logtail\_installer.exe install eu-central-1-internet|.\\logtail\_installer.exe install eu-central-1-acceleration|
     |**中东东部 1（迪拜）**|.\\logtail\_installer.exe install me-east-1|.\\logtail\_installer.exe install me-east-1-internet|.\\logtail\_installer.exe install me-east-1-acceleration|
+    |**英国（伦敦）**|.\\logtail\_installer.exe install eu-west-1|.\\logtail\_installer.exe install eu-west-1-internet|.\\logtail\_installer.exe install eu-west-1-acceleration|
 
     **说明：** 在自建IDC或其他云厂商服务器使用Logtail时，由于日志服务无法获取非本账号下ECS、其他服务器的属主信息，请在安装Logtail后手动配置用户标识（AliUid），否则Logtail心跳异常、无法收集日志。详细说明请参见 [为非本账号ECS、自建IDC配置AliUid](intl.zh-CN/用户指南/Logtail采集/机器组/为非本账号ECS、自建IDC配置AliUid.md)。
 

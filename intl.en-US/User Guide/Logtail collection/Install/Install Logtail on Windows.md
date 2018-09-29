@@ -46,6 +46,7 @@ Logtail supports Windows Server 2003 32/64bit and later version, such as:
     |Asia Pacific NE 1 \(Japan\) |.\\logtail\_installer.exe install ap-northeast-1|.\\logtail\_installer.exe install ap-northeast-1-internet|
     |Central Europe 1 \(Frankfurt\)|.\\logtail\_installer.exe install eu-central-1|.\\logtail\_installer.exe install eu-central-1-internet|
     |Eastern Middle East 1 \(Dubai\)|.\\logtail\_installer.exe install me-east-1|.\\logtail\_installer.exe install me-east-1-internet|
+    |UK \(London\)|.\\logtail\_installer.exe install eu-west-1|.\\logtail\_installer.exe install eu-west-1|
     |China East 1 \(Hangzhou\) \(financial cloud\)  |.\\logtail\_installer.exe install cn-hangzhou-finance|None  |
     |China East 2 \(Shanghai\) \(financial cloud\) |.\\logtail\_installer.exe install cn-shanghai-finance|None  |
     |China South 1 \(Shenzhen\) \(financial cloud\) |.\\logtail\_installer.exe install cn-shenzhen-finance|None  |
