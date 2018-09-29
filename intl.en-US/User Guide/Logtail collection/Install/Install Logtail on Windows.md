@@ -50,7 +50,7 @@ Logtail supports Windows Server 2003 32/64bit and later version, such as:
     |China East 2 \(Shanghai\) \(financial cloud\) |.\\logtail\_installer.exe install cn-shanghai-finance|None  |
     |China South 1 \(Shenzhen\) \(financial cloud\) |.\\logtail\_installer.exe install cn-shenzhen-finance|None  |
 
-    **Note:** Log Service cannot obtain the owner information of non-Alibaba Cloud machines. Therefore, you must manually configure the user identification after installing Logtail when Logtail is used by self-built IDCs or other cloud hosts. Otherwise, Logtail has abnormal heartbeats and cannot collect logs. For more information, see [Collect logs from non-Alibaba Cloud ECS instances or ECS instances not in your account](intl.en-US/User Guide/Logtail collection/Machine Group/Collect logs from non-Alibaba Cloud ECS instances or ECS instances not in your account.md).
+    **Note:** Log Service cannot obtain the owner information of non-Alibaba Cloud machines. Therefore, you must manually configure the user identification after installing Logtail when Logtail is used by self-built IDCs or other cloud hosts. Otherwise, Logtail has abnormal heartbeats and cannot collect logs. For more information, see [Collect logs from non-Alibaba Cloud ECS instances or ECS instances not in your account](reseller.en-US/User Guide/Logtail collection/Machine Group/Collect logs from non-Alibaba Cloud ECS instances or ECS instances not in your account.md).
 
 
 ## Uninstall Logtail {#section_bk1_14v_vdb .section}
