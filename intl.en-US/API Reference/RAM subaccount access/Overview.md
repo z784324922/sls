@@ -6,7 +6,7 @@ The project, Logstore, config, and machinegroup that you create are your own res
 
 However, in scenarios where a primary account has a sub-account, you cannot use an unauthorized sub-account to perform operations on resources of the primary account. You must grant the permission to the sub-account to perform operations on resources of the primary account using RAM authorization.
 
-**Note:** Before using RAM to grant the sub-account  permissions to access Log Service resources of a primary account, make sure that you have carefully read [Users](../../../../intl.en-US/User Guide/Identities/Users.md) and [RAM introduction](../../../../intl.en-US//Introduction/RAM introduction.md).
+**Note:** Before using RAM to grant the sub-account  permissions to access Log Service resources of a primary account, make sure that you have carefully read [Users](../../../../intl.en-US/User Guide/Identities/Users.md) and [RAM introduction](../../../../intl.en-US/.md).
 
 Authorization policies for Log Service are available on RAM console:
 
