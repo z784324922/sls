@@ -107,7 +107,7 @@ Generally, the system is composed of multiple modules. Each module can contain m
 
     Enter the corresponding user-defined identify of the machine group in the **User-defined Identity**field when creating the machine group. See the following configurations of the http\_module machine group. The http\_module Machine Group is shown in the following figure:
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13078/5254_en-US.png "Create a machine group. ")
+    ![](images/5254_en-US.png "Create a machine group. ")
 
 3.  Click Machine Status at the right of the machine group to view the list of machines that use the same user-defined identity and their heartbeat status.
 4.  If the frontend module has a machine 10.1.1.3 added, complete step 1 on the newly added machine. After the successful operation, you can view the added machine in the **Machine Group Status** dialog box.
