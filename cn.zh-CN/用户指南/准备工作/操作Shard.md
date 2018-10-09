@@ -4,14 +4,16 @@ Logstore读写日志必定保存在某一个分区（Shard）上。每个日志�
 
 对于已存在的Shard，您可以进行以下操作：
 
--   [分裂Shard](#section_awx_35f_vdb)
--   [\#section\_zw3\_x4v\_22b](#section_zw3_x4v_22b)
--   [合并Shard](#section_tqj_l5f_vdb)
--   [删除Shard](#section_m3g_45f_vdb)
+-   [分裂Shard](#)
+-   [自动分裂Shard](#)
+-   [合并Shard](#)
+-   [删除Shard](#)
 
 ## 分裂Shard {#section_awx_35f_vdb .section}
 
 每个分区（Shard）能够处理5M/s的数据写入和10M/s的数据读取，当数据流量超过分区服务能力时，建议您及时增加分区。扩容分区通过分裂（split）操作完成。
+
+**说明：** 您也可以通过日志服务命令行工具CLI一次性分裂Shard到指定数量，详细说明请参考[使用CLI配置Shard](https://aliyun-log-cli.readthedocs.io/en/latest/tutorials/tutorial_split_shard.html)。
 
 **使用指南**
 
@@ -24,14 +26,34 @@ Logstore读写日志必定保存在某一个分区（Shard）上。每个日志�
 3.  在Logstore列表页面，选择所需的日志库并单击操作列下的**修改**。
 4.  选择要分裂的分区，单击右侧的**分裂**。
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13025/15348425712594_zh-CN.png)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13025/15390539562594_zh-CN.png)
 
 5.  单击**确认** 并关闭对话框。
 
     分裂操作完成后，原分区变为readonly状态，两个新生成的分区的MD5范围覆盖了原来分区的范围。
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13025/15348425712595_zh-CN.png)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13025/15390539562595_zh-CN.png)
 
+
+## 自动分裂Shard {#section_zw3_x4v_22b .section}
+
+**使用指南**
+
+除手动分裂Shard之外，日志服务还支持自动分裂Shard功能。您可以在创建或修改Logstore时开启该功能，并设定Shard自动分裂后的最大数目。
+
+开启自动分裂Shard功能后，满足以下条件时，Shard会自动分裂：
+
+1.  数据量超出当前已有Shard的服务能力，且持续5分钟以上。
+2.  Logstore中readwrite状态的Shard数目未超过设定的最大shard总数。
+
+**说明：** 最近15分钟内分裂出来的新Shard不会自动分裂。
+
+![](images/6426_zh-CN.png "自动分裂Shard")
+
+|配置项|说明|
+|:--|:-|
+|自动分裂shard|Shard自动分裂功能开关。开启该功能后，满足条件的Shard会在数据量超出Shard服务能力时自动分裂。|
+|最大分裂数|Shard自动分裂后的最大数目。开启自动分裂Shard功能后，最大可支持自动分裂至64个分区。|
 
 ## 合并Shard {#section_tqj_l5f_vdb .section}
 
@@ -48,16 +70,16 @@ Logstore读写日志必定保存在某一个分区（Shard）上。每个日志�
 3.  在Logstore列表页面，选择所需的日志库并单击操作列下的**修改**。
 4.  选择要合并的分区，单击右侧的**合并** 并关闭对话框即可。
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13025/15348425712596_zh-CN.png)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13025/15390539572596_zh-CN.png)
 
     在合并完成后，所指定的分区和其右侧相邻分区变成只读（readonly）状态，新生成的readwrite分区的MD5范围覆盖了原来两个分区的范围。
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13025/15348425712597_zh-CN.png)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13025/15390539572597_zh-CN.png)
 
 
 ## 删除Shard {#section_m3g_45f_vdb .section}
 
-Logstore的生命周期即数据保存时间支持设置为1~3000天，分区及分区中的日志数据在超出该时间后会自动删除。readonly 分区不参与计费。您也可以将某个Logstore中的日志数据设置为永久保存，这部分Shard和日志数据将永远不会自动删除。修改日志数据自动保存时间请参考[操作Logstore](intl.zh-CN/用户指南/准备工作/操作Logstore.md)。
+Logstore的生命周期即数据保存时间支持设置为1~3000天，分区及分区中的日志数据在超出该时间后会自动删除。readonly 分区不参与计费。您也可以将某个Logstore中的日志数据设置为永久保存，这部分Shard和日志数据将永远不会自动删除。修改日志数据自动保存时间请参考[操作Logstore](cn.zh-CN/用户指南/准备工作/操作Logstore.md)。
 
 您也可以通过删除Logstore的方式删除整个日志库中的所有分区。
 
