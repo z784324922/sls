@@ -2,7 +2,7 @@
 
 日志服务支持通过Web Tracking功能进行HTML、H5、iOS和 Android平台日志数据的采集，支持自定义维度和指标。
 
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13028/15342155882604_zh-CN.png)
+![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13028/15394352022604_zh-CN.png)
 
 如上图所示，使用Web Tracking功能可以采集各种浏览器以及iOS、Android APP的用户信息（除[iOS/Android SDK](../../../../intl.zh-CN/SDK 参考/基本介绍/概述.md)外\)，例如：
 
@@ -11,6 +11,13 @@
 -   用户在APP中停留时间、是否活跃等。
 
 **说明：** 使用Web Tracking意味着该Logstore打开互联网匿名写入的权限，可能会产生脏数据，请留意。
+
+## 注意事项 {#section_xzk_lwm_lfb .section}
+
+-   使用Web Tracking意味着该Logstore打开互联网匿名写入的权限，没有经过有效鉴权，可能会产生脏数据。
+
+-   仅支持Get请求，不支持POST请求；且不支持上传较大的body。
+
 
 ## 配置步骤 {#section_kt1_2m5_vdb .section}
 
@@ -22,7 +29,7 @@
     1.  在Logstore列表页面，选中需要开通Web Tracking功能的Logstore，单击右侧的**修改**。
     2.  打开 Web Tracking 开关。
 
-        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13028/15342155882605_zh-CN.png)
+        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13028/15394352032605_zh-CN.png)
 
 -   **通过 Java SDK 开通Web Tracking**
 
@@ -61,33 +68,7 @@
 
 Logstore开通Web Tracking功能后，可以使用以下三种方法上传数据到Logstore中。
 
--   **使用HTTP GET请求**
-
-    ```
-    curl --request GET 'http://${project}.${host}/logstores/${logstore}/track?APIVersion=0.6.0&key1=val1&key2=val2'
-    ```
-
-    其中各个参数的含义如下：
-
-    |字段|含义|
-    |:-|:-|
-    |`${project}`|您在日志服务中开通的Project名称。|
-    |`${host}`|您日志服务所在地区的域名。|
-    |`${logstore}`|`${project}` 下面开通Web Tracking功能的某一个Logstore的名称。|
-    |`APIVersion=0.6.0`|保留字段，必选。|
-    |`__topic__=yourtopic`|指定日志的topic，保留字段，可选|
-    |`key1=val1`、`key2=val2`|您要上传到日志服务的Key-Value对，可以有多个，但是要保证URL的长度小于16KB。|
-
--   **使用 HTML img 标签**
-
-    ```
-    <img src='http://${project}.${host}/logstores/${logstore}/track.gif?APIVersion=0.6.0&key1=val1&key2=val2'/>
-    <img src='http://${project}.${host}/logstores/${logstore}/track_ua.gif?APIVersion=0.6.0&key1=val1&key2=val2'/>
-    ```
-
-    各个参数的含义同上，track\_ua.gif除了将自定义的参数上传外，在服务端还会将http头中的UserAgent、referer也作为日志中的字段。
-
-    **说明：** 若您需要采集HTTPS页面的referer， 那么上述Web Tracking的链接也必须为HTTPS。
+**说明：** 建议您使用SDK方式上传日志数据。
 
 -   **使用 js SDK**
     1.  将 loghub-tracking.js 复制到 web 目录，并在页面中引入如下脚本：
@@ -147,6 +128,34 @@ Logstore开通Web Tracking功能后，可以使用以下三种方法上传数据
         product:ipod
         price:3000
         ```
+
+-   **使用HTTP GET请求**
+
+    ```
+    curl --request GET 'http://${project}.${host}/logstores/${logstore}/track?APIVersion=0.6.0&key1=val1&key2=val2'
+    ```
+
+    其中各个参数的含义如下：
+
+    |字段|含义|
+    |:-|:-|
+    |$\{project\}|您在日志服务中开通的Project名称。|
+    |$\{host\}|您日志服务所在地区的域名。|
+    |$\{logstore\}|`${project}` 下面开通Web Tracking功能的某一个Logstore的名称。|
+    |APIVersion=0.6.0|保留字段，必选。|
+    |\_\_topic\_\_=yourtopic|指定日志的topic，保留字段，可选|
+    |key1=val1、key2=val2|您要上传到日志服务的Key-Value对，可以有多个，但是要保证URL的长度小于16KB。|
+
+-   **使用 HTML img 标签**
+
+    ```
+    <img src='http://${project}.${host}/logstores/${logstore}/track.gif?APIVersion=0.6.0&key1=val1&key2=val2'/>
+    <img src='http://${project}.${host}/logstores/${logstore}/track_ua.gif?APIVersion=0.6.0&key1=val1&key2=val2'/>
+    ```
+
+    各个参数的含义同上，track\_ua.gif除了将自定义的参数上传外，在服务端还会将http头中的UserAgent、referer也作为日志中的字段。
+
+    **说明：** 若您需要采集HTTPS页面的referer， 那么上述Web Tracking的链接也必须为HTTPS。
 
 
 数据上传到日志服务之后，可以使用日志服务[查询分析功能](intl.zh-CN/用户指南/索引与查询/简介.md)实时检索、分析日志数据，并通过多样的可视化方案展示实时分析结果。也可以使用日志服务提供的 [Consumer Library](intl.zh-CN/用户指南/实时订阅与消费/消费组消费.md) 消费数据。
