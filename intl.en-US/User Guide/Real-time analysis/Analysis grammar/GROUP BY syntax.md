@@ -53,12 +53,12 @@ In the standard SQL, if you use the GROUP BY syntax, you can only select the ori
 For example, the following syntax is illegal. This is because b is the non-GROUP BY column and multiple rows of b are available when you perform GROUP BY according to a, the system does not know which row of output is to be selected.
 
 ```
-*|select a, b , count(c) gropu by a
+*|select a, b , count(c) group by a
 ```
 
 To achieve the preceding aim, use the arbitrary function to output b:
 
 ```
-*|select a, arbitrary(b), count(c) gropu by a
+*|select a, arbitrary(b), count(c) group by a
 ```
 
