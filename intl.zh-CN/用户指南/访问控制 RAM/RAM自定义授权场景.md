@@ -229,7 +229,7 @@
 }
 ```
 
-## API场景：指定Lostore的消费权限 {#section_aw3_hcl_z2b .section}
+## API场景：指定Logstore的消费权限 {#section_aw3_hcl_z2b .section}
 
  RAM用户只能消费指定Logstore的数据，无法进行数据写入、查询等其他操作。
 
