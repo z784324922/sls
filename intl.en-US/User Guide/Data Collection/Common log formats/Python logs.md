@@ -1,16 +1,16 @@
 # Python logs {#reference_bj1_ss5_vdb .reference}
 
-The logging module of Python provides a general logging system, which can be used by third-party modules or applications.  The logging module provides different log levels and logging methods such as files, HTTP GET/POST, SMTP, and Socket. You can customize a logging method as needed. The logging module is the same as Log4j except that they have different implementation details. The logging module provides the logger, handler, filter, and formatter features.
+The logging module of Python provides a general logging system, which can be used by third-party modules or applications. The logging module provides different log levels and logging methods such as files, HTTP GET/POST, SMTP, and Socket. You can customize a logging method as needed. The logging module is the same as Log4j except that they have different implementation details. The logging module provides the logger, handler, filter, and formatter features.
 
-To ccollect Python logs, we recommend you to use logging handler directly:
+To collect Python logs, we recommend you to use logging handler directly:
 
--   [Automatically upload Python logs using log handler](https://aliyun-log-python-sdk.readthedocs.io/tutorials/tutorial_logging_handler.html)
+-   [Automatically upload Python logs by using log handler](https://aliyun-log-python-sdk.readthedocs.io/tutorials/tutorial_logging_handler.html)
 -   [Log handler automatically parses logs in KV format](https://aliyun-log-python-sdk.readthedocs.io/tutorials/tutorial_logging_handler_kv.html)
--   [Log handler automatically parses a log in JSON format](https://aliyun-log-python-sdk.readthedocs.io/tutorials/tutorial_logging_handler_json.html)
+-   [Log handler automatically parses logs in JSON format](https://aliyun-log-python-sdk.readthedocs.io/tutorials/tutorial_logging_handler_json.html)
 
 ## Python log format {#section_pc1_m5b_ry .section}
 
-The log format specifies the output format of log recording in formatter.  The construction method of formatter needs two parameters: message format string and message date string. Both of the parameters are optional.
+The log format specifies the output format of log records in formatter. The construction method of formatter needs two parameters: message format string and message date string. Both of the parameters are optional.
 
 Python log format:
 
@@ -18,9 +18,9 @@ Python log format:
 import logging  
 import logging.handlers  
 LOG_FILE = 'tst.log'  
-handler = logging. handlers. rotatingfilehandler (LOG_FILE, maxbytes = 1024*1024, backupcount = 5) # Instantiate the handler   
+handler = logging.handlers.RotatingFileHandler(LOG_FILE, maxBytes = 1024*1024, backupCount = 5) # Instantiate the handler   
 fmt = '%(asctime)s - %(filename)s:%(lineno)s - %(name)s - %(message)s'  
-formatter = logging.Formatter(fmt) # Instantiate the formatter  
+formatter = logging.Formatter(fmt)   # Instantiate the formatter  
 handler.setFormatter(formatter)      # Add the formatter to the handler  
 logger = logging.getLogger('tst')    # Obtain the logger named tst  
 logger.addHandler(handler)           # Add the handler to the logger  
@@ -31,7 +31,7 @@ logger.debug('first debug message')
 
 ## Field description {#section_abx_zc3_dbb .section}
 
-The formatter is configured in the `%(key)s` format, that is, replacing the dictionary keywords.  The following keywords are provided:
+The formatter is configured in the `%(key)s` format, that is, replacing the dictionary keywords. The following keywords are provided:
 
 |Format|Meaning|
 |:-----|:------|
@@ -54,20 +54,14 @@ The formatter is configured in the `%(key)s` format, that is, replacing the dict
 
 ## Log sample {#section_zcv_1d3_dbb .section}
 
-Output sample log:
+Log sample
 
 ```
 2015-03-04 23:21:59,682 - log_test.py:16 - tst - first info message   
 2015-03-04 23:21:59,682 - log_test.py:17 - tst - first debug message
 ```
 
-## Configure Logtail to collect Python logs {#section_akh_2d3_dbb .section}
-
-For the detailed procedure of collecting Python logs by using Logtail, see [5-minute quick start](../../../../reseller.en-US/Quick Start/5-minute quick start.md) and [Apache logs](reseller.en-US/User Guide/Data Collection/Common log formats/Apache logs.md). Select the corresponding configuration based on your network deployment and actual situation. 
-
-The automatically generated regular expression is only based on the log sample and does not cover all the situations of logs. 
-
-See the following common Python logs and the corresponding regular expressions:
+Common Python logs and the corresponding regular expressions:
 
 -   Log format
 
@@ -75,7 +69,7 @@ See the following common Python logs and the corresponding regular expressions:
     2016-02-19 11:03:13,410 - test.py:19 - tst - first debug message
     ```
 
-    Regular expression type
+    Regular expression:
 
     ```
     (\d+-\d+-\d+\s\S+)\s+-\s+([^:]+):(\d+)\s+-\s+(\w+)\s+-\s+(. *)
@@ -93,10 +87,62 @@ See the following common Python logs and the corresponding regular expressions:
     2016-02-19 11:06:52,514 - test.py:19 - 10 DEBUG test.py test <module> 1455851212.514271 139865996687072 MainThread 20193 tst - first debug message
     ```
 
-    Regular expression type
+    Regular expression:
 
     ```
     (\d+-\d+-\d+\s\S+)\s-\s([^:]+):(\d+)\s+-\s+(\d+)\s+(\w+)\s+(\S+)\s+(\w+)\s+(\S+)\s+(\S+)\s+(\d+)\s+(\w+)\s+(\d+)\s+(\w+)\s+-\s+(. *)
     ```
+
+
+## Configure Logtail to collect Python logs {#section_akh_2d3_dbb .section}
+
+For the detailed procedures of collecting Python logs by using Logtail, see [5-minute quick start](../../../../intl.en-US/Quick Start/5-minute quick start.md). Select the corresponding configuration based on your network deployment and actual situation.
+
+1.  Create a project and a Logstore. For detailed procedures, see [Preparation](intl.en-US/User Guide/Preparation/Preparation.md).
+2.  On the Logstores page, click the **Data Import Wizard** icon.
+3.  Select a data source.
+
+    Select the **Text File**.****
+
+4.  Configure the data source.
+
+    1.  Enter the **Configuration Name** and **Log Path**, and then select the **Full Regex Mode** from the mode drop-down list.
+    2.  Turn on the **Singleline** switch.
+    3.  Enter **Log Sample**.
+
+        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13042/15404438449834_en-US.png)
+
+    4.  Turn on the **Extract Field** switch.
+    5.  Configure **Regular Expression**.
+
+        1.  Generates a regular expression by selecting strings of the log sample.
+
+            If the automatically generated regular expression does not match your log sample, you can generate a regular expression by selecting strings of the log sample. Log Service supports selecting strings to automatically parse the log sample, that is, to automatically generates a regular expression for each selected field. In **Log Sample**, select log fields and click **Generate RegEx**. A regular expression of each selected field is displayed in the **Regular Expression** column. You can generate a full regular expression for the log sample through multiple selections.
+
+            ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13042/15404438449838_en-US.png)
+
+        2.  Modify the regular expression.
+
+            Considering the format of the actual log data might have minor changes, click **Manually Input** to adjust the automatically generated regular expression according to the actual situations to conform to all log formats that might occur in the collection process.
+
+        3.  Validate the regular expression.
+
+            Click **Validate** after modifying the regular expression If the regular expression is correct, extracted results are displayed. Modify the regular expression if any errors exist.
+
+    6.  Confirm **Extraction Results**.
+
+        View the parsing results of the log fields and enter corresponding keys for the log extraction results.
+
+        Assign a descriptive field name for each log field extraction result. For example, assign time for the time field. If you do not use the system time, you must specify a field where value is time, and name its key as time.
+
+        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13042/15404438449845_en-US.png)
+
+    7.  Turn on the **System Time** switch.
+
+        If you use the system time, the time of each log is the time when the Logtail client parses the log.
+
+    8.  \(Optional\) Configure **Advanced options**.
+    9.  Click **Next**.
+    After completing Logtail configuration, apply the configuration to the machine group to collect Python logs.
 
 
