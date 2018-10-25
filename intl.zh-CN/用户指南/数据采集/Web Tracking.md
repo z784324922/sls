@@ -2,15 +2,13 @@
 
 日志服务支持通过Web Tracking功能进行HTML、H5、iOS和 Android平台日志数据的采集，支持自定义维度和指标。
 
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13028/15404377162604_zh-CN.png)
+![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13028/15404383152604_zh-CN.png)
 
 如上图所示，使用Web Tracking功能可以采集各种浏览器以及iOS、Android APP的用户信息（除[iOS/Android SDK](../../../../intl.zh-CN/SDK 参考/基本介绍/概述.md)外\)，例如：
 
 -   用户使用的浏览器、操作系统、分辨率等。
 -   用户浏览行为记录，比如用户网站上的点击行为、购买行为等。
 -   用户在APP中停留时间、是否活跃等。
-
-**说明：** 使用Web Tracking意味着该Logstore打开互联网匿名写入的权限，可能会产生脏数据，请留意。
 
 ## 注意事项 {#section_xzk_lwm_lfb .section}
 
@@ -29,7 +27,7 @@
     1.  在Logstore列表页面，选中需要开通Web Tracking功能的Logstore，单击右侧的**修改**。
     2.  打开 Web Tracking 开关。
 
-        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13028/15404377162605_zh-CN.png)
+        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13028/15404383152605_zh-CN.png)
 
 -   **通过 Java SDK 开通Web Tracking**
 
