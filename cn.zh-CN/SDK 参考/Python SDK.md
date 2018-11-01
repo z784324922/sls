@@ -57,7 +57,7 @@ Python SDK是一个纯Python的库，支持在所有运行Python的操作系统�
 
     -   目前，Python SDK支持Python 2.6/2.7和Python 3.3/3.4/3.5/3.6环境。您可以运行`python -V`查询当前的Python运行版本。
     -   Python官方不再支持Python 2.6和Python 3.3，推荐您使用Python 2.7、Python 3.4及以后版本。
-2.  下载并安装Python的包管理工具 [pip](https://pip.pypa.io/en/latest/installing.html)。
+2.  下载并安装Python的包管理工具[Pip](https://pip.pypa.io/en/latest/installing/)。
 
     完成pip安装后，你可以运行 `pip -V` 确认pip是否安装成功，并查看当前pip版本。
 
