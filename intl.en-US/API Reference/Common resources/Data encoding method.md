@@ -14,6 +14,12 @@ message Log
     repeated Content Contents = 2;
 }
 
+message LogTag
+{
+    required string Key = 1;
+    required string Value = 2;
+}
+
 message LogGroup
 {
     repeated Log Logs= 1;
@@ -33,5 +39,5 @@ message LogGroupList
 
 -   Protocol Buffer does not require the key-value pair to be unique. You must avoid such situation. Otherwise, the behavior is undefined.
 -   For more information about Protocol Buffer format, see [Github](https://github.com/google/protobuf).
--   For more information about the API for writing logs to Log Service, see [PostLogStoreLogs](intl.en-US/API Reference/Logstore related APIs/PostLogstoreLogs.md).
+-   For more information about the API for writing logs to Log Service, see [PostLogStoreLogs](reseller.en-US/API Reference/Logstore related APIs/PostLogstoreLogs.md).
 
