@@ -18,7 +18,7 @@
     -   Windows x32：C:\\Program Files\\Alibaba\\Logtail\\app\_info.json
     例如，在Linux中查看服务器IP地址：
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13080/153682208210497_zh-CN.png)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13080/154113197310497_zh-CN.png)
 
 2.  登录[日志服务控制台](https://sls.console.aliyun.com)，单击Project名称。 
 3.  单击左侧导航栏的 **LogHub - 实时采集** \> **Logtail机器组** 进入该项目的 机器组列表 页面。 
@@ -26,6 +26,9 @@
 5.  创建机器组。 
     1.  填写**机器组名称**。 名称只能包含小写字母、数字、连字符（-）和下划线（\_）且必须以小写字母或数字开头和结尾，长度为3~128字节。
     2.  填写**机器组名称**。 
+
+        **说明：** 不支持修改机器组名称，请谨慎填写。
+
     3.  选择**机器组标识**为**IP 地址**。 
     4.  填写**IP地址**。 请填写[1](#ip)中获取到的服务器IP地址。
 
@@ -34,12 +37,12 @@
         -   请确保您已按照[1](#ip)获取了服务器IP地址。
         -   机器组中存在多台服务器时，IP地址之间请用换行符分割。
         -   请勿将Windows服务器和Linux服务器添加到同一机器组中。
-        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13080/15368220825277_zh-CN.png)
+        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13080/15411319735277_zh-CN.png)
 
 6.  填写 **机器组Topic**。 机器组Topic的详细信息请参考[文本-生成主题](intl.zh-CN/用户指南/Logtail采集/数据源/文本-生成主题.md)。
 7.   单击 **确定**。 
 
 您可以在机器组列表中查看刚创建的机器组。
 
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13080/15368220825279_zh-CN.png)
+![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13080/15411319735279_zh-CN.png)
 
