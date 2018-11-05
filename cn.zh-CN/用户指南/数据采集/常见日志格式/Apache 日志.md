@@ -86,20 +86,23 @@ CustomLog "/var/log/apache2/access_log" combined
 
         **说明：** 如您的**日志格式**为**common**或**combined**格式，此处会自动匹配对应格式的配置字段。
 
-        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/17637/15348390289380_zh-CN.png)
+        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/17637/15414040349380_zh-CN.png)
 
     4.  确认**APACHE键名称**。
 
         日志服务会自动读取您的Apache键。请在当前页面确认APACHE键名称。
 
-        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/17637/15348390289381_zh-CN.png)
+        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/17637/15414040349381_zh-CN.png)
 
     5.  （可选）配置**高级选项**。
 
         |配置项|详情|
         |:--|:-|
         |本地缓存|请选择是否打开**本地缓存**。当日志服务不可用时，日志可以缓存在机器本地目录，服务恢复后进行续传，默认最大缓存值1GB。|
-        |上传原始日志|请选择是否需要上传原始日志。开启该功能后默认会新增字段将原始日志内容一并上传。|
+        |丢弃解析失败日志|请选择解析失败的日志是否上传到日志服务。开启后，解析失败的日志不上传到日志服务；关闭后，日志解析失败时上传原始日志，其中Key为`__raw_log__`、Value为日志内容。
+
+|
+        |上传原始日志|请选择是否需要上传原始日志。开启该功能后，原始日志内容会作为\_\_raw\_\_字段与解析过的日志一并上传。|
         |Topic生成方式|         -   **空-不生成Topic**：默认选项，表示设置Topic为空字符串，在查询日志时不需要输入Topic即可查询。
         -   **机器组Topic属性**：设置Topic生成方式为机器组Topic属性，可以用于明确区分不同前端服务器产生的日志数据。
         -   **文件路径正则**：选择此项之后，您需要填写下方的**自定义正则**，用正则式从路径里提取一部分内容作为Topic。可以用于区分具体用户或实例产生的日志数据。
