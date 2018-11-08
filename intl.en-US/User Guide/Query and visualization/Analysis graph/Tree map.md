@@ -17,7 +17,7 @@ Rectangle blocks are generated from data calculations and distributed in the cha
 ## Procedure {#section_t24_d1b_v2b .section}
 
 1.  Enter a query statement, select a time interval, and then click **Search & Analysis**.
-2.  Select the tree map ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/17720/15416461219593_en-US.png).
+2.  Select the tree map ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/17720/15416622979593_en-US.png).
 3.  Configure the chart properties.
 
 ## Example {#section_nks_j1b_v2b .section}
@@ -30,5 +30,5 @@ Analyze the distribution of the hostnames in the Nginx logs.
 
 Select `hostname` from the **Legend Filter** drop-down list and select `count` from the **Value Column** drop-down list.
 
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/17720/15416461219594_en-US.png)
+![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/17720/15416622979594_en-US.png)
 
