@@ -29,7 +29,7 @@
 2.  在数据源页面右上角单击新增数据源，弹出新增数据源页面。
 3.  单击**消息队列**中的**LogHub**，进入新增LogHub数据源页面。
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13185/5817_zh-CN.png "新增数据源")
+    ![](images/5817_zh-CN.png "新增数据源")
 
 4.  填写数据源的配置项。
 
@@ -43,7 +43,7 @@
     |LOG Project|您想要投递至MaxCompute的日志服务Project。必须是已创建的Project。|
     |Access Id/Access Key|数据源账号的访问密钥AccessKey（AK）相当于登录密码。您可以填写数据源主账号的AK或是子账号的AK，成功配置后，当前账号具备访问数据源账号日志数据的权限，可以将数据源账号的日志通过正在创建的同步任务进行投递。|
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13185/5818_zh-CN.png "新增LogHub数据源")
+    ![](images/5818_zh-CN.png "新增LogHub数据源")
 
 5.  单击**测试连通性**。页面右上角弹出提示**测试连通性成功**后，单击**完成**。
 
@@ -73,7 +73,7 @@
 
     **说明：** 数据预览是根据LogHub里的全部的数据选择几条展现在预览框，可能您同步的数据会跟您的预览的结果不一样，因为您同步的数据会指定开始时间和结束时间。
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13185/5819_zh-CN.png "选择来源")
+    ![](images/5819_zh-CN.png "选择来源")
 
 2.  选择目标。
 
@@ -91,7 +91,7 @@
 
     完成后单击**下一步**。
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13185/5820_zh-CN.png "选择目标")
+    ![](images/5820_zh-CN.png "选择目标")
 
 3.  字段映射。
 
@@ -104,13 +104,13 @@
     -   可以配合调度参数使用，如 $\{bdp.system.bizdate\} 等；
     -   可以输入关系数据库支持的函数，如now\(\)、count\(1\)等；
     -   如果您输入的值无法解析，则类型显示为’未识别’。
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13185/5821_zh-CN.png "字段映射")
+    ![](images/5821_zh-CN.png "字段映射")
 
 4.  通道控制。
 
     配置作业速率上限和脏数据检查规则，如下图所示：
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13185/5822_zh-CN.png "通道控制")
+    ![](images/5822_zh-CN.png "通道控制")
 
     配置项说明：
 
@@ -120,7 +120,7 @@
 
     完成以上配置后，上下滚动鼠标可查看任务配置，如若无误，单击**保存**。
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13185/5823_zh-CN.png "预览保存")
+    ![](images/5823_zh-CN.png "预览保存")
 
 
 ## 脚本模式 {#section_gnq_k4f_vdb .section}
@@ -180,7 +180,7 @@
 
     单击任务上方的**运行**按钮，将直接在数据集成页面运行任务。运行之前需要配置自定义参数的具体数值。
 
-     ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13185/5824_zh-CN.png "运行任务配置") 
+     ![](images/5824_zh-CN.png "运行任务配置") 
 
     如上图所示，显示的时间是同步10：10到17:30这段时间的LogHub记录到MaxCompute。
 
@@ -190,7 +190,7 @@
 
     设置5分钟调度一次，从00：00到23:59，startTime=$\[yyyymmddhh24miss-10/24/60\]系统前10分钟到 endTime=$\[yyyymmddhh24miss-5/24/60\]系统前5分钟时间。
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13185/5825_zh-CN.png "调度配置")
+    ![](images/5825_zh-CN.png "调度配置")
 
 
 ## 跨账号授权 {#section_nkr_5pf_vdb .section}
@@ -255,6 +255,6 @@
         }
         ```
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13185/5826_zh-CN.png "自定义授权策略")
+    ![](images/5826_zh-CN.png "自定义授权策略")
 
 
