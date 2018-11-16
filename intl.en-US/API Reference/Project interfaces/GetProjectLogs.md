@@ -1,6 +1,6 @@
 # GetProjectLogs {#reference_krh_v5q_12b .reference}
 
-Count all the logs in a project.
+GetProjectLogs is the SQL query interface of the Project level.
 
 ## Request syntax {#section_x1q_tdf_jdb .section}
 
