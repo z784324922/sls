@@ -40,7 +40,7 @@ In Log Service, that charts that support drill-down analysis include:
 
         When you click a value in the chart, the system replaces the placeholder configured in the saved search statement with the chart value you clicked, and then performs a deeper query according to the chart value.
 
-        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/18631/154166164310243_en-US.png)
+        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/18631/154260564210243_en-US.png)
 
         |Configuration|Description|
         |:------------|:----------|
@@ -55,7 +55,7 @@ In Log Service, that charts that support drill-down analysis include:
 
         The chart in the dashboard is the chart-form result of the query statement. You need to pre-configure a placeholder of the query statement in the dashboard chart to be jumped to. When you click a chart value in the upper layer dashboard, the system replaces the pre-configured placeholder with the chart value, and then performs a deeper query according to the chart value.
 
-        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/18631/154166164310244_en-US.png)
+        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/18631/154260564210244_en-US.png)
 
         |Configuration|Description|
         |:------------|:----------|
@@ -70,7 +70,7 @@ In Log Service, that charts that support drill-down analysis include:
 
         The part of path in the HTTP link that is the hierarchical path of the destination file to be accessed. After you add optional parameter fields to the part of path in a custom HTTP link and click the chart content of the dashboard, the system replaces the added parameter fields with the chart value to jump to the relocated HTTP link.
 
-        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/18631/154166164310245_en-US.png)
+        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/18631/154260564210245_en-US.png)
 
         |Configuration|Description|
         |:------------|:----------|
@@ -102,7 +102,7 @@ The procedure is as follows:
 
         When saving the chart to the dashboard, configure `*` as a placeholder named method. If the variable of the drill-down event that jumps to this saved search is also named method, you can replace `*` with your clicked chart value to perform a query and analysis again.
 
-        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/18631/154166164310732_en-US.png)
+        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/18631/154260564210732_en-US.png)
 
 2.  **Configure a chart that triggers drill-down analysis, and add the chart to the dashboard**.
 
@@ -114,20 +114,20 @@ The procedure is as follows:
 
         Query result:
 
-        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/18631/154166164310705_en-US.png)
+        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/18631/154260564210705_en-US.png)
 
     2.  Configure drill-down analysis for the `request_method` column in the table:
 
-        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/18631/154166164310708_en-US.png)
+        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/18631/154260564210708_en-US.png)
 
 3.  **Click the GET request in the RequestMethod dashboard**.
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/18631/154166164310714_en-US.png)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/18631/154260564210714_en-US.png)
 
 4.  **Jump to the destination\_drilldown dashboard**.
 
     The page automatically jumps to the dashboard configured in [1](#step_1). The `*` in the query statement is replaced with `GET`, the chart value you clicked on. The dashboard then shows changes of the GET request PV over time.
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/18631/154166164310739_en-US.png)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/18631/154260564210739_en-US.png)
 
 
