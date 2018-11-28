@@ -46,7 +46,7 @@ Example:
 
 -   Result:
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/23351/154338404313556_en-US.png)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/23351/154338633013556_en-US.png)
 
 
 The following table describes the display items.
@@ -104,7 +104,7 @@ The following table describes the parameters.
 |:--------|:----------|:----|
 |x|Time column in ascending order|Unixtime timestamp in seconds|
 |y|Numeric column corresponding to the data at a specified time point|-|
-|p|Order of the autoregressive model|Long type values ranging from 2 to 8|
+|p|Order of the autoregressive model|Long type values ranging from 2 to 100|
 |q|Order of the moving average model|Long type values ranging from 2 to 8|
 |nPred|Number of points for prediction|Long type values ranging from 1 to 5 x p|
 |samplePeriod|Period during which the current time series data is sampled|Long type values ranging from 1 to 86399|
