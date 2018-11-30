@@ -46,7 +46,7 @@ Example:
 
 -   Result:
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/23351/154338633013556_en-US.png)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/23351/154354522413556_en-US.png)
 
 
 The following table describes the display items.
