@@ -38,7 +38,7 @@ MySQL Binlog方式输入源类型为：`service_canal`。
 |ServerID|int|可选|Logtail伪装成的Mysql Slave ID，默认为125。**说明：** ServerID对于一个MySQL数据库必须唯一，否则同步失败。
 
  |
-|IncludeTables|string 数组|可选|包含的表名称（包括db，例如`test_db.test_table`），为**正则表达式**，若某表不符合IncludeTables任一条件则该表不会被采集；不设置时默认收集所有表。**说明：** 若需要完全匹配，请在前后分别加上`^``$`，例如`^test_db.test_table$`。
+|IncludeTables|string 数组|必选|包含的表名称（包括db，例如`test_db.test_table`），为**正则表达式**，若某表不符合IncludeTables任一条件则该表不会被采集；如果您希望采集所有表，请将此参数指定为`.*\\..*`。**说明：** 若需要完全匹配，请在前后分别加上`^``$`，例如`^test_db.test_table$`。
 
 |
 |ExcludeTables|string 数组|可选|忽略的表名称（包括db，例如`test_db.test_table`），为**正则表达式**，若某表符合ExcludeTables任一条件则该表不会被采集；不设置时默认收集所有表。**说明：** 若需要完全匹配，请在前后分别加上`^``$`，例如`^test_db.test_table$`。
@@ -123,12 +123,25 @@ MySQL Binlog方式输入源类型为：`service_canal`。
         sudo /etc/init.d/ilogtaild stop; sudo /etc/init.d/ilogtaild start
         ```
 
-        。
-
     -   如果您再次在Web端修改此配置，您的手动修改会被覆盖，请再次手动修改本地配置。
 -   **RDS 相关限制：**
     -   无法直接在RDS服务器上安装Logtail，您需要将Logtail安装在能连通RDS实例的任意一台ECS上。
     -   RDS 只读备库当前不支持Binlog采集，您需要配置主库进行采集。
+
+## 数据可靠性 {#section_x54_4lj_yfb .section}
+
+建议您启用MySQL服务器的全局事务ID（GTID）功能，并将Logtail升级到0.16.15及以上的版本以保证数据可靠性，避免因主备切换造成的数据重复采集。但在网络长时间中断时，依旧有可能发生数据漏采集情况。
+
+-   **数据漏采集**：Logtail与MySQL服务器之间的网络**长时间中断**时，可能会产生数据漏采集情况。
+
+    MySQL Binlog插件通过伪装成MySQL的slave节点来不断从master节点获取binlog数据，因此，Logtail会和master节点之间建立连接以获取数据。一旦Logtail和master之间的网络发生中断，Logtail会不断地尝试重连直至恢复，而master仍可以在和Logtail的网络中断期间不断地提供服务，产生新的binlog数据，并且回收旧的binlog数据。当网络恢复且Logtail重连成功后，Logtail会使用自身的checkpoint去向master请求更多的binlog数据，而由于长时间的网络中断，它所需要的数据很可能已经被回收了，这时就会触发Logtail的异常恢复机制。**在异常恢复机制中，Logtail会从master获取最近的binlog位置，以它为起点继续采集，这样就会跳过checkpoint和最近的binlog位置之间的数据，导致数据漏采集。**
+
+-   **数据重复采集**：如果master和slave之间的binlog序号不同步时，发生了主备切换事件，可能会产生数据重复采集情况。如果您的MySQL服务器支持并启用了GTID（MySQL 5.6引入），且Logtail是0.16.15及以上版本，即可避免以下场景中的数据重复采集情况。
+
+    在MySQL主备同步的设置下，master会将产生的binlog同步给slave，slave在收到后会存储到本地的binlog文件中。如果master和slave之间的binlog序号不同步时，发生了主备切换事件，以binlog文件名和偏移作为checkpoint的机制将导致数据重复采集。
+
+    例如，有一段数据在master上位于`(binlog.100, 4)`到`(binlog.105, 4)`之间，而在slave上是`(binlog.1000, 4)`到`(binlog.1005, 4)`，并且Logtail已经从master获取了这部分数据，将本地checkpoint更新到了`(binlog.105, 4)`。如果此时发生了主备切换且无任何异常发生，Logtail将会继续使用本地checkpoint去向新master获取binlog信息，即以`(binlog.105, 4)`去向新master请求更多的数据。但是因为新master上的`(binlog.1000, 4)`到`(binlog.1005, 4)`这部分数据的序号都大于Logtail所请求的序号，它会把它们返回给Logtail，这就引起了binlog数据的重复采集。
+
 
 ## 操作步骤 {#section_l22_nvq_pdb .section}
 
