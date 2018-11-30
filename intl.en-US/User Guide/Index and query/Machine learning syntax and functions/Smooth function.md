@@ -35,7 +35,7 @@ Example:
 
 -   Result:
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/22661/154338431013521_en-US.png)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/22661/154354511113521_en-US.png)
 
 
 The following table describes the display items.
@@ -97,7 +97,7 @@ Example:
 
     Result:
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/22661/154338431013522_en-US.png)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/22661/154354511113522_en-US.png)
 
 -   Statement for query and analysis:
 
@@ -107,7 +107,7 @@ Example:
 
     Result:
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/22661/154338431013523_en-US.png)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/22661/154354511113523_en-US.png)
 
 
 The following table describes the display items.
@@ -152,7 +152,7 @@ Example:
 
 -   Result:
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/22661/154338431013524_en-US.png)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/22661/154354511113524_en-US.png)
 
 
 The following table describes the display items.
