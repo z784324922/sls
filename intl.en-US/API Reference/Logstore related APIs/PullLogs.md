@@ -1,6 +1,6 @@
 # PullLogs {#reference_f5p_ytq_12b .reference}
 
-Obtain logs based on the cursor and quantity.  You must specify a shard when the system obtains logs.  In scenarios such as Storm, elective and collaborative consumption can be performed by using [LoghubClientLib](../../../../intl.en-US/User Guide/Real-time subscription and consumption/Consumer group - Usage.md) . Currently, only log group list in [Protocol Buffer \(PB\) ](intl.en-US/API Reference/Common resources/Data encoding method.md) format can be read.If storm can pass through storm and so on.
+Obtains logs based on the cursor and quantity. You must specify a shard when the system obtains logs. In scenarios such as Storm, elective and collaborative consumption can be performed by using [LoghubClientLib](../../../../reseller.en-US/User Guide/Real-time subscription and consumption/Consumption by consumer groups/Consumer group - Usage.md) . Currently, only log group list in [Protocol Buffer \(PB\) ](reseller.en-US/API Reference/Common resources/Data encoding method.md) format can be read.
 
 ## Request syntax {#section_j5v_14t_12b .section}
 
@@ -19,37 +19,25 @@ x-log-signaturemethod: hmac-sha1
 
 URL parameters:
 
-|Parameter name|Type |Required|Description |
-|:-------------|:----|:-------|:-----------|
-|type |string |Yes |The logs.|
+|Parameter|Type|Required|Description|
+|:--------|:---|:-------|:----------|
+|type |string|Yes|The logs.|
 |cursor|string|Yes|A cursor used to indicate where to start reading data, which is equivalent to the start point.|
-|count|int |Yes|The number of returned log groups, ranging from 0 to 1000.|
-
-**Logstore lifecycle:**
-
-The lifecycle of a logstore is specified by the lifeCycle field in the attribute. For example, the current time is 2015-11-11 At 09:00:00, lifecycle = 24. Therefore, the consumable data time section in each shard is \[2015-11-10 09:00:00, 2015-11-11 09:00:00\]. The time here is the server time. Server Side time.
-
-From allows you to locate logs in the life cycle in Shard, assuming that the logstore life cycle is \[Begin\_time, end\_time\), from = from\_time
-
-```
- From_time <v= begin_time or from_time = "begin ": returns a cursor location with a point-in-time of begin_time
- From_time< = end_time or from_time = "end": Return to the current point in time, the next cursor location to be written (currently there is no data on the cursor location)
- From_time< begin_time and from_time <end_time: returns the cursor corresponding to the packet for the first server receive time> = from_time
-```
+|count|int|Yes|The number of returned log groups, ranging from 1 to 1000.|
 
 **Request header**
 
 -   Accept: application/x-protobuf
 -   Accept-Encoding: lz4, deflate, or “”
 
-For more information about the public request headers of Log Service APIs, see [Public request header](intl.en-US/API Reference/Public request header.md).
+For more information about the public request headers of Log Service APIs, see [Public request header](reseller.en-US/API Reference/Public request header.md).
 
 **Response header**
 
 -   x-log-cursor: The next cursor of the currently read data.
 -   x-log-count: The number of currently returned logs.
 
-For more information about the public response headers of Log Service APIs, see [Public response header](intl.en-US/API Reference/Public response header.md).
+For more information about the public response headers of Log Service APIs, see [Public response header](reseller.en-US/API Reference/Public response header.md).
 
 **Response element**
 
@@ -57,20 +45,20 @@ Serialized data \(which may be compressed\) in PB format.
 
 **Error code**
 
-Besides  the [common error codes](intl.en-US/API Reference/Common error codes.md) of Log Service APIs, the PullLogs API may return the following special error codes.
+Besides the  [common error codes](reseller.en-US/API Reference/Common error codes.md) of Log Service APIs,  the UpdateLogstore API may return the following special error codes.
 
-|HTTP status code |Error Code|Error Message|
-|:----------------|:---------|:------------|
+|HTTP status code|ErrorCode|ErrorMessage|
+|:---------------|:--------|:-----------|
 |404|LogStoreNotExist|Logstore \{Name\} does not exist|
 |400|Parameterinvalid|Parameter Cursor is not valid|
 |400|ParameterInvalid|ParameterCount should be in \[0-1000\]|
-|400|Shardnotexist|Shard \{ShardID\} does not exist|
-|400|InvalidCursor|this cursor is invalid|
+|400|ShardNotExist|Shard \{ShardID\} does not exist|
+|400|InvalidCursor|This cursor is invalid|
 |500|InternalServerError|Specified Server Error Message|
 
 ## Example {#section_e5p_d4t_12b .section}
 
-**Request example:**
+**Request example**
 
 ```
 Read data from shard 0.
@@ -91,7 +79,7 @@ Header:
 }
 ```
 
-**响应示例：**
+**Response example**
 
 ```
 Header:
