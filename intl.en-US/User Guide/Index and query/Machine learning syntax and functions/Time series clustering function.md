@@ -6,16 +6,16 @@ The time series clustering function is used to automatically cluster input time 
 
 |Function|Description|
 |:-------|:----------|
-|`[ts\_dencity\_cluster](#)`|This function clusters time series data by using the density-based clustering method.|
+|`[ts\_density\_cluster](#)`|This function clusters time series data by using the density-based clustering method.|
 |`[ts\_hierarchical\_cluster](#)`|This function clusters time series data by using the hierarchical clustering method.|
 |`[ts\_similar\_instance](#)`|This function queries curves that are similar to a specified curve.|
 
-## ts\_dencity\_cluster {#section_n3p_qlq_kfb .section}
+## ts\_density\_cluster {#section_n3p_qlq_kfb .section}
 
 Function format:
 
 ```
-select ts_dencity_cluster(x, y, z) 
+select ts_density_cluster(x, y, z) 
 ```
 
 The following table describes the parameters.
@@ -31,12 +31,12 @@ Example:
 -   Statement for query and analysis:
 
 ```
-* and (h: "machine_01" OR h: "machine_02" OR h : "machine_03") | select ts_dencity_cluster(stamp, metric_value,metric_name ) from ( select __time__ - __time__ % 600 as stamp, avg(v) as metric_value, h as metric_name from log GROUP BY stamp, metric_name order BY metric_name, stamp ) 
+* and (h: "machine_01" OR h: "machine_02" OR h : "machine_03") | select ts_density_cluster(stamp, metric_value,metric_name ) from ( select __time__ - __time__ % 600 as stamp, avg(v) as metric_value, h as metric_name from log GROUP BY stamp, metric_name order BY metric_name, stamp ) 
 ```
 
 -   Result:
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/23359/154338415713558_en-US.png)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/23359/154408736613558_en-US.png)
 
 
 The following table describes the display items.
@@ -76,7 +76,7 @@ Example:
 
 -   Result:
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/23359/154338415713559_en-US.png)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/23359/154408736613559_en-US.png)
 
 
 The following table describes the display items.
