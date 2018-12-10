@@ -178,7 +178,7 @@ def main():
    # 创建外部数据源
     res = client.create_external_store(project,ExternalStoreConfig("rds_store","cn-qingdao","rds-vpc","vpc-************","i***********","*.*.*.*","3306","root","sfdsfldsfksflsdfs","meta","join_meta"));
     res.log_print()
-    res = client.update_external_store(project,ExternalStoreConfig("rds_store","cn-qingdao","rds-vp,"rds-vpc","vpc-************","i************","*.*.*.*","3306","root","sfdsfldsfksflsdfs","meta","join_meta"));
+    res = client.update_external_store(project,ExternalStoreConfig("rds_store","cn-qingdao","rds-vp","rds-vpc","vpc-************","i************","*.*.*.*","3306","root","sfdsfldsfksflsdfs","meta","join_meta"));
     res.log_print()
     res = client.get_external_store(project,"rds_store");
     res.log_print()
