@@ -2,7 +2,7 @@
 
 MySQL Binlog同步类似 [canal](https://github.com/alibaba/canal) 功能，以MySQL slave的形式基于Binlog进行同步，性能较高。
 
-**注意：** 此功能目前只支持Linux，依赖Logtail 0.16.0及以上版本，版本查看与升级参见[Linux](cn.zh-CN/用户指南/Logtail采集/安装/Linux.md)。
+**说明：** 此功能目前只支持Linux，依赖Logtail 0.16.0及以上版本，版本查看与升级参见[Linux](cn.zh-CN/用户指南/Logtail采集/安装/Linux.md)。
 
 ## 功能 {#section_pwd_n5q_pdb .section}
 
@@ -113,7 +113,7 @@ MySQL Binlog方式输入源类型为：`service_canal`。
     4 rows in set (0.02 sec)
     ```
 
--   如安全需求较高，建议将SQL访问用户名和密码配置为xxx，待配置同步至本地机器后，在`/usr/local/ilogtail/user_log_config.json`文件找到对应配置进行修改。
+-   如安全需求较高，建议将SQL访问用户名和密码配置为xxx，待配置同步至本地机器后，在/usr/local/ilogtail/user\_log\_config.json文件找到对应配置进行修改。
 
     **说明：** 
 
@@ -124,6 +124,23 @@ MySQL Binlog方式输入源类型为：`service_canal`。
         ```
 
     -   如果您再次在Web端修改此配置，您的手动修改会被覆盖，请再次手动修改本地配置。
+-   如您的业务数据量较大，建议您适当放开对Logtail的资源限制以应对流量突增，避免Logtail因为资源超限被强制重启，对您的数据造成不必要的风险。
+
+    资源限制可通过修改/usr/local/ilogtail/ilogtail\_config.json文件实现，修改完成后执行命令`sudo /etc/init.d/ilogtaild stop;sudo /etc/init.d/ilogtaild start`重启Logtail。
+
+    例如，以下示例表示将CPU和内存资源的限制放宽到双核及2048 MB：
+
+    ```
+    {
+        ...
+    
+        "cpu_usage_limit":2,
+        "mem_usage_limit":2048,
+    
+        ...
+    }
+    ```
+
 -   **RDS 相关限制：**
     -   无法直接在RDS服务器上安装Logtail，您需要将Logtail安装在能连通RDS实例的任意一台ECS上。
     -   RDS 只读备库当前不支持Binlog采集，您需要配置主库进行采集。
