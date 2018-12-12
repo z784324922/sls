@@ -34,7 +34,7 @@ logtail配置叫做config，每个project默认可以创建100个配置（config
     {
         "logstoreName": "perfcounter"
     },
-    "createTime"": 1400123456,
+    "createTime": 1400123456,
     "lastModifyTime": 1400123456
 }
 ```

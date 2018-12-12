@@ -34,7 +34,7 @@ Example of the complete resource:
     {
         "logstoreName": "perfcounter"
     },
-    "createTime"": 1400123456,
+    "createTime": 1400123456,
     "lastModifyTime": 1400123456
 }
 ```
