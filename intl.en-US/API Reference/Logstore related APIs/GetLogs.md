@@ -12,7 +12,7 @@ The maximum latency between real-time data writing and query is 3 seconds. \(dat
 ## 请求语法 {#section_j5v_14t_12b .section}
 
 ```
-GET /logstores/<logstorename>? type=histogram&topic=<logtopic>&from=<starttime>&to=<endtime>&query=<querystring>&line=<linenum>&offset=<startindex>&reverse=<ture|false> HTTP/1.1
+GET /logstores/<logstorename>?type=log&topic=<logtopic>&from=<starttime>&to=<endtime>&query=<querystring>&line=<linenum>&offset=<startindex>&reverse=<ture|false> HTTP/1.1
 Authorization: <AuthorizationString>
 Date: <GMT Date>
 Host: <Project Endpoint>
