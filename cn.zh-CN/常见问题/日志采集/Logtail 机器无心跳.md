@@ -2,18 +2,18 @@
 
 配置Logtail采集日志数据后，如果Logtail机器组心跳状态不正常，可使用Logtail自动诊断工具或人工诊断的方式排查问题。
 
-如果使用Logtail采集日志，在服务器上安装Logtail之后，Logtail会定时向服务端发送心跳包。如果机器组状态页面显示机器无心跳，说明客户端和服务端未成功联通。日志服务提供[Logtail自动诊断工具](intl.zh-CN/常见问题/日志采集/Logtail 快速诊断工具.md)和人工诊断步骤，您可以根据需求选择排查方式。
+如果使用Logtail采集日志，在服务器上安装Logtail之后，Logtail会定时向服务端发送心跳包。如果机器组状态页面显示机器无心跳，说明客户端和服务端未成功联通。日志服务提供[Logtail自动诊断工具](cn.zh-CN/常见问题/日志采集/Logtail 快速诊断工具.md)和人工诊断步骤，您可以根据需求选择排查方式。
 
--   **自动诊断**：日志服务提供Linux版Logtail自动诊断工具，排查步骤请参考[Logtail自动诊断工具](intl.zh-CN/常见问题/日志采集/Logtail 快速诊断工具.md)。
+-   **自动诊断**：日志服务提供Linux版Logtail自动诊断工具，排查步骤请参考[Logtail自动诊断工具](cn.zh-CN/常见问题/日志采集/Logtail 快速诊断工具.md)。
 
 -   **人工诊断**：Logtail诊断工具未检查出问题、或服务器为Windows服务器，请参考本文档逐步排查。
 
 
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13294/154164561511589_zh-CN.png)
+![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13294/154466607611589_zh-CN.png)
 
 ## 1. 检查是否已安装Logtail {#section_ntl_4tj_bfb .section}
 
-请执行以下命令查看客户端状态，如未安装Logtail客户端，请参考[Linux](../intl.zh-CN/用户指南/Logtail采集/安装/Linux.md)和[Windows](../intl.zh-CN/用户指南/Logtail采集/安装/Windows.md)，务必按照您日志服务Project所属Region以及网络类型进行安装。
+请执行以下命令查看客户端状态，如未安装Logtail客户端，请参考[Linux](../cn.zh-CN/用户指南/Logtail采集/安装/Linux.md)和[Windows](../cn.zh-CN/用户指南/Logtail采集/安装/Windows.md)，务必按照您日志服务Project所属Region以及网络类型进行安装。
 
 查看Logtail安装状态：
 
@@ -38,7 +38,7 @@
 
 ## 2. 检查Logtail安装参数是否正确 {#section_cgq_f5j_bfb .section}
 
-安装Logtail时，需要为客户端指定正确的服务端访问入口，即根据日志服务Project所在地域选择[表 1](../intl.zh-CN/用户指南/Logtail采集/安装/Linux.md#table_eyz_pmv_vdb)，并根据[网络类型](../intl.zh-CN/用户指南/Logtail采集/选择网络.md)选择不同的安装方式。如果安装参数或安装脚本错误，可能会导致Logtail机器无心跳。
+安装Logtail时，需要为客户端指定正确的服务端访问入口，即根据日志服务Project所在地域选择[表 1](../cn.zh-CN/用户指南/Logtail采集/安装/Linux.md#table_eyz_pmv_vdb)，并根据[网络类型](../cn.zh-CN/用户指南/Logtail采集/选择网络.md)选择不同的安装方式。如果安装参数或安装脚本错误，可能会导致Logtail机器无心跳。
 
 Logtail配置文件ilogtail\_config.json中记录了Logtail安装参数及所选的安装方式，该文件的路径为：
 
@@ -69,7 +69,7 @@ Logtail配置文件ilogtail\_config.json中记录了Logtail安装参数及所选
     Escape character is '^]'. 
     ```
 
-    如果telenet失败，说明安装时选择了错误的参数，以至于执行了错误的安装命令。请参考[Linux](../intl.zh-CN/用户指南/Logtail采集/安装/Linux.md)和[Windows](../intl.zh-CN/用户指南/Logtail采集/安装/Windows.md)选择正确的安装参数。
+    如果telenet失败，说明安装时选择了错误的参数，以至于执行了错误的安装命令。请参考[Linux](../cn.zh-CN/用户指南/Logtail采集/安装/Linux.md)和[Windows](../cn.zh-CN/用户指南/Logtail采集/安装/Windows.md)选择正确的安装参数。
 
 
 如果Logtail已正确安装，请执行下一步检查。
@@ -128,23 +128,11 @@ Logtail在机器上获取IP的方式：
 
 ## 4. 检查非本账号下ECS是否已配置AliUid {#section_ww2_yzj_bfb .section}
 
-如果您的ECS服务器和日志服务Project不在同一账号下、或服务器为其他云厂商服务器、自建IDC，则需要在服务器上[配置AliUid](../intl.zh-CN/用户指南/Logtail采集/机器组/为非本账号ECS、自建IDC配置AliUid.md)，为安装Logtail的机器授权。
+如果您的ECS服务器和日志服务Project不在同一账号下、或服务器为其他云厂商服务器、自建IDC，则需要在服务器上[配置AliUid](../cn.zh-CN/用户指南/Logtail采集/机器组/为非本账号ECS、自建IDC配置AliUid.md)，为安装Logtail的机器授权。
 
 检查/etc/ilogtail/users目录下是否有账号ID同名文件。
 
-如果没有，请创建同名文件。
-
--   Linux：
-
-    ```
-    touch /etc/ilogtail/users/1559122535028493
-    touch /etc/ilogtail/users/1329232535020452
-    ```
-
--   Windows：
-
-    C:\\LogtailData\\users\\1559122535028493
-
+如果没有，请参考文档[为非本账号ECS、自建IDC配置AliUid](../cn.zh-CN/用户指南/Logtail采集/机器组/为非本账号ECS、自建IDC配置AliUid.md)进行操作。
 
 **说明：** 账号ID请在阿里云控制台个人信息中查看。
 
