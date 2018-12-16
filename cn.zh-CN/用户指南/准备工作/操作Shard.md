@@ -13,8 +13,6 @@ Logstore读写日志必定保存在某一个分区（Shard）上。每个日志�
 
 每个分区（Shard）能够处理5M/s的数据写入和10M/s的数据读取，当数据流量超过分区服务能力时，建议您及时增加分区。扩容分区通过分裂（split）操作完成。
 
-**说明：** 您也可以通过日志服务命令行工具CLI一次性分裂Shard到指定数量，详细说明请参考[使用CLI配置Shard](https://aliyun-log-cli.readthedocs.io/en/latest/tutorials/tutorial_split_shard.html)。
-
 **使用指南**
 
 在分裂分区时，需要指定一个处于readwrite状态的ShardId和一个MD5。MD5要求必须大于分区的BeginKey并且小于EndKey。
@@ -26,13 +24,17 @@ Logstore读写日志必定保存在某一个分区（Shard）上。每个日志�
 3.  在Logstore列表页面，选择所需的日志库并单击操作列下的**修改**。
 4.  选择要分裂的分区，单击右侧的**分裂**。
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13025/15390539562594_zh-CN.png)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13025/15449749422594_zh-CN.png)
 
-5.  单击**确认** 并关闭对话框。
+5.  确认分区的分裂位置。
+
+    默认均分Shard，分裂位置为当前Shard MD5范围的中间。您也可以输入范围内的其他值，以此指定分裂后Shard的大小。
+
+6.  单击**确认** 并关闭对话框。
 
     分裂操作完成后，原分区变为readonly状态，两个新生成的分区的MD5范围覆盖了原来分区的范围。
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13025/15390539562595_zh-CN.png)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13025/15449749422595_zh-CN.png)
 
 
 ## 自动分裂Shard {#section_zw3_x4v_22b .section}
@@ -70,16 +72,16 @@ Logstore读写日志必定保存在某一个分区（Shard）上。每个日志�
 3.  在Logstore列表页面，选择所需的日志库并单击操作列下的**修改**。
 4.  选择要合并的分区，单击右侧的**合并** 并关闭对话框即可。
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13025/15390539572596_zh-CN.png)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13025/15449749422596_zh-CN.png)
 
     在合并完成后，所指定的分区和其右侧相邻分区变成只读（readonly）状态，新生成的readwrite分区的MD5范围覆盖了原来两个分区的范围。
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13025/15390539572597_zh-CN.png)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13025/15449749422597_zh-CN.png)
 
 
 ## 删除Shard {#section_m3g_45f_vdb .section}
 
-Logstore的生命周期即数据保存时间支持设置为1~3000天，分区及分区中的日志数据在超出该时间后会自动删除。readonly 分区不参与计费。您也可以将某个Logstore中的日志数据设置为永久保存，这部分Shard和日志数据将永远不会自动删除。修改日志数据自动保存时间请参考[操作Logstore](cn.zh-CN/用户指南/准备工作/操作Logstore.md)。
+Logstore的生命周期即数据保存时间支持设置为1~3000天，分区及分区中的日志数据在超出该时间后会自动删除。readonly 分区不参与计费。您也可以将某个Logstore中的日志数据设置为永久保存，这部分Shard和日志数据将永远不会自动删除。修改日志数据自动保存时间请参考[操作Logstore](intl.zh-CN/用户指南/准备工作/操作Logstore.md)。
 
 您也可以通过删除Logstore的方式删除整个日志库中的所有分区。
 
