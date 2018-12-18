@@ -16,6 +16,10 @@ Logtail supports Windows Server 2003 32/64bit and later version, such as:
 
 1.  Download the installation package
 
+    Download:
+
+    -   Mainland China: Click [here](http://logtail-release.oss-cn-hangzhou.aliyuncs.com/win/logtail_installer.zip)。
+    -   Overseas: Click [here](http://logtail-release-global.log-global.aliyuncs.com/win/logtail_installer.zip)。
     You can download the installation package [here](http://logtail-release.oss-cn-hangzhou.aliyuncs.com/win/logtail_installer.zip).
 
 2.  Extract `logtail.zip` to the current directory.
