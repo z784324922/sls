@@ -89,6 +89,12 @@ Currently, the system supports the following content encoding method. The RESTfu
 The following Protocol Buffer \(Protobuf\) format defines the object of the data model.
 
 ```
+message LogTag
+{
+    required string Key = 1;
+    required string Value = 2;
+}
+
 message Log
 {
     required uint32 Time = 1;// UNIX Time Format
