@@ -26,8 +26,10 @@ Logtail客户端是日志服务提供的日志采集Agent，请参考本文档�
 
 1.  下载安装包。
 
-    单击下载[Logtail安装包](http://logtail-release.oss-cn-hangzhou.aliyuncs.com/win/logtail_installer.zip)。
+    下载地址：
 
+    -   中国大陆：单击下载[Logtail安装包](http://logtail-release.oss-cn-hangzhou.aliyuncs.com/win/logtail_installer.zip)。
+    -   海外：单击下载[Logtail安装包](http://logtail-release-global.log-global.aliyuncs.com/win/logtail_installer.zip)。
 2.  解压缩 `logtail_installer.zip` 到当前目录。
 3.  根据服务器类型和所在区域[选择网络类型](intl.zh-CN/用户指南/Logtail采集/选择网络.md)后，按照日志服务所在区域安装Logtail。
 
