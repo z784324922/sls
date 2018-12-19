@@ -9,7 +9,7 @@
 -   **人工诊断**：Logtail诊断工具未检查出问题、或服务器为Windows服务器，请参考本文档逐步排查。
 
 
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13294/154466607611589_zh-CN.png)
+![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13294/154518500811589_zh-CN.png)
 
 ## 1. 检查是否已安装Logtail {#section_ntl_4tj_bfb .section}
 
