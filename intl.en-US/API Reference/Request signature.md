@@ -1,6 +1,6 @@
 # Request signature {#reference_chp_ptq_12b .reference}
 
-To ensure security of users' log data, all HTTP requests of the Log Service API must undergo security authentication. Currently, this security authentication is based on the Alibaba Cloud [AccessKey](intl.en-US/API Reference/AccessKey.md) and is completed by using the symmetric encryption algorithm.
+To ensure security of users' log data, all HTTP requests of the Log Service API must undergo security authentication. Currently, this security authentication is based on the Alibaba Cloud [AccessKey](reseller.en-US/API Reference/AccessKey.md) and is completed by using the symmetric encryption algorithm.
 
 This process is as follows:
 
@@ -12,7 +12,7 @@ This process is as follows:
 
 The entire process can be intuitively described by the following diagram.
 
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13222/5911_en-US.png "Security verification process")
+![](images/5911_en-US.png "Security verification process")
 
 The security authentication process above can also be used for the following purposes:
 
@@ -68,7 +68,7 @@ SignString = VERB + "\n"
              + CanonicalizedResource
 ```
 
-As described in  [Public request header](intl.en-US/API Reference/Public request header.md), the custom request header  `x-log-date` is introduced to Log Service APIs. If you specify this header in your request, the header value will replace the value of the HTTP standard request header Date to compute the request signature.
+As described in  [Public request header](reseller.en-US/API Reference/Public request header.md), the custom request header  `x-log-date` is introduced to Log Service APIs. If you specify this header in your request, the header value will replace the value of the HTTP standard request header Date to compute the request signature.
 
 The CanonicalizedLOGHeaders construction method is as follows:
 
@@ -173,7 +173,7 @@ x-log-signaturemethod:hmac-sha1
 <Log contents are serialized to byte streams in the ProtoBuffer format>
 ```
 
-In this HTTP request, the written log content is first serialized to the ProtoBuffer format \(for more information, see [ProtoBuffer format](LogService_api_reference_0049.md) \) and then used as the request body.  Therefore, the Content-Type header value of this request is application/x-protobuf.  Similarly, the Content-MD5 header value is the MD5  parameters. According to the above signature string construction method, the signature string corresponding to this request is:
+In this HTTP request, the written log content is first serialized to the ProtoBuffer format \(for more information, see [ProtoBuffer format](reseller.en-US/API Reference/Common resources/Data encoding method.md) \) and then used as the request body.  Therefore, the Content-Type header value of this request is application/x-protobuf.  Similarly, the Content-MD5 header value is the MD5  parameters. According to the above signature string construction method, the signature string corresponding to this request is:
 
 ```
 POST\n1DD45FA4A70A9300CC9FE7305AF2C494\napplication/x-protobuf\nMon, 09 Nov 2015 06:03:03 GMT\nx-log-apiversion:0.6.0\nx-log-bodyrawsize:50\nx-log-compresstype:lz4\nx-log-signaturemethod:hmac-sha1\n/logstores/test-logstore
