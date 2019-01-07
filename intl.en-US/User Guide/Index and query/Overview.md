@@ -29,11 +29,11 @@ You can configure the type of each key in a log \(full text index is a special k
 
 |Category|Type|Description|Query example|
 |:-------|:---|:----------|:------------|
-|Basic|[TEXT](ZH-CN_TP_13096_.md)|The text type that supports keyword and fuzzy match.| ` uri:"login*" method:"post" ` |
-|Basic|[Long](reseller.en-US/User Guide/Index and query/Data type of index/Value type.md)|The value type that supports interval query.| `status>200, status in [200, 500]` |
-|Basic|[Double](reseller.en-US/User Guide/Index and query/Data type of index/Value type.md)|The value type with a float.| `price>28.95, t in [20.0, 37]` |
-|Combination|[JSON](reseller.en-US/User Guide/Index and query/Data type of index/JSON type.md)|The content is a JSON field, which is of the text type by default and supports the nested model.  You can configure indexes of text, long,  and double type for element b under a by using the path format such as a.b . The field type after the configuration is subject to the configuration.| `level0.key>29.95 level0.key2:"action"` |
-|Combination|[Full text](ZH-CN_TP_13096_.md)|Use a log as the text for query.| ` error and "login fail" ` |
+|Basic|TEXT|The text type that supports keyword and fuzzy match.| ` uri:"login*" method:"post" ` |
+|Basic|Long|The value type that supports interval query.| `status>200, status in [200, 500]` |
+|Basic|Double|The value type with a float.| `price>28.95, t in [20.0, 37]` |
+|Combination|JSON|The content is a JSON field, which is of the text type by default and supports the nested model.  You can configure indexes of text, long,  and double type for element b under a by using the path format such as a.b . The field type after the configuration is subject to the configuration.| `level0.key>29.95 level0.key2:"action"` |
+|Combination|Full text|Use a log as the text for query.| ` error and "login fail" ` |
 
 ## Query and analysis syntax {#section_ghl_h55_zdb .section}
 
@@ -48,7 +48,7 @@ Real-time query and analysis is composed of Search and Analytics, which are sepa
 
 **Note:** 
 
-For more information, see [Query syntax](reseller.en-US/User Guide/Index and query/Query syntax.md), [Syntax description](reseller.en-US/User Guide/Real-time analysis/Syntax description.md).
+For more information, see [Query syntax](reseller.en-US/User Guide/Index and query/Query/Query syntax.md), [Syntax description](reseller.en-US/User Guide/Index and query/Syntax description.md).
 
 ## Query examples {#section_ats_jtd_5cb .section}
 
