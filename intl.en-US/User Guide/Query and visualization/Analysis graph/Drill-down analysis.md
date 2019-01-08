@@ -27,11 +27,10 @@ In Log Service, that charts that support drill-down analysis include:
 
 ## Procedure {#section_cnd_wl3_y2b .section}
 
-1.  登录[日志服务控制台](https://partners-intl.console.aliyun.com/#/sls)，单击Project名称。
-2.  Click **Search** in the **LogSearch** column in the Logstores list.
-3.  Enter your query and analysis statement, set the time range, and click **Search & Analysis**.
-4.  On the **Graph** tab, select **Chart type** and configure **Properties** of the chart.
-5.  Click **Drilldown** on the right side of the **Properties** column, and configure a drill-down event.
+1.  Click **Search** in the **LogSearch** column in the Logstores list.
+2.  Enter your query and analysis statement, set the time range, and click **Search & Analysis**.
+3.  On the **Graph** tab, select **Chart type** and configure **Properties** of the chart.
+4.  Click **Drilldown** on the right side of the **Properties** column, and configure a drill-down event.
 
     By default, the drilldown configuration is disabled. A drill-down event is triggered by a single clicking. A drill-down event is an event triggered by clicking the analysis chart on the dashboard page. After you configure a drill-down event and click the chart data in the dashboard, your current page jumps to the corresponding page according to your configured drill-down event. Choose one of the following four options.
 
@@ -40,7 +39,7 @@ In Log Service, that charts that support drill-down analysis include:
 
         When you click a value in the chart, the system replaces the placeholder configured in the saved search statement with the chart value you clicked, and then performs a deeper query according to the chart value.
 
-        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/18631/154260564210243_en-US.png)
+        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/18631/154694117810243_en-US.png)
 
         |Configuration|Description|
         |:------------|:----------|
@@ -55,7 +54,7 @@ In Log Service, that charts that support drill-down analysis include:
 
         The chart in the dashboard is the chart-form result of the query statement. You need to pre-configure a placeholder of the query statement in the dashboard chart to be jumped to. When you click a chart value in the upper layer dashboard, the system replaces the pre-configured placeholder with the chart value, and then performs a deeper query according to the chart value.
 
-        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/18631/154260564210244_en-US.png)
+        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/18631/154694117810244_en-US.png)
 
         |Configuration|Description|
         |:------------|:----------|
@@ -70,14 +69,14 @@ In Log Service, that charts that support drill-down analysis include:
 
         The part of path in the HTTP link that is the hierarchical path of the destination file to be accessed. After you add optional parameter fields to the part of path in a custom HTTP link and click the chart content of the dashboard, the system replaces the added parameter fields with the chart value to jump to the relocated HTTP link.
 
-        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/18631/154260564210245_en-US.png)
+        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/18631/154694117810245_en-US.png)
 
         |Configuration|Description|
         |:------------|:----------|
         |**Link**|Destination address to be jumped to.|
         |**Optional Parameter Fields**|By clicking an optional parameter variable, you can replace part of the HTTP link with the chart value that triggers a drill-down event.|
 
-6.  Click **Add to New Dashboard**, configure the dashboard, and click **OK**.
+5.  Click **Add to New Dashboard**, configure the dashboard, and click **OK**.
 
     You can then view the analysis chart on the dashboard page, and click the chart to view deeper analysis results.
 
@@ -102,7 +101,7 @@ The procedure is as follows:
 
         When saving the chart to the dashboard, configure `*` as a placeholder named method. If the variable of the drill-down event that jumps to this saved search is also named method, you can replace `*` with your clicked chart value to perform a query and analysis again.
 
-        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/18631/154260564210732_en-US.png)
+        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/18631/154694117810732_en-US.png)
 
 2.  **Configure a chart that triggers drill-down analysis, and add the chart to the dashboard**.
 
@@ -114,20 +113,20 @@ The procedure is as follows:
 
         Query result:
 
-        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/18631/154260564210705_en-US.png)
+        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/18631/154694117810705_en-US.png)
 
     2.  Configure drill-down analysis for the `request_method` column in the table:
 
-        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/18631/154260564210708_en-US.png)
+        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/18631/154694117810708_en-US.png)
 
 3.  **Click the GET request in the RequestMethod dashboard**.
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/18631/154260564210714_en-US.png)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/18631/154694117810714_en-US.png)
 
 4.  **Jump to the destination\_drilldown dashboard**.
 
     The page automatically jumps to the dashboard configured in [1](#step_1). The `*` in the query statement is replaced with `GET`, the chart value you clicked on. The dashboard then shows changes of the GET request PV over time.
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/18631/154260564210739_en-US.png)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/18631/154694117810739_en-US.png)
 
 
