@@ -26,11 +26,10 @@ Each filter chart can consist of one or multiple filters. Each filter generally 
 
 ## Procedure {#section_gdp_tpc_mfb .section}
 
-1.  登录[日志服务控制台](https://partners-intl.console.aliyun.com/#/sls)，单击Project名称。
-2.  Click **Search** in the **LogSearch** column.
-3.  In the left-side navigation pane, click the configured dashboard name.
-4.  In the upper-right corner of the dashboard page, click **Add Filter**.
-5.  Configure display settings for the filter in the dashboard.
+1.  Click **Search** in the **LogSearch** column.
+2.  In the left-side navigation pane, click the configured dashboard name.
+3.  In the upper-right corner of the dashboard page, click **Add Filter**.
+4.  Configure display settings for the filter in the dashboard.
 
     |Configuration|Description|
     |:------------|:----------|
@@ -39,7 +38,7 @@ Each filter chart can consist of one or multiple filters. Each filter generally 
     |**Show title**|Turn on the show title switch to display the filter chart title in the dashboard.|
     |**Show background**|Turn on the show background switch to add a white background for the filter chart.|
 
-6.  Click **Add Filter**, configure the filter, and click **OK**.
+5.  Click **Add Filter**, configure the filter, and click **OK**.
 
     |Configuration|Description|
     |:------------|:----------|
@@ -63,7 +62,7 @@ Each filter chart can consist of one or multiple filters. Each filter generally 
         -   The **Replace Variable** type uses radio buttons.
 |
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/23712/154166178513760_en-US.png)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/23712/154694148313760_en-US.png)
 
 
 The current dashboard page is automatically refreshed to show the new filter configuration. In the **Please select** drop-down list, select a value or a replacement value of the placeholder as needed, and click **Add**.
@@ -79,7 +78,7 @@ Filters are mostly used in the current dashboard to dynamically modify query con
 
 ## Example {#section_ohf_5bc_mfb .section}
 
-In this example, assume that you have [collected Nginx logs](../reseller.en-US/Quick Start/Analysis - Nginx access logs.md) and you want to query and analyze the collected logs in real time.
+In this example, assume that you have [collected Nginx logs](../../../../../reseller.en-US/Quick Start/Analysis - Nginx access logs.md) and you want to query and analyze the collected logs in real time.
 
 -   **Scenario 1: based on different time granularity**
 
@@ -91,18 +90,18 @@ In this example, assume that you have [collected Nginx logs](../reseller.en-US/Q
         * | SELECT date_format(__time__ - __time__ % 60, '%H:%i:%s') as time, count(1) as count GROUP BY time ORDER BY time
         ```
 
-        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/23712/154166178513756_en-US.png)
+        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/23712/154694148313756_en-US.png)
 
     2.  Add the chart to the dashboard, select `60` as the default value of the placeholder variable, and enter `interval` as the variable name.
 
-        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/23712/154166178613757_en-US.png)
+        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/23712/154694148313757_en-US.png)
 
     3.  Add a filter and select the **Replace Variable** type. Where:
 
         -   **Type** is Replace Variable.
         -   **Key value** is `interval`.
         -   **List item** is `1` \(that is, per second\) and `120` \(that is, per two minutes\).
-        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/23712/154166178613758_en-US.png)
+        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/23712/154694148413758_en-US.png)
 
     4.  Select `1` in the filter. Now the dashboard displays data measured in seconds.
 
@@ -112,7 +111,7 @@ In this example, assume that you have [collected Nginx logs](../reseller.en-US/Q
         * | SELECT date_format(__time__ - __time__ % 1, '%H:%i:%s') as time, count(1) as count GROUP BY time ORDER BY time 
         ```
 
-        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/23712/154166178613759_en-US.png)
+        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/23712/154694148413759_en-US.png)
 
 -   **Scenario 2: dynamically switch filtering methods**
 
@@ -123,7 +122,7 @@ In this example, assume that you have [collected Nginx logs](../reseller.en-US/Q
         -   **Type** is filter.
         -   **Key value** is `request_method`.
         -   **List item** includes: `GET`, `POST`, and `PUT`.
-        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/23712/154166178513760_en-US.png)
+        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/23712/154694148313760_en-US.png)
 
     2.  In the drop-down list of the filter, select `GET`, and enter `DELETE`.
 
@@ -133,6 +132,6 @@ In this example, assume that you have [collected Nginx logs](../reseller.en-US/Q
         (*) and (request_method: GET OR request_method: DELETE) | SELECT date_format(__time__ - __time__ % 60, '%H:%i:%s') as time, count(1) as count GROUP BY time ORDER BY time 
         ```
 
-        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/23712/154166178613761_en-US.png)
+        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/23712/154694148413761_en-US.png)
 
 
