@@ -25,7 +25,7 @@ Password: pnX-32m-MHH-xbm
 4.  Click **Add to New Dashboard**.
 5.  Set the dashboard parameters.
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13143/15469405985695_en-US.png)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13143/15469406405695_en-US.png)
 
 6.  Click **OK** to end the configuration.
 
@@ -34,7 +34,7 @@ Password: pnX-32m-MHH-xbm
 
 The following figure shows a dashboard with multiple analysis charts.
 
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13143/15469405995696_en-US.png)
+![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13143/15469406415696_en-US.png)
 
 ## Modify a dashboard {#section_vsj_zmq_y2b .section}
 
@@ -49,7 +49,7 @@ The following figure shows a dashboard with multiple analysis charts.
     -   Delete an analysis chart.
 4.  Click **Save** in the upper-right corner.
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13143/154694059910582_en-US.png)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13143/154694064110582_en-US.png)
 
 
 ## View a dashboard {#section_yrz_zmq_y2b .section}
@@ -66,7 +66,7 @@ In the left-side navigation pane of the search page, you can click a dashboard n
     -   After you set a new time range, all the time ranges of the charts on the dashboard are changed to the new time range.
     -   By clicking **Reset Time** in the upper-right corner, you can restore the default time range for all the charts.
     -   When you click the Please Select time selector in the upper-left corner, you can view the charts of temporary time ranges on the current page. Next time when you view the data analysis results of the charts, the system still uses the default time range to display the results.
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13143/154694059910785_en-US.png)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13143/154694064110785_en-US.png)
 
 -   **Add filtering conditions** to filter the analysis results displayed on the dashboard.
     1.  On the dashboard page, click **Add Filter** in the upper-left corner.
@@ -74,7 +74,7 @@ In the left-side navigation pane of the search page, you can click a dashboard n
 
         For example, you can add filtering conditions in the Logstore named oss to filter the access information of the logs in which the host field value is sls.console.aliyun.com.
 
-        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13143/154694059910583_en-US.png)
+        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13143/154694064210583_en-US.png)
 
 -   **Set dashboard auto refresh**.
     1.  On the dashboard page, click **Auto Refresh** in the upper-right corner.
@@ -91,6 +91,6 @@ When you do not need a dashboard, you can delete the dashboard. A deleted dashbo
 2.  Click **Delete** to delete the corresponding dashboard.
 3.  In the displayed dialog box, click **Confirm**.
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13143/154694059910584_en-US.png)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13143/154694064210584_en-US.png)
 
 
