@@ -68,7 +68,7 @@ SignString = VERB + "\n"
              + CanonicalizedResource
 ```
 
-As described in  [Public request header](reseller.en-US/API Reference/Public request header.md), the custom request header  `x-log-date` is introduced to Log Service APIs. If you specify this header in your request, the header value will replace the value of the HTTP standard request header Date to compute the request signature.
+As described in  [Public request header](reseller.en-US/API Reference/Public request header.md), the custom request header `x-log-date` is introduced to Log Service APIs. If you specify this header in your request, the header value will replace the value of the HTTP standard request header Date to compute the request signature.
 
 The CanonicalizedLOGHeaders construction method is as follows:
 
@@ -79,7 +79,7 @@ The CanonicalizedLOGHeaders construction method is as follows:
 
 The CanonicalizedResource construction method is as follows:
 
-1.  Set CanonicalizedResource to an empty string \(“”\).
+1.  Set CanonicalizedResource to an empty string \(""\).
 2.  Enter the Log Service resources to be accessed. For example, /logstores/logstorename.  The field is left blank if the `logstorename` does not exist.
 3.  If the request contains a query string \(`QUERY_STRING`\), add question mark \(?\) and the query string at the end of the `?` CanonicalizedResource string.
 
@@ -91,7 +91,7 @@ QUERY_STRING = "KEY1=VALUE1" + "&" + "KEY2=VALUE2"
 
 **Step 3: Generate the digital signature of the request**
 
-Currently, Log Service API only supports one digital signature algorithm, namely, the default signature algorithm `hmac-sha1`。 The entire signature formula is as follows:
+Currently, Log Service API only supports one digital signature algorithm, namely, the default signature algorithm `hmac-sha1`. The entire signature formula is as follows:
 
 ```
 Signature = base64(hmac-sha1(UTF8-Encoding-Of(SignString), AccessKeySecret))
