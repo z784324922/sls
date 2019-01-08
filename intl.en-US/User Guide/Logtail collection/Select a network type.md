@@ -10,7 +10,7 @@ The collected log data can be sent to Log Service through the **Alibaba Cloud in
 
 ## Select a network type {#section_bnz_cx4_y2b .section}
 
--   **Intranet**:
+-   **intranet**:
 
     Whether your log data is transmitted through the Alibaba Cloud intranet depends on your server type and if the server and the Log Service Project are in the same region. The Alibaba Cloud intranet can transmit log data in only the following two scenarios:
 
@@ -49,7 +49,7 @@ The following examples describe how to select an appropriate network in several 
 
 |Scenario|Region of the Log Service Project|Server type|Region of the ECS instance|Selected region for installing a Logtail client|Network type|Configure an AliUid|
 |:-------|:--------------------------------|:----------|:-------------------------|:----------------------------------------------|:-----------|:------------------|
-|ECS and the Project are in the same region.|China East 1 \(Hangzhou\)|ECS of your current account|China East 1 \(Hangzhou\)|China East 1 \(Hangzhou\)|Intranet|Not required|
+|ECS and the Project are in the same region.|China East 1 \(Hangzhou\)|ECS of your current account|China East 1 \(Hangzhou\)|China East 1 \(Hangzhou\)|intranet|Not required|
 |ECS and the Project are in different regions.|China East 2 \(Shanghai\)|ECS of your current account|China North 1 \(Beijing\)|China North 1 \(Beijing\)|Internet|Not required|
 |Other accounts|China East 2 \(Shanghai\)|ECS belongs to other accounts.|China North 1 \(Beijing\)|China North 1 \(Beijing\)|Internet|Required|
 |Server is in the local IDC.|China East 5 \(Shenzhen\)|Self-built IDC|-|China East 5 \(Shenzhen\)|Internet|Required|
@@ -61,7 +61,7 @@ The following examples describe how to select an appropriate network in several 
 
 After a Logtail client is installed, you must update the network configurations if your ECS instance is switched from a classic network to a VPC. To do so, follow these steps:
 
-1.  Reboot the Logtail client as the administrator.
+1.  Restart the Logtail client as the administrator.
     -   **Linux**:
 
         ```
@@ -71,7 +71,7 @@ After a Logtail client is installed, you must update the network configurations 
 
     -   **Windows**:
 
-        Open **Management Tool** in **Control Panel**, open **Service**, right-click LogtailWorker, and then select **Reboot**.
+        Open **Management Tool** in **Control Panel**, open **Service**, right-click LogtailWorker, and then select **Restart**.
 
 2.  Update machine group configurations.
     -   **Custom ID**
