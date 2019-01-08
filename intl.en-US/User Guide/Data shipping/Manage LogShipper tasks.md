@@ -33,5 +33,5 @@ A LogShipper task has three kinds of status.
 ## Delete shipping configuration {#section_ayl_zqh_tbb .section}
 
 1.   On the Logstore list page, click Delete rule. 
-2.   Click Confirm in the pop-up dialog box. Once deleted, you will no longer be able to create an offline archive configuration with the same name. Please choose carefully.
+2.  Click Confirm in the dialog box. Once deleted, you will no longer be able to create an offline archive configuration with the same name. Please choose carefully.
 
