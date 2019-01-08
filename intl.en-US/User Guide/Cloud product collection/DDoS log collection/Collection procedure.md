@@ -62,13 +62,13 @@ For more information about dashboards, see [Log Report](reseller.en-US/User Guid
     |server\_name|The matching host name. If not matching, the `default` is displayed.|api.abc.com|
     |status|HTTP status code.|200|
     |time|Time.|2018-05-02T16:03:59+08:00|
-    |cc\_action|CC protection policy, such as none, challenge, pass, close, captcha, wait, login, n.|close|
+    |cc\_action|CC protection policy, such as none, challenge, pass, close, captcha, wait, logon, n.|close|
     |cc\_blocks|Indicates whether CC protection is blocked, wherein:    -   1: Blocked.
     -   Other codes: Passed.
 |1|
     |cc\_phase|CC protection policy, including seccookie, server\_ip\_blacklist, static\_whitelist, server\_header\_blacklist, server\_cookie\_blacklist, server\_args\_blacklist, qps\_overmax.|server\_ip\_blacklist|
     |ua\_browser|Browser.|ie9|
-    |ua\_browser\_family|Browser series.|internet explorer|
+    |ua\_browser\_family|Browser series.|Internet explorer|
     |ua\_browser\_type|Browser type.|web\_browser|
     |ua\_browser\_version|Browser version.|9.0|
     |ua\_device\_type|Client device type.|computer|
