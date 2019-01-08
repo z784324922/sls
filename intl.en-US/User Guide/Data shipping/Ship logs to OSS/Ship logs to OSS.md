@@ -24,14 +24,14 @@ Using Log Service to ship logs to OSS has the following advantages:
 
 ## Step 1. Resource Access Management \(RAM\) authorization {#section_cf5_p4j_5cb .section}
 
-efore you perform a shipping task, Log Service must be granted a permission to write to OSS .
+Before you perform a shipping task, Log Service must be granted a permission to write to OSS .
 
 Go to [RAM quick authorization](https://ram.console.aliyun.com/#/role/authorize?request=%7B%22Requests%22%3A%20%7B%22request1%22%3A%20%7B%22RoleName%22%3A%20%22AliyunLogDefaultRole%22%2C%20%22TemplateId%22%3A%20%22DefaultRole%22%7D%7D%2C%20%22ReturnUrl%22%3A%20%22https%3A//sls.console.aliyun.com/%22%2C%20%22Service%22%3A%20%22Log%22%7D) page, on the displayed page, click **Agree to Authorize**.  After authorization is complete, Log Service has a corresponding write permission to OSS.
 
 **Note:** 
 
 -   For more information about how to modify the authorization policy and configure cross-account shipping task, see OSS Shipper - Advanced RAM authorization.
--   For more information about how to authorize sub-account to perform a shipping task, see [Grant RAM sub-accounts permissions to access Log Service](intl.en-US/User Guide/Access control RAM/Grant RAM sub-accounts permissions to access Log Service.md) to access Log Service.
+-   For more information about how to authorize sub-account to perform a shipping task, see [Grant RAM sub-accounts permissions to access Log Service](reseller.en-US/User Guide/Access control RAM/Grant RAM sub-accounts permissions to access Log Service.md) to access Log Service.
 
 ## Step 2. Configure an OSS shipping rule in Log Service {#section_lcy_54j_5cb .section}
 
@@ -51,22 +51,22 @@ Go to [RAM quick authorization](https://ram.console.aliyun.com/#/role/authorize?
 |Partition Format|Use %Y, %m, %d, %H, and %M to format the creation time of the LogShipper task to generate the partition string. This defines the directory hierarchy of the object files written to OSS, where a forward slash \(/\) indicates a level of OSS directory.  The following table describes how to define the OSS  target file path by using OSS prefix and partition format.|For more information about formatting, see [Strptime API](http://man7.org/linux/man-pages/man3/strptime.3.html).|
 |RAM Role|The Arn and name of the RAM role. The RAM role is used to control the access permissions and is the identity for the OSS bucket  owner to create a role. The ARN of the RAM role can be viewed in the basic information of this role.|For example, `acs:ram::45643:role/aliyunlogdefaultrole`.|
 |Shipping Size|Automatically control the interval of creating LogShipper tasks and configure the maximum size of an OSS object \(not compressed\).|The value range is 5–256. The unit is MB.|
-|Storage Format|The storage format after log data is shipped to OSS.|Three formats are supported \([JSON storage](intl.en-US/User Guide/Data shipping/Ship logs to OSS/JSON storage.md), [Parquet storage](intl.en-US/User Guide/Data shipping/Ship logs to OSS/Parquet storage.md), and [CSV storage](intl.en-US/User Guide/Data shipping/Ship logs to OSS/CSV storage.md)\).|
+|Storage Format|The storage format after log data is shipped to OSS.|Three formats are supported \([JSON storage](reseller.en-US/User Guide/Data shipping/Ship logs to OSS/JSON storage.md), [Parquet storage](reseller.en-US/User Guide/Data shipping/Ship logs to OSS/Parquet storage.md), and [CSV storage](reseller.en-US/User Guide/Data shipping/Ship logs to OSS/CSV storage.md)\).|
 |Compression|The compression method of OSS data storage.| -   Do Not Compress: The raw data is not compressed.
 -   Compress \(snappy\): Use [snappy](https://google.github.io/snappy/) algorithm to compress data,  reducing the usage of OSS bucket storage space.
 
  |
 |Shipping Time|The time interval between LogShipper tasks.|The default value is 300. The value range is 300–900.  The unit is second.|
 
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13179/5810_en-US.png "Delivery log")
+![](images/5810_en-US.png "Delivery log")
 
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13179/5811_en-US.png "Role arn")
+![](images/5811_en-US.png "Role arn")
 
 **Note:** Log Service concurrently implements data shipping at the backend. Large amounts of data may be processed by multiple shipping threads.  Each shipping thread jointly determines the frequency of task generation based on the size and time. When any condition is met, the shipping thread creates the task.
 
 ## Partition format {#section_tmz_ypj_5cb .section}
 
-Each LogShipper task is written into an OSS file, with the path format of `oss:// OSS-BUCKET/OSS-PREFIX/PARTITION-FROMAT_RANDOM-ID`。 Use the LogShipper task created at 2017-01-20  19:50:43 as an example to describe how to use the partition format.
+Each LogShipper task is written into an OSS file, with the path format of `oss:// OSS-BUCKET/OSS-PREFIX/PARTITION-FROMAT_RANDOM-ID`. Use the LogShipper task created at 2017-01-20  19:50:43 as an example to describe how to use the partition format.
 
 |OSS Bucket|OSS Prefix|Partition format|OSS file path|
 |:---------|:---------|:---------------|:------------|
@@ -148,14 +148,14 @@ oss:// OSS-BUCKET/OSS-PREFIX/PARTITION-FROMAT_RANDOM-ID
 
 -   JSON
 
-    For more information, see[JSON storage](intl.en-US/User Guide/Data shipping/Ship logs to OSS/JSON storage.md).
+    For more information, see[JSON storage](reseller.en-US/User Guide/Data shipping/Ship logs to OSS/JSON storage.md).
 
 -   Parquet
 
-    For more information, see[Parquet storage](intl.en-US/User Guide/Data shipping/Ship logs to OSS/Parquet storage.md).
+    For more information, see[Parquet storage](reseller.en-US/User Guide/Data shipping/Ship logs to OSS/Parquet storage.md).
 
 -   CSV
 
-    For more information, see[CSV storage](intl.en-US/User Guide/Data shipping/Ship logs to OSS/CSV storage.md).
+    For more information, see[CSV storage](reseller.en-US/User Guide/Data shipping/Ship logs to OSS/CSV storage.md).
 
 
