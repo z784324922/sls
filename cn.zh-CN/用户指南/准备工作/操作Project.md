@@ -7,7 +7,7 @@
 **说明：** 
 
 -   目前，日志服务仅提供控制台方式创建Project。
--   Project的名字需要全局唯一（在所有阿里云Region内）。如果您选择的Project名称已经被别人使用，您会收到页面提醒信息“**Project XXX already exists**”，请您更换一个Project名称重试。
+-   Project的名字需要全局唯一（在所有阿里云Region内）。如果您选择的Project名称已经被别人使用，您会收到页面提醒信息“**Project名称全局唯一，已被占用，请更换名称重新创建**”，请您更换一个Project名称重试。
 -   Project创建时需要指定所在的阿里云Region。请根据需要收集的日志来源和其他实际情况选择合适的阿里云Region。如果您需要收集来自阿里云ECS的日志，建议在ECS相同的Region 创建Project。这样可以加快日志收集速度，还可以使用阿里云内网收集日志，不占用 ECS 虚拟机公网带宽。
 -   Project一旦创建完成则无法改变其所属地域，且日志服务不支持Project的迁移，所以请谨慎选择Project的所属Region。
 -   一个阿里云账户在所有阿里云Region最多可创建50个Project。
@@ -57,4 +57,12 @@
 
 1.  在Project列表中，选择需要删除的项目。
 2.  单击右侧的 **删除**。
+3.  在弹出的对话框中，单击选择删除的原因。
+
+    如果选择**其他原因**，请在下方文本框中详细说明。
+
+4.  单击**确认**。
+
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13023/15477092052574_zh-CN.png)
+
 
