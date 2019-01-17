@@ -23,13 +23,13 @@ x-log-signaturemethod: hmac-sha1
 
 **Request header**
 
-No special request header is available. For more information about the public request headers of Log Service APIs, see [Public request header](intl.en-US/API Reference/Public request header.md).
+No special request header is available. For more information about the public request headers of Log Service APIs, see [Public request header](reseller.en-US/API Reference/Public request header.md).
 
 **Response header**
 
 Content-Type: application/json
 
-No special response header is available. For more information about the public response headers of Log Service APIs, see [Public response header](intl.en-US/API Reference/Public response header.md).
+No special response header is available. For more information about the public response headers of Log Service APIs, see [Public response header](reseller.en-US/API Reference/Public response header.md).
 
 **Response element**
 
@@ -63,7 +63,7 @@ In an array composed of three shards, the first shard is the original shard befo
 
 **Error code**
 
-Besides the [common error codes](intl.en-US/API Reference/Common error codes.md) of Log Service APIs, the SplitShard API may return the following special error codes.
+Besides the [common error codes](reseller.en-US/API Reference/Common error codes.md) of Log Service APIs, the SplitShard API may return the following special error codes.
 
 |HTTP status code|ErrorCode|ErrorMessage|
 |:---------------|:--------|:-----------|
