@@ -34,6 +34,7 @@ CustomLog "/var/log/apache2/access_log" combined
 ## 字段说明 {#section_mm1_gl4_y1b .section}
 
 |字段格式|键名称|含义|
+|:---|:--|:-|
 |%a|client\_addr|请求报文中的客户端IP地址。|
 |%A|local\_addr|本地私有IP地址。|
 |%b|response\_size\_bytes|响应字节大小，空值时可能为"-"。|
@@ -86,22 +87,24 @@ CustomLog "/var/log/apache2/access_log" combined
 
         **说明：** 如您的**日志格式**为**common**或**combined**格式，此处会自动匹配对应格式的配置字段，请确认是否和本地Apache配置文件中定义的格式一致。
 
-        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/17637/15426052139380_zh-CN.png)
+        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/17637/15477096849380_zh-CN.png)
 
     4.  确认**APACHE键名称**。
 
         日志服务会自动读取您的Apache键。请在当前页面确认APACHE键名称。
 
-        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/17637/15426052139381_zh-CN.png)
+        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/17637/15477096849381_zh-CN.png)
 
-    5.  （可选）配置**高级选项**。
+    5.  选择是否**丢弃解析失败日志**。
+
+        请选择解析失败的日志是否上传到日志服务。
+
+        开启后，解析失败的日志不上传到日志服务；关闭后，日志解析失败时上传原始日志，其中Key为`__raw_log__`、Value为日志内容。
+
+    6.  （可选）配置**高级选项**。
 
         |配置项|详情|
         |:--|:-|
-        |本地缓存|请选择是否打开**本地缓存**。当日志服务不可用时，日志可以缓存在机器本地目录，服务恢复后进行续传，默认最大缓存值1GB。|
-        |丢弃解析失败日志|请选择解析失败的日志是否上传到日志服务。开启后，解析失败的日志不上传到日志服务；关闭后，日志解析失败时上传原始日志，其中Key为`__raw_log__`、Value为日志内容。
-
-|
         |上传原始日志|请选择是否需要上传原始日志。开启该功能后，原始日志内容会作为\_\_raw\_\_字段与解析过的日志一并上传。|
         |Topic生成方式|         -   **空-不生成Topic**：默认选项，表示设置Topic为空字符串，在查询日志时不需要输入Topic即可查询。
         -   **机器组Topic属性**：设置Topic生成方式为机器组Topic属性，可以用于明确区分不同前端服务器产生的日志数据。
