@@ -9,7 +9,7 @@
 -   **人工诊断**：Logtail诊断工具未检查出问题、或服务器为Windows服务器，请参考本文档逐步排查。
 
 
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13294/154164561511589_zh-CN.png)
+![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13294/154770978911589_zh-CN.png)
 
 ## 1. 检查是否已安装Logtail {#section_ntl_4tj_bfb .section}
 
@@ -126,29 +126,22 @@ Logtail在机器上获取IP的方式：
 
 机器组配置的IP地址的确为Logtail获取的IP地址，请执行下一步检查。
 
-## 4. 检查非本账号下ECS是否已配置AliUid {#section_ww2_yzj_bfb .section}
+## 4. 检查非本账号下ECS是否已配置主账号AliUid {#section_ww2_yzj_bfb .section}
 
-如果您的ECS服务器和日志服务Project不在同一账号下、或服务器为其他云厂商服务器、自建IDC，则需要在服务器上[配置AliUid](../intl.zh-CN/用户指南/Logtail采集/机器组/为非本账号ECS、自建IDC配置AliUid.md)，为安装Logtail的机器授权。
+如果您的ECS服务器和日志服务Project不在同一账号下、或服务器为其他云厂商服务器、自建IDC，则需要在服务器上[配置主账号AliUid](../intl.zh-CN/用户指南/Logtail采集/机器组/为非本账号ECS、自建IDC配置AliUid.md)，为安装Logtail的机器授权。
 
 检查/etc/ilogtail/users目录下是否有账号ID同名文件。
 
-如果没有，请创建同名文件。
+如果没有，请参考文档[为非本账号ECS、自建IDC配置AliUid](../intl.zh-CN/用户指南/Logtail采集/机器组/为非本账号ECS、自建IDC配置AliUid.md)进行操作。
 
--   Linux：
+**说明：** 
 
-    ```
-    touch /etc/ilogtail/users/1559122535028493
-    touch /etc/ilogtail/users/1329232535020452
-    ```
+-   必须是主账号的ID。
 
--   Windows：
+-   账号ID请在阿里云控制台个人信息中查看。
 
-    C:\\LogtailData\\users\\1559122535028493
+    ![](../DNSLS11850791/images/5286_zh-CN.png "查看账号ID")
 
-
-**说明：** 账号ID请在阿里云控制台个人信息中查看。
-
-![](../DNSLS11850791/images/5286_zh-CN.png "查看账号ID")
 
 如果您的问题仍未解决，请[提工单](https://selfservice.console.aliyun.com/ticket/category/sls/today)到日志服务。工单中请提供您的Project、Logstore、机器组、app\_info.json、ilogtail\_config.json以及自助诊断工具的输出内容。
 
