@@ -57,7 +57,7 @@ Logtail配置叫做config，每个Project默认可以创建100个配置（config
 |:-|:-|:---|:-|
 |filterKey|array|否|用于过滤日志所用到的 key，只有 key 的值满足对应 filterRegex 列中设定的正则表达式日志才是符合要求的。|
 |filterRegex|array|否|和每个 filterKey 对应的正则表达式， filterRegex 的长度和 filterKey 的长度必须相同。|
-|shardHashKey|array|否|默认按照[负载均衡模式](cn.zh-CN/API 参考/日志库相关接口/PostLogStoreLogs.md)写入，开启后按照[ShardHashKey模式](cn.zh-CN/API 参考/日志库相关接口/PostLogStoreLogs.md)写入。支持的值包括 `__topic__`, `__hostname__`, `__source__`。|
+|shardHashKey|array|否|默认按照[负载均衡模式](intl.zh-CN/API 参考/日志库相关接口/PostLogStoreLogs.md)写入，开启后按照[ShardHashKey模式](intl.zh-CN/API 参考/日志库相关接口/PostLogStoreLogs.md)写入。支持的值包括 `__topic__`, `__hostname__`, `__source__`。|
 |enableRawLog|bool|否|是否上传原始日志。|
 |[sensitive\_keys](#)|array|否|脱敏功能配置，类型为`SensitiveKey`数组，`SensitiveKey`类型详细介绍参考下述表格。|
 |mergeType|string|否|聚合方式，默认按照Topic方式聚合。取值为 `topic`、`logstore`。|
@@ -112,7 +112,7 @@ Logtail配置叫做config，每个Project默认可以创建100个配置（config
 |discardUnmatch|bool|否|是否丢弃匹配失败的日志。|
 |maxDepth|int|否|最大目录监控深度范围0-1000，0代表只监控本层目录。|
 |delaySkipBytes|int|否|采集落后的丢弃阈值，默认为0，即不丢弃。当采集落后超过该值时，则直接丢弃落后的数据。|
-|isDocherFile|bool|否|是否为容器内文件，默认为false。详细字段含义请参考[容器内文件采集](../../../../../cn.zh-CN/用户指南/Logtail采集/容器日志采集/容器文本日志.md)。|
+|isDocherFile|bool|否|是否为容器内文件，默认为false。详细字段含义请参考[容器内文件采集](../../../../../intl.zh-CN/用户指南/Logtail采集/容器日志采集/容器文本日志.md)。|
 |dockerIncludeLabel|object|否|容器label白名单，采集包含白名单中Label的Docker容器日志，为空表示全部采集|
 |dockerExcludeLabel|object|否|容器llabel黑名单，不采集包含黑名单中Label的Docker容器日志，为空表示全部采集|
 |dockerIncludeEnv|object|否|容器环境变量白名单，采集包含白名单中的环境变量的日志，为空表示全部采集|
@@ -164,14 +164,6 @@ Logtail配置叫做config，每个Project默认可以创建100个配置（config
     |:-|:-|:---|:-|
     |logBeginRegex|string|否|行首正则表达式|
 
-
-## inputDetail 插件配置 {#section_smt_bpc_mgb .section}
-
-下述为插件模式特有的配置，具体请参考[插件输入类型](../../../../../cn.zh-CN/用户指南/Logtail采集/自定义插件/简介.md)。
-
-|属性|类型|是否必须|描述|
-|:-|:-|:---|:-|
-|plugin|object|是|插件所需json对象，具体请参考[插件输入类型](../../../../../cn.zh-CN/用户指南/Logtail采集/自定义插件/简介.md)。|
 
 ## outputDetail {#section_sjv_3pc_mgb .section}
 
