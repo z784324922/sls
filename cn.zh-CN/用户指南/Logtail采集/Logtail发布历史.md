@@ -1,5 +1,15 @@
 # Logtail发布历史 {#concept_w5w_q3q_zdb .concept}
 
+## 0.16.18 {#section_ipk_tcz_ngb .section}
+
+-   **新功能**
+    -   支持Docker Event采集
+    -   支持Journal日志采集
+    -   插件处理新增 `processor_pick_key` 、 `processor_drop_last_key`
+-   **优化**
+    -   优化容器日志以及插件采集内存占用
+    -   优化容器stdout多行日志采集性能
+
 ## 0.16.16 {#section_rvl_rkg_2gb .section}
 
 -   **新功能**
