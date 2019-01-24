@@ -26,7 +26,7 @@ systemd是专用于 Linux 操作系统的系统与服务管理器。当作为启
 
 ## 配置方式 {#section_ddp_wc5_ngb .section}
 
-该输入源类型为：`service_canal`。
+该输入源类型为：`service_journal`。
 
 **说明：** Logtail支持对采集的数据进行处理加工后上传，处理方式参见[处理采集数据](cn.zh-CN/用户指南/Logtail采集/自定义插件/处理采集数据.md)。
 
