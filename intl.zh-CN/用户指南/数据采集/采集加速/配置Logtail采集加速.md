@@ -18,7 +18,7 @@
 
 配置Logtail采集加速前，请注意：
 
--   若开启了全球加速功能之后再安装Logtail，请参考[Linux](intl.zh-CN/用户指南/Logtail采集/安装/Linux.md)，选择安装模式为**全球加速**。之后您通过Logtail采集日志将自动获得全球加速效果。
+-   若开启了全球加速功能之后再安装Logtail，请参考[安装Logtail（Linux系统）](intl.zh-CN/用户指南/Logtail采集/安装/安装Logtail（Linux系统）.md)，选择安装模式为**全球加速**。之后您通过Logtail采集日志将自动获得全球加速效果。
 -   若开启全球加速功能之前已安装了Logtail，请参考本文档，手动切换Logtail采集模式为全球加速。
 
 ## 切换Logtail采集模式为全球加速 {#section_u53_qml_dgb .section}
