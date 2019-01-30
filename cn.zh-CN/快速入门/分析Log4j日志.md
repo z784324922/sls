@@ -31,7 +31,7 @@
 对Java应用而言，目前有两种主流的日志采集方案：
 
 -   Java程序将日志落盘，通过Logtail进行实时采集。
--   Java程序直接配置日志服务提供的Appender，当程序运行时，实时将日志发往
+-   Java程序直接配置日志服务提供的Appender，当程序运行时，实时将日志发往服务端
 
 两者的差别如下：
 
@@ -90,7 +90,7 @@ log4j.appender.loghub.accessKey=[your accesskey]
 
 ## 步骤2 查询与分析 {#section_hkt_mqq_12b .section}
 
-通过上述方式配置好appender 后，Java 应用产生的日志会被自动发往日志服务。可以通过 [LogSearch/Analytics](../../../../../cn.zh-CN/用户指南/查询与分析/简介.md) 对这些日志实时查询和分析。本文提供的样例的日志格式如下：
+通过上述方式配置好appender 后，Java 应用产生的日志会被自动发往日志服务。可以通过 [LogSearch/Analytics](../../../../../intl.zh-CN/用户指南/查询与分析/简介.md) 对这些日志实时查询和分析。本文提供的样例的日志格式如下：
 
 -   记录用户登录行为的日志：
 
@@ -127,8 +127,6 @@ log4j.appender.loghub.accessKey=[your accesskey]
 
 ## 步骤4 分析日志 {#section_q41_vqq_12b .section}
 
-[视频教程](http://cloud.video.taobao.com//play/u/2450842572/p/1/e/6/t/1/50073510333.mp4)
-
 1.  统计过去1小时发生Error最多的3个位置。
 
     ```
@@ -143,7 +141,7 @@ log4j.appender.loghub.accessKey=[your accesskey]
 
 3.  日志上下文查询。
 
-    对于任意一条日志，能够精确还原原始日志文件上下文日志信息。详情请参考[上下文查询](../../../../../cn.zh-CN/用户指南/查询与分析/查询语法与功能/上下文查询.md)。
+    对于任意一条日志，能够精确还原原始日志文件上下文日志信息。详情请参考[上下文查询](../../../../../intl.zh-CN/用户指南/查询与分析/查询语法与功能/上下文查询.md)。
 
 4.  统计过去1小时，登录次数最多的三个用户。
 
