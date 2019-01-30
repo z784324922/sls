@@ -1,51 +1,85 @@
 # 通过DataWorks投递数据到MaxCompute {#concept_rjc_m4q_zdb .concept}
 
+本文将以LogHub数据同步至MaxCompute为例，为您介绍如何通过DataWorks数据集成同步LogHub数据至数据集成已支持的目的端数据源（如MaxCompute、OSS、OTS、RDBMS、DataHub等）。
+
 除了将日志投递到OSS存储之外，您还可以选择将日志数据通过DataWorks的数据集成（Data Integration）功能投递至MaxCompute。数据集成是阿里集团对外提供的稳定高效、弹性伸缩的数据同步平台，为阿里云大数据计算引擎（包括MaxCompute、AnalyticDB）提供离线、批量的数据进出通道。
 
-该功能支持的地域请参见[DataWorks文档](https://help.aliyun.com/document_detail/66089.html)。
+**说明：** 此功能已在华北2、华东2、华南1、香港、美西1、亚太东南1、欧洲中部1、亚太东南2、亚太东南3、亚太东北1、亚太南部1等多个Region发布上线。
 
 ## 应用场景 {#section_c3g_fnf_vdb .section}
 
--   跨Region的LogHub与MaxCompute等数据源的数据同步
--   不同阿里云账号下的LogHub与MaxCompute等数据源间的数据同步
--   同一阿里云账号下的LogHub与MaxCompute等数据源间的数据同步
--   公共云与金融云账号下的LogHub与MaxCompute等数据源间的数据同步
+-   跨Region的LogHub与MaxCompute等数据源的数据同步。
+-   不同阿里云账号下的LogHub与MaxCompute等数据源间的数据同步。
+-   同一阿里云账号下的LogHub与MaxCompute等数据源间的数据同步。
+-   公共云与金融云账号下的LogHub与MaxCompute等数据源间的数据同步。
 
-## 前提条件 {#section_cw1_gnf_vdb .section}
+## 跨阿里云账号的特别说明 {#section_pvp_22g_4fb .section}
 
-1.  已开通日志服务、MaxCompute和DataWorks。
-2.  已使用日志服务成功采集到日志数据，LogHub中已存在可投递的日志数据。
-3.  数据源账号需要启用一对访问密钥Access Key。
-4.  跨账号投递的情况下，需要先配置RAM授权。
+以B账号进入数据集成配置同步任务，将A账号的LogHub数据同步至B账号的MaxCompute为例。
 
-    详细配置请参考本文档中[跨账号授权](#section_nkr_5pf_vdb)部分。
+1.  用A账号的AccessId和Accesskey建LogHub数据源。
+
+    此时B账号可以拖A账号下所有sls project的数据。
+
+2.  用A账号下子账号A1的AccessId和Accesskey创建LogHub数据源。
+    -   A给A1赋权日志服务的通用权限，即`AliyunLogFullAccess`和`AliyunLogReadOnlyAccess`，详情请参见[访问日志服务资源](cn.zh-CN/用户指南/         访问控制 RAM/授权RAM 用户.md)。
+    -   A给A1赋权日志服务的自定义权限。
+
+        主账号A进入**RAM控制台** \> **策略管理**页面，选择**自定义授权策略** \> **新建授权** \> **空白模板**。
+
+        相关的授权请参见[访问控制RAM](cn.zh-CN/用户指南/         访问控制 RAM/简介.md)和[RAM子用户访问](../cn.zh-CN/API 参考/RAM子用户访问/概览.md)。
+
+        根据下述策略进行授权后，B账号通过子账号A1只能同步日志服务project\_name1以及project\_name2的数据。
+
+        ```
+        {
+        "Version": "1",
+        "Statement": [
+        {
+        "Action": [
+        "log:Get*",
+        "log:List*",
+        "log:CreateConsumerGroup",
+        "log:UpdateConsumerGroup",
+        "log:DeleteConsumerGroup",
+        "log:ListConsumerGroup",
+        "log:ConsumerGroupUpdateCheckPoint",
+        "log:ConsumerGroupHeartBeat",
+        "log:GetConsumerGroupCheckPoint"
+        ],
+        "Resource": [
+        "acs:log:*:*:project/project_name1",
+        "acs:log:*:*:project/project_name1/*",
+        "acs:log:*:*:project/project_name2",
+        "acs:log:*:*:project/project_name2/*"
+        ],
+        "Effect": "Allow"
+        }
+        ]
+        }
+        ```
 
 
 ## 操作步骤 {#section_jxb_hnf_vdb .section}
 
-## 步骤1 创建数据源 {#section_nkh_hnf_vdb .section}
+## 步骤1 新增数据源 {#section_nkh_hnf_vdb .section}
 
-1.  在DataWorks管理控制台打开数据集成页面，单击左侧导航栏的数据源页签。
-2.  在数据源页面右上角单击新增数据源，弹出新增数据源页面。
-3.  单击**消息队列**中的**LogHub**，进入新增LogHub数据源页面。
+1.  B账号或B的子账号以开发者身份登录[DataWorks控制台](https://workbench.data.aliyun.com/console)，单击对应项目下的**进入数据集成**。
+2.  进入**同步资源管理** \> **数据源**页面，单击右上角的**新增数据源**。
+3.  选择数据源类型为**LogHub**，填写新增LogHub数据源对话框中的配置。
 
-    ![](images/5817_zh-CN.png "新增数据源")
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/16203/15488222817541_zh-CN.png)
 
-4.  填写数据源的配置项。
+    |配置|说明|
+    |:-|:-|
+    |**数据源名称**|数据源名称必须以字母、数字、下划线组合，且不能以数字和下划线开头。|
+    |**数据源描述**|对数据源进行简单描述，不得超过80个字符。|
+    |**LogHub Endpoint**|LogHub的Endpoint，格式为`http://yyy.com`。详细说明请参考[服务入口](../cn.zh-CN/API 参考/服务入口.md)。|
+    |**Project**|您想要投递至MaxCompute的日志服务Project。必须是已创建的Project。|
+    |**Access Id/Access Key**|即访问密钥，相当于登录密码。您可以填写主账号或子账号的Access Id和Access Key。|
 
-    配置项说明见下表。
-
-    |配置项|说明|
-    |:--|:-|
-    |数据源名称|由英文字母、数字、下划线组成且须以字符或下划线开头，长度不超过60个字符。|
-    |数据源描述|对数据源进行简单描述，长度不超过80个字符。|
-    |LOG Endpoint|日志服务的Endpoint，根据您的Region确定，格式为：http://yyy.com 。详细说明请参考[服务入口](../../../../../intl.zh-CN/API 参考/服务入口.md)。|
-    |LOG Project|您想要投递至MaxCompute的日志服务Project。必须是已创建的Project。|
-    |Access Id/Access Key|数据源账号的访问密钥AccessKey（AK）相当于登录密码。您可以填写数据源主账号的AK或是子账号的AK，成功配置后，当前账号具备访问数据源账号日志数据的权限，可以将数据源账号的日志通过正在创建的同步任务进行投递。|
-
-    ![](images/5818_zh-CN.png "新增LogHub数据源")
-
-5.  单击**测试连通性**。页面右上角弹出提示**测试连通性成功**后，单击**完成**。
+4.  单击**测试连通性**。
+5.  测试连通性通过后，单击**确定**。
 
 ## 步骤2 配置同步任务 {#section_bf5_5nf_vdb .section}
 
@@ -53,88 +87,83 @@
 
 您可选择**向导模式**，通过简单便捷的可视化页面完成任务配置；或者选择**脚本模式**，深度自定义配置您的同步任务。
 
-**向导模式**
+## 通过向导模式配置同步任务 {#section_sfx_dmm_ngb .section}
 
-共有选择来源、选择目标、字段映射、通道控制和预览保存五步操作。
+1.  进入**数据开发** \> **业务流程**页面，在左上角单击**新建数据同步节点**。
+2.  填写新建数据同步节点对话框中的配置，单击**提交**，进入数据同步任务配置页面。
+3.  选择数据来源。![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/24566/154882228114351_zh-CN.png)
 
-1.  选择来源。
+    |配置|说明|
+    |:-|:-|
+    |**数据源**|填写LogHub数据源的名称。|
+    |**Logstore**|导出增量数据的表的名称。该表需要开启Stream，可以在建表时开启，或者使用UpdateTable接口开启。|
+    |**日志开始时间**|数据消费的开始时间位点，为时间范围（左闭右开）的左边界，为yyyyMMddHHmmss格式的时间字符串（比如20180111013000），可以和DataWorks的调度时间参数配合使用。|
+    |**日志结束时间**|数据消费的结束时间位点，为时间范围（左闭右开）的右边界，为yyyyMMddHHmmss格式的时间字符串（比如20180111013010），可以和DataWorks的调度时间参数配合使用。|
+    |**批量条数**|一次读取的数据条数，默认为256。|
 
-    **数据源**请选择您在步骤1中配置的数据源。请参考下表填写所有配置项。
+    数据预览默认收起，您可单击进行预览。
 
-    |配置项|说明|
-    |:--|:-|
-    |数据源|选择来源的LogHub数据源的名称。|
-    |Logstore|导出增量数据的表的名称。该表需要开启Stream，可以在建表时开启，或者使用UpdateTable接口开启。|
-    |日志开始时间|数据消费的开始时间位点，为时间范围（左闭右开）的左边界，为yyyyMMddHHmmss格式的时间字符串（比如20180111013000），可以和DataWorks的调度时间参数配合使用。|
-    |日志结束时间|数据消费的结束时间位点，为时间范围（左闭右开）的右边界，为yyyyMMddHHmmss格式的时间字符串（比如20180111013010），可以和DataWorks的调度时间参数配合使用。|
-    |批量条数|一次读取的数据条数，默认为256。|
+    **说明：** 数据预览是选择LogHub中的几条数据展现在预览框，可能您同步的数据会跟您的预览的结果不一样，因为您同步的数据会指定开始时间可结束时间。
 
-    填写完成后请单击**数据预览**的下拉按钮，展开**数据预览**详情。查看是否已拉取到日志数据，并单击**下一步**。
+4.  选择数据去向。
 
-    **说明：** 数据预览是根据LogHub里的全部的数据选择几条展现在预览框，可能您同步的数据会跟您的预览的结果不一样，因为您同步的数据会指定开始时间和结束时间。
+    选择MaxCompute数据源及目标表ok。![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/24566/154882228214352_zh-CN.png)
 
-    ![](images/5819_zh-CN.png "选择来源")
+    |配置|说明|
+    |:-|:-|
+    |**数据源**|填写配置的数据源名称。|
+    |**表**|选择需要同步的表。|
+    |**分区信息**|此处需同步的表是非分区表，所以无分区信息。|
+    |**清理规则**|     -   **写入前清理已有数据**：导数据之前，清空表或者分区的所有数据，相当于insert overwrite。
+    -   **写入前保留已有数据**：导数据之前不清理任何数据，每次运行数据都是追加进去的，相当于insert into。
+ |
+    |**压缩**|默认选择不压缩。|
+    |**空字符串作为null**|默认选择否。|
 
-2.  选择目标。
+5.  字段映射。
 
-    1.  选择MaxCompute数据源及目标表。
+    选择字段的映射关系。需对字段映射关系进行配置，左侧源头表字段和右侧目标表字段为一一对应的关系。![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/24566/154882228214353_zh-CN.png)
 
-        如您还没有创建MaxCompute表，可以单击右侧的**一键生成目标表**。在弹出菜单中新建数据表。
+6.  通道控制。
 
-    2.  填写**分区信息**。
+    配置作业速率上限和脏数据检查规则。![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/24566/154882228214354_zh-CN.png) 
 
-        分区配置支持正则，比如分区pt值配置为\*表示读取所有的pt分区数据。
+    |配置|说明|
+    |:-|:-|
+    |**DMU**|数据集成的计费单位。**说明：** 设置DMU时，需注意DMU的值限制了最大并发数的值，请合理配置。
 
-    3.  选择**清理规则**。
+ |
+    |**作业并发数**|配置时会结合读取端指定的切分建，将数据分成多个Task，多个Task同时运行，以达到提速的效果。|
+    |**同步速率**|设置同步速率可保护读取端数据库，以避免抽取速度过大，给源库造成太大的压力。同步速率建议限流，结合源库的配置，请合理配置抽取速率。|
+    |**错误记录数超过**|脏数据，类似源端是Varchar类型的数据，写到Int类型的目标列中，导致因为转换不合理而无法写入的数据。同步脏数据的设置，主要在于控制同步数据的质量问题。建议根据业务情况，合理配置脏数据条数。|
+    |**任务资源组**|配置同步任务时，指定任务运行所在的资源组，默认运行在默认资源组上。当项目调度资源紧张时，也可以通过新增自定义资源组的方式来给调度资源进行扩容，然后将同步任务指定在自定义资源组上运行，新增自定义资源组的操作请参见[../DNide1894624/ZH-CN\_TP\_16266.md\#](../cn.zh-CN/使用指南/数据集成/常见配置/新增任务资源.md#)。您可根据数据源网络情况、项目调度资源情况和业务重要程度，进行合理配置。
 
-        您可以选择在写入前清理已有数据，即覆盖式写数据，或者写入前保留已有数据，即插入式写数据。
+|
 
-    完成后单击**下一步**。
+7.  运行任务。
 
-    ![](images/5820_zh-CN.png "选择目标")
+    您可通过以下两种方式运行任务。
 
-3.  字段映射。
+    -   直接运行（一次性运行）
 
-    选择字段的映射关系。需对字段映射关系进行配置，左侧源头表字段和右侧目标表字段默认为一一对应的关系，您也可以单击右侧的**同行映射**以选择或取消**同行映射**。
+        单击任务上方的**运行**按钮，将直接在数据集成页面运行任务，运行之前需要配置自定义参数的具体数值。![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/24566/154882228214355_zh-CN.png)
 
-    -   如您需要将手动添加的日志字段作为同步列，请使用[脚本模式](intl.zh-CN/用户指南/数据投递/ 投递日志到MaxCompute/通过DataWorks投递数据到MaxCompute.md#section_gnq_k4f_vdb)配置。
-    -   可以输入常量，输入的值需要使用英文单引号包括，如’abc’、’123’等。
-    -   可以配合调度参数使用，如 $\{bdp.system.bizdate\} 等。
-    -   可以输入关系数据库支持的函数，如now\(\)、count\(1\)等。
-    -   如果您输入的值无法解析，则类型显示为’未识别’。
-    **说明：** 字段映射说明：
+        如上图所示，代表同步10:10到17:30这段时间的LogHub记录到MaxCompute。
 
-    -   `__tag__:__client_ip__`等Tag字段，直接使用字段key投递，例如`__tag__:__client_ip__`可以直接使用`__client_ip__`作为字段名称。但如果Tag中的key和日志的key重名时，请优先使用字段中的key。
-    -   使用Dataworks投递以下字段时，需要替换字段名称。
+    -   调度运行
 
-        |日志字段|替换字段|
-        |:---|:---|
-        |`__source__`|`C_Source`|
-        |`__time__`|`C_LogTime`|
-        |`__topic__`|`C_Topic`|
+        单击**提交**按钮，将同步任务提交到调度系统中，调度系统会按照配置属性在从第二天开始自动定时执行。![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/24566/154882228214356_zh-CN.png)
 
-    ![](images/5821_zh-CN.png "字段映射")
-
-4.  通道控制。
-
-    配置作业速率上限和脏数据检查规则，如下图所示：
-
-    ![](images/5822_zh-CN.png "通道控制")
-
-    配置项说明：
-
-    -   **DMU：**数据移动单位 \(DMU\) 是数据集成消耗资源（包含 CPU、内存、网络等资源分配）的度量单位。
-    -   **作业并发数**：可将此属性视为数据同步任务内，可从源并行读取或并行写入数据存储端的最大线程数。
-5.  预览保存。
-
-    完成以上配置后，上下滚动鼠标可查看任务配置，如若无误，单击**保存**。
-
-    ![](images/5823_zh-CN.png "预览保存")
+        如上图所示，设置按分钟调度，从00：00到23:59每5分钟调度一次。
 
 
-## 脚本模式 {#section_gnq_k4f_vdb .section}
+## 通过脚本模式配置同步任务 {#section_hcl_h4g_4fb .section}
 
-若您需要用脚本模式配置此任务，请参考如下脚本。
+如果您需要通过脚本模式配置此任务，单击工具栏中的转换脚本，选择**确认**即可进入脚本模式。
+
+![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/24565/154882228214347_zh-CN.png)
+
+您可根据自身进行配置，示例脚本如下。
 
 ```
 {
@@ -147,7 +176,7 @@
 "datasource": "loghub_lzz",//数据源名，保持跟您添加的数据源名一致
 "logstore": "logstore-ut2",//目标日志库的名字，logstore是日志服务中日志数据的采集、存储和查询单元。
 "beginDateTime": "${startTime}",//数据消费的开始时间位点，为时间范围（左闭右开）的左边界
-"endDateTime": "${endTime}",//数据消费的结束时间位点，为时间范围（左闭右开）的右边界
+"endDateTime": "${endTime}",//数据消费的开始时间位点，为时间范围（左闭右开）的右边界
 "batchSize": 256,//一次读取的数据条数，默认为256。
 "splitPk": "",
 "column": [
@@ -180,90 +209,4 @@
 }
 }
 ```
-
-## 步骤3 运行任务 {#section_gg5_4pf_vdb .section}
-
-您可通过以下两种方式运行任务。
-
--   直接运行（一次性运行）
-
-    单击任务上方的**运行**按钮，将直接在数据集成页面运行任务。运行之前需要配置自定义参数的具体数值。
-
-     ![](images/5824_zh-CN.png "运行任务配置") 
-
-    如上图所示，显示的时间是同步10：10到17:30这段时间的LogHub记录到MaxCompute。
-
--   调度运行
-
-    单击**提交**按钮，将同步任务提交到调度系统中，调度系统会按照配置属性在从第二天开始自动定时执行。
-
-    设置5分钟调度一次，从00：00到23:59，startTime=$\[yyyymmddhh24miss-10/24/60\]系统前10分钟到 endTime=$\[yyyymmddhh24miss-5/24/60\]系统前5分钟时间。关于自定义参数设置请参见[参数配置](https://help.aliyun.com/document_detail/30281.html)。
-
-    ![](images/5825_zh-CN.png "调度配置")
-
-
-## 跨账号授权 {#section_nkr_5pf_vdb .section}
-
-配置跨账号的投递任务，需要通过访问控制RAM授权。
-
--   **跨账号授权**
-
-    主账号之间的数据投递，可以直接在**新增LogHub数据源**步骤中，填入数据源主账号的AK。连通性测试通过后，表示授权成功。
-
-    例如，A账号为日志数据源，将A账号收集的日志数据通过B账号开通的DataWorks服务投递至B账号的MaxCompute表中，需要B账号配置数据集成任务，并且在**新增LogHub数据源**步骤中，填入A账号的主账号AK。配置成功后，B账号有权限读取A账号下的所有日志数据。
-
--   **子账号授权**
-
-    如果您不想暴露主账号的AK、或者需要投递子账号收集的日志数据，需要对子账号进行显式授权。
-
-    -   **赋予子账号管理权限**
-
-        如您需要通过子账号投递主账号名下的所有日志数据，需要按照以下步骤授权并配置AK。
-
-        1.  主账号A为其名下的子账号A1赋予日志服务的管理权限，即`AliyunLogFullAccess`和`AliyunLogReadOnlyAccess`。详情请参见[授权RAM 用户](intl.zh-CN/用户指南/         访问控制 RAM/授权RAM 用户.md)。
-        2.  B账号配置数据集成任务，并在**新增LogHub数据源**步骤中，填入数据源子账号的AK。
-        完成以上步骤后，B账号有权限读取A账号下的所有日志数据。
-
-    -   **赋予子账号自定义权限**
-
-        如您需要通过子账号投递主账号名下的部分日志数据，需要按照以下步骤授权并配置AK。
-
-        1.  主账号A为其子账号A1配置自定义授权策略。相关的授权请参见[简介](intl.zh-CN/用户指南/         访问控制 RAM/简介.md)和[概览](../../../../../intl.zh-CN/API 参考/RAM子用户访问/概览.md)。
-        2.  B账号配置数据集成任务，并在**新增LogHub数据源**步骤中，填入数据源子账号的AK。
-        完成以上步骤后，B账号有权限读取A账号下的部分日志数据。
-
-        **自定义授权策略示例**：
-
-        此时，B账号通过子账号A1只能同步日志服务project\_name1以及project\_name2的数据。
-
-        ```
-        {
-        "Version": "1",
-        "Statement": [
-        {
-        "Action": [
-        "log:Get*",
-        "log:List*",
-        "log:CreateConsumerGroup",
-        "log:UpdateConsumerGroup",
-        "log:DeleteConsumerGroup",
-        "log:ListConsumerGroup",
-        "log:ConsumerGroupUpdateCheckPoint",
-        "log:ConsumerGroupHeartBeat",
-        "log:GetConsumerGroupCheckPoint"
-        ],
-        "Resource": [
-        "acs:log:*:*:project/project_name1",
-        "acs:log:*:*:project/project_name1/*",
-        "acs:log:*:*:project/project_name2",
-        "acs:log:*:*:project/project_name2/*"
-        ],
-        "Effect": "Allow"
-        }
-        ]
-        }
-        ```
-
-    ![](images/5826_zh-CN.png "自定义授权策略")
-
 
