@@ -38,33 +38,44 @@ Windows版Logtail客户端支持以下操作系统：
 
     |区域|阿里云内网（经典网络、VPC）|公网|全球加速|
     |:-|:--------------|:-|:---|
-    |**华北 1（青岛）**|.\\logtail\_installer.exe install cn-qingdao|.\\logtail\_installer.exe install cn-qingdao-internet|.\\logtail\_installer.exe install cn-qingdao-acceleration|
-    |**华北 2（北京）**|.\\logtail\_installer.exe install cn-beijing|.\\logtail\_installer.exe install cn-beijing-internet|.\\logtail\_installer.exe install cn-beijing-acceleration|
-    |**华北 3 （张家口）**|.\\logtail\_installer.exe install cn-zhangjiakou|.\\logtail\_installer.exe install cn-zhangjiakou-internet|.\\logtail\_installer.exe install cn-zhangjiakou-acceleration|
-    |**华北 5 （呼和浩特）**|.\\logtail\_installer.exe install cn-huhehaote|.\\logtail\_installer.exe install cn-huhehaote-internet|.\\logtail\_installer.exe install cn-huhehaote-acceleration|
-    |**华东 1（杭州）**|.\\logtail\_installer.exe install cn-hangzhou|.\\logtail\_installer.exe install cn-hangzhou-internet|.\\logtail\_installer.exe install cn-hangzhou-acceleration|
-    |**华东 2（上海）**|.\\logtail\_installer.exe install cn-shanghai|.\\logtail\_installer.exe install cn-shanghai-internet|.\\logtail\_installer.exe install cn-shanghai-acceleration|
-    |**华南 1（深圳）**|.\\logtail\_installer.exe install cn-shenzhen|.\\logtail\_installer.exe install cn-shenzhen-internet|.\\logtail\_installer.exe install cn-shenzhen-acceleration|
-    |**西南 1（成都）**|.\\logtail\_installer.exe install cn-chengdu|.\\logtail\_installer.exe install cn-chengdu-internet|.\\logtail\_installer.exe install cn-chengdu-acceleration|
-    |**香港**|.\\logtail\_installer.exe install cn-hongkong|.\\logtail\_installer.exe install cn-hongkong-internet|.\\logtail\_installer.exe install cn-hongkong-acceleration|
-    |**美国西部 1 （硅谷）**|.\\logtail\_installer.exe install us-west-1|.\\logtail\_installer.exe install us-west-1-internet|.\\logtail\_installer.exe install us-west-1-acceleration|
-    |**美国东部 1（弗吉尼亚）**|.\\logtail\_installer.exe install us-east-1|.\\logtail\_installer.exe install us-east-1-internet|.\\logtail\_installer.exe install us-east-1-acceleration|
-    |**亚太东南 1（新加坡）**|.\\logtail\_installer.exe install ap-southeast-1|.\\logtail\_installer.exe install ap-southeast-1-internet|.\\logtail\_installer.exe install ap-southeast-1-acceleration|
-    |**亚太东南 2（悉尼）**|.\\logtail\_installer.exe install ap-southeast-2|.\\logtail\_installer.exe install ap-southeast-2-internet|.\\logtail\_installer.exe install ap-southeast-2-acceleration|
-    |**亚太东南 3（吉隆坡）**|.\\logtail\_installer.exe install ap-southeast-3|.\\logtail\_installer.exe install ap-southeast-3-internet|.\\logtail\_installer.exe install ap-southeast-3-acceleration|
-    |**亚太东南 5（雅加达）**|.\\logtail\_installer.exe install ap-southeast-5|.\\logtail\_installer.exe install ap-southeast-5-internet|.\\logtail\_installer.exe install ap-southeast-5-acceleration|
-    |**亚太南部 1（孟买）**|.\\logtail\_installer.exe install ap-south-1|.\\logtail\_installer.exe install ap-south-1-internet|.\\logtail\_installer.exe install ap-south-1-acceleration|
-    |**亚太东北 1（日本）**|.\\logtail\_installer.exe install ap-northeast-1|.\\logtail\_installer.exe install ap-northeast-1-internet|.\\logtail\_installer.exe install ap-northeast-1-acceleration|
-    |**欧洲中部 1（法兰克福）**|.\\logtail\_installer.exe install eu-central-1|.\\logtail\_installer.exe install eu-central-1-internet|.\\logtail\_installer.exe install eu-central-1-acceleration|
-    |**中东东部 1（迪拜）**|.\\logtail\_installer.exe install me-east-1|.\\logtail\_installer.exe install me-east-1-internet|.\\logtail\_installer.exe install me-east-1-acceleration|
-    |**英国（伦敦）**|.\\logtail\_installer.exe install eu-west-1|.\\logtail\_installer.exe install eu-west-1-internet|.\\logtail\_installer.exe install eu-west-1-acceleration|
+    |**华北 1（青岛）**|`.\logtail_installer.exe install cn-qingdao`|`.\logtail_installer.exe install cn-qingdao-internet`|`.\logtail_installer.exe install cn-qingdao-acceleration`|
+    |**华北 2（北京）**|`.\logtail_installer.exe install cn-beijing`|`.\logtail_installer.exe install cn-beijing-internet`|`.\logtail_installer.exe install cn-beijing-acceleration`|
+    |**华北 3 （张家口）**|`.\logtail_installer.exe install cn-zhangjiakou`|`.\logtail_installer.exe install cn-zhangjiakou-internet`|`.\logtail_installer.exe install cn-zhangjiakou-acceleration`|
+    |**华北 5 （呼和浩特）**|`.\logtail_installer.exe install cn-huhehaote`|`.\logtail_installer.exe install cn-huhehaote-internet`|`.\logtail_installer.exe install cn-huhehaote-acceleration`|
+    |**华东 1（杭州）**|`.\logtail_installer.exe install cn-hangzhou`|`.\logtail_installer.exe install cn-hangzhou-internet`|`.\logtail_installer.exe install cn-hangzhou-acceleration`|
+    |**华东 2（上海）**|`.\logtail_installer.exe install cn-shanghai`|`.\logtail_installer.exe install cn-shanghai-internet`|`.\logtail_installer.exe install cn-shanghai-acceleration`|
+    |**华南 1（深圳）**|`.\logtail_installer.exe install cn-shenzhen`|`.\logtail_installer.exe install cn-shenzhen-internet`|`.\logtail_installer.exe install cn-shenzhen-acceleration`|
+    |**西南 1（成都）**|`.\logtail_installer.exe install cn-chengdu`|`.\logtail_installer.exe install cn-chengdu-internet`|`.\logtail_installer.exe install cn-chengdu-acceleration`|
+    |**香港**|`.\logtail_installer.exe install cn-hongkong`|`.\logtail_installer.exe install cn-hongkong-internet`|`.\logtail_installer.exe install cn-hongkong-acceleration`|
+    |**美国西部 1 （硅谷）**|`.\logtail_installer.exe install us-west-1`|`.\logtail_installer.exe install us-west-1-internet`|`.\logtail_installer.exe install us-west-1-acceleration`|
+    |**美国东部 1（弗吉尼亚）**|`.\logtail_installer.exe install us-east-1`|`.\logtail_installer.exe install us-east-1-internet`|`.\logtail_installer.exe install us-east-1-acceleration`|
+    |**亚太东南 1（新加坡）**|`.\logtail_installer.exe install ap-southeast-1`|`.\logtail_installer.exe install ap-southeast-1-internet`|`.\logtail_installer.exe install ap-southeast-1-acceleration`|
+    |**亚太东南 2（悉尼）**|`.\logtail_installer.exe install ap-southeast-2`|`.\logtail_installer.exe install ap-southeast-2-internet`|`.\logtail_installer.exe install ap-southeast-2-acceleration`|
+    |**亚太东南 3（吉隆坡）**|`.\logtail_installer.exe install ap-southeast-3`|`.\logtail_installer.exe install ap-southeast-3-internet`|`.\logtail_installer.exe install ap-southeast-3-acceleration`|
+    |**亚太东南 5（雅加达）**|`.\logtail_installer.exe install ap-southeast-5`|`.\logtail_installer.exe install ap-southeast-5-internet`|`.\logtail_installer.exe install ap-southeast-5-acceleration`|
+    |**亚太南部 1（孟买）**|`.\logtail_installer.exe install ap-south-1`|`.\logtail_installer.exe install ap-south-1-internet`|`.\logtail_installer.exe install ap-south-1-acceleration`|
+    |**亚太东北 1（日本）**|`.\logtail_installer.exe install ap-northeast-1`|`.\logtail_installer.exe install ap-northeast-1-internet`|`.\logtail_installer.exe install ap-northeast-1-acceleration`|
+    |**欧洲中部 1（法兰克福）**|`.\logtail_installer.exe install eu-central-1`|`.\logtail_installer.exe install eu-central-1-internet`|`.\logtail_installer.exe install eu-central-1-acceleration`|
+    |**中东东部 1（迪拜）**|`.\logtail_installer.exe install me-east-1`|`.\logtail_installer.exe install me-east-1-internet`|`.\logtail_installer.exe install me-east-1-acceleration`|
+    |**英国（伦敦）**|`.\logtail_installer.exe install eu-west-1`|`.\logtail_installer.exe install eu-west-1-internet`|`.\logtail_installer.exe install eu-west-1-acceleration`|
 
     **说明：** 在自建IDC或其他云厂商服务器使用Logtail时，由于日志服务无法获取非本账号下ECS、其他服务器的属主信息，请在安装Logtail后手动配置用户标识（AliUid），否则Logtail心跳异常、无法收集日志。详细说明请参见 [为非本账号ECS、自建IDC配置AliUid](intl.zh-CN/用户指南/Logtail采集/机器组/为非本账号ECS、自建IDC配置AliUid.md)。
 
 
+## 安装路径 {#section_r5z_y32_qgb .section}
+
+执行安装命令后，Logtail默认安装到指定路径下，不支持修改和变更。在该路径下可以通过文件app\_info.json[查看Logtail版本](#)，或在安装路径下[卸载Logtail](#)。
+
+安装路径如下：
+
+-   32位Windows系统：C:\\Program Files\\Alibaba\\Logtail
+-   64位Windows系统：C:\\Program Files \(x86\)\\Alibaba\\Logtail
+
+**说明：** Windows Logtail 是 32 位应用程序，所以在 64 位系统上会安装到Program Files \(x86\)目录下。
+
 ## 查看Logtail版本 {#section_dxc_1gf_ggb .section}
 
-Logtail会自动安装到 `C:\Program Files (x86)\Alibaba\Logtail` 或 `C:\Program Files\Alibaba\Logtail` 目录中，您可以进入该目录，使用记事本或其他文本编辑器打开文件 `app_info.json`，其中的 `logtail_version` 字段即为您当前安装的Logtail的版本号。
+Logtail会自动安装到[默认目录](#)中，您可以进入该目录，使用记事本或其他文本编辑器打开文件app\_info.json，其中的 `logtail_version` 字段即为您当前安装的Logtail的版本号。
 
 例如，以下内容表示Logtail的版本号为1.0.0.0：
 
@@ -86,8 +97,6 @@ Logtail会自动安装到 `C:\Program Files (x86)\Alibaba\Logtail` 或 `C:\Progr
 
     **说明：** 手动升级相当于自动卸载并重新安装，所以会删除掉您原先安装目录中的内容，如有必要，请您在执行手动升级前做好备份工作。
 
-    安装目录：`C:\Program Files (x86)\Alibaba\Logtail` 或 `C:\Program Files\Alibaba\Logtail`。
-
 
 ## 手动启动和停止Logtail {#section_u2t_4wg_cfb .section}
 
@@ -97,6 +106,8 @@ Logtail会自动安装到 `C:\Program Files (x86)\Alibaba\Logtail` 或 `C:\Progr
 
 -   0.x.x.x版本：**LogtailWorker**服务。
 -   1.0.0.0及以上版本：**LogtailDaemon**服务。
+
+执行对应操作：
 
 -   **手动启动**：右键单击**启动**。
 
@@ -113,7 +124,7 @@ Logtail会自动安装到 `C:\Program Files (x86)\Alibaba\Logtail` 或 `C:\Progr
 .\logtail_installer.exe uninstall
 ```
 
-卸载成功后，您的Logtail安装目录C:\\Program Files \(x86\)\\Alibaba\\Logtail或C:\\Program Files\\Alibaba\\Logtail会被完全删除，但是仍有部分配置会被保留在 C:\\LogtailData目录中，您可以根据实际情况进行手动删除。遗留配置信息包括：
+卸载成功后，您的Logtail[安装目录](#)会被完全删除，但是仍有部分配置会被保留在 C:\\LogtailData目录中，您可以根据实际情况进行手动删除。遗留配置信息包括：
 
 -   checkpoint：保存所有插件（比如Windows event log插件）的checkpoint信息。
 -   logtail\_check\_point：保存Logtail主体部分的checkpoint信息。
