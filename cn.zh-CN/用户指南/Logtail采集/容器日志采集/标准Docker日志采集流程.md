@@ -43,7 +43,7 @@ Logtail支持采集标准Docker日志，并附加容器的相关元数据信息�
     |--|----|
     |`${your_region_name}`|日志服务Project所在Region，请根据网络类型输入正确的格式。包括：    -   公网：`region-internet`。例如，华东一地域为`cn-hangzhou-internet`。
     -   阿里云内网：`region`。例如，华东一地域为`cn-hangzhou`。
-其中，region为[表 1](intl.zh-CN/用户指南/Logtail采集/安装/Linux.md#table_eyz_pmv_vdb)，请根据Project地域选择正确的参数。
+其中，region为[表 1](intl.zh-CN/用户指南/Logtail采集/安装/安装Logtail（Linux系统）.md#table_eyz_pmv_vdb)，请根据Project地域选择正确的参数。
 
 |
     |`${your_aliyun_user_id}`|用户标识，请替换为您的阿里云主账号用户ID。主账号用户ID为字符串形式，如何查看ID请参考[为非本账号ECS、自建IDC配置AliUid](intl.zh-CN/用户指南/Logtail采集/机器组/为非本账号ECS、自建IDC配置AliUid.md)中的2.1节。|
@@ -86,7 +86,7 @@ Logtail支持采集标准Docker日志，并附加容器的相关元数据信息�
 
     默认宿主机根目录挂载到Logtail容器的`/logtail_host`目录，配置路径时，您需要加上此前缀。例如需要采集宿主机上`/home/logs/app_log/`目录下的数据，配置页面中日志路径设置为`/logtail_host/home/logs/app_log/`。
 
--   [Syslog](intl.zh-CN/用户指南/隐藏文件夹/Syslog.md)
+-   [Syslog](intl.zh-CN/用户指南/     隐藏文件夹/Syslog.md)
 
 ## 其他操作 {#section_sxz_4pv_vdb .section}
 
