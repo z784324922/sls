@@ -4,25 +4,50 @@ The Logtail client helps Log Service users collect text logs from Elastic Comput
 
 ## Prerequisites {#section_ehf_hbc_wdb .section}
 
--   You must install Logtail before using it to collect logs. Logtail supports Windows and Linux operating systems.  For installation methods, see [Linux ](reseller.en-US/User Guide/Logtail collection/Install/Linux.md) and [Install Logtail on Windows](reseller.en-US/User Guide/Logtail collection/Install/Install Logtail on Windows.md).
+-   You must install Logtail before collecting logs. For installation methods, see [Install Logtail in Linux](reseller.en-US/User Guide/Logtail collection/Install/Install Logtail in Linux.md) and [Install Logtail on Windows](reseller.en-US/User Guide/Logtail collection/Install/Install Logtail on Windows.md).
 
--   To collect logs from ECS instances or local servers, make sure you have opened the ports 80 and 443.
+-   To collect logs from ECS instances or local servers, you must open ports 80 and 443.
 
 
 ## Limits {#section_eg1_lbc_wdb .section}
 
--   A file can only be collected by using one configuration.  To collect a file by using more than one configuration, we recommend that you use the soft link. For example, to collect files under `/home/log/nginx/log` by using two configurations, use the original path for one configuration, run the command `ln -s /home/log/nginx/log   /home/log/nginx/link_log` to create a soft link of this folder, and then use the soft link path for the other configuration.
+-   A file can only be collected using one configuration. To collect a file with multiple configurations, we recommend you use the soft link. For example, to collect files under `/home/log/nginx/log` with two configurations, you can use the original path for one configuration, and run the command `ln -s /home/log/nginx/log   /home/log/nginx/link_log` to create a soft link of this folder, and then use the soft link path for the other configuration.
 
--   For more information about the operating systems that the Logtail client supports, see [Overview](reseller.en-US/User Guide/Logtail collection/Overview/Overview.md).
+-   For more information about operating systems supported by the Logtail client, see [Overview](reseller.en-US/User Guide/Logtail collection/Overview/Overview.md).
 
--   •The ECS instances of classic network or Virtual Private Cloud \(VPC\) and the Log Service project must be in the same region. You can select the region in which the Log Service project resides based on the region description if your source data is transmitted by means of Internet \(similar to the IDC usage\).
+-   The ECS instances of the classic network or Virtual Private Cloud \(VPC\) and the Log Service project must belong to the same region. If your source data is transmitted by Internet \(similar to IDC\), you can select the region that the Log Service resides in based on the region description.
 
 
 ## Configuration process of log collection {#section_kyp_4bc_wdb .section}
 
-In the Log Service console, you can configure the Logtail to collect text logs in modes such as simple mode, delimiter mode, JSON  mode, and full mode.  Take the simple mode and full mode as examples. The configuration process is as follows.
+The following are simple mode and full mode examples. The configuration process as follows:
 
-![](images/2859_en-US.png "Procedure")
+![](images/2859_en-US.png "Log collection configuration process")
+
+## Log collection modes {#section_pzt_z5l_ggb .section}
+
+Logtail supports simple mode, delimiter mode, JSON mode, full mode, and other log collection methods.
+
+-   Simple mode
+
+    Currently, simple mode is the single-line mode. By default, one line of data is a log, and two logs are separated by a line break in the log file. The system does not extract log fields \(that is, the regular expression \(.\*\) by default\), and uses the current server system time as the generated log time. To configure more settings, you can change the configuration to full mode to adjust the settings. For more information on how to change the Logtail configuration, see [Create a Logtail configuration](reseller.en-US/User Guide/Logtail collection/Machine Group/Create a Logtail configuration.md).
+
+    In the simple mode, specify the file directory and file name. Then, the Logtail collects logs by each line and uses the system time.
+
+-   **Delimiter mode**
+
+    Logtail can collect delimiter logs through the delimiter mode. For more information, see [Delimiter logs](reseller.en-US/User Guide/Other collection methods/Common log formats/Delimiter logs.md).
+
+-   **JSON mode**
+
+    You can select **JSON mode** to collect [JSON logs](reseller.en-US/User Guide/Other collection methods/Common log formats/JSON logs.md).
+
+-   **Full mode**
+
+    To configure more personalized field extraction settings for log contents \(such as cross-line logs and field extraction\), select **Full Mode**.
+
+    Log Service provides a log sample-based regular expression generation function in the data collection wizard. However, multiple manual tests to fit the log samples are required because of the different log samples. For more information about how to test the regular expressions, see [How do I test regular expressions?](../../../../../reseller.en-US/.md)
+
 
 ## Procedure {#section_xss_pbc_wdb .section}
 
@@ -54,54 +79,47 @@ In the Log Service console, you can configure the Logtail to collect text logs i
 
     ![](images/2860_en-US.png "Specify the Directory and file name")
 
-6.  Set collection mode.
+6.  Set collection mode. The following uses the full mode as an example.
+    1.  Enter  **the Log Sample**.
 
-    Logtail supports simple mode, delimiter mode, JSON mode, full mode, and other log collection methods. For more information, see [Collection methods](reseller.en-US/User Guide/Data Collection/Collection methods.md). In this example, we use simple mode and complete regex mode to introduce the collection mode settings.
+        The purpose of providing a log sample is facilitating the Log Service console in automatically extracting the regex matching mode in logs. Be sure to use a log from the actual environment.
 
-    -   Simple mode
+    2.  Disable    **Singleline**.
 
-        Currently, simple mode is the single-line mode. By default, one line of data is a log, that is, two logs are separated by a line break in a log file.  The system does not extract log fields \(that is, the regular expression is \(. \*\) by default\), and uses the system time of the current server as the log generated time. To configure more detailed settings, you can change the configuration to the full mode and adjust the settings.  For how to change the Logtail configuration, see [Create a Logtail configuration](reseller.en-US/User Guide/Logtail collection/Machine Group/Create a Logtail configuration.md).
+        By default, the single-line mode is used, that is, two logs are separated by a line break. To collect cross-line logs \(such as Java  program logs\), you must disable **Singleline** and then configure the **Regular Expression**.
 
-        In the simple mode, specify the file directory and file name. Then, Logtail collects logs by line, uses the system time of the server when the log is collected as the log time, and does not extract fields from the log content. 
+    3.  Modify. the  **Regular Expression**.
 
-    -   Mode
+        You can select to **automatically generate the regular expression** or **manually enter the regular expression**. After entering the log sample, click  **Auto Generate** to automatically generate the regular expression. If failed, you can switch to the manual mode to enter the regular expression for verification. 
 
-        To configure more personalized field extraction settings for log contents \(such as cross-line logs and field extraction\), select **Full Mode** . For more information on the specific meanings and setting methods for these parameters, see [Overview](reseller.en-US/User Guide/Logtail collection/Overview/Overview.md).
+    4.  Enable Extract Field.
 
-        1.  Enter  **the Log Sample**.
+        To analyze and process fields separately in the log content, use the Extract  **Field** function to convert the specified field to a key-value pair before sending  it to Log Service. Therefore, you must specify a method for parsing the log content, that is, a regular expression.
 
-            The purpose of providing a log sample is facilitating the Log Service console in automatically extracting the regex matching mode in logs. Be sure to use a log from the actual environment.
+        The Log Service console allows you to specify a regular expression for parsing the log content in two ways.  The first option is to automatically generate a regular expression through simple interactions. You can select the field to be extracted in the log sample and then click Generate RegEx to automatically generate the regular expression in the Log Service console.
 
-        2.  Disable    **Singleline**.
+        In this way, you can generate the regular expression without writing it on your own. You can also manually enter a regular expression. Click **Manually Input Regular Expression** to switch to the manual input mode. After entering the regular expression, click **Validate** to validate whether or not the entered regular expression can parse and extract the log sample. For more information, see [How do I test regular expressions?](../../../../../reseller.en-US/.md)
 
-            By default, the single-line mode is used, that is, two logs are separated by a line break. To collect cross-line logs \(such as Java  program logs\), you must disable **Singleline** and then configure the **Regular Expression**.
+        No matter the regular expression for parsing the log content is automatically generated or manually entered, you must name each extracted field, that is, set keys for the fields.
 
-        3.  Modify. the  **Regular Expression**.
+         
 
-            You can select to **automatically generate the regular expression** or **manually enter the regular expression**. After entering the log sample, click  **Auto Generate** to automatically generate the regular expression. If failed, you can switch to the manual mode to enter the regular expression for verification. 
+    5.  Set **Use System Time**.
 
-        4.  Enable Extract Field.
+        Default settings **Use System Time is set by default**.  If disabled, you must specify a certain field \(value\) as the time field during field extraction and  name this field `time`.  After selecting a `time` field, you  can click  **Auto Generate** in  **Time Format** to generate a  method to parse this time field.  For more information on log time format, see [Text logs - Configure time format](reseller.en-US/User Guide/Logtail collection/Text logs/Text logs - Configure time format.md).
 
-            To analyze and process fields separately in the log content, use the Extract  **Field** function to convert the specified field to a key-value pair before sending  it to Log Service. Therefore, you must specify a method for parsing the log content, that is, a regular expression.
+    6.  Enable **Drop Failed to Parse Logs** as needed.
 
-            The Log Service console allows you to specify a regular expression for parsing the log content in two ways.  The first option is to automatically generate a regular expression through simple interactions. You can select the field to be extracted in the log sample and then click Generate RegEx to automatically generate the regular expression in the Log Service console.
+        This option specifies whether to upload the logs with parsing failure to Log Service.
 
-            In this way, you can generate the regular expression without writing it on your own. You can also manually enter a regular expression. Click **Manually Input Regular Expression** to switch to the manual input mode. After entering the regular expression, click **Validate** to validate whether or not the entered regular expression can parse and extract the log sample.
+        When this option is enabled, the logs with parsing failure will not be uploaded to Log Service. When the option is disabled, the raw log will be uploaded to Log Service when log parsing fails. The key of the raw log is `__raw_log__` and the value is the log content.
 
-            No matter the regular expression for parsing the log content is automatically generated or manually entered, you must name each extracted field, that is, set keys for the fields.
+7.  \(Optional\) Set **Advanced Options** as needed and click **Next**.
 
-             
+    If you have no special requirements, retain the default settings.
 
-        5.  Set **Use System Time**.
-
-            Default settings **Use System Time is set by default**.  If disabled, you must specify a certain field \(value\) as the time field during field extraction and  name this field `time`.  After selecting a `time` field, you  can click  **Auto Generate** in  **Time Format** to generate a  method to parse this time field.  For more information on log time format, see [Text logs - Configure time format](reseller.en-US/User Guide/Logtail collection/Text logs/Text logs - Configure time format.md).
-
-7.  Set **Advanced Options** as per your needs, and click **Next**.
-
-    Set **Local Cache**, **Upload Original Log**, [Topic](reseller.en-US/User Guide/Logtail collection/Text logs/Log topic.md) Generation Mode, **Log File Encoding**, **Maximum Monitor Directory Depth**, **Timeout**, and **Filter Configuration** according to your requirements,  or keep the default configurations.
-
-    |Config Maps|Details|
-    |:----------|:------|
+    |Configuration item|Desceiption|
+    |:-----------------|:----------|
     |Upload Original Log|Select whether or not to upload the original log.  If enabled, the new field is added by default to upload the original log.|
     |Topic Generation Mode|     -     **Null - Do not generate topic**: The default option, which indicates to set the topic as a null string and you can query logs without entering the topic. 
     -   **Machine Group Topic Attributes**: Used to clearly differentiate log data generated in different frontend servers.
@@ -127,7 +145,7 @@ In the Log Service console, you can configure the Logtail to collect text logs i
 
 8.  Click **Next** after completing the configurations.
 
-    If you have not created a machine group, you must create one first. For how to create a machine group, see Create a machine [Create a machine group](reseller.en-US/User Guide/Logtail collection/Machine Group/Create a machine group.md)group.
+    If you have not created a machine group, you must create one first. For how to create a machine group, see Create a machine [Create a machine group with an IP address as its identifier](reseller.en-US/User Guide/Logtail collection/Machine Group/Create a machine group with an IP address as its identifier.md)group.
 
     **Note:** 
 
