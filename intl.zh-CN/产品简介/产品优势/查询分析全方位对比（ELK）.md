@@ -2,7 +2,7 @@
 
 ## 背景信息 {#section_jvw_rwy_zdb .section}
 
-提到日志实时分析，很多人都会想到很火的ELK Stack（Elastic/Logstash/Kibana）来搭建。ELK方案开源，在社区中有大量的内容和使用案例。
+提到日志实时分析，很多人都会想到基于很火的ELK Stack（Elastic/Logstash/Kibana）来搭建。ELK方案开源，在社区中有大量的内容和使用案例。
 
 阿里云[日志服务\(LOG\)](https://www.aliyun.com/product/sls) 是阿里巴巴集团对日志场景的解决方案产品，前身是2012年初阿里云在研发飞天操作系统过程中用来监控+问题诊断的产物，但随着用户增长与产品发展，慢慢开始向面向Ops（DevOps，Market Ops，SecOps）日志分析领域发展，期间经历双十一、蚂蚁双十二、新春红包、国际业务等场景挑战，成为同时服务内外的产品。
 
@@ -145,7 +145,7 @@ Apache Lucene是Apache软件基金会一个开放源代码的全文检索引擎�
 
     1.  定位到错误日志后，想看看上下文是什么参数引起了错误。
     2.  定位到错误后，想看看之后有没有类似错误，类似tail -f 原始日志文件，并进行grep。
-    3.  通过关键词搜索到一大堆日志（例如百万条），其中90%都是已知问题刚干扰调查线索。
+    3.  通过关键词搜索到一大堆日志（例如百万条），其中90%都是已知问题干扰调查线索。
     LOG 针对以上问题提供闭环解决方案：
 
     -   上下文查询（Context Lookup）：原始上下文翻页，免登服务器。
@@ -155,7 +155,7 @@ Apache Lucene是Apache软件基金会一个开放源代码的全文检索引擎�
 
         在传统的运维方式中，如果需要对日志文件进行实时监控，需要到服务器上对日志文件执行命令`tail -f`，如果实时监控的日志信息不够直观，可以加上`grep`或者`grep -v`进行关键词过滤。LOG在控制台提供了日志数据实时监控的交互功能LiveTail，针对线上日志进行实时监控分析，减轻运维压力。
 
-        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13138/154813920937745_zh-CN.png)
+        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13138/155019404737745_zh-CN.png)
 
         Livetail特点如下：
 
@@ -202,7 +202,7 @@ ES在docvalue之上提供一层聚合（Aggregation）语法，并且在6.x版�
     -   支持logstore，MySQL，OSS（CSV）等数据源
     -   支持left，right，out，innerjoin
     -   SQL查询外表，SQLJoin外表
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13138/154813920937750_zh-CN.png)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13138/155019404737750_zh-CN.png)
 
     Join外表的样例：
 
@@ -263,7 +263,7 @@ ES在docvalue之上提供一层聚合（Aggregation）语法，并且在6.x版�
         -   延时\>10S请求中某个ID构成比例远远大于其他维度组合。
         -   并且该ID在对比集合（B）中的比例较低。
         -   A和B中差异明显。
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13138/154813920937754_zh-CN.png)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13138/155019404737754_zh-CN.png)
 
 
 ## 性能 {#section_xcv_hxy_zdb .section}
@@ -352,7 +352,7 @@ ES在docvalue之上提供一层聚合（Aggregation）语法，并且在6.x版�
 
     1.  日志服务一天可以索引PB级数据，一次查询可以在秒级过几十TB规模数据，在数据规模上可以做到弹性伸缩与水平扩展。
     2.  ES比较适合服务场景为：写入GB-TB/Day、存储在TB级。主要受限于2个原因：
-        -   单集群规模：比较理想为20台左右，据我了解业界比较大为100节点一个集群，为了应对业务往往拆成多个集群。
+        -   单集群规模：比较理想为20台左右，据了解业界比较大为100节点一个集群，为了应对业务往往拆成多个集群。
         -   写入扩容：shard创建后便不可再修改，当吞吐率增加时，需要动态扩容节点，最多可使用的节点数便是shard的个数。
         -   存储扩容：主shard达到磁盘的上线时，要么迁移到更大的一块磁盘上，要么只能分配更多的shard。一般做法是创建一个新的索引，指定更多shard，并且rebuild旧的数据。
     **用户案例（规模带来的问题）**
@@ -416,5 +416,5 @@ ES在docvalue之上提供一层聚合（Aggregation）语法，并且在6.x版�
 
 ## 总结 { .section}
 
-ES是一把锋利的军刀，支撑更新、查询、删除等更通用场景，在搜索、数据分析、应用开发等领域有广泛使用，ELK组合在日志分析场景上把ES灵活性与性能发挥到极致；日志服务是纯定位在日志类数据分析场景的服务，在该领域内做了很多定制化开发。一个服务更广，一个场景更具针对性。当然离开了场景纯数字的比较没有意义，找到适合自己场景的才重要。
+ES支撑更新、查询、删除等更通用场景，在搜索、数据分析、应用开发等领域有广泛使用，ELK组合在日志分析场景上把ES灵活性与性能发挥到极致；日志服务是纯定位在日志类数据分析场景的服务，在该领域内做了很多定制化开发。一个服务更广，一个场景更具针对性。当然离开了场景纯数字的比较没有意义，找到适合自己场景的才重要。
 
