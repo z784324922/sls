@@ -18,7 +18,7 @@
     -   Windows x32：C:\\Program Files\\Alibaba\\Logtail\\app\_info.json
     例如，在Linux中查看服务器IP地址：
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13080/155002531410497_zh-CN.png)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13080/155021119810497_zh-CN.png)
 
 2.  登录[日志服务控制台](https://sls.console.aliyun.com)，单击Project名称。 
 3.  单击左侧导航栏的 **LogHub - 实时采集** \> **Logtail机器组** 进入该项目的 机器组列表 页面。 
@@ -36,12 +36,12 @@
         -   请确保您已按照[1](#ip)获取了服务器IP地址。
         -   机器组中存在多台服务器时，IP地址之间请用换行符分割。
         -   请勿将Windows服务器和Linux服务器添加到同一机器组中。
-        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13080/15500253145277_zh-CN.png)
+        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13080/15502111985277_zh-CN.png)
 
 6.  填写 **机器组Topic**。 机器组Topic的详细信息请参考[生成主题](intl.zh-CN/用户指南/Logtail采集/文本日志/生成主题.md)。
 7.   单击 **确定**。 
 
 您可以在机器组列表中查看刚创建的机器组。
 
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13080/15500253145279_zh-CN.png)
+![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13080/15502111985279_zh-CN.png)
 
