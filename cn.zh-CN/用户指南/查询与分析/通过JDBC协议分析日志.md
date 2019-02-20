@@ -1,17 +1,17 @@
 # 通过JDBC协议分析日志 {#concept_odt_smq_zdb .concept}
 
-除[概览](../../../../intl.zh-CN/API 参考/概览.md)外，您还可以使用JDBC + 标准SQL 92进行日志查询与分析。
+除[概览](../../../../../cn.zh-CN/API 参考/概览.md)外，您还可以使用JDBC + 标准SQL 92进行日志查询与分析。
 
 ## 连接参数 {#section_cd5_ngk_5cb .section}
 
 |连接参数|示例|说明|
 |:---|:-|:-|
-|host|regionid.example.com|[服务入口](../../../../intl.zh-CN/API 参考/服务入口.md)，目前仅支持经典网络内网访问和VPC网络访问|
+|host|regionid.example.com|[服务入口](../../../../../cn.zh-CN/API 参考/服务入口.md)，目前仅支持经典网络内网访问和VPC网络访问|
 |port|10005|默认使用10005作为端口号|
-|user|bq2sjzesjmo86kq|[访问秘钥](../../../../intl.zh-CN/API 参考/访问秘钥.md) AccesskeyId|
-|password|4fdO1fTDDuZP|[访问秘钥](../../../../intl.zh-CN/API 参考/访问秘钥.md)Accesskey|
-|database|sample-project|账号下的[项目（Project）](../../../../intl.zh-CN/产品简介/基本概念/项目.md)|
-|table|sample-logstore|项目下的[日志库（Logstore）](../../../../intl.zh-CN/产品简介/基本概念/日志库.md)|
+|user|bq2sjzesjmo86kq|[访问秘钥](../../../../../cn.zh-CN/API 参考/访问秘钥.md) AccesskeyId|
+|password|4fdO1fTDDuZP|[访问秘钥](../../../../../cn.zh-CN/API 参考/访问秘钥.md)Accesskey|
+|database|sample-project|账号下的[项目（Project）](../../../../../cn.zh-CN/产品简介/基本概念/项目.md)|
+|table|sample-logstore|项目下的[日志库（Logstore）](../../../../../cn.zh-CN/产品简介/基本概念/日志库.md)|
 
 例如通过MySQL命令连接示例如下：
 
@@ -22,7 +22,8 @@ use sample-project; // 使用某个Project
 
 ## 前提条件 {#section_yvl_vgk_5cb .section}
 
-访问JDBC接口，必须使用主账号的AK或者子帐号的AK。子帐号必须是Project owner的子帐号，同时子帐号具有Project级别的读权限。
+-   访问JDBC接口，必须使用主账号的AK或者子帐号的AK。子帐号必须是Project owner的子帐号，同时子帐号具有Project级别的读权限。
+-   MySQL JDBC不支持分页。
 
 ## 语法说明 {#section_pbb_wgk_5cb .section}
 
@@ -51,7 +52,7 @@ use sample-project; // 使用某个Project
 
 **计算语法**
 
-支持计算操作符参见[分析语法](intl.zh-CN/用户指南/查询与分析/实时分析简介.md)。
+支持计算操作符参见[分析语法](cn.zh-CN/用户指南/查询与分析/实时分析简介.md)。
 
 **SQL92语法**
 
@@ -148,4 +149,6 @@ public class testjdbc {
 
 1.  ①处填写您的Project。
 2.  ②处填写您的Logstore。
+
+![](images/5647_zh-CN.png "连接示例")
 
