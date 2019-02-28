@@ -71,7 +71,9 @@ Windows版Logtail客户端支持以下操作系统：
 -   32位Windows系统：C:\\Program Files\\Alibaba\\Logtail
 -   64位Windows系统：C:\\Program Files \(x86\)\\Alibaba\\Logtail
 
-**说明：** Windows Logtail 是 32 位应用程序，所以在 64 位系统上会安装到Program Files \(x86\)目录下。
+**说明：** Windows 64位操作系统支持运行32/64位应用程序，但是出于兼容性考虑，在 64 位操作系统上，Windows 会使用单独的x86目录来存放32位应用程序。
+
+Windows Logtail是32位程序，所以在64位操作系统上的安装目录为Program Files \(x86\)。后续日志服务如果推出64位Windows Logtail，会自动安装到Program Files目录下。
 
 ## 查看Logtail版本 {#section_dxc_1gf_ggb .section}
 
