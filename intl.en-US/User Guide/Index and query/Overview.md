@@ -1,6 +1,6 @@
 # Overview {#concept_wjl_x3q_zdb .concept}
 
-Log Service provides the LogSearch/Analytics function to query and analyze large amounts of logs in real time. You can use this function by enabling the index and field statistics.
+Log Service enables you to query and analyze massive amounts of logs in real time by using the LogSearch and Analytics functions. If the index function is disabled, raw data can be used in the order that is defined by Kafka based on Shards. If the index function is enabled, data statistics and query are also supported.
 
 ## Functional advantages {#section_byk_btd_5cb .section}
 
@@ -9,125 +9,48 @@ Log Service provides the LogSearch/Analytics function to query and analyze large
     -   Query: Billions of data can be processed and queried within one second \(with five conditions\).
     -   Analysis: Hundreds of millions of data can be aggregated and analyzed within one second \(with aggregation by five dimensions and the GroupBy condition\).
 -   Flexible: Query and analysis conditions can be changed as required to obtain results in real time.
--   Ecologic: Besides functions such as reports, dashboards, and quick analysis provided in the console, Log Service seamlessly interconnects with products such as Grafana, DataV, and Jaeger, and supports protocols such as RESTful  API and JDBC.
+-   Extensive: Besides functions such as reports, dashboards, and quick analysis provided in the console, Log Service seamlessly interconnects with products such as Grafana, DataV, and Jaeger, and supports protocols such as RESTful  API and JDBC.
 
-## Basic concepts {#section_u5q_plc_ry .section}
+## Indexes {#section_rft_gy3_ffb .section}
 
-Without enabling the LogSearch/Analytics \(index\) function, raw data is consumed according to the sequence in the shard, which is similar to Kafka. With the LogSearch/Analytics \(index\) function enabled, besides the consumption in sequence, you can also count and query the logs. For the difference between log consumption and log query, see Differences between log consumption and log query. 
+The index function is designed to sort a specific column or multiple columns in logs. By using indexes, you can quickly access the collected logs. However, before using the LogSearch and Analytics functions, you must collect logs and [enable the index function and configure indexes](reseller.en-US/User Guide/Index and query/Enable and set indexes.md) for the logs.
 
-## Enable an index {#section_gjv_rq4_tdb .section}
+Log Service provides **full text indexes** and **key/value indexes**.
 
-1.  Log on to the Log Service console. On the Project List page, click the project name.
-2.  Select the Logstore, and click **Search**.  Then, click **Enable Index** in the upper-right corner. If you have enabled the index before, click **Index Attributes** \> **Modify.**. 
-    -   After enabling the query and statistics, data is indexed in the backend. Traffic and storage space for the index are required.
-    -   ◦If this function is not required, click **Disable**to disable it.
-3.  Enter the Settings menu to complete configuration.
+-   **Full text indexes**: In this mode, the entire log is configured with indexes. The default index is used to query all keys in the log. The log can be queried even if only one key is matched.
+-   **Key/value indexes**: In this mode, indexes are configured for specific keys. This allows you to query a specific key to narrow down the query range.
 
-**Data types**
+The data type of fields must be specified when you use **key/value indexes**. Log Service supports [text](reseller.en-US/User Guide/Index and query/Data type of index/Text type.md), [json](reseller.en-US/User Guide/Index and query/Data type of index/JSON type.md). [long](reseller.en-US/User Guide/Index and query/Data type of index/Value type.md), and [double](reseller.en-US/User Guide/Index and query/Data type of index/Value type.md). For more information, see [Index data type overview](reseller.en-US/User Guide/Index and query/Data type of index/Overview.md).
 
-You can configure the type of each key in a log \(full text index is a special key, whose value is the log\). Currently, Log Service supports the following data types.
+## Query methods {#section_b3r_4sw_cfb .section}
 
-|Category|Type|Description|Query example|
-|:-------|:---|:----------|:------------|
-|Basic|TEXT|The text type that supports keyword and fuzzy match.| ` uri:"login*" method:"post" ` |
-|Basic|Long|The value type that supports interval query.| `status>200, status in [200, 500]` |
-|Basic|Double|The value type with a float.| `price>28.95, t in [20.0, 37]` |
-|Combination|JSON|The content is a JSON field, which is of the text type by default and supports the nested model.  You can configure indexes of text, long,  and double type for element b under a by using the path format such as a.b . The field type after the configuration is subject to the configuration.| `level0.key>29.95 level0.key2:"action"` |
-|Combination|Full text|Use a log as the text for query.| ` error and "login fail" ` |
+-   Query logs in the console:
 
-## Query and analysis syntax {#section_ghl_h55_zdb .section}
+    You can log on to the Log Service console and specify a query time range and enter a query statement on the query and analysis page. For more information, see [Query logs](reseller.en-US/User Guide/Index and query/Query logs.md) and [Query syntax](reseller.en-US/User Guide/Index and query/Query/Query syntax.md).
 
-Real-time query and analysis is composed of Search and Analytics, which are separated with a vertical line \( | \):
+-   Query logs through API calls:
 
-`$Search |$Analytics`
+    You can use the [GetLogs](../../../../../reseller.en-US/API Reference/Logstore related APIs/GetLogs.md) and [GetHistograms](../../../../../reseller.en-US/API Reference/Logstore related APIs/GetHistograms.md) APIs to query logs.
 
--   •Search: The query condition, which is generated by using keywords, fuzzy match conditions, values, ranges, and combination conditions.  If Search is empty or an asterisk \(\*\), all data is queried.
--   Analytics: Calculate and count the query results or the full data.
 
-**Note:** Both Search and Analytics are optional. If Search is empty, all the data in the specified period is not filtered and the results are counted directly.  If Analytics is empty, the query results are returned and no statistics are collected.
+**Note:** Before querying logs, you must collect logs and [enable the index function and configure indexes](reseller.en-US/User Guide/Index and query/Enable and set indexes.md) for the logs.
 
-**Note:** 
+## Query and analysis statement format {#section_ghl_h55_zdb .section}
 
-For more information, see [Query syntax](reseller.en-US/User Guide/Index and query/Query/Query syntax.md), [Syntax description](reseller.en-US/User Guide/Index and query/Syntax description.md).
-
-## Query examples {#section_ats_jtd_5cb .section}
-
-Besides time, the following log also contains four key values.
-
-|Sequence number|Key|Type|
-|:--------------|:--|:---|
-|0|time|-|
-|1|class|text|
-|2|status|Long|
-|3|Latency|double|
-|4|message|json|
+To query and analyze logs in real time, you need to enter a query and analysis statement. The statement consists of a query statement and an analysis statement, and the two statements are separated by a vertical bar \(`|`\). The following shows an example:
 
 ```
-0. time:2018-01-01 12:00:00
-  1. class:central-log
-  2. status:200
-  3. latency:68.75
-  4. message:
-    
-      "methodName": "getProjectInfo",
-      "success": true,
-      "remoteAddress": "1.1.1.1:11111",
-      "usedTime": 48,
-      "param": {
-              "projectName": "ali-log-test-project",
-              "requestId": "d3f0c96a-51b0-4166-a850-f4175dde7323"
-      
-      "result": {
-          "message": "successful",
-          "code": "200",
-          "data": {
-              "clusterRegion": "ap-southeast-1",
-              "ProjectName": "ali-log-test-project",
-              "CreateTime": "2017-06-08 20:22:41"
-          
-          "success": true
-      }
-  
+$Search |$Analytics
 ```
 
-Configuration is as follows:
+|Statement type|Required?|Description|
+|:-------------|:--------|:----------|
+|Query statement|No|The query condition, which can contain keywords, blur values, numbers, ranges, and combined conditionsIf the query statement is empty or "\*", no filter condition is set for the current data. That is, all data will be returned. For more information, see [Query syntax](reseller.en-US/User Guide/Index and query/Query/Query syntax.md).
 
-![](images/5522_en-US.png "Index settings")
+|
+|Analysis statement|No|The analysis statement, which is used to calculate and collect query results or full data.If the analysis statement is empty, only query results will be returned but no statistical analysis will be performed. For more information, see [Syntax description](reseller.en-US/User Guide/Index and query/Syntax description.md).
 
-Where:
-
--   ① indicates that all the data of the string type and bool type in the JSON field can be queried.
--   ② indicates that data of the long type can be queried.
--   ③ indicates that you can analyze the configured field by using SQL statements.
-
-**Example 1: Query string, bool type**
-
-```
-class : cental*
-message.traceInfo.requestId : 92.137_1518139699935_5599
-message.param.projectName : ali-log-test-project
-message.success : true
-```
-
-**Note:** 
-
--   No configurations in the JSON field are needed.
--   JSON Map and Array are auto scaling and support multi-level nesting. Each layer is separated  with a period \(.\).
-
-**Example 2:  Query double、long type**
-
-```
-latency>40
-message.usedTime > 40
-```
-
-**Note:** You configure JSON fields independently. The fields must not be in array.
-
-**Example 3: Combined query**
-
-```
-class : cental* and message.usedTime > 40 not message.param.projectName:ali-log-test-project
-```
+|
 
 ## Other information {#section_zgq_pr4_tdb .section}
 
