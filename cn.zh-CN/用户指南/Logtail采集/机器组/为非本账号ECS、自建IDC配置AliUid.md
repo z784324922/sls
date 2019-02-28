@@ -8,7 +8,7 @@
 
 -   已在服务器上安装Logtail客户端。
 
-    详细步骤请参见[Linux](intl.zh-CN/用户指南/Logtail采集/安装/Linux.md) 和[Windows](intl.zh-CN/用户指南/Logtail采集/安装/Windows.md)。
+    详细步骤请参见[安装Logtail（Linux系统）](intl.zh-CN/用户指南/Logtail采集/安装/安装Logtail（Linux系统）.md) 和[安装Logtail（Windows系统）](intl.zh-CN/用户指南/Logtail采集/安装/安装Logtail（Windows系统）.md)。
 
 
 1.  查看阿里云账号ID，即AliUid。 
@@ -44,5 +44,5 @@
         -   服务器置AliUid作为用户标识后，表示该账号有权限通过 Logtail 收集该服务器日志数据。请及时清理服务器上多余的账号AliUid用户标识文件。
         -   新增、删除AliUid用户标识后，1分钟之内即可生效。
 
-[创建IP地址机器组](intl.zh-CN/用户指南/Logtail采集/机器组/创建IP地址机器组.md)或[创建自定义标识机器组](intl.zh-CN/用户指南/Logtail采集/机器组/创建自定义标识机器组.md)
+[创建IP地址机器组](intl.zh-CN/用户指南/Logtail采集/机器组/创建IP地址机器组.md)或[创建自定义标识机器组](intl.zh-CN/用户指南/Logtail采集/机器组/创建用户自定义标识机器组.md)
 
