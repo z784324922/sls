@@ -63,6 +63,6 @@
 
 4.  单击**确认**。
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13023/15477092052574_zh-CN.png)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13023/15514194952574_zh-CN.png)
 
 
