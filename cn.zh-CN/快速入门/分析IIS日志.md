@@ -3,15 +3,17 @@
 个人站长选用IIS作为服务器搭建网站，需要通过分析IIS访问日志来获取PV、UV、IP区域分布、错误请求、流量流入流出，以评估网站访问情况。
 
 -   已开启日志服务。
--   已创建了Project和Logstore。详细步骤请参见[准备流程](../intl.zh-CN/用户指南/准备工作/准备流程.md)。
+-   已创建了Project和Logstore。详细步骤请参见[准备流程](../cn.zh-CN/用户指南/准备工作/准备流程.md)。
+-   **IIS日志采用W3C日志格式。**
+
+    为了更好满足分析场景，推荐选用W3C日志格式，在IIS管理器中单击**选择字段**按钮，勾选**发送的字节数**和**和接收的字节数**。
+
+    ![](images/6664_zh-CN.png "选择字段")
+
 
 **日志格式**
 
-为了更好满足分析场景，推荐选用W3C日志格式，在IIS管理器中单击**选择字段**按钮，勾选**发送的字节数**和**和接收的字节数**。
-
-![](images/6664_zh-CN.png "选择字段")
-
-配置格式如下：
+W3C配置格式如下：
 
 ```
 logExtFileFlags="Date, Time, ClientIP, UserName, SiteName, ComputerName, ServerIP, Method, UriStem, UriQuery, HttpStatus, Win32Status, BytesSent, BytesRecv, TimeTaken, ServerPort, UserAgent, Cookie, Referer, ProtocolVersion, Host, HttpSubStatus"
@@ -59,7 +61,7 @@ logExtFileFlags="Date, Time, ClientIP, UserName, SiteName, ComputerName, ServerI
     2.  单击**数据接入向导**图标。 
 2.  选择数据类型为**自建软件**一栏的**IIS访问日志**。 
 3.  设置数据源。 
-    1.  填写**配置名称**和**日志路径**。 您可在以IIS管理器中查看日志路径。
+    1.  填写**配置名称**和**日志路径**。 您可以在IIS管理器中查看日志路径。
 
         ![](images/6665_zh-CN.png "查看日志路径")
 
@@ -86,12 +88,15 @@ logExtFileFlags="Date, Time, ClientIP, UserName, SiteName, ComputerName, ServerI
 
     ![](images/6668_zh-CN.png "IIS键名称")
 
-7.  酌情配置高级选项（可选）。 
+7.  选择是否**丢弃解析失败日志**。 请选择解析失败的日志是否上传到日志服务。
+
+    开启后，解析失败的日志不上传到日志服务；关闭后，日志解析失败时上传原始日志，其中Key为`__raw_log__`、Value为日志内容。
+
+8.  酌情配置高级选项（可选）。 
 
     |配置项|详情|
     |:--|:-|
-    |本地缓存|请选择是否打开**本地缓存**。当日志服务不可用时，日志可以缓存在机器本地目录，服务恢复后进行续传，默认最大缓存值1GB。|
-    |上传原始日志|请选择是否需要上传原始日志。开启该功能后默认会新增字段将原始日志内容一并上传。|
+    |上传原始日志|请选择是否需要上传原始日志。开启该功能后，原始日志内容会作为\_\_raw\_\_字段与解析过的日志一并上传。|
     |Topic生成方式|     -   **空-不生成Topic**：默认选项，表示设置Topic为空字符串，在查询日志时不需要输入Topic即可查询。
     -   **机器组Topic属性**：设置Topic生成方式为机器组Topic属性，可以用于明确区分不同前端服务器产生的日志数据。
     -   **文件路径正则**：选择此项之后，您需要填写下方的**自定义正则**，用正则式从路径里提取一部分内容作为Topic。可以用于区分具体用户或实例产生的日志数据。
@@ -116,11 +121,11 @@ logExtFileFlags="Date, Time, ClientIP, UserName, SiteName, ComputerName, ServerI
 
     确认配置后单击**下一步**。
 
-8.  应用到机器组。 勾选需要应此用配置的机器组，单击**应用到机器组**。
+9.  应用到机器组。 勾选需要应此用配置的机器组，单击**应用到机器组**。
 
     如您尚未创建机器组，请单击**+创建机器组**创建一个机器组。
 
-9.  配置**查询分析&可视化**（可选）。 
+10. 配置**查询分析&可视化**（可选）。 
 
     确保日志机器组心跳正常的情况下，可以点击右侧浏览按钮获取到采集上来的数据。
 
