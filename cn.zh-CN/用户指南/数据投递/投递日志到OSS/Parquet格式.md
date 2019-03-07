@@ -1,6 +1,6 @@
 # Parquet格式 {#reference_ehj_j4q_zdb .reference}
 
-本文档主要介绍日志服务投递OSS使用Parquet存储的相关配置，关于投递日志到OSS的其它内容请参考[投递日志到OSS](intl.zh-CN/用户指南/数据投递/投递日志到OSS.md)。
+本文档主要介绍日志服务投递OSS使用Parquet存储的相关配置，关于投递日志到OSS的其它内容请参考[投递日志到OSS](cn.zh-CN/用户指南/数据投递/投递日志到OSS.md)。
 
 ## Parquet存储字段配置 {#section_dgc_4tj_5cb .section}
 
@@ -17,7 +17,7 @@ Parquet存储支持6种类型：string、boolean、int32、int64、float、doubl
 -   该字段名在日志服务数据中不存在。
 -   该字段由string转换非string（如double、int64等）失败。
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13181/5812_zh-CN.png "字段配置")
+    ![](images/5812_zh-CN.png "字段配置")
 
 
 **可配置的保留字段**
