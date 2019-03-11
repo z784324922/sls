@@ -3,7 +3,7 @@
 个人站长选用IIS作为服务器搭建网站，需要通过分析IIS访问日志来获取PV、UV、IP区域分布、错误请求、流量流入流出，以评估网站访问情况。
 
 -   已开启日志服务。
--   已创建了Project和Logstore。详细步骤请参见[准备流程](../cn.zh-CN/用户指南/准备工作/准备流程.md)。
+-   已创建了Project和Logstore。详细步骤请参见[准备流程](../intl.zh-CN/用户指南/准备工作/准备流程.md)。
 -   **IIS日志采用W3C日志格式。**
 
     为了更好满足分析场景，推荐选用W3C日志格式，在IIS管理器中单击**选择字段**按钮，勾选**发送的字节数**和**和接收的字节数**。
@@ -113,7 +113,7 @@ logExtFileFlags="Date, Time, ClientIP, UserName, SiteName, ComputerName, ServerI
 
     -   **满足条件即收集**：配置`Key:level Regex:WARNING|ERROR`，表示只收集level为WARNING或ERROR类型的日志。
     -   **[过滤不符合条件的数据](http://www.regular-expressions.info/lookaround.html)**：
-        -   配置`Key:level Regex:^(?!.*(INFO|DEBUG))`，表示代表不收集level为INFO或DEBUG类型的日志。
+        -   配置`Key:level Regex:^(?!.*(INFO|DEBUG)).*`，表示代表不收集level为INFO或DEBUG类型的日志。
         -   配置`Key:url Regex:.*^(?!.*(healthcheck)).*`，表示不采集url中带有healthcheck的日志，例如key为url，value为`/inner/healthcheck/jiankong.html`的日志将不会被采集。
 更多示例可参考[regex-exclude-word](https://stackoverflow.com/questions/2404010/match-everything-except-for-specified-strings)、[regex-exclude-pattern](https://stackoverflow.com/questions/2078915/a-regular-expression-to-exclude-a-word-string)。
 

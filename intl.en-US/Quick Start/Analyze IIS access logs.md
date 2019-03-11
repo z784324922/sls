@@ -3,7 +3,7 @@
 IIS is an extensible web server used to build and host websites. You can use access logs collected by IIS to obtain data such as page views, unique visitors,  client IP addresses, bad requests, and network flow, to monitor and analyze access to your website. 
 
 -   You must have activated Log Service.
--   You must have created a Project and a Logstore. For detailed steps about creating a Project and a Logstore, see [Preparation](../intl.en-US/User Guide/Preparation/Preparation.md).
+-   You must have created a Project and a Logstore. For detailed steps about creating a Project and a Logstore, see [Preparation](../reseller.en-US/User Guide/Preparation/Preparation.md).
 
 **Log format**
 
@@ -44,7 +44,7 @@ logExtFileFlags="Date, Time, ClientIP, UserName, SiteName, ComputerName, ServerI
     |cs-version|The protocol version such as HTTP 1.0 or HTTP 1.1|
     |user-agent|The browser that the client uses|
     |Cookie|The content of the cookie sent or received. A hyphen \(-\) is used when there is no cookie.|
-    |referer|The site that the user last visited This site provides a link to the current site.|
+    |referer|The site that the user last visited. This site provides a link to the current site.|
     |cs-host|The host header name|
     |sc-status|The HTTP or FTP status code|
     |sc-substatus|The status code of HTTP sub-protocol|
@@ -88,9 +88,8 @@ logExtFileFlags="Date, Time, ClientIP, UserName, SiteName, ComputerName, ServerI
 
 7.  Advanced Options \(Optional\) 
 
-    |Config Maps|Details|
-    |:----------|:------|
-    |Local Cache|Select whether to enable **Local Cache**.  If this function is enabled, logs can be cached in the local directory of the machine when Log Service is unavailable and continue to be sent to Log Service after the service recovery. By default, at most 1 GB logs can be cached.|
+    |Configuration item|Desceiption|
+    |:-----------------|:----------|
     |Upload Original Log|Select whether or not to upload the original log.  If enabled, the new field is added by default to upload the original log.|
     |Topic Generation Mode|     -     **Null - Do not generate topic**: The default option, which indicates to set the topic as a null string and you can query logs without entering the topic. 
     -   **Machine Group Topic Attributes**: Used to clearly differentiate log data generated in different frontend servers.
