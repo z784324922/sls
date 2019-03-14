@@ -9,13 +9,21 @@
 1.  执行安装命令，安装alibaba-log-controller Helm包。
 2.  根据您的需求选择使用CRD（CustomResourceDefinition）或控制台进行采集配置管理。
 
+## 视频教程 {#section_dvn_rrv_vdb .section}
+
+[https://cloud.video.taobao.com/play/u/3220778205/p/1/e/6/t/1/50076466637.mp4](https://cloud.video.taobao.com/play/u/3220778205/p/1/e/6/t/1/50076466637.mp4)
+
 ## 步骤1 安装Logtail {#section_ixs_qgq_pdb .section}
+
+## 阿里云托管版本Kubernetes集群安装方式 {#section_qjg_nhx_dgb .section}
+
+如果是阿里云容器服务托管版本Kubernetes集群，请参考[容器服务文档](../../../../../cn.zh-CN/用户指南/Kubernetes集群/日志管理/使用日志服务进行Kubernetes日志采集.md#section_zhf_y5r_gfb)中****手动安装日志服务组件****部分安装Logtail。
 
 ## 阿里云容器服务Kubernetes安装方式 {#section_lnl_jpr_zdb .section}
 
 **安装步骤**
 
-1.  登录您的阿里云容器服务Kubernetes的Master节点。登录方式请参考[SSH访问Kubernetes集群](../../../../intl.zh-CN/用户指南/Kubernetes 集群/集群管理/SSH访问Kubernetes集群.md)。
+1.  登录您的阿里云容器服务Kubernetes的Master节点。登录方式请参考[SSH访问Kubernetes集群](../../../../../cn.zh-CN/用户指南/Kubernetes 集群/集群管理/SSH访问Kubernetes集群.md)。
 2.  将下述命令中的`${your_k8s_cluster_id}`替换为您的Kubernetes集群id，并执行此命令。
 
     ```
@@ -79,10 +87,6 @@ alibaba-log-controller  0s
 
 安装成功后登录日志服务控制台，即可看到已经自动创建出的日志服务Project（若您的Project数过多，可以搜索`k8s-log`关键字）。
 
-## 容器服务托管版本Kubernetes集群安装方式 {#section_qjg_nhx_dgb .section}
-
-如果是阿里云容器服务托管版本Kubernetes集群，请参考[容器服务文档](../../../../intl.zh-CN/用户指南/Kubernetes 集群/日志管理/使用日志服务进行Kubernetes日志采集.md#section_zhf_y5r_gfb)中****手动安装日志服务组件****部分安装Logtail。
-
 ## 自建Kubernetes安装方式 {#section_kdx_bqr_zdb .section}
 
 **前提条件**
@@ -104,10 +108,10 @@ alibaba-log-controller  0s
     |参数|说明|
     |:-|:-|
     |\{your-project-suffix\}|您在第二步创建的Project名称的`k8s-log-custom-`之后部分。例如创建的Project为`k8s-log-custom-xxxx`，这边填写`xxxx`。|
-    |\{regionId\}|您的Project所在区域的Region Id，请在[服务入口](../../../../intl.zh-CN/API 参考/服务入口.md)中查找，例如`华东 1 (杭州)`的Region Id为`cn-hangzhou`。|
-    |\{aliuid\}|用户标识（AliUid），请替换为您的阿里云主账号用户ID。主账号用户ID为字符串形式，如何查看ID请参考[用户标识](intl.zh-CN/用户指南/Logtail采集/机器组/为非本账号ECS、自建IDC配置AliUid.md)配置中的2.1节。|
-    |\{access-key-id\}|您的账号access key id。推荐使用子账号access key，并授予AliyunLogFullAccess权限，具体设置参考[简介](intl.zh-CN/用户指南/         访问控制 RAM/简介.md)。|
-    |\{access-key-secret\}|您的账号access key secret。推荐使用子账号access key，并授予AliyunLogFullAccess权限，具体设置参考[简介](intl.zh-CN/用户指南/         访问控制 RAM/简介.md)。|
+    |\{regionId\}|您的Project所在区域的Region Id，请在[服务入口](../../../../../cn.zh-CN/API 参考/服务入口.md)中查找，例如`华东 1 (杭州)`的Region Id为`cn-hangzhou`。|
+    |\{aliuid\}|用户标识（AliUid），请替换为您的阿里云主账号用户ID。主账号用户ID为字符串形式，如何查看ID请参考[用户标识](cn.zh-CN/用户指南/Logtail采集/机器组/为非本账号ECS、自建IDC配置AliUid.md)配置中的2.1节。|
+    |\{access-key-id\}|您的账号access key id。推荐使用子账号access key，并授予AliyunLogFullAccess权限，具体设置参考[简介](cn.zh-CN/用户指南/         访问控制 RAM/简介.md)。|
+    |\{access-key-secret\}|您的账号access key secret。推荐使用子账号access key，并授予AliyunLogFullAccess权限，具体设置参考[简介](cn.zh-CN/用户指南/         访问控制 RAM/简介.md)。|
 
     安装好之后，日志服务会自动在该Project下创建机器组，机器组名为`k8s-group-${your_k8s_cluster_id}`。
 
@@ -179,20 +183,21 @@ alibaba-log-controller  0s
 
 请根据您的需求在控制台创建Logtail采集配置，采集配置步骤请参考：
 
--   [容器内文本文件（推荐）](intl.zh-CN/用户指南/Logtail采集/容器日志采集/容器文本日志.md)
--   [容器标准输出（推荐）](intl.zh-CN/用户指南/Logtail采集/容器日志采集/容器标准输出.md)
+-   [容器内文本文件（推荐）](cn.zh-CN/用户指南/Logtail采集/容器日志采集/容器文本日志.md)
+-   [容器标准输出（推荐）](cn.zh-CN/用户指南/Logtail采集/容器日志采集/容器标准输出.md)
 
--   [宿主机文本文件](intl.zh-CN/用户指南/Logtail采集/文本日志/采集文本日志.md)
+-   [宿主机文本文件](cn.zh-CN/用户指南/Logtail采集/文本日志/采集文本日志.md)
 
     默认宿主机根目录挂载到Logtail容器的`/logtail_host`目录，配置路径时，您需要加上此前缀。例如需要采集宿主机上`/home/logs/app_log/`目录下的数据，配置页面中日志路径设置为`/logtail_host/home/logs/app_log/`。
 
--   [Syslog](intl.zh-CN/用户指南/     隐藏文件夹/Syslog.md)
+-   [Syslog](cn.zh-CN/用户指南/     隐藏文件夹/Syslog.md)
+-   [简介](cn.zh-CN/用户指南/Logtail采集/自定义插件/简介.md)
 
 ## 通过CRD管理采集配置 {#section_lwy_5n1_f2b .section}
 
 针对Kubernetes微服务开发模式，日志服务同时提供CRD的配置方式，您可以直接使用kubectl对配置进行管理，该方式与Kubernetes部署、发布流程的集成更加完善。
 
-详细说明请参考[Kubernetes-CRD配置日志采集](intl.zh-CN/用户指南/Logtail采集/容器日志采集/Kubernetes-CRD配置日志采集.md)。
+详细说明请参考[Kubernetes-CRD配置日志采集](cn.zh-CN/用户指南/Logtail采集/容器日志采集/Kubernetes-CRD配置日志采集.md)。
 
 ## 其他操作 {#section_ulb_3sv_vdb .section}
 
