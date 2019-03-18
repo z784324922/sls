@@ -20,57 +20,60 @@ x-log-signaturemethod: hmac-sha1
 {
     "logstoreName" : <logStoreName>,
     "ttl": <ttl>,
-    "shardCount": <shardCount>
+    "shardCount": <shardCount>,
     "autoSplit": <autoSplit>,
     "maxSplitShard": <maxSplitShard>
 }
 ```
 
-## Request Parameters {#section_d4g_ll2_sy .section}
+## Request parameters {#section_d4g_ll2_sy .section}
 
 |Attribute name|Type|Required|Description|
-|--------------|----|--------|-----------|
-|logstoreName|string|No|The Logstore name, which must be unique in the same project.|
-|ttl|integer|No|The data retention time \(in days\).|
-|shardCount|integer|No|The number of shards in this Logstore.|
+|:-------------|:---|:-------|:----------|
+|logstoreName|string|Yes|The Logstore name, which must be unique in the same project.|
+|ttl|integer|Yes|Data storage time in days, which is in the value range of 1 to 3600.|
+|shardCount|Integer|Yes|The number of shards in this Logstore, which is in the range of 1 to 100.|
+|enable\_tracking|bool|No|Determines whether to enable Web Tracking.|
+|autoSplit|bool|No|Determines whether to automatically split a shard.|
+|maxSplitShard|int|No|The maximum number of shards for automatic split, which is in the range of 1 to 64. You must specify this parameter when autoSplit is true.|
 
 ## Request header {#section_nqn_nl2_sy .section}
 
-The CreateLogstore API does not have a special request header. For more information about the public request headers of Log Service APIs, see  [Public request header](intl.en-US/API Reference/Public request header.md).
+The CreateLogstore API does not have a special request header. For more information about the public request headers of Log Service APIs, see [Public request header](intl.en-US/API Reference/Public request header.md).
 
 ## Response header {#section_of3_4l2_sy .section}
 
-The CreateLogstore API does not have a special response header. For more information about the public response headers of Log Service APIs, see  [Public response header](intl.en-US/API Reference/Public response header.md).
+The CreateLogstore API does not have a special response header. For more information about the public response headers of Log Service APIs, see [Public response header](intl.en-US/API Reference/Public response header.md).
 
 ## Response element {#section_hy4_pl2_sy .section}
 
-The system returns the HTTP status code 200.
+The returned HTTP status code is 200.
 
-## Error codes {#section_evd_ql2_sy .section}
+## Error Code {#section_evd_ql2_sy .section}
 
-Besides the  [Common error codes](intl.en-US/API Reference/Common error codes.md) of Log Service APIs, the CreateLogstore API may return the following special error codes.
+Besides the [Common error codes](intl.en-US/API Reference/Common error codes.md) of Log Service APIs, the CreateLogstore API may return the following special error codes.
 
-|HTTP Status Code|ErrorCode|ErrorMessage|
-|:---------------|:--------|:-----------|
+|HTTP status code |ErrorCode|Error message|
+|:----------------|:--------|:------------|
 |400|LogstoreAlreadyExist|logstore \{logstoreName\} already exists|
 |500|InternalServerError|Specified Server Error Message|
 |400|LogstoreInfoInvalid|logstore info is invalid|
 |400|ProjectQuotaExceed|Project Quota Exceed|
 
-## Detailed description {#section_rhb_tl2_sy .section}
+## Details description {#section_rhb_tl2_sy .section}
 
-The logstore cannot be created if quota is invalid.
+The Logstore cannot be created if the quota is invalid.
 
 ## Examples {#section_ml2_5l2_sy .section}
 
-**Request example:**
+**Request example**
 
 ```
 POST /logstores HTTP/1.1
 Header :
 {
 x-log-apiversion=0.6.0, 
-Authorization=LOG 94to3z418yupi6ikawqqd370:8IwDTWugRK1AZAo0dWQYpffhy48=, 
+Authorization=LOG AK\_ID:Signature, 
 Host=ali-test-project.cn-hangzhou-devcommon-intranet.sls.aliyuncs.com, 
 Date=Wed, 11 Nov 2015 07:35:00 GMT, 
 Content-Length=55,
@@ -83,7 +86,7 @@ Body :
 {
     "logstoreName": "test-logstore",
     "ttl": 1,
-    "shardCount": 2
+    "shardCount": 2,
     "autoSplit": true,
     "maxSplitShard": 64
 }
