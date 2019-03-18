@@ -55,8 +55,8 @@ Body parameters:
 
 groupAttribute description
 
-|Attribute name|Type|类型|Description|
-|:-------------|:---|:-|:----------|
+|Attribute name|Type|Required|Description|
+|:-------------|:---|:-------|:----------|
 |groupTopic|string|No|The topic of a machine group, which is empty by default.|
 |externalName|string|No|The external identification that the machine group depends, which is empty by default.|
 
@@ -76,22 +76,22 @@ The returned HTTP status code is 200.
 
 Besides  [the common error codes](reseller.en-US/API Reference/Common error codes.md) of Log Service APIs, the UpdateMachineGroup API may return the following special error codes.
 
-|HTTP 状态码|ErrorCode|ErrorMessage|
-|:-------|:--------|:-----------|
+|HTTP status code|ErrorCode|ErrorMessage|
+|:---------------|:--------|:-----------|
 |404|GroupNotExist|group \{GroupName\} does not exist|
 |400|InvalidParameter|invalid group resource json|
 |500|InternalServerError|internal server error|
 
-## 示例 {#section_e5p_d4t_12b .section}
+## Example {#section_e5p_d4t_12b .section}
 
-**请求示例：**
+**Request example**
 
 ```
 PUT /machinegroups/test-machine-group HTTP/1.1
 Header :
 {
     "x-log-apiversion": "0.6.0",
-    "Authorization": "LOG 94to3z418yupi6ikawqqd370:ZJmBDS+LjRCzgSLuo21vFh6o7CE=",
+    "Authorization": "LOG AK\_ID:Signature",
     "Host": "ali-test-project.cn-hangzhou-devcommon-intranet.sls.aliyuncs.com",
     "Date": "Tue, 10 Nov 2015 18:41:43 GMT",
     "Content-Length": "194",
