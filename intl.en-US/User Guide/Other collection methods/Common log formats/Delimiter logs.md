@@ -44,8 +44,8 @@ A delimiter log is divided into several fields by delimiters, and supports two m
 -   **Single character delimiter logs**
 
     ```
-    05/May/2016:13:30:28,10.10.10.1,"POST /PutData? Category=YunOsAccountOpLog&AccessKeyId=U0Ujpek**********&Date=Fri%2C%2028%20Jun%202013%2006%3A53%3A30%20GMT&Topic=raw&Signature=pD12XYLmGxKQ%2Bmkd6x7hAgQ7b1c%3D HTTP/1.1",200,18204,aliyun-sdk-java
-    05/May/2016:13:31:23,10.10.10.2,"POST /PutData? Category=YunOsAccountOpLog&AccessKeyId=U0Ujpek**********&Date=Fri%2C%2028%20Jun%202013%2006%3A53%3A30%20GMT&Topic=raw&Signature=pD12XYLmGxKQ%2Bmkd6x7hAgQ7b1c%3D HTTP/1.1",401,23472,aliyun-sdk-java
+    05/May/2016:13:30:28,10.10.*.*,"POST /PutData?Category=YunOsAccountOpLog&AccessKeyId=****************&Date=Fri%2C%2028%20Jun%202013%2006%3A53%3A30%20GMT&Topic=raw&Signature=******************************** HTTP/1.1",200,18204,aliyun-sdk-java
+    05/May/2016:13:31:23,10.10.*.*,"POST /PutData?Category=YunOsAccountOpLog&AccessKeyId=****************&Date=Fri%2C%2028%20Jun%202013%2006%3A53%3A30%20GMT&Topic=raw&Signature=******************************** HTTP/1.1",401,23472,aliyun-sdk-java
     ```
 
 -   **Multiple character delimiter logs**
