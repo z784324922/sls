@@ -76,7 +76,7 @@ Header:
     "Host": "ali-test-project.cn-hangzhou-devcommon-intranet.sls.aliyuncs.com", 
     "Date": "Mon, 09 Nov 2015 09:51:38 GMT", 
     "x-log-apiversion": "0.6.0", 
-    "Authorization": "LOG 94to3z418yupi6ikawqqd370:+6bo4MSUt/dyNa72kXeGCkVOi+4="
+    "Authorization": "LOG AK\_ID:Signature"
 }
 ```
 
