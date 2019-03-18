@@ -88,11 +88,11 @@ outputDetail content
 
 **Request Header**
 
-The CreateConfig API does not have a special request header.  For more information about the public request headers of Log Service APIs, see [Public request header](intl.en-US/API Reference/Public request header.md).
+The CreateConfig API does not have a special request header.  For more information about the public request headers of Log Service APIs, see [Public request header](reseller.en-US/API Reference/Public request header.md).
 
 **Response header**
 
-The CreateConfig API does not have a special response header. For more information about the public response headers of Log Service APIs, see [Public response header](intl.en-US/API Reference/Public response header.md).
+The CreateConfig API does not have a special response header. For more information about the public response headers of Log Service APIs, see [Public response header](reseller.en-US/API Reference/Public response header.md).
 
 **Response Element**
 
@@ -100,7 +100,7 @@ The returned HTTP status code is 200.
 
 **Error code**
 
-Besides the  [common error codes](intl.en-US/API Reference/Common error codes.md) of Log Service APIs, the CreateConfig API may return the following special error codes.
+Besides the  [common error codes](reseller.en-US/API Reference/Common error codes.md) of Log Service APIs, the CreateConfig API may return the following special error codes.
 
 |HTTP status code |ErrorCode |ErrorMessage|
 |:----------------|:---------|:-----------|
@@ -129,7 +129,7 @@ Header :
     'x-log-apiversion': '0.6.0', 
     'User-Agent': 'log-python-sdk-v-0.6.0', 
     'Content-Type': 'application/json', 
-    'Authorization': 'LOG 94to3z418yupi6ikawqqd370:x/L1ymdn9wxe2zrwzcdSG82nXL0='
+    'Authorization': 'LOG AK\_ID:Signature'
 }
 Body:
 {
