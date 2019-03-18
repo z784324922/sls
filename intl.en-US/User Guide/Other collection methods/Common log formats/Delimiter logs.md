@@ -58,7 +58,7 @@ A delimiter log is divided into several fields by delimiters, and supports two m
 
 ## Configure Logtail to collect delimiter logs {#section_hth_dzb_ry .section}
 
-For the complete process of collecting logs by using Logtail, see [Python logs](reseller.en-US/User Guide/Other collection methods/Common log formats/Python logs.md). Select the corresponding configuration based on your network deployment and actual situation. 
+For the complete process of collecting logs by using Logtail, see [Python logs](intl.en-US/User Guide/Other collection methods/Common log formats/Python logs.md). Select the corresponding configuration based on your network deployment and actual situation. 
 
 1.  On the Logstore List page, click the **Data Import Wizard**.
 2.  Select the data source. 
@@ -81,7 +81,7 @@ For the complete process of collecting logs by using Logtail, see [Python logs](
 
     4.  Specify the log time. 
 
-        You can select to use the system time or a log field \(such as the time field,  05/May/2016:13:30:29\) as the log time. For how to configure the date format, see [Text logs - Configure time format](reseller.en-US/User Guide/Logtail collection/Text logs/Text logs - Configure time format.md). 
+        You can select to use the system time or a log field \(such as the time field,  05/May/2016:13:30:29\) as the log time. For how to configure the date format, see [Text logs - Configure time format](intl.en-US/User Guide/Logtail collection/Text logs/Text logs - Configure time format.md). 
 
         ![](images/2632_en-US.png "Specify log time ")
 
