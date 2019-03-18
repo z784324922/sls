@@ -2,7 +2,7 @@
 
 The GetCursor API is used to get the cursor based on the time. The following figure shows the relationship among the project, Logstore, shard, and cursor.
 
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13233/15382029026710_en-US.png)
+![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13233/15529199656710_en-US.png)
 
 -   A project has multiple Logstores.
 -   Each Logstore has multiple shards.
@@ -18,11 +18,11 @@ Host: <Project Endpoint>
 x-log-apiversion: 0.6.0
 ```
 
-## 请求参数 {#section_mx5_b4t_12b .section}
+## Request parameter {#section_mx5_b4t_12b .section}
 
 |Parameter Name|Type|Required |Description|
 |:-------------|:---|:--------|:----------|
-|shard|string|Yes| |
+|shard|string|Yes|The Shard.|
 |type|string|Yes| The cursor.|
 |from|string|Yes|The time point \(in UNIX format and measured in seconds\). The from\_time, begin\_time, or end\_time.|
 
@@ -30,7 +30,7 @@ x-log-apiversion: 0.6.0
 
 The lifecycle of a Logstore is specified by the lifeCycle field in the attribute.  For example, the current time is 2015-11-11 09:00:00  and lifeCycle=24.  Then, the data time period that can be consumed in each shard is \[2015-11-10 09:00:00,2015-11-11  09:00:00\) and the time here is the server time.
 
-By using the parameter from, you can locate the logs within the lifecycle in the shard. Assume that the Logstore lifecycle is \[begin\_time,end\_time\) and the parameter from is set to from\_time, then: \[begin\_time,end\_time\)，from=from\_time
+By using the parameter from, you can locate the logs within the lifecycle in the shard. Assume that the Logstore lifecycle is \[begin\_time,end\_time\) and the parameter from is set to from\_time, then: \[begin\_time,end\_time\), from=from\_time.
 
 ```
   from_time <= begin_time or from_time == "begin" : Returns the cursor location corresponding to begin_time.
@@ -82,7 +82,7 @@ Header:
     "Date": "Thu, 12 Nov 2015 03:56:57 GMT", 
     "x-log-apiversion": "0.6.0", 
     "Content-Type": "application/json", 
-    "Authorization": "LOG 94to3z418yupi6ikawqqd370:+vo0Td6PrN0CGoskJoOiAsnkXgA="
+    "Authorization": "LOG AK\_ID:Signature"
 }
 ```
 
