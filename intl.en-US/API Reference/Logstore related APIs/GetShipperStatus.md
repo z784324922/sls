@@ -27,11 +27,11 @@ x-log-signaturemethod: hmac-sha1
 
 **Request header**
 
-The GetShipperStatus API does not have a special request header.  For more information about the public request headers of Log Service APIs, see [Public request header](intl.en-US/API Reference/Public request header.md).
+The GetShipperStatus API does not have a special request header.  For more information about the public request headers of Log Service APIs, see [Public request header](reseller.en-US/API Reference/Public request header.md).
 
 **Response header**
 
-The GetShipperStatus API does not have a special response header. For more information about the public response headers of Log Service APIs,  see [Public response header](intl.en-US/API Reference/Public response header.md).
+The GetShipperStatus API does not have a special response header. For more information about the public response headers of Log Service APIs,  see [Public response header](reseller.en-US/API Reference/Public response header.md).
 
 **Response element**
 
@@ -87,7 +87,7 @@ After the successful request, the response body contains a list of specified Log
 
 **Error code**
 
-Besides the [common error codes of Log Service APIs](intl.en-US/API Reference/Common error codes.md), the GetShipperStatus API may return the following special error codes.
+Besides the [common error codes of Log Service APIs](reseller.en-US/API Reference/Common error codes.md), the GetShipperStatus API may return the following special error codes.
 
 |HTTP status code|ErrorCode|ErrorMessage|
 |:---------------|:--------|:-----------|
@@ -112,7 +112,7 @@ GET /logstores/test-logstore/shipper/test-shipper/tasks? from=1448748198&to=1448
 Header:
 {
 x-log-apiversion=0.6.0, 
-Authorization=LOG 94to3z418yupi6ikawqqd370:wFcl3ohVJupCi0ZFxRD0x4IA68A=, 
+Authorization=LOG <yourAccessKeyId>:<yourSignature>, 
 Host=ali-test-project.cn-hangzhou-devcommon-intranet.sls.aliyuncs.com, 
 Date=Wed, 11 Nov 2015 08:28:19 GMT, 
 Content-Length=55, 
