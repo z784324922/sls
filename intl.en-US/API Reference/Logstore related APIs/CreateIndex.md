@@ -42,7 +42,7 @@ Specify either keys or line. The full text index configuration includes the foll
 |:-------------|:----|:--------------|:----------|
 |caseSensitive|bool|No |Case sensitivity.|
 |chn|bool|No |Include Chinese characters or not.|
-|token|array|是|Word divider list.|
+|token|array|Yes|Word divider list.|
 |include\_keys|array|No |List of included fields, and the attribute cannot be specified with exclude\_keys at the same time.|
 |exclude\_keys|array|No |List of excluded fields, and the attribute cannot be specified with exclude\_keys at the same time.|
 
@@ -89,7 +89,7 @@ The interface may return the following error codes in addition to Log Service AP
 
 ```
 POST /logstores/my-logstore/index HTTP/1.1
-Authorization: LOG LTRTfdR7fbosJYad:OK7Sldsxcv/8gz6YtrrmzR19Tgh=
+Authorization: LOG <yourAccessKeyId>:<yourSignature>
 x-log-bodyrawsize: 0
 User-Agent: sls-java-sdk-v-0.6.1
 x-log-apiversion: 0.6.0
