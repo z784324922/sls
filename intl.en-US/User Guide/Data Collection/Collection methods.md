@@ -4,7 +4,7 @@ LogHub supports a variety of RESTful APIs that provide different log collection 
 
 ## Data sources {#section_yny_rh4_vgb .section}
 
-Currently, Log Service can collect logs from the following sources:
+Log Service can collect logs from the following sources:
 
 |Type|Source|Access method|Details|
 |:---|:-----|:------------|:------|
@@ -31,8 +31,6 @@ Currently, Log Service can collect logs from the following sources:
 |Mobile client|iOS/Android|[../../../../../dita-oss-bucket/SP\_7/DNSLS11879553/EN-US\_TP\_13288.md\#](../../../../../reseller.en-US/SDK Reference/iOS SDK.md#) and [../../../../../dita-oss-bucket/SP\_7/DNSLS11879553/EN-US\_TP\_13285.md](../../../../../reseller.en-US/SDK Reference/Android SDK.md)|-|
 |Websites|[JS/Web Tracking](reseller.en-US/User Guide/Other collection methods/Web Tracking.md)|-|
 |Intelligent IoT|[C Producer Library](https://github.com/aliyun/aliyun-log-c-sdk)|-|
-|Others|HTTP polling|[Logtail HTTP](reseller.en-US/.md)|-|
-|Syslog|[Logtail agent-syslog input source](reseller.en-US/.md)|-|
 |Cloud product|Various products, such as ECS and OSSFor more information, see [Cloud product logs](#)
 
 |Cloud product console|[Cloud product logs](reseller.en-US/User Guide/Cloud product collection/Cloud product logs.md)|
