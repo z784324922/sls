@@ -16,7 +16,6 @@ The LogShipper function of Log Service ships logs that are collected to LogHub.Â
     -   [Ship logs to OSS](intl.en-US/User Guide/Data shipping/Ship logs to OSS/Ship logs to OSS.md)
     -   Formats in OSS can be processed by using Hive. E-MapReduce is recommended.
 -   Table Store \(NoSQL data storage service\)
-    -   [Procedure](https://www.alibabacloud.com/help/doc-detail/42982.htm)
 -   Maxcompute \(large data computing services \):
-    -   Delivery via dataworks Data Integration-operation -[steps](https://www.alibabacloud.com/help/doc-detail/68322.htm)
+    -   Delivery via dataworks Data Integration-operation -[Ship data to MaxCompute by using DataWorks](intl.en-US/User Guide/Data shipping/Ship data to MaxCompute/Ship data to MaxCompute by using DataWorks.md)
 
