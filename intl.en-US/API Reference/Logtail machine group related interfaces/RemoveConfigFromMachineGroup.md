@@ -62,7 +62,7 @@ DELETE /machinegroups/sample-group/configs/logtail-config-sample
     "Host": "ali-test-project.cn-hangzhou-devcommon-intranet.sls.aliyuncs.com", 
     "Date": "Mon, 09 Nov 2015 09:48:48 GMT", 
     "x-log-apiversion": "0.6.0", 
-    "Authorization": "LOG AK\_ID:Signature"
+    "Authorization": "LOG <yourAccessKeyId>:<yourSignature>"
 }
 ```
 
