@@ -1,6 +1,6 @@
 # DeleteIndex {#reference_ivq_pvz_c2b .reference}
 
-Create an index for a specified Logstore.
+Deletes an index for a specified Logstore.
 
 Example:
 
@@ -83,86 +83,24 @@ The interface may return the following error codes in addition to Log Service AP
 |404|LogStoreNotExist|logstore \{logstoreName\} dose not exist|
 |500|InternalServerError|Specified Server Error Message|
 
-**Note:** In the error message in the above table, \{Project\} and \{logstoreName\} indicate that this section will be replaced by a specific project name and Logstore name. **Example**
+**Note:** In the error message in the above table, \{Project\} and \{logstoreName\} indicate that this section will be replaced by a specific project name and Logstore name.
 
 ## Example {#section_p5z_ghh_f2b .section}
 
 **Request example**
 
 ```
-POST /logstores/my-logstore/index HTTP/1.1
-Authorization: LOG LTRTfdR7fbosJYad:OK7Sldsxcv/8gz6YtrrmzR19Tgh=
+DELETE /logstores/my-logstore/index HTTP/1.1
+
+Authorization: LOG <yourAccessKeyId>:<yourSignature>
 x-log-bodyrawsize: 0
 User-Agent: sls-java-sdk-v-0.6.1
 x-log-apiversion: 0.6.0
 Host: my-project.cn-shanghai.log.aliyuncs.com
 x-log-signaturemethod: hmac-sha1
-Date: Mon, 07 May 2018 09:43:16 GMT
-Content-Type: application/json
-Content-MD5: 22876515FC311F857AD6C7902F6A0148
-Content-Length: 316
+Date: Sun, 06 May 2018 13:22:57 GMT
+Content-Type: application/x-protobuf
 Connection: Keep-Alive
-{
-  "line": {
-    "token": [
-      ",",
-      " ",
-      "'",
-      "\"",
-      ";",
-      "=",
-      "(",
-      ")",
-      "[",
-      "]",
-      "{",
-      "}",
-      "?",
-      "@",
-      "&",
-      "<",
-      ">",
-      "/",
-      ":",
-      "\n",
-      "\t",
-      "\r"
-    ]
-  },
-  "keys": {
-    "agent": {
-      "doc_value": true,
-      "caseSensitive": true,
-      "alias": "agent_alias",
-      "type": "text",
-      "token": [
-        ",",
-        " ",
-        "'",
-        "\"",
-        ";",
-        "=",
-        "(",
-        ")",
-        "[",
-        "]",
-        "{",
-        "}",
-        "?",
-        "@",
-        "&",
-        "<",
-        ">",
-        "/",
-        ":",
-        "\n",
-        "\t",
-        "\r"
-      ]
-    }
-  },
-  "ttl": 90
-}
 ```
 
 **Response example:**
