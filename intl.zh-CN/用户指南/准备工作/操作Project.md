@@ -14,7 +14,7 @@
 
 **操作步骤**
 
-1.  登录日志服务管理控制台。
+1.  登录[日志服务控制台](https://sls.console.aliyun.com)。
 2.  单击右上角的 **创建Project**。
 3.  填写 **Project名称** 和 **所属地域**，确认是否**开通运行日志**功能，并单击 **确认**。
 
@@ -63,6 +63,6 @@
 
 4.  单击**确认**。
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13023/15477092052574_zh-CN.png)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13023/15529939182574_zh-CN.png)
 
 
