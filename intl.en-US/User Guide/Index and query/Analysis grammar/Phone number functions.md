@@ -34,11 +34,7 @@ Phone number functions are used to query the attributes of phone numbers that ar
 
     In the statement, `mobile` is used as the input field of the `mobile_city` and `mobile_province` functions to show the provinces and cities of the phone numbers. The returned information from the preceding query is shown in the following figure.
 
-    ![](images/33429_en-US.png)
-
     You can also choose to show the phone number attributes on a map, as shown in the following figure.
-
-    ![](images/33430_en-US.png)
 
 -   **Check phone number attributes and report abnormal logon information.**
 
@@ -48,6 +44,6 @@ Phone number functions are used to query the attributes of phone numbers that ar
     * | select mobile, client_ip, count(1) as PV where mobile_city(try_cast("mobile" as bigint)) ! = ip_to_city(client_ip) and ip_to_city(client_ip) ! = '' group by client_ip, mobile order by PV desc 
     ```
 
-    Furthermore, you can create alarm rules that use phone number attributes. For more information, see [Log Service alarms](intl.en-US/.md).
+    Furthermore, you can create alarm rules that use phone number attributes.
 
 
