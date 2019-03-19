@@ -30,15 +30,15 @@ x-log-signaturemethod: hmac-sha1
 |from|integer|Yes|The query start time \(the number of seconds since 1970-1-1 00:00:00 UTC\).|
 |to|integer|Yes|The query end time \(the number of seconds since 1970-1-1 00:00:00 UTC\).|
 |topic|string|No|The topic of the log to be queried.|
-|query|string|No|The query expression. For more information about the query expression syntax, see [Query syntax](../../../../intl.en-US/User Guide/Index and query/Query syntax.md).|
+|query|string|No|The query expression. For more information about the query expression syntax, see [Query syntax](../../../../../reseller.en-US/User Guide/Index and query/Query/Query syntax.md).|
 
 **Request header**
 
-The GetHistograms API does not have a special request header. For more information about the public request headers of Log Service APIs, see [Public request header](intl.en-US/API Reference/Public request header.md).
+The GetHistograms API does not have a special request header. For more information about the public request headers of Log Service APIs, see [Public request header](reseller.en-US/API Reference/Public request header.md).
 
 **Response header**
 
-The GetHistograms API does not have a special response header.  For more information about the public response headers of Log Service APIs, see [Public response header](intl.en-US/API Reference/Public response header.md).
+The GetHistograms API does not have a special response header.  For more information about the public response headers of Log Service APIs, see [Public response header](reseller.en-US/API Reference/Public response header.md).
 
 **Response element**
 
@@ -67,7 +67,7 @@ The structure of each element in the histograms array is as follows.
 
 **Error code**
 
-Besides the [common error codes](intl.en-US/API Reference/Common error codes.md) of Log Service APIs, the GetHistograms API may return the following special error codes.
+Besides the [common error codes](reseller.en-US/API Reference/Common error codes.md) of Log Service APIs, the GetHistograms API may return the following special error codes.
 
 |HTTP status code|Error code|Error message|Description|
 |:---------------|:---------|:------------|:----------|
@@ -93,7 +93,7 @@ x-log-apiversion: 0.6.0
 x-log-signaturemethod: hmac-sha1
 ```
 
-**响应示例：**
+**Response example**
 
 ```
 HTTP/1.1 200 OK
