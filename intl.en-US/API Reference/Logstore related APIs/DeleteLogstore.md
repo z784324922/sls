@@ -33,7 +33,7 @@ The returned HTTP status code is 200.
 
 ## Error code {#section_izy_km2_sy .section}
 
-Besides the  Log Service API 的 [Common error codes](reseller.en-US/API Reference/Common error codes.md) of Log Service APIs, the DeleteLogstore API may return the following special error codes.
+Besides the [Common error codes](reseller.en-US/API Reference/Common error codes.md) of Log Service APIs, the DeleteLogstore API may return the following special error codes.
 
 |HTTP status code|Error Code| Error message|
 |:---------------|:---------|:-------------|
@@ -49,7 +49,7 @@ DELETE /logstores/test_logstore HTTP/1.1
 Header :
 {
 x-log-apiversion=0.6.0, 
-Authorization=LOG 94to3z418yupi6ikawqqd370:fPsNBIuJR1xvQZolwi8+Cw5R/fQ=, 
+Authorization=LOG <yourAccessKeyId>:<yourSignature>, 
 Host=ali-test-project.cn-hangzhou-devcommon-intranet.sls.aliyuncs.com, 
 Date=Wed, 11 Nov 2015 08:09:38 GMT, 
 Content-Length=0, 
