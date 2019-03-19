@@ -43,11 +43,11 @@ Content-Length: <ContentLength>
 
 **请求头**
 
-CreateConsumerGroup 接口无特有请求头，关于 Log Service API 的公共请求头请参考[公共请求头](intl.zh-CN/API 参考/公共请求头.md)。
+CreateConsumerGroup 接口无特有请求头，关于 Log Service API 的公共请求头请参考[公共请求头](cn.zh-CN/API 参考/公共请求头.md)。
 
 **响应头**
 
-CreateConsumerGroup 接口无特有响应头，关于 Log Service API 的公共响应头请参考[公共响应头](intl.zh-CN/API 参考/公共响应头.md)。
+CreateConsumerGroup 接口无特有响应头，关于 Log Service API 的公共响应头请参考[公共响应头](cn.zh-CN/API 参考/公共响应头.md)。
 
 **响应元素**
 
@@ -55,7 +55,7 @@ HTTP 状态码返回 200。
 
 **错误码**
 
-除了返回 Log Service API 的[通用错误码](intl.zh-CN/API 参考/通用错误码.md)，还可能返回如下特有错误码：
+除了返回 Log Service API 的[通用错误码](cn.zh-CN/API 参考/通用错误码.md)，还可能返回如下特有错误码：
 
 |**HTTP状态码**|**ErrorCode**|**ErrorMessage**|
 |:----------|:------------|:---------------|

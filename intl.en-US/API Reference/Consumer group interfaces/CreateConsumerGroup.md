@@ -1,6 +1,6 @@
 # CreateConsumerGroup {#reference_hq4_cgh_f2b .reference}
 
-Create a consumer group in a specified Logstore.
+Creates a consumer group in a specified Logstore.
 
 Example:
 
@@ -69,7 +69,7 @@ The interface may return the following error codes in addition to Log Service AP
 ```
 POST /logstores/my-logstore/consumergroups HTTP/1.1
 Header:
-Authorization: LOG LTRTfdR7fbosJYad:OK7Sldsxcv/8gz6YtrrmzR19Tgh=
+Authorization: LOG AK\_ID:Signature
 x-log-bodyrawsize: 0
 User-Agent: sls-java-sdk-v-0.6.1
 x-log-apiversion: 0.6.0
