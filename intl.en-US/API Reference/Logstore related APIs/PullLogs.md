@@ -1,6 +1,6 @@
 # PullLogs {#reference_f5p_ytq_12b .reference}
 
-Obtains logs based on the cursor and quantity. You must specify a shard when the system obtains logs. In scenarios such as Storm, elective and collaborative consumption can be performed by using [LoghubClientLib](../../../../reseller.en-US/User Guide/Real-time subscription and consumption/Consumption by consumer groups/Consumer group - Usage.md) . Currently, only log group list in [Protocol Buffer \(PB\) ](reseller.en-US/API Reference/Common resources/Data encoding method.md) format can be read.
+Obtains logs based on the cursor and quantity. You must specify a shard when the system obtains logs. In scenarios such as Storm, elective and collaborative consumption can be performed by using [LoghubClientLib](../../../../../reseller.en-US/User Guide/Real-time subscription and consumption/Consumption by consumer groups/Consumer group - Usage.md) . Currently, only log group list in [Protocol Buffer \(PB\) ](reseller.en-US/API Reference/Common resources/Data encoding method.md) format can be read.
 
 ## Request syntax {#section_j5v_14t_12b .section}
 
@@ -65,7 +65,7 @@ Read data from shard 0.
 GET /logstores/sls-test-logstore/shards/0? cursor=MTQ0NzMyOTQwMTEwMjEzMDkwNA==&count=1000&type=log  
 Header:
 {
-    "Authorization"="LOG 94to3z418yupi6ikawqqd370:WeMYZp6bH/SmWEgryMrLhbxK+7o=", 
+    "Authorization"="LOG <yourAccessKeyId>:<yourSignature>", 
     "x-log-bodyrawsize"=0, 
     "User-Agent" : "sls-java-sdk-v-0.6.0", 
     "x-log-apiversion" : "0.6.0", 
