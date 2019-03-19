@@ -23,21 +23,21 @@
         创建AliUid同名文件到 /etc/ilogtail/users 目录，如目录不存在请手动创建目录。一台服务器上可以配置多个AliUid，例如：
 
         ```
-        touch /etc/ilogtail/users/1559122535028493
-        touch /etc/ilogtail/users/1329232535020452
+        touch /etc/ilogtail/users/1**************
+        touch /etc/ilogtail/users/1**************
         ```
 
         当不需要 Logtail 收集数据到该用户的日志服务 Project 后，可删除AliUid用户标识：
 
         ```
-        rm /etc/ilogtail/users/1559122535028493
+        rm /etc/ilogtail/users/1**************
         ```
 
     -   **Windows系统**
 
         创建AliUid同名文件到目录 C:\\LogtailData\\users以配置AliUid作为用户标识。如需删除AliUid用户标识，请直接删除此文件。
 
-        例如，C:\\LogtailData\\users\\1559122535028493。
+        例如，C:\\LogtailData\\users\\1\*\*\*\*\*\*\*\*\*\*\*\*\*\*。
 
         **说明：** 
 
