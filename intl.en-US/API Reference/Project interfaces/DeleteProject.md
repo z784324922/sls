@@ -56,7 +56,7 @@ The interface may return the following error codes in addition to Log Service AP
 
 ```
 DELETE / HTTP/1.1
-Authorization: LOG LTRTfdR7fbosJYad:OK7Sldsxcv/8gz6YtrrmzR19Tgh=
+Authorization: LOG <yourAccessKeyId>:<yourSignature>
 x-log-bodyrawsize: 0
 User-Agent: sls-java-sdk-v-0.6.1
 x-log-apiversion: 0.6.0
