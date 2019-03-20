@@ -92,7 +92,7 @@ Header :
     "x-log-apiversion": "0.6.0",
     "User-Agent": "log-python-sdk-v-0.6.0",
     "Content-Type": "application/json", 
-    "Authorization": "LOG 94to3z418yupi6ikawqqd370:GTPzFbLe8PZW0OFxTk/xMoCXA9E="
+    "Authorization": "LOG <yourAccessKeyId>:<yourSignature>"
 }
 Body :
 {
