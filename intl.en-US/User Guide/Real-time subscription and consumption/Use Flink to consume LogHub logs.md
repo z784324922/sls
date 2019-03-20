@@ -36,8 +36,8 @@ The producer writes data into Log Service. When using the connector, you must ad
 
 ## Prerequisites {#section_jsn_ggd_f2b .section}
 
-1.  Access key is enabled and project and logstore have been created. For detailed instructions, see [Preparation](intl.en-US/User Guide/Preparation/Preparation.md).
-2.  To use a sub-account to access Log Service, make sure that you have properly set the Resource Access Management \(RAM\) policies of Logstore. For more information, see [Grant RAM sub-accounts permissions to access Log Service](intl.en-US/User Guide/Access control RAM/Grant RAM sub-accounts permissions to access Log Service.md).
+1.  Access key is enabled and project and logstore have been created. For detailed instructions, see [Preparation](reseller.en-US/User Guide/Preparation/Preparation.md).
+2.  To use a sub-account to access Log Service, make sure that you have properly set the Resource Access Management \(RAM\) policies of Logstore. For more information, see [Grant RAM sub-accounts permissions to access Log Service](reseller.en-US/User Guide/Access control RAM/Grant RAM sub-accounts permissions to access Log Service.md).
 
 ## Log consumer {#section_f1d_lgd_f2b .section}
 
@@ -51,7 +51,7 @@ The Flink log consumer uses the following Alibaba Cloud Log Service APIs:
 
 -   Getcursorordata
 
-    This API is used to pull data from a shard. If this API is frequently called, data may exceed the shard quota of Log Service. You can use ConfigConstants.LOG\_FETCH\_DATA\_INTERVAL\_MILLIS and ConfigConstants.LOG\_MAX\_NUMBER\_PER\_FETCH to control the time interval of API calls and the number of logs pulled by each call. For more information about the shard quota, see [Shard](https://help.aliyun.com/document_detail/28976.html).
+    This API is used to pull data from a shard. If this API is frequently called, data may exceed the shard quota of Log Service. You can use ConfigConstants.LOG\_FETCH\_DATA\_INTERVAL\_MILLIS and ConfigConstants.LOG\_MAX\_NUMBER\_PER\_FETCH to control the time interval of API calls and the number of logs pulled by each call. For more information about the shard quota, see [Shard](https://www.alibabacloud.com/help/doc-detail/28976.htm).
 
     ```
     configProps.put(ConfigConstants.LOG_FETCH_DATA_INTERVAL_MILLIS， "100");
@@ -137,7 +137,7 @@ configProps.put(ConfigConstants.LOG_CONSUMER_BEGIN_POSITION, Consts.LOG_FROM_CHE
 
 ## 3 set up consumer progress monitoring \(optional\) {#section_tgs_chd_f2b .section}
 
-The Flink log consumer supports consumption progress monitoring. The consumption progress is to obtain the real-time consumption position of each shard, which is expressed in the timestamp. For more information, see [View consumer group status](intl.en-US/User Guide/Real-time subscription and consumption/View consumer group status.md) and [Consumer group - Monitoring alarm](intl.en-US/User Guide/Real-time subscription and consumption/Consumer group - Monitoring alarm.md).
+The Flink log consumer supports consumption progress monitoring. The consumption progress is to obtain the real-time consumption position of each shard, which is expressed in the timestamp. For more information, see [View consumer group status](reseller.en-US/User Guide/Real-time subscription and consumption/Consumption by consumer groups/View consumer group status.md) and [Consumer group - Monitoring alarm](reseller.en-US/User Guide/Real-time subscription and consumption/Consumption by consumer groups/Consumer group - Monitoring alarm.md).
 
 ```
 configProps.put(ConfigConstants.LOG_CONSUMERGROUP, "your consumer group name");
@@ -205,7 +205,7 @@ If a RAM sub-user uses the producer, the preceding two APIs must be authorized.
 
     2.  Reload LogSerializationSchema to define the method for serializing data to RawLogGroup.
 
-        RawLogGroup is a collection of logs. For more information about the meaning of each field, see [Data model](../../../../intl.en-US/API Reference/Common resources/Data model.md).
+        RawLogGroup is a collection of logs. For more information about the meaning of each field, see [Data model](../../../../../reseller.en-US/API Reference/Common resources/Data model.md).
 
         To use the shardHashKey function of Log Service, specify the shard into which data is written. You can use LogPartitioner in the following way to generate the HashKey of data: 
 
