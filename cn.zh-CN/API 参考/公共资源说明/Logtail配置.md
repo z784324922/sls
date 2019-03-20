@@ -153,7 +153,7 @@ Logtail配置叫做config，每个Project默认可以创建100个配置（config
     |separator|string|否|分隔符。|
     |quote|string|是|引用符。|
     |key|array|是|日志抽取结果的key列表。|
-    |timeKey|string|否|指定时间字段key名称，必须在key列表里面。|
+    |timeKey|string|是|指定时间字段key名称，必须在key列表里面。|
     |autoExtend|bool|否|当日志中实际的key数量大于配置的key数量时，是否自动扩展。|
 
 -   **飞天日志配置**
