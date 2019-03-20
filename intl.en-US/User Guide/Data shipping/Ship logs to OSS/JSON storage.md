@@ -1,6 +1,6 @@
 # JSON storage {#concept_y4l_34q_zdb .concept}
 
-This document introduces the configurations about JSON storage for Log Service logs that are shipped to Object Storage Service \(OSS\). For more information about shipping logs to OSS, see [Ship logs to OSS](reseller.en-US/User Guide/Data shipping/Ship logs to OSS.md).
+This document introduces the configurations about JSON storage for Log Service logs that are shipped to Object Storage Service \(OSS\). For more information about shipping logs to OSS, see [Ship logs to OSS](reseller.en-US/User Guide/Data shipping/Ship logs to OSS/Ship logs to OSS.md).
 
 The compression types and file addresses of OSS files are as follows.
 
@@ -15,7 +15,7 @@ An object is combined by multiple logs. Each line of the file is a log in the JS
 
 ```
 {"__time__":1453809242,"__topic__":"","__source__":"10.170. ***.***","ip":"10.200. **.***","time":"26/Jan/2016:19:54:02 +0800","url":"POST
-              /PutData? Category=YunOsAccountOpLog&AccessKeyId=U0************5A&Date=Fri%2C%2028%20Jun%202013%2006%3A53%3A30%20GMT&Topic=raw&Signature=pD12XYLmGxKQ%2Bmkd6x7hAgQ7b1c%3D
+              /PutData? Category=YunOsAccountOpLog&AccessKeyId=<yourAccessKeyId>&Date=Fri%2C%2028%20Jun%202013%2006%3A53%3A30%20GMT&Topic=raw&Signature=<yourSignature>
               HTTP/1.1","status":"200","user-agent":"aliyun-sdk-java"}
 ```
 
