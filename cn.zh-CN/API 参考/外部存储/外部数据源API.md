@@ -62,16 +62,16 @@ POST /externalstores HTTP/1.1
 'x-log-signaturemethod': 'hmac-sha1', 
 'Host': 'ali-yunlei-chengdu.cn-chengdu.log.aliyuncs.com', 
 'Date': 'Thu, 19 Apr 2018 02:15:41 GMT', 
-'Authorization': 'LOG LTAIDbs0FWzQtYAl:E2CeD7yIRXsZjkb+nUDoJFbGM1E='}
+'Authorization': 'LOG <yourAccessKeyId>:<yourSignature>'}
 '{"externalStoreName": "rds_store", 
   "storeType": "rds-vpc", 
   "parameter": {
-               "vpc-id": "vpc-m5eq4irc1pucpk85frr5j", 
-               "instance-id": "i-m5eeo2whsnfg4kzq54ah", 
-               "host": "47.104.78.128", 
+               "vpc-id": "vpc-bp1aevy8sofi8mh1q****", 
+               "instance-id": "i-bp1b6c719dfa08exf****", 
+               "host": "192.168.XX.XX", 
                "port": "3306", 
                "username": "root", 
-               "password": "sfdsfldsfksflsdfs", 
+               "password": "sfdsfldsfksfls****", 
                "db": "meta", 
                "table": "join_meta", 
                "region": "cn-qingdao"
@@ -136,16 +136,16 @@ PUT http://ali-yunlei-chengdu.cn-chengdu.log.aliyuncs.com:80/externalstores/rds_
 'x-log-signaturemethod': 'hmac-sha1', 
 'Host': 'ali-yunlei-chengdu.cn-chengdu.log.aliyuncs.com', 
 'Date': 'Thu, 19 Apr 2018 02:15:41 GMT', 
-'Authorization': 'LOG LTAIDbs0FWzQtYAl:E2CeD7yIRXsZjkb+nUDoJFbGM1E='}
+'Authorization': 'LOG <yourAccessKeyId>:<yourSignature>'}
 '{"externalStoreName": "rds_store", 
   "storeType": "rds-vpc", 
   "parameter": {
-               "vpc-id": "vpc-m5eq4irc1pucpk85frr5j", 
-               "instance-id": "i-m5eeo2whsnfg4kzq54ah", 
-               "host": "47.104.78.128", 
+               "vpc-id": "vpc-p1aevy8sofi8mh1q****", 
+               "instance-id": "i-bp1b6c719dfa08exf****", 
+               "host": "192.168.XX.XX", 
                "port": "3306", 
                "username": "root", 
-               "password": "sfdsfldsfksflsdfs", 
+               "password": "sfdsfldsfksfl****", 
                "db": "meta", 
                "table": "join_meta", 
                "region": "cn-qingdao"
@@ -165,7 +165,7 @@ GET /externalstores?externalStoreName=<external_store_name_prefix>&offset=<offse
 'hmac-sha1', 
 'Host': '<endpoint>',
 'Date': 'Thu, 19 Apr 2018 03:03:16 GMT', 
-'Authorization': 'LOG LTAIDbs0FWzQtYAl:iZJXISaDEju6TJpPDf+CLOiserk='}
+'Authorization': 'LOG <yourAccessKeyId>:<yourSignature>'}
 ```
 
 **请求参数**
@@ -187,7 +187,7 @@ GET http://ali-yunlei-chengdu.cn-chengdu.log.aliyuncs.com:80/externalstores?exte
 'hmac-sha1', 
 'Host': 'ali-yunlei-chengdu.cn-chengdu.log.aliyuncs.com',
 'Date': 'Thu, 19 Apr 2018 03:03:16 GMT', 
-'Authorization': 'LOG LTAIDbs0FWzQtYAl:iZJXISaDEju6TJpPDf+CLOiserk='}
+'Authorization': 'LOG <yourAccessKeyId>:<yourSignature>'}
 ```
 
 **响应**
@@ -206,7 +206,7 @@ http://ali-yunlei-chengdu.cn-chengdu.log.aliyuncs.com:80/externalstores/<externa
 'x-log-signaturemethod': 'hmac-sha1', 
 'Host': 'ali-yunlei-chengdu.cn-chengdu.log.aliyuncs.com', 
 'Date': 'Thu, 19 Apr 2018 03:26:49 GMT', 
-'Authorization': 'LOG LTAIDbs0FWzQtYAl:a16W7ej3c0RqdQn3Pvnq5aHWEOk='
+'Authorization': 'LOG <yourAccessKeyId>:<yourSignature>'
 ```
 
 **请求参数**
@@ -225,7 +225,7 @@ http://ali-yunlei-chengdu.cn-chengdu.log.aliyuncs.com:80/externalstores/rds_stor
 'x-log-signaturemethod': 'hmac-sha1', 
 'Host': 'ali-yunlei-chengdu.cn-chengdu.log.aliyuncs.com', 
 'Date': 'Thu, 19 Apr 2018 03:26:49 GMT', 
-'Authorization': 'LOG LTAIDbs0FWzQtYAl:a16W7ej3c0RqdQn3Pvnq5aHWEOk='
+'Authorization': 'LOG <yourAccessKeyId>:<yourSignature>'
 ```
 
 **响应**
@@ -235,9 +235,9 @@ http://ali-yunlei-chengdu.cn-chengdu.log.aliyuncs.com:80/externalstores/rds_stor
   'storeType': 'rds-vpc', 
   'parameter': {
                'region': 'cn-qingdao', 
-               'vpc-id': 'vpc-m5eq4irc1pucpk85frr5j', 
-               'instance-id': 'i-m5eeo2whsnfg4kzq54ah', 
-               'host': '47.104.78.128', 
+               'vpc-id': 'vpc-p1aevy8sofi8mh1q****', 
+               'instance-id': 'i-bp1b6c719dfa08exf****', 
+               'host': '192.168.XX.XX', 
                'port': '3306', 
                'username': 'root', 
                'db': 'meta', 
@@ -256,7 +256,7 @@ DELETE /externalstores/<external_store_name>
 'x-log-signaturemethod': 'hmac-sha1', 
 'Host': 'ali-yunlei-chengdu.cn-chengdu.log.aliyuncs.com', 
 'Date': 'Thu, 19 Apr 2018 03:32:49 GMT', 
-'Authorization': 'LOG LTAIDbs0FWzQtYAl:7CtslFnYg+WEIt56Bsf2Xy4faw8='
+'Authorization': 'LOG <yourAccessKeyId>:<yourSignature>'
 ```
 
 **请求参数**
@@ -275,6 +275,6 @@ DELETE /externalstores/<external_store_name>
 'x-log-signaturemethod': 'hmac-sha1', 
 'Host': 'ali-yunlei-chengdu.cn-chengdu.log.aliyuncs.com', 
 'Date': 'Thu, 19 Apr 2018 03:32:49 GMT', 
-'Authorization': 'LOG LTAIDbs0FWzQtYAl:7CtslFnYg+WEIt56Bsf2Xy4faw8='
+'Authorization': 'LOG <yourAccessKeyId>:<yourSignature>'
 ```
 
