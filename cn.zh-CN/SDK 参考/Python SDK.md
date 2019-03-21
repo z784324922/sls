@@ -12,17 +12,15 @@
 
 ## 步骤 1 创建阿里云账号 {#section_zlg_r1r_12b .section}
 
-具体方法请参考 [阿里云账号注册流程](https://help.aliyun.com/document_detail/37195.html)。
-
-为了更好地使用阿里云服务，建议尽快完成实名认证，否则部分阿里云服务将无法使用。
+具体方法请参考 [阿里云账号注册流程](https://www.alibabacloud.com/help/zh/doc-detail/50482.htm)。
 
 ## 步骤 2 获取阿里云访问密钥 {#section_amg_r1r_12b .section}
 
-为了使用 Log Service Python SDK，您必须申请阿里云的 [访问秘钥](../../../../../cn.zh-CN/API 参考/访问秘钥.md)。
+为了使用 Log Service Python SDK，您必须申请阿里云的 [访问秘钥](../../../../../intl.zh-CN/API 参考/访问秘钥.md)。
 
-登录阿里云[秘钥管理页面](https://ak-console.aliyun.com/#/accesskey) 。选择一对用于 SDK 的访问密钥对。如果没有，请创建一对新访问密钥，且保证它处于**启用**状态。有关如何创建访问密钥，参见 [准备流程](../../../../../cn.zh-CN/用户指南/准备工作/准备流程.md)。
+登录阿里云[秘钥管理页面](https://ak-console.aliyun.com/#/accesskey) 。选择一对用于 SDK 的访问密钥对。如果没有，请创建一对新访问密钥，且保证它处于**启用**状态。有关如何创建访问密钥，参见 [准备流程](../../../../../intl.zh-CN/用户指南/准备工作/准备流程.md)。
 
-该密钥对会在下面的步骤使用，且需要保管好，不能对外泄露。另外，您可以参考 [配置](cn.zh-CN/SDK 参考/基本介绍/配置.md) 了解更多 SDK 如何使用访问密钥的信息。
+该密钥对会在下面的步骤使用，且需要保管好，不能对外泄露。另外，您可以参考 [配置](intl.zh-CN/SDK 参考/基本介绍/配置.md) 了解更多 SDK 如何使用访问密钥的信息。
 
 ## 步骤 3 创建日志服务项目和日志库 {#section_zrq_dbr_12b .section}
 
@@ -33,19 +31,19 @@
 1.  登录日志服务管理控制台。
 2.  单击右上角的**创建Project**。
 3.  填写**Project名称**和**所属地域**，单击**确认**。
-4.  在Project列表页面，单击项目的名称，然后单击**创建** [创建日志库](https://help.aliyun.com/document_detail/48990.html)。
+4.  在Project列表页面，单击项目的名称，然后单击**创建** [创建日志库](../../../../../intl.zh-CN/用户指南/准备工作/操作Logstore.md#)。
 
     或者在创建完项目后，根据系统提示创建日志库，单击**创建**。
 
 5.  填写日志库的配置信息并单击**确认**。
 
-    您需要在此处填写Logstore名称、数据保存时间、Shard数目等。请按照您的需求合理设置[Shard](https://help.aliyun.com/document_detail/28976.html)数目，例如本文实例中，您需要设置4个Shard。
+    您需要在此处填写Logstore名称、数据保存时间、Shard数目等。请按照您的需求合理设置[Shard](../../../../../intl.zh-CN/产品简介/基本概念/分区.md#)数目，例如本文实例中，您需要设置4个Shard。
 
 
 **说明：** 
 
 -   请确保使用同一阿里云账号获取阿里云访问密钥和创建日志项目及日志库。
--   关于日志的项目、日志库等概念请参考 Log [基本概念](../../../../../cn.zh-CN/产品简介/基本概念.md)。
+-   关于日志的项目、日志库等概念请参考 Log [基本概念](../../../../../intl.zh-CN/产品简介/基本概念.md)。
 -   Log 的 Project 名称为日志服务全局唯一，而 Logstore 名称在一个 Project 下面唯一。
 -   Log 的 Project 一旦创建则无法更改它的所属区域。目前也不支持在不同阿里云 Region 间迁移 Log Project。
 
