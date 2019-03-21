@@ -4,12 +4,6 @@ Alibaba Cloud Threat Detection Service \(TDS\) provides a log analysis function 
 
 ## Features {#section_bqd_ttn_4fb .section}
 
--   [Log analysis](../../../../../reseller.en-US//Activate Log Analysis Service.md)
--   [Custom log query and analysis](../../../../../reseller.en-US//Use custom log query and analysis.md)
--   [Log report dashboards](../../../../../reseller.en-US//Log report dashboards.md)
--   [Log types and parameters](../../../../../reseller.en-US//Log types and parameters.md)
--   [Log export](../../../../../reseller.en-US//Export logs.md)
-
 ## Overview {#section_r1c_4tn_lfb .section}
 
 Alibaba Cloud TDS is fully integrated with Log Service and provides TDS log collection and analysis functions, which can help you better understand and more effectively address server security risks and manage your assets on the cloud. TDS is suitable for the following enterprise-level scenarios:
