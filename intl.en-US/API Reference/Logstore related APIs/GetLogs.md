@@ -9,7 +9,7 @@ When a log is written to the Logstore, the latency of querying this log by using
 
 The maximum latency between real-time data writing and query is 3 seconds. \(data can be queried within one second in 99.9% cases\).
 
-## 请求语法 {#section_j5v_14t_12b .section}
+## Request syntax {#section_j5v_14t_12b .section}
 
 ```
 GET /logstores/<logstorename>?type=log&topic=<logtopic>&from=<starttime>&to=<endtime>&query=<querystring>&line=<linenum>&offset=<startindex>&reverse=<ture|false> HTTP/1.1
@@ -27,12 +27,12 @@ x-log-signaturemethod: hmac-sha1
 |:-------------|:---|:-------|:----------|
 |logstorename|string|Yes|The name of the Logstore where the log to be queried belongs. |
 |type|string|Yes|The type of Logstore data to be queried. This parameter must be log in GetLogs API.|
-|from|整型|Yes| The query start time \(the number of seconds since 1970-1-1 00:00:00 UTC\). |
-|to|整型|Yes|The query end time \(the number of seconds since 1970-1-1 00:00:00 UTC\).|
+|from|int|Yes| The query start time \(the number of seconds since 1970-1-1 00:00:00 UTC\). |
+|to|int|Yes|The query end time \(the number of seconds since 1970-1-1 00:00:00 UTC\).|
 |topic|string|No |The topic of the log to be queried.|
-|query|string|No |The query expression. For more information about the query expression syntax, see  [Query syntax](https://help.aliyun.com/document_detail/29060.html).|
-|line|整型|No |The maximum number of log lines returned by the request. The maximum number of logs returned from the request.|
-|The value range is 0–100 and the default value is 100.|整型|No | The returned log start point of the request. The value can be 0 or a positive integer. The default value is 0. |
+|query|string|No |The query expression. For more information about the query expression syntax, see  [Query syntax](../../../../../reseller.en-US/User Guide/Index and query/Query/Query syntax.md#).|
+|line|int|No |The maximum number of log lines returned by the request. The maximum number of logs returned from the request.|
+|The value range is 0–100 and the default value is 100.|int|No | The returned log start point of the request. The value can be 0 or a positive integer. The default value is 0. |
 |reverse|boolean|No |Whether or not logs are returned in reverse order according to the log timestamp.  true indicates reverse order and false indicates sequent order. The default value is false .|
 
 **Request header**
@@ -48,7 +48,7 @@ The response header has special elements to indicate whether or not the returned
 |Parameter name|Type|Description|
 |:-------------|:---|:----------|
 |x-log-progress|string|The status of the query results.  The status of the query results. The two optional values Incomplete and Complete indicate whether or not the results are complete.|
-|x-log-count|整型|The total number of logs in the current query results.|
+|x-log-count|int|The total number of logs in the current query results.|
 
 **Response element**
 
@@ -56,7 +56,7 @@ After the successful request, the response body contains the logs that meet the 
 
 |Parameter name|Type|Description|
 |:-------------|:---|:----------|
-|\_\_time\_\_|整型|The log timestamp \(the number of seconds since 1970-1-1 00:00:00 UTC\).|
+|\_\_time\_\_|int|The log timestamp \(the number of seconds since 1970-1-1 00:00:00 UTC\).|
 |\_\_source\_\_|string|The log source, which is specified when logs are written.|
 |\[content\]|key-value pair|The original content of the log, which is organized in key-value pairs.|
 
@@ -97,7 +97,7 @@ x-log-apiversion: 0.4.0
 x-log-signaturemethod: hmac-sha1
 ```
 
-**响应示例：**
+**Response example**
 
 ```
 HTTP/1.1 200 OK
