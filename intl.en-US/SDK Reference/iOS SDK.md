@@ -1,6 +1,6 @@
 # iOS SDK {#reference_qyv_vh4_12b .reference}
 
-Alibaba Cloud Log Service SDKs are implemented based on [Overview](../../../../reseller.en-US/API Reference/Overview.md)  and currently provide the log writing function.
+Alibaba Cloud Log Service SDKs are implemented based on [Overview](../../../../../reseller.en-US/API Reference/Overview.md)  and currently provide the log writing function.
 
 GitHub：[https://github.com/aliyun/aliyun-log-ios-sdk](https://github.com/aliyun/aliyun-log-ios-sdk?spm=5176.doc43145.2.3.AKDn3Z)
 
@@ -9,7 +9,7 @@ GitHub：[https://github.com/aliyun/aliyun-log-ios-sdk](https://github.com/aliyu
 ```
  /*
     Use the endpoint, AccessKey ID, and AccessKey Secret to build the Log Service client.
-    @endPoint: see https://help.aliyun.com/document_detail/29008.html
+    @endPoint: see https://www.alibabacloud.com/help/doc-detail/29008.htm
  */
 let myClient = try! LOGClient(endPoint: "",
                               accessKeyID: "",
