@@ -51,7 +51,7 @@ The Flink log consumer uses the following Alibaba Cloud Log Service APIs:
 
 -   Getcursorordata
 
-    This API is used to pull data from a shard. If this API is frequently called, data may exceed the shard quota of Log Service. You can use ConfigConstants.LOG\_FETCH\_DATA\_INTERVAL\_MILLIS and ConfigConstants.LOG\_MAX\_NUMBER\_PER\_FETCH to control the time interval of API calls and the number of logs pulled by each call. For more information about the shard quota, see [Shard](https://www.alibabacloud.com/help/doc-detail/28976.htm).
+    This API is used to pull data from a shard. If this API is frequently called, data may exceed the shard quota of Log Service. You can use ConfigConstants.LOG\_FETCH\_DATA\_INTERVAL\_MILLIS and ConfigConstants.LOG\_MAX\_NUMBER\_PER\_FETCH to control the time interval of API calls and the number of logs pulled by each call. For more information about the shard quota, see [shard简介](../../../../../reseller.en-US/Product Introduction/Basic concepts/Shard.md#).
 
     ```
     configProps.put(ConfigConstants.LOG_FETCH_DATA_INTERVAL_MILLIS， "100");
