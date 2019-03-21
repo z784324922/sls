@@ -16,9 +16,9 @@ For more information, see [Sign up with Alibaba Cloud](https://www.alibabacloud.
 
 ## Step 2. Obtain an Alibaba Cloud AccessKey {#section_amg_r1r_12b .section}
 
-Before using Log Service Python SDK, you must apply for an [AccessKey](../../../../reseller.en-US/API Reference/AccessKey.md).
+Before using Log Service Python SDK, you must apply for an [AccessKey](../../../../../reseller.en-US/API Reference/AccessKey.md).
 
-Log on to the Access Key Management page. Select an AccessKey for SDK.  If you do not have any, create one and make sure the AccessKey is **enabled**. For more information about how to create an access key, see [Preparation](../../../../reseller.en-US/User Guide/Preparation/Preparation.md).
+Log on to the Access Key Management page. Select an AccessKey for SDK.  If you do not have any, create one and make sure the AccessKey is **enabled**. For more information about how to create an access key, see [Preparation](../../../../../reseller.en-US/User Guide/Preparation/Preparation.md).
 
 The AccessKey is used in the following steps and must be kept confidential. For more information about [Configurations](reseller.en-US/SDK Reference/Basic Descriptions /Configurations.md) how to use the AccessKey in SDK.
 
@@ -31,19 +31,19 @@ Before using Log Service Python SDK, you must create a Log Service project and a
 1.  Log on to the Log Service console.
 2.  Click Create Project in the upper-right corner.Click **Create Project** in the upper right corner.
 3.  Enter the **Project Name** and select the **Region**. Click **Confirm**.
-4.  On the Project List page, click the name of the project, and then click **Create**.  [Create a Logstore](https://help.aliyun.com/document_detail/48990.html).
+4.  On the Project List page, click the name of the project, and then click **Create**.  [Create a Logstore](../../../../../reseller.en-US/User Guide/Preparation/Manage a Logstore.md#).
 
     After you create a project, you can also click **Create** to create a Logstore based on the system prompt.
 
 5.  Complete the configurations, and click **Confirm**.
 
-    Enter the Logstore Name and Data Retention Time.  Select the Number of [Shards](https://help.aliyun.com/document_detail/28976.html) as needed. In this example, you must configure four shards.
+    Enter the Logstore Name and Data Retention Time.  Select the Number of [Shards](../../../../../reseller.en-US/Product Introduction/Basic concepts/Shard.md#) as needed. In this example, you must configure four shards.
 
 
 **Note:** 
 
 -   Make sure that you use the same Alibaba Cloud account to obtain the Alibaba Cloud AccessKey and create the Log Service project and Logstore.
--   For more information about the concepts of Log Service such as project and Logstore, see [Basic concepts](../../../../reseller.en-US/Product Introduction/Basic concepts.md).
+-   For more information about the concepts of Log Service such as project and Logstore, see [Basic concepts](../../../../../reseller.en-US/Product Introduction/Basic concepts.md).
 -   A project name must be globally unique in Log Service, and a Logstore name must be unique in the same project.
 -   After a project is created, you cannot modify the region  or migrate the project across regions.
 
@@ -178,7 +178,7 @@ def main():
    # Create an external store.
     res = client.create_external_store(project,ExternalStoreConfig("rds_store","cn-qingdao","rds-vpc","vpc-************","i***********","*. *. *.*","3306","root","sfdsfldsfksflsdfs","meta","join_meta"));
     res.log_print()
-    res = client.update_external_store(project,ExternalStoreConfig("rds_store","cn-qingdao","rds-vp,"rds-vpc","vpc-************","i************","*. *. *.*","3306","root","sfdsfldsfksflsdfs","meta","join_meta"));
+    res = client.update_external_store(project,ExternalStoreConfig("rds_store","cn-qingdao","rds-vp","rds-vpc","vpc-************","i************","*. *. *.*","3306","root","sfdsfldsfksflsdfs","meta","join_meta"));
     res.log_print()
     res = client.get_external_store(project,"rds_store");
     res.log_print()
