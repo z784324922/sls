@@ -44,8 +44,8 @@ Operation Demonstration:
 
 To interconnect Log Service data with DataV big screen, follow these steps:
 
-1.  Collect data. See [5-minute quick start](https://www.alibabacloud.com/help/doc-detail/54604.htm) to access the data source to Log Service.
-2.  Set the index See [Index settings and visualization](https://www.alibabacloud.com/help/doc-detail/43772.htm) or Use case for [website log analysis](https://www.alibabacloud.com/help/doc-detail/56728.htm) in Best Practices.
+1.  Collect data. See [5-minute quick start](../../../../../reseller.en-US/Quick Start/5-minute quick start.md#) to access the data source to Log Service.
+2.  Set the index See [Index settings and visualization](reseller.en-US/User Guide/Index and query/Overview.md#) or Use case for [website log analysis](../../../../../reseller.en-US/Quick Start/Analysis - Nginx access logs.md#) in Best Practices.
 3.  Interconnect with the DataV plug-in to convert the real-time results queried by using the SQL statement to a view.
 
 After completing steps 1 and 2, you can view the raw logs on the search page. This document mainly describes how to perform step 3.
