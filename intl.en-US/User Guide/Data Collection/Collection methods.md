@@ -8,7 +8,7 @@ Log Service can collect logs from the following sources:
 
 |Type|Source|Access method|Details|
 |:---|:-----|:------------|:------|
-|Application|Program output|[Logtail](reseller.en-US/User Guide/Logtail collection/Overview/Overview.md)|[Case](https://www.alibabacloud.com/help/zh/doc-detail/59355.htm)|
+|Application|Program output|[Logtail](reseller.en-US/User Guide/Logtail collection/Overview/Overview.md)|-|
 |Access logs|[Logtail](reseller.en-US/User Guide/Logtail collection/Overview/Overview.md)|[../../../../../dita-oss-bucket/SP\_7/DNSLS11878107/EN-US\_TP\_13019.md](../../../../../reseller.en-US/Quick Start/Analysis - Nginx access logs.md)|
 |Link track|Jaeger Collector and [Logtail](reseller.en-US/User Guide/Logtail collection/Overview/Overview.md)|-|
 |Programming language|Java|[SDK](../../../../../reseller.en-US/SDK Reference/Basic Descriptions /Overview.md) and [Java Producer Library](reseller.en-US/User Guide/Other collection methods/SDK collection/Producer Library.md)|-|
@@ -36,6 +36,8 @@ Log Service can collect logs from the following sources:
 |Cloud product console|[Cloud product logs](reseller.en-US/User Guide/Cloud product collection/Cloud product logs.md)|
 |Third-party software|Logstash|[Logstash](reseller.en-US/User Guide/Other collection methods/Logstash/Create Logstash collection configurations.md)|-|
 
+The following table lists the cloud products from which Log Service can collect logs:
+
 |Type|Cloud product name|Activation method|Details|
 |:---|:-----------------|:----------------|:------|
 |Elastic computing|Elastic Compute Service \(ECS\)|Through Logtail installation|[Logtail introduction](reseller.en-US/User Guide/Logtail collection/Overview/Overview.md)|
@@ -44,12 +46,10 @@ Log Service can collect logs from the following sources:
 |Network|Server Load Balancer \(SLB\)|Through the SLB console|[Access logs of Layer-7 SLB](reseller.en-US/User Guide/Cloud product collection/Access logs of Layer-7 Server Load Balancer.md)|
 |Virtual Private Cloud \(VPC\)|Through the VPC console|[Flow logs](../../../../../reseller.en-US/User Guide/Flow logs.md)|
 |API Gateway|Through the API Gateway console|[API Gateway access logs](reseller.en-US/User Guide/Cloud product collection/API Gateway Access Log.md)|
-|Security|Server Guard|Purchase Server Guard Enterprise Edition and activate the service in the Server Guard console.|[Server Guard logs](reseller.en-US/.md)|
-|ActionTrail|Through the ActionTrail console|[ActionTrail overview](reseller.en-US/User Guide/Cloud product collection/ActionTrail access logs/Overview.md)|
-|Web Application Firewall \(WAF\)|Purchase WAF Enterprise Edition and a Log Service module.|[WAF logs]()|
+|Security|ActionTrail|Through the ActionTrail console|[ActionTrail overview](reseller.en-US/User Guide/Cloud product collection/ActionTrail access logs/Overview.md)|
 |DDoS Protection|Through the DDoS Protection console|[DDOS Protection overview](reseller.en-US/User Guide/Cloud product collection/DDoS log collection/Overview.md)|
 |Threat Detection Service|Purchase Threat Detection Service Enterprise Edition and activate the service in the Threat Detection Service console.|[Log retrieval](../../../../../reseller.en-US/User Guide/Log retrieval/Log retrieval.md)|
-|Anti-Bot Service|Through the Anti-Bot Service console|[Anti-Bot Service logs]() |
+|Anti-Bot Service|Through the Anti-Bot Service console|[Anti-Bot Service logs](~~100510~~) |
 |Application|Log Service \(LOG\)|Through the Log Service console|[Log Service overview](reseller.en-US/User Guide/Log Service Monitor/Service log/Service log overview.md)|
 
 ## Network and access point selection {#section_m2v_rl5_vdb .section}
