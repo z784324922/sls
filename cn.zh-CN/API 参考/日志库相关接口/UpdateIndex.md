@@ -25,7 +25,6 @@ Content-Length: <ContentLength>
 {
   "line": <full text index>,
   "keys": <key-value index>,
-  "ttl": <ttl>
 }
 ```
 
@@ -34,8 +33,7 @@ Content-Length: <ContentLength>
 |属性名称|类型|是否必须|描述|
 |:---|:-|:---|:-|
 |logstoreName|string|是|Logstore 的名称。|
-|ttl|integer|否|索引文件生命周期，支持7天，30天和90天。|
-|keys|object|否|键值索引配置，key为字段名称，value为字段索引配置。|
+|keys|object|否|字段索引配置，key为字段名称，value为字段索引配置。|
 |line|object|否|全文索引配置。|
 
 属性keys和line必须至少指定一个。全文索引配置包含如下属性：
@@ -61,11 +59,11 @@ Content-Length: <ContentLength>
 
 **请求头**
 
-UpdateIndex 接口无特有请求头，关于 Log Service API 的公共请求头请参考 [公共请求头](cn.zh-CN/API 参考/公共请求头.md)。
+UpdateIndex 接口无特有请求头，关于 Log Service API 的公共请求头请参考 [公共请求头](intl.zh-CN/API 参考/公共请求头.md)。
 
 **响应头**
 
-UpdateIndex 接口无特有响应头，关于 Log Service API 的公共响应头请参考[公共响应头](cn.zh-CN/API 参考/公共响应头.md)。
+UpdateIndex 接口无特有响应头，关于 Log Service API 的公共响应头请参考[公共响应头](intl.zh-CN/API 参考/公共响应头.md)。
 
 **响应元素**
 
@@ -73,7 +71,7 @@ HTTP 状态码返回 200。
 
 **错误码**
 
-除了返回 Log Service API 的[通用错误码](cn.zh-CN/API 参考/通用错误码.md)，还可能返回如下特有错误码：
+除了返回 Log Service API 的[通用错误码](intl.zh-CN/API 参考/通用错误码.md)，还可能返回如下特有错误码：
 
 |HTTP状态码|ErrorCode|ErrorMessage|
 |:------|:--------|:-----------|
@@ -92,7 +90,7 @@ HTTP 状态码返回 200。
     ```
     PUT /logstores/logstore-4/index HTTP/1.1
     Header:
-    Authorization: LOG LTRTfdR7fbosJYad:OK7Sldsxcv/8gz6YtrrmzR19Tgh=
+    Authorization: LOG <yourAccessKeyId>:<yourSignature>
     x-log-bodyrawsize: 0
     User-Agent: sls-java-sdk-v-0.6.1
     x-log-apiversion: 0.6.0
@@ -162,8 +160,7 @@ HTTP 状态码返回 200。
             "\r"
           ]
         }
-      },
-      "ttl": 90
+      }
     }
     ```
 

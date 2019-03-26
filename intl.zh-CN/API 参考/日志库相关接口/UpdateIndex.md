@@ -25,7 +25,6 @@ Content-Length: <ContentLength>
 {
   "line": <full text index>,
   "keys": <key-value index>,
-  "ttl": <ttl>
 }
 ```
 
@@ -34,8 +33,7 @@ Content-Length: <ContentLength>
 |属性名称|类型|是否必须|描述|
 |:---|:-|:---|:-|
 |logstoreName|string|是|Logstore 的名称。|
-|ttl|integer|否|索引文件生命周期，支持7天，30天和90天。|
-|keys|object|否|键值索引配置，key为字段名称，value为字段索引配置。|
+|keys|object|否|字段索引配置，key为字段名称，value为字段索引配置。|
 |line|object|否|全文索引配置。|
 
 属性keys和line必须至少指定一个。全文索引配置包含如下属性：
@@ -45,8 +43,8 @@ Content-Length: <ContentLength>
 |token|array|是|分词符列表。|
 |caseSensitive|bool|否|是否大小写敏感。|
 |chn|bool|否|是否包含中文。|
-|include\_keys|array|否|包含的字段列表。|
-|exclude\_keys|array|否|排除的字段列表。|
+|include\_keys|array|否|包含的字段列表，不能与exclude\_keys同时指定。|
+|exclude\_keys|array|否|排除的字段列表，不能与include\_keys同时指定。|
 
 字段索引配置包含如下属性：
 
@@ -92,7 +90,7 @@ HTTP 状态码返回 200。
     ```
     PUT /logstores/logstore-4/index HTTP/1.1
     Header:
-    Authorization: LOG LTRTfdR7fbosJYad:OK7Sldsxcv/8gz6YtrrmzR19Tgh=
+    Authorization: LOG <yourAccessKeyId>:<yourSignature>
     x-log-bodyrawsize: 0
     User-Agent: sls-java-sdk-v-0.6.1
     x-log-apiversion: 0.6.0
@@ -162,8 +160,7 @@ HTTP 状态码返回 200。
             "\r"
           ]
         }
-      },
-      "ttl": 90
+      }
     }
     ```
 
