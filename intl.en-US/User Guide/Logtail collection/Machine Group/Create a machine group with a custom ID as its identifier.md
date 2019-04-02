@@ -40,7 +40,7 @@ The advantages of using custom IDs as identifiers for machine groups are describ
     -   When multiple custom IDs are configured for a server, you need to use line breaks to separate them.
     -   If the /etc/ilogtail/ or C:\\LogtailData directory or the /etc/ilogtail/user\_defined\_id or C:\\LogtailData\\user\_defined\_id file does not exist, manually create one.
 2.  Create a machine group.
-    1.  登录[日志服务控制台](https://partners-intl.console.aliyun.com/#/sls)，单击Project名称。
+    1.  Log on to the [Log Service console](https://partners-intl.console.aliyun.com/#/sls) and click the project name.
     2.  In the left-side navigation pane, click **Logtail Machine Group**.
     3.  On the Machine Groups page, click **Create Machine Group** the upper-right corner.
     4.  Set the machine group configurations.
@@ -54,7 +54,7 @@ The advantages of using custom IDs as identifiers for machine groups are describ
         -   **Identification**: Select **Custom ID**.
         -   \(Optional\) **Topic**: Enter a topic. For more information about machine group topics, see [Log topic](reseller.en-US/User Guide/Logtail collection/Text logs/Log topic.md).
         -   **Custom ID**: Enter the custom ID obtained from step 1.
-        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13078/15502112755254_en-US.png)
+        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13078/15541862165254_en-US.png)
 
     5.  Click **Confirm**.
 
@@ -64,7 +64,7 @@ The advantages of using custom IDs as identifiers for machine groups are describ
 
     On the Machine Groups page, locate the target machine group, and click **Status** in the **Actions** column. Then, you can view the list containing all servers using the same custom ID and their heartbeat information.
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13078/15502112765255_en-US.png)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13078/15541862175255_en-US.png)
 
 
 ## Disable custom IDs {#section_ikv_cs1_ry .section}
@@ -114,7 +114,7 @@ The system is composed of multiple modules, each of which can contain multiple s
 
     Set **Identification** to the actual custom ID of the machine group. The following figure uses the http\_module machine group as an example.
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13078/15502112755254_en-US.png)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13078/15541862165254_en-US.png)
 
 3.  In the Machine Group Status dialog box, view the list containing all servers using the same custom ID and their heartbeat information.
 4.  Add the custom ID to the 10.1.1.3 server if the server is added to the machine group. Then, you can view the new server in the **Machine Group Status** dialog box.
