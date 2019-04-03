@@ -24,11 +24,11 @@ x-log-apiversion: 0.6.0
 |:---|:-|:---|:-|
 |shard|string|是| |
 |type|string|是|此处为 cursor|
-|from|string|是|时间点（UNIX下秒数），或 begin，end|
+|from|string|是|时间点（Unix时间戳）或者字符串 "begin" 或者 "end"。|
 
 **Logstore 生命周期：**
 
-Logstore 生命周期由属性中 lifeCycle 字段指定。例如，当前时间为 2015-11-11 09:00:00，lifeCycle=24。则每个 shard 中可以消费的数据时间段为 \[2015-11-10 09:00:00,2015-11-11 09:00:00\)，这里的时间指的是 Server 端时间。
+Logstore 生命周期由属性中 TTL 字段指定。例如，当前时间为 2018-11-11 09:00:00，TTL=5。则每个 shard 中可以消费的数据时间段为 \[2018-11-05 09:00:00,2018-11-11 09:00:00\)，这里的时间指的是 Server 端时间。
 
 通过 from 可以在 Shard 中定位生命周期内的日志，假设 Logstore 生命周期为 \[begin\_time,end\_time\)，from=from\_time。
 
@@ -80,7 +80,7 @@ Header:
     "Date": "Thu, 12 Nov 2015 03:56:57 GMT", 
     "x-log-apiversion": "0.6.0", 
     "Content-Type": "application/json", 
-    "Authorization": "LOG 94to3z418yupi6ikawqqd370:+vo0Td6PrN0CGoskJoOiAsnkXgA="
+    "Authorization": "LOG <yourAccessKeyId>:<yourSignature>"
 }
 ```
 
