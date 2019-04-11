@@ -46,9 +46,9 @@ Download the Logtail installation package to an ECS instance. Click [here](http:
 
 Extract the installation package to the current directory and then enter the `logtail_installer` directory. Run cmd as an administrator, and run the installation command `.\logtail_installer.exe install cn_hangzhou`.
 
-**Note:** You must run different installation commands according to the network environment and the region of Log Service. This document uses the ECS classic network in China East 1 \(Hangzhou\) as an example. For other areas, see [Install Logtail on Windows](../../../../reseller.en-US/User Guide/Logtail collection/Install/Install Logtail on Windows.md).
+**Note:** You must run different installation commands according to the network environment and the region of Log Service. This document uses the ECS classic network in China East 1 \(Hangzhou\) as an example. For other areas, see [Install Logtail in Windows](../../../../../reseller.en-US/User Guide/Logtail collection/Install/Install Logtail in Windows.md).
 
-For the installation commands of other regions, see [Install Logtail on Windows](../../../../reseller.en-US/User Guide/Logtail collection/Install/Install Logtail on Windows.md) and [Linux ](../../../../reseller.en-US/User Guide/Logtail collection/Install/Linux .md).
+For the installation commands of other regions, see [Install Logtail in Windows](../../../../../reseller.en-US/User Guide/Logtail collection/Install/Install Logtail in Windows.md) and [Install Logtail in Linux](../../../../../reseller.en-US/User Guide/Logtail collection/Install/Install Logtail in Linux.md).
 
 ## Step 3. Configure data import wizard {#section_k5t_gr4_12b .section}
 
@@ -58,7 +58,7 @@ Logtail configuration process includes the following steps: Select Data Source, 
 
 ## 1. Select data source {#section_l5t_gr4_12b .section}
 
-Log Service supports the log collection of many cloud products, self-built softwares, and custom data. This document uses collecting text logs as an example. For more information, see [Collect text logs](../../../../reseller.en-US/User Guide/Logtail collection/Data Source/Collect text logs.md).
+Log Service supports the log collection of many cloud products, self-built softwares, and custom data. This document uses collecting text logs as an example. For more information, see [Collect text logs](../../../../../reseller.en-US/User Guide/Logtail collection/Text logs/Collect text logs.md).
 
 Click **Text** in **Other Sources**, and then click Next.
 
@@ -70,7 +70,7 @@ Click **Text** in **Other Sources**, and then click Next.
 
 -   Specify the log collection mode.
 
-    Log Service currently supports parsing logs in simple mode, delimiter mode, JSON mode, full mode, or Alibaba Cloud custom mode. This document uses the delimiter mode as an example. For more information about the collection modes, see [Collect text logs](../../../../reseller.en-US/User Guide/Logtail collection/Data Source/Collect text logs.md) and [Configure and parse text logs](../../../../reseller.en-US/User Guide/Logtail collection/Data Source/Configure and parse text logs.md).
+    Log Service currently supports parsing logs in simple mode, delimiter mode, JSON mode, full mode, or Alibaba Cloud custom mode. This document uses the delimiter mode as an example. For more information about the collection modes, see [Collect text logs](../../../../../reseller.en-US/User Guide/Logtail collection/Text logs/Collect text logs.md) and [Configure and parse text logs](../../../../../reseller.en-US/User Guide/Logtail collection/Text logs/Configure and parse text logs.md).
 
     ![](images/5845_en-US.png "Configure the data source")
 
@@ -90,7 +90,7 @@ Click **Text** in **Other Sources**, and then click Next.
 
 -   Configure the advanced options as needed.
 
-    Generally, keep the default configurations of the advanced options. For how to configure the advanced options, see the related descriptions in [Collect text logs](../../../../reseller.en-US/User Guide/Logtail collection/Data Source/Collect text logs.md).
+    Generally, keep the default configurations of the advanced options. For how to configure the advanced options, see the related descriptions in [Collect text logs](../../../../../reseller.en-US/User Guide/Logtail collection/Text logs/Collect text logs.md).
 
 -   Apply to the machine group.
 
@@ -106,8 +106,8 @@ To query, analyze, ship, or consume the logs, click **Next**.
 **Note:** 
 
 -   It can take up to 3 minutes for the Logtail configuration to take effect.
--   To collect IIS access logs, see  [Use Logstash to collect IIS logs](../../../../reseller.en-US/User Guide/Data Collection/Common log formats/Use Logstash to collect IIS logs.md).
--   For the Logtail collection errors, see [Query diagnosed errors](../../../../reseller.en-US/User Guide/Logtail collection/Troubleshoot/Procedure.md).
+-   To collect IIS access logs, see  [Use Logstash to collect IIS logs](../../../../../reseller.en-US/User Guide/Other collection methods/Common log formats/Use Logstash to collect IIS logs.md).
+-   For the Logtail collection errors, see [Query diagnosed errors](../../../../../reseller.en-US/FAQ/Log collection/Diagnose collection errors.md).
 
 ## Search, analysis, and visualization {#section_s5t_gr4_12b .section}
 
@@ -128,14 +128,14 @@ You can click **Search** on the Logstore List page to go to the query page. Clic
 
 1.  Full text or key/value indexes attributes at least one must be enabled.  When both types are enabled, key/value index attributes prevail.
 2.  When the index type is long or double, the Case Sensitive and Token attributes are unavailable.
-3.  For how to configure indexes, see [Overview](../../../../reseller.en-US/User Guide/Index and query/Overview.md).
+3.  For how to configure indexes, see [Overview](../../../../../reseller.en-US/User Guide/Index and query/Overview.md).
 4.  To use Nginx template or MNS template, configure the attributes on the Search & Analysis page after clicking **Enable** on the query page.
 
  ![](images/5848_en-US.png "query analysis") 
 
-After configuring the query and analysis, click **Next** if you want to configure the log shipping. To experience the query and analysis, go back to the Logstore List page and click **Search** to go to the query page. You can enter the keyword, topic, or query & analysis statement, and select the time range to query logs. Log Service provides intuitive histograms to preview the query results. You can click the histogram to query logs in a more detailed time range. For more information, see [Overview](../../../../reseller.en-US/User Guide/Index and query/Overview.md).
+After configuring the query and analysis, click **Next** if you want to configure the log shipping. To experience the query and analysis, go back to the Logstore List page and click **Search** to go to the query page. You can enter the keyword, topic, or query & analysis statement, and select the time range to query logs. Log Service provides intuitive histograms to preview the query results. You can click the histogram to query logs in a more detailed time range. For more information, see [Overview](../../../../../reseller.en-US/User Guide/Index and query/Overview.md).
 
-Log Service also supports querying and analyzing logs in many ways such as quick query and statistical graphs. For more information, see [Other functions](../../../../reseller.en-US/User Guide/Index and query/Other functions.md).
+Log Service also supports querying and analyzing logs in many ways such as quick query and statistical graphs. For more information, see [Other functions](../../../../../reseller.en-US/User Guide/Index and query/Query/Other functions.md).
 
 For example, to query all the logs within the last 15 minutes, you can set an empty query condition and select 15 min as the time range.
 
@@ -143,11 +143,11 @@ For example, to query all the logs within the last 15 minutes, you can set an em
 
 Log Service not only supports collecting data with multiple sources and formats in batch, managing and maintaining the data, but also supports shipping log data to cloud products such as Object Storage Service \(OSS\) for calculation and analysis. 
 
-To ship logs to [OSS](../../../../reseller.en-US/User Guide/Data shipping/Ship logs to OSS.md), click **Enable**.
+To ship logs to [OSS](../../../../../reseller.en-US/User Guide/Data shipping/Ship logs to OSS.md), click **Enable**.
 
-This document uses OSS storage as an example. See [Ship logs to OSS](../../../../reseller.en-US/User Guide/Data shipping/Ship logs to OSS/Ship logs to OSS.md)to complete the authentication.
+This document uses OSS storage as an example. See [Ship logs to OSS](../../../../../reseller.en-US/User Guide/Data shipping/Ship logs to OSS/Ship logs to OSS.md)to complete the authentication.
 
-Click **Enable**, the OSS LogShipper dialog box appears. For descriptions about the configurations, see [Ship logs to OSS](../../../../reseller.en-US/User Guide/Data shipping/Ship logs to OSS.md). After the configuration is complete, click **Confirm** to complete the shipping.
+Click **Enable**, the OSS LogShipper dialog box appears. For descriptions about the configurations, see [Ship logs to OSS](../../../../../reseller.en-US/User Guide/Data shipping/Ship logs to OSS/Ship logs to OSS.md). After the configuration is complete, click **Confirm** to complete the shipping.
 
 ![](images/5910_en-US.png "Configure shipping")
 
