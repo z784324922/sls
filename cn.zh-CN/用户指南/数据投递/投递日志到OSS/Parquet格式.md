@@ -1,6 +1,6 @@
 # Parquet格式 {#reference_ehj_j4q_zdb .reference}
 
-本文档主要介绍日志服务投递OSS使用Parquet存储的相关配置，关于投递日志到OSS的其它内容请参考[投递日志到OSS](cn.zh-CN/用户指南/数据投递/投递日志到OSS.md)。
+本文档主要介绍日志服务投递OSS使用Parquet存储的相关配置，关于投递日志到OSS的其它内容请参考[投递流程](intl.zh-CN/用户指南/数据投递/投递日志到OSS/投递流程.md#)。
 
 ## Parquet存储字段配置 {#section_dgc_4tj_5cb .section}
 
