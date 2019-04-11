@@ -1,6 +1,6 @@
 # CSV格式 {#concept_hch_k4q_zdb .concept}
 
-本文介绍日志服务投递OSS使用CSV存储的相关细节，其它内容请参考[投递日志到OSS](intl.zh-CN/用户指南/数据投递/投递日志到OSS.md)。
+本文介绍日志服务投递OSS使用CSV存储的相关细节，其它内容请参考[投递流程](intl.zh-CN/用户指南/数据投递/投递日志到OSS/投递流程.md#)。
 
 ## CSV存储字段配置 {#section_vhb_f5j_5cb .section}
 
