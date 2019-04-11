@@ -71,7 +71,7 @@
 
     Beats默认输出到Kafka的日志为JSON类型，您可以给content字段创建JSON类型的索引（创建方式参考[JSON类型](intl.zh-CN/用户指南/查询与分析/索引数据类型/JSON类型.md#)），日志样例如下：
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/150479/155468698141999_zh-CN.png)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/150479/155494703441999_zh-CN.png)
 
 -   示例2：Collectd采集数据到日志服务
 
@@ -102,7 +102,7 @@
 
     使用JSON模式采集后，您可以给content字段创建JSON类型的索引（创建方式参考[JOSN索引类型](intl.zh-CN/用户指南/查询与分析/索引数据类型/JSON类型.md#)），日志样例如下：
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/150479/155468698142000_zh-CN.png)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/150479/155494703442000_zh-CN.png)
 
 -   示例3：使用Telegraf采集数据到日志服务
 
@@ -146,7 +146,7 @@
 
     使用JSON模式采集后，您可以给content字段创建JSON类型的索引（创建方式参考[JOSN索引类型](intl.zh-CN/用户指南/查询与分析/索引数据类型/JSON类型.md#)），日志样例如下：
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/150479/155468698142180_zh-CN.png)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/150479/155494703442180_zh-CN.png)
 
 -   示例4：使用Fluentd采集数据到日志服务
 
@@ -182,9 +182,9 @@
 
     上述示例中将输出到Kafka的Format设置为JSON，除JSON外还支持数十种Format类型（具体请参考[Fluentd Formatter](https://docs.fluentd.org/v1.0/articles/formatter-plugin-overview)）。
 
-    使用JSON模式采集后，您可以给content字段创建JSON类型的索引（创建方式参考[JSON索引类型](https://help.aliyun.com/document_detail/69357.html)），日志样例如下：
+    使用JSON模式采集后，您可以给content字段创建JSON类型的索引（创建方式参考[JOSN索引类型](intl.zh-CN/用户指南/查询与分析/索引数据类型/JSON类型.md#)），日志样例如下：
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/150479/155468698142204_zh-CN.png)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/150479/155494703442204_zh-CN.png)
 
 -   示例5：使用Logstash采集数据到日志服务
 
@@ -235,8 +235,8 @@
 
         上述示例中将输出到Kafka的Format设置为JSON，除JSON外还支持数十种Format类型（具体请参考[Logstash Codec](https://www.elastic.co/guide/en/logstash/current/codec-plugins.html)）。
 
-        使用JSON模式采集后，您可以给content字段创建JSON类型的索引（创建方式参考[JSON索引类型](https://help.aliyun.com/document_detail/69357.html)），日志样例如下：
+        使用JSON模式采集后，您可以给content字段创建JSON类型的索引（创建方式参考[JOSN索引类型](intl.zh-CN/用户指南/查询与分析/索引数据类型/JSON类型.md#)），日志样例如下：
 
-        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/150479/155468698142205_zh-CN.png)
+        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/150479/155494703442205_zh-CN.png)
 
 
