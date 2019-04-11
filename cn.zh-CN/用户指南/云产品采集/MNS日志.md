@@ -18,6 +18,7 @@ MNS 的日志管理功能将用户的消息操作日志推送到指定 LoggingBu
 
 1.  您已开通日志服务LogService和消息服务MNS。
 2.  您的消息服务日志仅能推送到对应Region下的日志服务Project，请确认您已创建了对应Region的Project和Logstore。
+3.  子账号授权请参考[子账号授权准备](https://help.aliyun.com/document_detail/47577.html)。
 
 ## 操作步骤 {#section_jks_wss_zdb .section}
 
@@ -47,7 +48,7 @@ MNS 的日志管理功能将用户的消息操作日志推送到指定 LoggingBu
 4.  确认授权与日志服务Project。
     -   如您是首次操作MNS日志推送，请按照页面提示进行[快捷授权](https://ram.console.aliyun.com/?spm=a2c4g.11186623.2.6.IlFP8O#/role/authorize?request=%7B%22Requests%22:%20%7B%22request1%22:%20%7B%22RoleName%22:%20%22AliyunMNSLoggingRole%22,%20%22TemplateId%22:%20%22Logging%22%7D%7D,%20%22ReturnUrl%22:%20%22https:%2F%2Fmns.console.aliyun.com%2F%3Fspm%3D5176.6660585.774526198.1.97zTJs%23%2Flogging%2Fcn-hangzhou%22,%20%22Service%22:%20%22MNS%22%7D)。
 
-    -   如您没有合适的Project和Logstore，请按照页面提示前往日志服务控制台新建一个Project和Logstore。具体步骤请参考[准备工作](intl.zh-CN/用户指南/准备工作.md)。
+    -   如您没有合适的Project和Logstore，请按照页面提示前往日志服务控制台新建一个Project和Logstore。具体步骤请参考[准备流程](cn.zh-CN/用户指南/准备工作/准备流程.md#)。
 
 5.  配置推送。
 
