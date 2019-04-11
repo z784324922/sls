@@ -14,10 +14,10 @@ Besides the Log Service console, you can use Application Programming Interfaces 
 |[MachineGroup](reseller.en-US/API Reference/Common resources/Machine group.md) \(Machine Group\)|[List](reseller.en-US/API Reference/Logtail machine group related interfaces/ListMachineGroup.md), [Create](reseller.en-US/API Reference/Logtail machine group related interfaces/Createmachinegroup.md), [Delete](reseller.en-US/API Reference/Logtail machine group related interfaces/DeleteMachineGroup.md), [Get](reseller.en-US/API Reference/Logtail machine group related interfaces/GetMachineGroup.md), [Update](reseller.en-US/API Reference/Logtail machine group related interfaces/UpdateMachineGroup.md)|
 | |[Apply](reseller.en-US/API Reference/Logtail machine group related interfaces/ApplyConfigToMachineGroup.md)/[Remove](reseller.en-US/API Reference/Logtail machine group related interfaces/RemoveConfigFromMachineGroup.md)|
 | |[GetAppliedConfigs](reseller.en-US/API Reference/Logtail machine group related interfaces/GetAppliedConfigs.md) \(query the list of applied configurations\)|
-|[LogStore](reseller.en-US/API Reference/Common resources/Logstore.md) \(Logstore\)|[List](reseller.en-US/API Reference/Logstore related APIs/ListLogstore.md), [Create](reseller.en-US/API Reference/Logstore related APIs/CreateLogstore.md),  [Delete](reseller.en-US/API Reference/Logstore related APIs/DeleteLogstore.md), [Get](reseller.en-US/API Reference/Logstore related APIs/GetLogstore .md), [Update](reseller.en-US/API Reference/Logstore related APIs/UpdateLogstore.md)|
+|[LogStore](reseller.en-US/API Reference/Common resources/Logstore.md) \(Logstore\)|[List](reseller.en-US/API Reference/Logstore related APIs/ListLogstore.md), [Create](reseller.en-US/API Reference/Logstore related APIs/CreateLogstore.md),  [Delete](reseller.en-US/API Reference/Logstore related APIs/DeleteLogstore.md), [Get](reseller.en-US/API Reference/Logstore related APIs/GetLogstore.md), [Update](reseller.en-US/API Reference/Logstore related APIs/UpdateLogstore.md)|
 | |[GetLogs](reseller.en-US/API Reference/Logstore related APIs/GetLogs.md) \(query logs\) and [GetHistograms](reseller.en-US/API Reference/Logstore related APIs/GetHistograms.md) \(query log distribution\)|
 |Index|[Create](reseller.en-US/API Reference/Logstore related APIs/CreateIndex.md), [Update](reseller.en-US/API Reference/Logstore related APIs/UpdateIndex.md), [Delete](reseller.en-US/API Reference/Logstore related APIs/DeleteIndex.md)[GetIndex](reseller.en-US/API Reference/Logstore related APIs/GetIndex.md)|
-|[Shard](reseller.en-US/API Reference/Common resources.md) \(Partition\)|[List](reseller.en-US/API Reference/Logstore related APIs/ListShards.md), [Split](reseller.en-US/API Reference/Logstore related APIs/SplitShard.md), [Merge](reseller.en-US/API Reference/Logstore related APIs/MergeShards.md)|
+|[Shard](../../../../../reseller.en-US/Product Introduction/Basic concepts/Shard.md#) \(Partition\)|[List](reseller.en-US/API Reference/Logstore related APIs/ListShards.md), [Split](reseller.en-US/API Reference/Logstore related APIs/SplitShard.md), [Merge](reseller.en-US/API Reference/Logstore related APIs/MergeShards.md)|
 | |  [PostLogStoreLogs](reseller.en-US/API Reference/Logstore related APIs/PostLogstoreLogs.md)\(write a log\)|
 | |  [GetCursor](reseller.en-US/API Reference/Logstore related APIs/GetCursor.md) \(locate the log location\)|
 | |[PullLogs](reseller.en-US/API Reference/Logstore related APIs/PullLogs.md)\(consume a log\)|
@@ -30,7 +30,7 @@ You can use the APIs to:
 
 -   Collect logs based on [Logtail configuration](reseller.en-US/API Reference/Common resources/Logtail configuration.md) and [Machine group](reseller.en-US/API Reference/Common resources/Machine group.md).
 -   Create [Logstore](reseller.en-US/API Reference/Common resources/Logstore.md). Then, write and read logs to/from the Logstore.
--   Set [access control rules](reseller.en-US/API Reference/RAM subaccount access/Overview.md) for different users.
+-   Set [access control rules](reseller.en-US/API Reference/RAM__STS/Overview.md) for different users.
 
 **Note:** 
 
