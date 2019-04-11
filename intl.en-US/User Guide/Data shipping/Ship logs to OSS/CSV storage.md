@@ -1,6 +1,6 @@
 # CSV storage {#concept_hch_k4q_zdb .concept}
 
-This document introduces the configurations about CSV storage for Log Service logs that are shipped to Object Storage Service \(OSS\). For more information about shipping logs to OSS, see [Ship logs to OSS](intl.en-US/User Guide/Data shipping/Ship logs to OSS.md).
+This document introduces the configurations about CSV storage for Log Service logs that are shipped to Object Storage Service \(OSS\). For more information about shipping logs to OSS, see [Ship logs to OSS](reseller.en-US/User Guide/Data shipping/Ship logs to OSS/Ship logs to OSS.md#).
 
 ## Configure CSV storage fields {#section_vhb_f5j_5cb .section}
 
@@ -60,5 +60,5 @@ We recommend that you configure as follows:
 
 CSV is a readable format, which means that a file in CSV format can be directly downloaded from OSS and viewed in text form.
 
-If Compress \(snappy\) is used as the compression type, see the decompression descriptions of snappy in [JSON storage](intl.en-US/User Guide/Data shipping/Ship logs to OSS/JSON storage.md).
+If Compress \(snappy\) is used as the compression type, see the decompression descriptions of snappy in [JSON storage](reseller.en-US/User Guide/Data shipping/Ship logs to OSS/JSON storage.md).
 
