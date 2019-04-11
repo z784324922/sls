@@ -6,7 +6,7 @@
 
 日志服务支持通过**数据接入向导**采集API网关的访问日志。
 
-## **功能简介** {#section_hnc_fqs_zdb .section}
+## 功能简介 {#section_hnc_fqs_zdb .section}
 
 1.  **日志在线查询。**您可以根据日志中任意关键字进行快速的精确或模糊检索，可用于问题定位或者统计查询。
 2.  **详细调用日志。**您可以检索API调用的详细日志。
@@ -44,7 +44,7 @@
 
 1.  创建Project和Logstore。
 
-    请参考[准备工作](intl.zh-CN/用户指南/准备工作.md)创建一个Project和Logstore。
+    请参考[创建Project](intl.zh-CN/用户指南/准备工作/操作Project.md#)和[创建Logstore](intl.zh-CN/用户指南/准备工作/操作Logstore.md#)。
 
     若Logstore已存在请跳过本步骤。
 

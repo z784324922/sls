@@ -44,7 +44,7 @@
 
 1.  创建Project和Logstore。
 
-    请参考[准备工作](intl.zh-CN/用户指南/准备工作.md)创建一个Project和Logstore。
+    请参考[创建Project](intl.zh-CN/用户指南/准备工作/操作Project.md#)和[创建Logstore](intl.zh-CN/用户指南/准备工作/操作Logstore.md#)。
 
     若Logstore已存在请跳过本步骤。
 
