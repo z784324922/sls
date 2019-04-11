@@ -1,6 +1,6 @@
 # Parquet storage {#reference_ehj_j4q_zdb .reference}
 
-This document introduces the configurations about Parquet storage for Log Service logs that are shipped to Object Storage Service \(OSS\). For more information about shipping logs to OSS, see [Ship logs to OSS](intl.en-US/User Guide/Data shipping/Ship logs to OSS.md).
+This document introduces the configurations about Parquet storage for Log Service logs that are shipped to Object Storage Service \(OSS\). For more information about shipping logs to OSS, see [Ship logs to OSS](reseller.en-US/User Guide/Data shipping/Ship logs to OSS/Ship logs to OSS.md#).
 
 ## Configure Parquet storage fields {#section_dgc_4tj_5cb .section}
 
