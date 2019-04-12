@@ -10,7 +10,7 @@ You can embed a specific Logstore query page and dashboard page into a self-buil
 -   You can generate a logon link by using the security token service \(STS\) and control the operation permissions, such as ready-only permission, by using remote access management \(RAM\).
 
 1.  Log on to your self-built website. After logon, the Web server STS obtains a temporary identity for you.
-    -   For more information on STS, see [Overview](../../../../../reseller.en-US/API Reference/STS access mode/Overview.md).
+    -   For more information on STS, see [Overview](../../../../../reseller.en-US/API Reference/RAM__STS/Overview.md).
     -   Grant the user access to specified Logstores. For details, see [Grant RAM sub-accounts permissions to access Log Service](reseller.en-US/User Guide/Access control RAM/Grant RAM sub-accounts permissions to access Log Service.md).
 2.  Request Alibaba Cloud logon service for the logon token. After getting the temporary AccessKey pair and security token from STS, call the logon service interface to obtain the logon token.
 
@@ -23,6 +23,7 @@ You can embed a specific Logstore query page and dashboard page into a self-buil
                         &AccessKeyId=<Temporary Access Key pair returned by the STS>
                         &AccessKeySecret=<Temporary secret returned by the STS>
                         &SecurityToken=<Security token returned by the STS>
+                        &TicketType=mini
     ```
 
 3.  Generate a logon-free link. 
@@ -39,25 +40,25 @@ You can embed a specific Logstore query page and dashboard page into a self-buil
         -   A complete page for query and analysis \(multiple tags are allowed\):
 
             ```
-            https://sls4service.console.aliyun.com/next/project/<Project名称>/logsearch/<日志库名称>?hideTopbar=true&hideSidebar=true
+            https://sls4service.console.aliyun.com/next/project/<Project name>/logsearch/<Logstore name>?hideTopbar=true&hideSidebar=true
             ```
 
         -   Query page:
 
             ```
-            https://sls4service.console.aliyun.com/next/project/<Project名称>/logsearch/<日志库名称>?isShare=true&hideTopbar=true&hideSidebar=true
+            https://sls4service.console.aliyun.com/next/project/<Project name>/logsearch/<Logstore name>?isShare=true&hideTopbar=true&hideSidebar=true
             ```
 
         -   Dashboard page:
 
             ```
-            https://sls4service.console.aliyun.com/next/project/<Project名称>/dashboard/<仪表盘名称>?isShare=true&hideTopbar=true&hideSidebar=true
+            https://sls4service.console.aliyun.com/next/project/<Project name>/dashboard/<Dashboard name>?isShare=true&hideTopbar=true&hideSidebar=true
             ```
 
 
 The sample code in Java, PHP, and Python is as follows:
 
--   [Java](https://samplecode.oss-cn-hangzhou.aliyuncs.com/slsconsole.java?spm=a2c4g.11186623.2.6.LewJJX&file=slsconsole.java)：
+-   [Java](https://samplecode.oss-cn-hangzhou.aliyuncs.com/slsconsole.java?spm=a2c4g.11186623.2.6.LewJJX&file=slsconsole.java):
 
     ```
     <dependency>
