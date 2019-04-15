@@ -2,7 +2,7 @@
 
 MySQL Binlog同步类似 [canal](https://github.com/alibaba/canal) 功能，以MySQL slave的形式基于Binlog进行同步，性能较高。
 
-**说明：** 此功能目前只支持Linux，依赖Logtail 0.16.0及以上版本，版本查看与升级参见[Linux](cn.zh-CN/用户指南/Logtail采集/安装/Linux.md)。
+**说明：** 此功能目前只支持Linux，依赖Logtail 0.16.0及以上版本，版本查看与升级参见[安装Logtail（Linux系统）](cn.zh-CN/用户指南/Logtail采集/安装/安装Logtail（Linux系统）.md)。
 
 ## 功能 {#section_pwd_n5q_pdb .section}
 
@@ -35,15 +35,15 @@ MySQL Binlog方式输入源类型为：`service_canal`。
 |Port|int|可选|数据库端口，默认为3306。|
 |User|string|可选|数据库用户名，默认为root。|
 |Password|string|可选|数据库密码；默认为空。|
-|ServerID|int|可选|Logtail伪装成的Mysql Slave ID，默认为125。**说明：** ServerID对于一个MySQL数据库必须唯一，否则同步失败。
+|ServerID|int|可选|Logtail伪装成的Mysql Slave ID，默认为125。 **说明：** ServerID对于一个MySQL数据库必须唯一，否则同步失败。
 
  |
-|IncludeTables|string 数组|必选|包含的表名称（包括db，例如`test_db.test_table`），为**正则表达式**，若某表不符合IncludeTables任一条件则该表不会被采集；如果您希望采集所有表，请将此参数指定为`.*\\..*`。**说明：** 若需要完全匹配，请在前后分别加上`^``$`，例如`^test_db.test_table$`。
+|IncludeTables|string 数组|必选|包含的表名称（包括db，例如`test_db.test_table`），为**正则表达式**，若某表不符合IncludeTables任一条件则该表不会被采集；如果您希望采集所有表，请将此参数指定为`.*\\..*`。 **说明：** 若需要完全匹配，请在前后分别加上`^``$`，例如`^test_db\\.test_table$`。
 
-|
-|ExcludeTables|string 数组|可选|忽略的表名称（包括db，例如`test_db.test_table`），为**正则表达式**，若某表符合ExcludeTables任一条件则该表不会被采集；不设置时默认收集所有表。**说明：** 若需要完全匹配，请在前后分别加上`^``$`，例如`^test_db.test_table$`。
+ |
+|ExcludeTables|string 数组|可选|忽略的表名称（包括db，例如`test_db.test_table`），为**正则表达式**，若某表符合ExcludeTables任一条件则该表不会被采集；不设置时默认收集所有表。 **说明：** 若需要完全匹配，请在前后分别加上`^``$`，例如`^test_db\\.test_table$`。
 
-|
+ |
 |StartBinName|string|可选|首次采集的Binlog文件名，不设置时默认从当前时间点开始采集。|
 |StartBinLogPos|int|可选|首次采集的Binlog文件名的offset，默认为0。|
 |EnableGTID|bool|可选|是否附加[全局事务ID](https://dev.mysql.com/doc/refman/5.7/en/replication-gtids-concepts.html)，默认为true，为false时上传的数据将不附加。|
@@ -52,13 +52,22 @@ MySQL Binlog方式输入源类型为：`service_canal`。
 |EnableDelete|bool|可选|是否收集delete事件的数据，默认为true，为false时delete事件将不采集。|
 |EnableDDL|bool|可选|是否收集DDL（data definition language）事件的数。 **说明：** 该选项默认为false，为false时DDL事件将不采集。该选项不支持`IncludeTables``ExcludeTables`过滤。
 
-|
+ |
 |Charset|string|可选|编码方式，默认为`utf-8`。|
 |TextToString|bool|可选|是否将`text`类型数据转换成string，默认为false。|
+|PackValues|bool|可选| 是否将事件的数据打包成 JSON 格式。默认为 false，表示不打包。
+
+ 如果启用此功能，Logtail 会将事件数据以 JSON 格式集中打包到 data 和 old\_data 两个字段中，其中 old\_data 仅在 row\_update 事件中有意义。
+
+ 示例：假设数据表有三列 c1，c2，c3，在不开启此功能下，row\_insert 事件数据中会有 c1，c2，c3 三个字段，而开启此功能后，c1，c2，c3会被统一打包到 data 字段，值为 `{"c1":"...", "c2": "...", "c3": "..."}`。
+
+ **说明：** 此功能仅支持 0.16.19 及以上版本。
+
+ |
 
 ## 使用限制 {#section_bss_bvq_pdb .section}
 
-此功能目前仅支持Linux，依赖Logtail 0.16.0及以上版本，版本查看与升级参见[Linux](cn.zh-CN/用户指南/Logtail采集/安装/Linux.md)。
+此功能目前仅支持Linux，依赖Logtail 0.16.0及以上版本，版本查看与升级参见[安装Logtail（Linux系统）](cn.zh-CN/用户指南/Logtail采集/安装/安装Logtail（Linux系统）.md)。
 
 -   MySQL 必须开启Binlog，且Binlog必须为row模式（默认RDS已经开启）。
 
@@ -141,7 +150,7 @@ MySQL Binlog方式输入源类型为：`service_canal`。
     }
     ```
 
--   **RDS 相关限制：**
+-   **RDS 相关限制：** 
     -   无法直接在RDS服务器上安装Logtail，您需要将Logtail安装在能连通RDS实例的任意一台ECS上。
     -   RDS 只读备库当前不支持Binlog采集，您需要配置主库进行采集。
 
