@@ -27,15 +27,15 @@ URL 参数：
 |:---|:-|:---|:-|
 |groupName|string|是|机器分组名称|
 
-**请求头**
+ **请求头** 
 
-无特有请求头。关于 Log Service API 的公共请求头，请参考 [公共请求头](intl.zh-CN/API 参考/公共请求头.md)。
+无特有请求头。关于 Log Service API 的公共请求头，请参考 [公共请求头](cn.zh-CN/API 参考/公共请求头.md)。
 
-**响应头**
+ **响应头** 
 
-无特有响应头。请参考 [公共响应头](intl.zh-CN/API 参考/公共响应头.md)。
+无特有响应头。请参考 [公共响应头](cn.zh-CN/API 参考/公共响应头.md)。
 
-**响应元素**
+ **响应元素** 
 
 |属性名称|类型|描述|
 |----|--|--|
@@ -72,18 +72,18 @@ groupAttribute 说明如下：
 }
 ```
 
-**错误码**
+ **错误码** 
 
-除了返回 Log Service API 的 [通用错误码](intl.zh-CN/API 参考/通用错误码.md)，还可能返回如下特有错误码：
+除了返回 Log Service API 的 [通用错误码](cn.zh-CN/API 参考/通用错误码.md)，还可能返回如下特有错误码：
 
 |HTTP 状态码|ErrorCode|ErrorMessage|
 |:-------|:--------|:-----------|
-|404|GroupNotExist|group \{GroupName\} does not exist|
+|404|MachineGroupNotExist|group \{GroupName\} does not exist|
 |500|InternalServerError|internal server error|
 
 ## 示例 {#section_e5p_d4t_12b .section}
 
-**请求示例：**
+**请求示例：** 
 
 ```
 GET /machinegroups/test-machine-group HTTP/1.1
@@ -101,7 +101,7 @@ Header :
 }
 ```
 
-**响应示例：**
+ **响应示例：** 
 
 ```
 HTTP/1.1 200 OK
