@@ -2,6 +2,8 @@
 
 日志服务支持使用Kafka协议对数据进行采集。
 
+![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/150479/155555436844691_zh-CN.png)
+
 ## 相关限制 {#section_gg2_34c_ghb .section}
 
 -   支持的Kafka协议版本为：0.8.0到2.1.IV2。
@@ -15,8 +17,8 @@
 |配置名|说明|示例|
 |---|--|--|
 |连接类型|为保证数据传输安全性，连接协议必须为SASL\_SSL。|SASL\_SSL|
-|hosts|初始连接的集群地址，内网（经典网络/VPC）地址端口号为10011，公网地址端口号为10012。请选择您对应Project所在的服务入口。服务入口列表参考：[服务入口](../../../../../intl.zh-CN/API 参考/服务入口.md#)。| -   example.com:10011
--   example.com:10012
+|hosts|初始连接的集群地址，内网（经典网络/VPC）地址端口号为10011，公网地址端口号为10012。请选择您对应Project所在的服务入口。服务入口列表参考：[服务入口](../../../../intl.zh-CN/API 参考/服务入口.md#)。| -   cn-hangzhou-intranet.log.aliyuncs.com:10011
+-   cn-hangzhou.log.aliyuncs.com:10012
 
  |
 |topic|Kafka中的topic映射为日志服务中的Logstore名称，请提前创建好Logstore。|test-logstore-1|
@@ -54,11 +56,10 @@
     ```
     output.kafka: 
       # initial brokers for reading cluster metadata 
-      hosts: ["example.com:10012"] 
+      hosts: ["cn-hangzhou.log.aliyuncs.com:10012"] 
       username: "<yourusername>" 
       password: "<yourpassword>" 
       ssl.certificate_authorities: 
-    
       # message topic selection + partitioning 
       topic: 'test-logstore-1' 
       partition.round_robin: 
@@ -71,7 +72,7 @@
 
     Beats默认输出到Kafka的日志为JSON类型，您可以给content字段创建JSON类型的索引（创建方式参考[JSON类型](intl.zh-CN/用户指南/查询与分析/索引数据类型/JSON类型.md#)），日志样例如下：
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/150479/155494703441999_zh-CN.png)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/150479/155555436841999_zh-CN.png)
 
 -   示例2：Collectd采集数据到日志服务
 
@@ -83,7 +84,7 @@
 
     ```
     <Plugin write_kafka>
-      Property "metadata.broker.list" "example.com:10012" 
+      Property "metadata.broker.list" "cn-hangzhou.log.aliyuncs.com:10012" 
       Property "security.protocol" "sasl_ssl" 
       Property "sasl.mechanism" "PLAIN" 
       Property "sasl.username" "<yourusername>" 
@@ -94,15 +95,14 @@
         Key "content"  
       </Topic>
     </Plugin>
-    
-    
+    						
     ```
 
     上述示例中将输出到Kafka的Format设置为JSON，除JSON外Collectd还支持Command、Graphite类型（具体请参考[Collectd配置文档](https://collectd.org/documentation/manpages/collectd.conf.5.shtml)）。
 
     使用JSON模式采集后，您可以给content字段创建JSON类型的索引（创建方式参考[JOSN索引类型](intl.zh-CN/用户指南/查询与分析/索引数据类型/JSON类型.md#)），日志样例如下：
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/150479/155494703442000_zh-CN.png)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/150479/155555436842000_zh-CN.png)
 
 -   示例3：使用Telegraf采集数据到日志服务
 
@@ -113,11 +113,10 @@
     ```
     [[outputs.kafka]] 
       ## URLs of kafka brokers 
-      brokers = ["example.com:10012"] 
+      brokers = ["cn-hangzhou.log.aliyuncs.com:10012"] 
       ## Kafka topic for producer messages 
       topic = "test-logstore-1" 
       routing_key = "content" 
-    
       ## CompressionCodec represents the various compression codecs recognized by 
       ## Kafka in messages. 
       ## 0 : No compression 
@@ -125,16 +124,13 @@
       ## 2 : Snappy compression 
       ## 3 : LZ4 compression 
       compression_codec = 1 
-    
       ## Optional TLS Config tls_ca = "/etc/ssl/certs/ca-bundle.crt" 
       # tls_cert = "/etc/telegraf/cert.pem" # tls_key = "/etc/telegraf/key.pem" 
       ## Use TLS but skip chain & host verification 
       # insecure_skip_verify = false 
-    
       ## Optional SASL Config 
       sasl_username = "<yourusername>" 
       sasl_password = "<yourpassword>" 
-    
       ## Data format to output. 
       ## https://github.com/influxdata/telegraf/blob/master/docs/DATA_FORMATS_OUTPUT.md 
       data_format = "json"
@@ -146,7 +142,7 @@
 
     使用JSON模式采集后，您可以给content字段创建JSON类型的索引（创建方式参考[JOSN索引类型](intl.zh-CN/用户指南/查询与分析/索引数据类型/JSON类型.md#)），日志样例如下：
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/150479/155494703442180_zh-CN.png)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/150479/155555436842180_zh-CN.png)
 
 -   示例4：使用Fluentd采集数据到日志服务
 
@@ -159,10 +155,8 @@
     ```
     <match **>
       @type kafka 
-    
       # Brokers: you can choose either brokers or zookeeper. 
-      brokers      example.com:10012 
-    
+      brokers      cn-hangzhou.log.aliyuncs.com:10012 
       default_topic test-logstore-1 
       default_message_key content 
       output_data_type json 
@@ -172,7 +166,6 @@
       username <yourusername> 
       password <yourpassword> 
       ssl_ca_certs_from_system true 
-    
       # ruby-kafka producer options 
       max_send_retries 10000 
       required_acks 1 
@@ -184,7 +177,7 @@
 
     使用JSON模式采集后，您可以给content字段创建JSON类型的索引（创建方式参考[JOSN索引类型](intl.zh-CN/用户指南/查询与分析/索引数据类型/JSON类型.md#)），日志样例如下：
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/150479/155494703442204_zh-CN.png)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/150479/155555436942204_zh-CN.png)
 
 -   示例5：使用Logstash采集数据到日志服务
 
@@ -214,12 +207,11 @@
 
         ```
         input { stdin { } } 
-        
         output { 
           stdout { codec => rubydebug } 
           kafka { 
             topic_id => "test-logstore-1" 
-            bootstrap_servers => "example.com:10012" 
+            bootstrap_servers => "cn-hangzhou.log.aliyuncs.com:10012" 
             security_protocol => "SASL_SSL" 
             ssl_truststore_location => "/etc/client-root.truststore.jks" 
             ssl_truststore_password => "123456" 
@@ -237,6 +229,6 @@
 
         使用JSON模式采集后，您可以给content字段创建JSON类型的索引（创建方式参考[JOSN索引类型](intl.zh-CN/用户指南/查询与分析/索引数据类型/JSON类型.md#)），日志样例如下：
 
-        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/150479/155494703442205_zh-CN.png)
+        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/150479/155555436942205_zh-CN.png)
 
 
