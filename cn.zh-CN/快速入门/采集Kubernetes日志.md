@@ -12,13 +12,11 @@
 
 ![](images/3793_zh-CN.png "采集流程")
 
-**视频教程**：[http://cloud.video.taobao.com/play/u/3220778205/p/1/e/6/t/1/50145086346.mp4](http://cloud.video.taobao.com/play/u/3220778205/p/1/e/6/t/1/50145086346.mp4)
-
 ## 步骤1 安装软件包 {#section_pc2_1pr_xdb .section}
 
 1.  登录您的阿里云容器服务Kubernetes的Master节点。
 
-    如何登录参考[SSH密钥对访问Kubernetes集群](../../../../cn.zh-CN/用户指南/Kubernetes 集群/集群管理/SSH密钥对访问Kubernetes集群.md)。
+    如何登录参考[SSH密钥对访问Kubernetes集群](../../../../intl.zh-CN/用户指南/Kubernetes 集群/集群管理/SSH密钥对访问Kubernetes集群.md)。
 
 2.  替换参数后执行以下安装命令。
 
@@ -148,15 +146,14 @@ alibaba-log-controller 0s
 
 控制台配置方式请参见：
 
--   [容器内文本文件（推荐）](../../../../cn.zh-CN/用户指南/Logtail 采集/数据源/容器-文本日志.md)
--   [容器标准输出（推荐）](../../../../cn.zh-CN/用户指南/Logtail 采集/数据源/容器-标准输出.md)
--   [宿主机文本文件](../../../../cn.zh-CN/用户指南/Logtail 采集/数据源/文本日志.md)
+-   [容器内文本文件（推荐）](../../../../intl.zh-CN/用户指南/Logtail采集/容器日志采集/容器文本日志.md)
+-   [容器标准输出（推荐）](../../../../intl.zh-CN/用户指南/Logtail采集/容器日志采集/容器标准输出.md)
+-   [宿主机文本文件](../../../../intl.zh-CN/用户指南/Logtail采集/文本日志/采集文本日志.md)
 
     默认宿主机根目录挂载到Logtail容器的/logtail\_host目录，配置路径时，您需要加上此前缀。例如需要采集宿主机上/home/logs/app\_log/目录下的数据，配置页面中日志路径设置为/logtail\_host/home/logs/app\_log/。
 
--   [自定义插件](../../../../cn.zh-CN/用户指南/Logtail 采集/数据源/自定义插件.md)
 
 ## CRD配置方式 {#section_gvy_r5r_g2b .section}
 
-CRD（CustomResourceDefinition）配置方式请参考[Kubernetes-CRD配置日志采集](../../../../cn.zh-CN/用户指南/Logtail 采集/数据源/Kubernetes-CRD配置日志采集.md#)。
+CRD（CustomResourceDefinition）配置方式请参考[Kubernetes-CRD配置日志采集](../../../../intl.zh-CN/用户指南/Logtail采集/容器日志采集/Kubernetes-CRD配置日志采集.md#)。
 
