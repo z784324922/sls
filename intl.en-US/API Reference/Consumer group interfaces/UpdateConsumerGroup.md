@@ -30,28 +30,31 @@ Content-Length: <ContentLength>
 
 ## Request parameters {#section_lvh_2hh_f2b .section}
 
-|Attribute name|Type |Required or not|Description|
-|:-------------|:----|:--------------|:----------|
+|Attribute name|Type|Required or not|Description|
+|:-------------|:---|:--------------|:----------|
 |logstoreName|string|Yes|Name of the Logstore of the consumer group.|
 |consumerGroup|string|Yes|Consumer group name.|
-|timeout |integer|No |Timeout period. If no heartbeat is received in the timeout period, the consumer group is deleted.|
-|order|bool |No|Sequential consumption or not.|
+|timeout|integer|No|Timeout period. If no heartbeat is received in the timeout period, the consumer group is deleted.|
+|order|bool|No|Set the system whether to consume the data of a shard in order. -   true: indicates to set the system to consume the data of a shard in order. Specifically, after a shard is split to two new shards, the system firstly consumes the data in the original shard, then consumes the data in the two new shards at the same time.
+-   false: indicates to set the system not to consume the data of a shard in order.
+
+ |
 
 **Note:** Specify either `timeout` or `order`.
 
-**Request header**
+ **Request header** 
 
 The UpdateConsumerGroup interface does not have a specific request header. For details about public request headers of Log Service APIs, see [Public request header](reseller.en-US/API Reference/Public request header.md).
 
-**Response header**
+ **Response header** 
 
 The UpdateConsumerGroup interface does not have a specific response header. For details about public response headers of Log Service APIs, see [Public response header](reseller.en-US/API Reference/Public response header.md).
 
-**Response element **
+ **Response element** 
 
 The returned HTTP status code is 200.
 
-**Error code**
+ **Error code** 
 
 The interface may return the following error codes in addition to Log Service API [Common error codes](reseller.en-US/API Reference/Common error codes.md):
 
@@ -65,7 +68,7 @@ The interface may return the following error codes in addition to Log Service AP
 
 ## Example {#section_p5z_ghh_f2b .section}
 
-**Request example:**
+**Request example:** 
 
 ```
 PUT /logstores/logstore-test/consumergroups/consumer-group-1 HTTP/1.1
@@ -88,7 +91,7 @@ Body:
 }
 ```
 
-**Response example:**
+**Response example:** 
 
 ```
 HTTP/1.1 200
