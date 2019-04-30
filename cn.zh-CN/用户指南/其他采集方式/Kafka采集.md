@@ -1,14 +1,15 @@
 # Kafka采集 {#concept_n3m_pkc_ghb .concept}
 
-日志服务支持使用Kafka协议对数据进行采集。
+日志服务除支持Logtail、SDK、OpenAPI等写入方式外，还支持使用Kafka协议写入，您可以使用各类Kafka Producer SDK、支持输出到Kafka的采集Agent将数据写入到日志服务。
 
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/150479/155555436844691_zh-CN.png)
+![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/150479/155659499244691_zh-CN.png)
 
 ## 相关限制 {#section_gg2_34c_ghb .section}
 
 -   支持的Kafka协议版本为：0.8.0到2.1.IV2。
 -   为保证数据传输安全性，连接协议必须为SASL\_SSL。
 -   若您的Logstore有多个Shard，请使用负载均衡模式写入数据。
+-   目前只支持通过Producer、Agent等方式使用Kafka协议写入数据。
 
 ## 配置方式 {#section_mxs_54c_ghb .section}
 
@@ -72,7 +73,7 @@
 
     Beats默认输出到Kafka的日志为JSON类型，您可以给content字段创建JSON类型的索引（创建方式参考[JSON类型](intl.zh-CN/用户指南/查询与分析/索引数据类型/JSON类型.md#)），日志样例如下：
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/150479/155555436841999_zh-CN.png)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/150479/155659499241999_zh-CN.png)
 
 -   示例2：Collectd采集数据到日志服务
 
@@ -102,7 +103,7 @@
 
     使用JSON模式采集后，您可以给content字段创建JSON类型的索引（创建方式参考[JOSN索引类型](intl.zh-CN/用户指南/查询与分析/索引数据类型/JSON类型.md#)），日志样例如下：
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/150479/155555436842000_zh-CN.png)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/150479/155659499242000_zh-CN.png)
 
 -   示例3：使用Telegraf采集数据到日志服务
 
@@ -142,7 +143,7 @@
 
     使用JSON模式采集后，您可以给content字段创建JSON类型的索引（创建方式参考[JOSN索引类型](intl.zh-CN/用户指南/查询与分析/索引数据类型/JSON类型.md#)），日志样例如下：
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/150479/155555436842180_zh-CN.png)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/150479/155659499242180_zh-CN.png)
 
 -   示例4：使用Fluentd采集数据到日志服务
 
@@ -177,7 +178,7 @@
 
     使用JSON模式采集后，您可以给content字段创建JSON类型的索引（创建方式参考[JOSN索引类型](intl.zh-CN/用户指南/查询与分析/索引数据类型/JSON类型.md#)），日志样例如下：
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/150479/155555436942204_zh-CN.png)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/150479/155659499242204_zh-CN.png)
 
 -   示例5：使用Logstash采集数据到日志服务
 
@@ -229,6 +230,6 @@
 
         使用JSON模式采集后，您可以给content字段创建JSON类型的索引（创建方式参考[JOSN索引类型](intl.zh-CN/用户指南/查询与分析/索引数据类型/JSON类型.md#)），日志样例如下：
 
-        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/150479/155555436942205_zh-CN.png)
+        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/150479/155659499342205_zh-CN.png)
 
 
