@@ -35,22 +35,25 @@ Content-Length: <ContentLength>
 |:-------------|:---|:--------------|:----------|
 |logstoreName|string|Yes|Logstore name.|
 |consumerGroup|string|Yes|Consumer group name, which must be unique under a project.|
-|timeout |integer|Yes|Timeout period. If no heartbeat is received in the timeout period, the consumer group is deleted.|
-|order|bool|Yes|Sequential consumption or not.|
+|timeout|integer|Yes|Timeout period. If no heartbeat is received in the timeout period, the consumer group is deleted.|
+|order|bool|Yes|Set the system whether to consume the data of a shard in order. -   true: indicates to set the system to consume the data of a shard in order. Specifically, after a shard is split to two new shards, the system firstly consumes the data in the original shard, then consumes the data in the two new shards at the same time.
+-   false: indicates to set the system not to consume the data of a shard in order.
 
-**Request header**
+ |
+
+ **Request header** 
 
 The CreateConsumerGroup interface does not have a specific request header. For details about public request headers of Log Service APIs, see [Public request header](reseller.en-US/API Reference/Public request header.md).
 
-**Response header**
+ **Response header** 
 
 The CreateConsumerGroup interface does not have a specific response header. For details about public response headers of Log Service APIs, see [Public response header](reseller.en-US/API Reference/Public response header.md).
 
-**Response element **
+ **Response element** 
 
 The returned HTTP status code is 200.
 
-**Error code**
+ **Error code** 
 
 The interface may return the following error codes in addition to Log Service API [Common error codes](reseller.en-US/API Reference/Common error codes.md):
 
@@ -60,16 +63,16 @@ The interface may return the following error codes in addition to Log Service AP
 |400|JsonInfoInvalid|consumerGroup or timeout is of error format|
 |404|ProjectNotExist|The Project does not exist : \{Project\}|
 |404|LogStoreNotExist|logstore \{logstoreName\} dose not exist|
-|500 |InternalServerError|Specified Server Error Message|
+|500|InternalServerError|Specified Server Error Message|
 
 ## Example {#section_p5z_ghh_f2b .section}
 
-**Request example:**
+**Request example:** 
 
 ```
 POST /logstores/my-logstore/consumergroups HTTP/1.1
 Header:
-Authorization: LOG AK\_ID:Signature
+Authorization: LOG <yourAccessKeyId>:<yourSignature>
 x-log-bodyrawsize: 0
 User-Agent: sls-java-sdk-v-0.6.1
 x-log-apiversion: 0.6.0
@@ -88,7 +91,7 @@ Body:
 }
 ```
 
-**Response example:**
+**Response example:** 
 
 ```
 HTTP/1.1 200
