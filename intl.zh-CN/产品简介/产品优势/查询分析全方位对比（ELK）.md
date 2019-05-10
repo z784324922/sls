@@ -4,7 +4,7 @@
 
 提到日志实时分析，很多人都会想到基于很火的ELK Stack（Elastic/Logstash/Kibana）来搭建。ELK方案开源，在社区中有大量的内容和使用案例。
 
-阿里云[日志服务\(LOG\)](https://www.aliyun.com/product/sls) 是阿里巴巴集团对日志场景的解决方案产品，前身是2012年初阿里云在研发飞天操作系统过程中用来监控+问题诊断的产物，但随着用户增长与产品发展，慢慢开始向面向Ops（DevOps，Market Ops，SecOps）日志分析领域发展，期间经历双十一、蚂蚁双十二、新春红包、国际业务等场景挑战，成为同时服务内外的产品。
+阿里云 [日志服务](https://www.alibabacloud.com/zh/product/log-service?spm) 是阿里巴巴集团对日志场景的解决方案产品，前身是2012年初阿里云在研发飞天操作系统过程中用来监控+问题诊断的产物，但随着用户增长与产品发展，慢慢开始向面向Ops（DevOps，Market Ops，SecOps）日志分析领域发展，期间经历双十一、蚂蚁双十二、新春红包、国际业务等场景挑战，成为同时服务内外的产品。
 
 ## 面向日志分析场景 {#section_url_qkj_ngb .section}
 
@@ -89,21 +89,21 @@ Apache Lucene是Apache软件基金会一个开放源代码的全文检索引擎�
 整体而言：
 
 -   ELK 有非常多生态和写入工具，使用中的安装、配置等都有较多工具可以参考。
--   LOG 是托管服务，从接入、配置、使用上集成度非常高，普通用户5分钟就可以接入，但在生态与丰富度和ELK相比有较大差距。
+-   LOG 是托管服务，从接入、配置、使用上集成度非常高，普通用户5分钟就可以接入。
 -   LOG 是SaaS化服务，在过程中不需要担心容量、并发等问题，弹性伸缩，免运维。
 
 ## 功能（查询+分析） {#section_mf4_wwy_zdb .section}
 
 查询主要将符合条件的日志快速命中，分析功能是对数据进行统计与计算。
 
-例如我们有如下需求：所有状态码大于200读请求，根据IIP统计次数和流量，这样的分析请求就可以转化为两个操作：查询到指定结果，对结果进行统计分析。在一些情况下我们也可以不进行查询，直接对所有日志进行分析。
+例如我们有如下需求：所有状态码大于200的读请求，根据IP统计次数和流量，这样的分析请求就可以转化为两个操作：查询到指定结果，对结果进行统计分析。在一些情况下我们也可以不进行查询，直接对所有日志进行分析。
 
 ```
 1. Status in (200,500] and Method:Get*
- 2. select count(1) as c, sum(inflow) as sum_inflow, ip group by Ip
+2. select count(1) as c, sum(inflow) as sum_inflow, ip group by Ip
 ```
 
--   **查询基础对比**
+-   **查询基础对比** 
 
     该对比基于[Elastic 6.5 Indices](https://www.elastic.co/guide/en/elasticsearch/reference/current/indices.html)。
 
@@ -124,7 +124,7 @@ Apache Lucene是Apache软件基金会一个开放源代码的全文检索引擎�
 
     对比结论
 
-    -   ES 支持数据类型丰富度，原生查询能力比LOG更完整。
+    -   ES 支持的数据类型丰富度，原生查询能力比LOG更完整。
     -   LOG​ 能够通过SQL方式（如下）来代替字符串模糊查询，Geo等比较函数，但性能会比原生查询稍差。
     ```
     子串命中
@@ -135,15 +135,16 @@ Apache Lucene是Apache软件基金会一个开放源代码的全文检索引擎�
     
     JSON内容解析与匹配
     * | select content where json_extract(content, '$.store.book')='mybook' limit 100
+    
     如果设置json类型索引也可以使用：
     field.store.book='mybook'
     ```
 
--   **查询扩展能力**
+-   **查询扩展能力** 
 
-    在日志分析场景中，光有检索可能还不够，需要能够围绕查询做进一步的工作：
+    在日志分析场景中，光有检索还不够，需要能够围绕查询做进一步的工作：
 
-    1.  定位到错误日志后，想看看上下文是什么参数引起了错误。
+    1.  定位到错误日志后，想通过上下文查看是什么参数引起了错误。
     2.  定位到错误后，想看看之后有没有类似错误，类似tail -f 原始日志文件，并进行grep。
     3.  通过关键词搜索到一大堆日志（例如百万条），其中90%都是已知问题干扰调查线索。
     LOG 针对以上问题提供闭环解决方案：
@@ -151,18 +152,18 @@ Apache Lucene是Apache软件基金会一个开放源代码的全文检索引擎�
     -   上下文查询（Context Lookup）：原始上下文翻页，免登服务器。
     -   LiveTail功能（Tail-f）：原始上下文tail-f，更新实时情况。
     -   智能聚类（LogReduce）：根据日志Pattern动态归类，合并重复模式，洞察异常。
-    1.  **[LiveTail](../../../../../intl.zh-CN/用户指南/查询与分析/查询语法与功能/LiveTail.md)（云端 tail -f\)**
+    1.  **[LiveTail](../../../../intl.zh-CN/用户指南/查询与分析/查询语法与功能/LiveTail.md)（云端 tail -f\)** 
 
-        在传统的运维方式中，如果需要对日志文件进行实时监控，需要到服务器上对日志文件执行命令`tail -f`，如果实时监控的日志信息不够直观，可以加上`grep`或者`grep -v`进行关键词过滤。LOG在控制台提供了日志数据实时监控的交互功能LiveTail，针对线上日志进行实时监控分析，减轻运维压力。
+        在传统的运维方式中，如果需要对日志文件进行实时监控，需要到服务器上对日志文件执行`tail -f`命令，如果实时监控的日志信息不够直观，可以加上`grep`或者`grep -v`进行关键词过滤。LOG在控制台提供了日志数据实时监控的交互功能LiveTail，针对线上日志进行实时监控分析，减轻运维压力。
 
-        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13138/155019404737745_zh-CN.png)
+        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13138/155748032937745_zh-CN.png)
 
         Livetail特点如下：
 
         -   智能支持Docker、K8S、服务器、Log4J Appender等来源数据。
         -   监控日志的实时信息，标记并过滤关键词。
         -   日志字段做分词处理，以便查询包含分词的上下文日志。
-    2.  **[智能聚类](../../../../../intl.zh-CN/用户指南/查询与分析/查询语法与功能/日志聚类.md)（LogReduce）**
+    2.  **[智能聚类](../../../../intl.zh-CN/用户指南/查询与分析/查询语法与功能/日志聚类.md)（LogReduce）** 
 
         业务的高速发展，对系统稳定性提出了更高的要求，各个系统每天产生大量的日志，你是否曾担心过：
 
@@ -179,13 +180,13 @@ Apache Lucene是Apache软件基金会一个开放源代码的全文检索引擎�
 
 ES在docvalue之上提供一层聚合（Aggregation）语法，并且在6.x版本中提供SQL语法能够对数据进行分组聚合运算。 LOG支持完整SQL92标准（提供restful 和 jdbc两种协议），除基本聚合功能外，支持完整的SQL计算，并支持外部数据源联合查询（Join），机器学习，模式分析等函数。
 
-**说明：** 以下分析基于[ES 6.5 Aggregation](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations.html)和[LOG 分析语法](https://help.aliyun.com/document_detail/53608.html)。
+**说明：** 以下分析基于[ES 6.5 Aggregation](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations.html)和[LOG分析语法](../../../../intl.zh-CN/用户指南/查询与分析/实时分析简介.md#)。
 
 除SQL92标准语法外，我们根据实际日志分析需求，研发一系列实用的功能：
 
-1.  [同比和环比函数](../../../../../intl.zh-CN/用户指南/查询与分析/SQL分析语法与功能/同比和环比函数.md)
+1.  [同比和环比函数](../../../../intl.zh-CN/用户指南/查询与分析/SQL分析语法与功能/同比和环比函数.md) 
 
-    同比、环比函数同比环比函数能够通过SQL嵌套对任意计算（单值、多值、曲线）计算同环比（任意时段），以便洞察增长趋势。
+    同比环比函数能够通过SQL嵌套对任意计算（单值、多值、曲线）计算同环比（任意时段），以便洞察增长趋势。
 
     ```
     * | select compare( pv , 86400) from (select count(1) as pv from log)
@@ -195,14 +196,14 @@ ES在docvalue之上提供一层聚合（Aggregation）语法，并且在6.x版�
     *|select t, diff[1] as current, diff[2] as yestoday, diff[3] as percentage from(select t, compare( pv , 86400) as diff from (select count(1) as pv, date_format(from_unixtime(__time__), '%H:%i') as t from log group by t) group by t order by t) s 
     ```
 
-2.  **[外部数据源联合查询](../../../../../intl.zh-CN/用户指南/查询与分析/SQL分析语法与功能/Logstore和RDS联合查询.md)（Join）**
+2.  **[外部数据源联合查询](../../../../intl.zh-CN/用户指南/查询与分析/SQL分析语法与功能/Logstore和RDS联合查询.md)（Join）** 
 
     可以在查询分析中关联外部数据源
 
-    -   支持logstore，MySQL，OSS（CSV）等数据源
-    -   支持left，right，out，innerjoin
-    -   SQL查询外表，SQLJoin外表
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13138/155019404737750_zh-CN.png)
+    -   支持logstore，MySQL，OSS（CSV）等数据源。
+    -   支持left，right，out，innerjoin。
+    -   SQL查询外表，SQLJoin外表。
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13138/155748033037750_zh-CN.png)
 
     Join外表的样例：
 
@@ -215,13 +216,13 @@ ES在docvalue之上提供一层聚合（Aggregation）语法，并且在6.x版�
     * | select u.gender, count(1) from chiji_accesslog l join user_meta1 u on l.userid = u.userid group by u.gender
     ```
 
-3.  **地理位置函数**
+3.  **地理位置函数** 
 
     针对IP地址、手机等内容，内置地理位置函数方便分析用户来源，包括：
 
-    -   IP：国家、省市、城市、经纬度、运营商
-    -   Mobile：运营商、省市
-    -   GeoHash：Geo位置与坐标转换
+    -   IP：国家、省市、城市、经纬度、运营商。
+    -   Mobile：运营商、省市。
+    -   GeoHash：Geo位置与坐标转换。
     查询结果分析样例：
 
     ```
@@ -231,17 +232,17 @@ ES在docvalue之上提供一层聚合（Aggregation）语法，并且在6.x版�
     * | SELECT mobile_city(try_cast("mobile" as bigint)) as "城市", mobile_province(try_cast("mobile" as bigint)) as "省份", count(1) as "请求次数" group by "省份", "城市" order by "请求次数" desc limit 100
     ```
 
-    -   [GeoHash](../../../../../intl.zh-CN/用户指南/查询与分析/SQL分析语法与功能/地理函数.md) 
-    -   [电话号码](../../../../../intl.zh-CN/用户指南/查询与分析/SQL分析语法与功能/电话号码函数.md)
-    -   [IP函数](../../../../../intl.zh-CN/用户指南/查询与分析/SQL分析语法与功能/IP地理函数.md)
-4.  **[安全分析函数](../../../../../intl.zh-CN/用户指南/查询与分析/SQL分析语法与功能/安全检测函数.md)**
+    -   [GeoHash](../../../../intl.zh-CN/用户指南/查询与分析/SQL分析语法与功能/地理函数.md)
+    -   [电话号码](../../../../intl.zh-CN/用户指南/查询与分析/SQL分析语法与功能/电话号码函数.md)
+    -   [IP函数](../../../../intl.zh-CN/用户指南/查询与分析/SQL分析语法与功能/IP地理函数.md)
+4.  **[安全分析函数](../../../../intl.zh-CN/用户指南/查询与分析/SQL分析语法与功能/安全检测函数.md)** 
 
     依托全球白帽子共享安全资产库，提供安全检测函数，您只需要将日志中任意的IP、域名或者URL传给安全检测函数，即可检测是否安全。
 
     -   security\_check\_ip
     -   security\_check\_domain
     -   security\_check\_url
-5.  **[机器学习](../../../../../intl.zh-CN/用户指南/查询与分析/机器学习语法与函数/简介.md)与时序检测函数**
+5.  **[机器学习](../../../../intl.zh-CN/用户指南/查询与分析/机器学习语法与函数/简介.md)与时序检测函数** 
 
     新增机器学习与智能诊断系列函数：
 
@@ -254,7 +255,7 @@ ES在docvalue之上提供一层聚合（Aggregation）语法，并且在6.x版�
     -   异常检测、变点检测、折点检测：找到异常点。
     -   多周期检测：发现数据访问中的周期规律。
     -   时序聚类：找到形态不一样的时序。
-6.  **模式分析函数**
+6.  **模式分析函数** 
 
     模式分析函数能够洞察数据中的特征与规律，帮助快速、准确推断问题：
 
@@ -263,14 +264,14 @@ ES在docvalue之上提供一层聚合（Aggregation）语法，并且在6.x版�
         -   延时\>10S请求中某个ID构成比例远远大于其他维度组合。
         -   并且该ID在对比集合（B）中的比例较低。
         -   A和B中差异明显。
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13138/155019404737754_zh-CN.png)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13138/155748033037754_zh-CN.png)
 
 
 ## 性能 {#section_xcv_hxy_zdb .section}
 
 接针对相同数据集，分别对比写入数据及查询，和聚合计算能力。
 
--   **实验环境**
+-   **实验环境** 
     1.  测试配置
 
         |类别|自建ELK|LOG|
@@ -312,8 +313,8 @@ ES在docvalue之上提供一层聚合（Aggregation）语法，并且在6.x版�
 
     -   日志服务写入延时好于ES，40ms vs 14 ms。
     -   空间：原始数据50G，因测试数据比较随机所以存储空间会有膨胀（大部分真实场景下，存储会因压缩后会比原始数据小）。ES胀到86G，膨胀率为172%，在存储空间超出日志服务 58%。这个数据与ES推荐的存储大小为原始大小2.2倍比较接近。
--   **读取（查询+分析）测试**
-    -   **测试场景**
+-   **读取（查询+分析）测试** 
+    -   **测试场景** 
 
         选取两种比较常见的场景：日志查询和聚合计算。分别统计并发度为1，5，10时，两种case的平均延时。
 
@@ -330,7 +331,7 @@ ES在docvalue之上提供一层聚合（Aggregation）语法，并且在6.x版�
             value_126
             ```
 
-    -   **测试结果**
+    -   **测试结果** 
 
         |类型|并发数|ES延时（单位为秒）|日志服务延时（单位为秒）|
         |:-|:--|:---------|:-----------|
@@ -341,14 +342,14 @@ ES在docvalue之上提供一层聚合（Aggregation）语法，并且在6.x版�
         |5|0.171|0.083|
         |10|0.2|0.082|
 
-    -   **结果分析**
+    -   **结果分析** 
         -   从结果看，对于1.5亿数据量这个规模，两者都达到了秒级查询与分析能力。
         -   针对统计类场景（case 1）， ES和日志服务延时处同一量级。ES采用SSD云盘，在读取大量数据时IO优势比较高。
         -   针对查询类场景（case 2）， LogAnalytics在延时明显优于ES。随着并发的增加，ELK延时对应增加，而LogAnalytics延时保持稳定甚至略有下降。
 
 ## 规模与成本 { .section}
 
--   **规模能力**
+-   **规模能力** 
 
     1.  日志服务一天可以索引PB级数据，一次查询可以在秒级过几十TB规模数据，在数据规模上可以做到弹性伸缩与水平扩展。
     2.  ES比较适合服务场景为：写入GB-TB/Day、存储在TB级。主要受限于2个原因：
@@ -369,21 +370,21 @@ ES在docvalue之上提供一层聚合（Aggregation）语法，并且在6.x版�
     3.  通过控制台内嵌方案满足开发查询日志需求，通过Grafana插件调用日志服务统一业务监控，通过DataV连接日志服务进行大盘搭建。
     **说明：** 详细说明请参考文档：
 
-    -   [控制台分享内嵌](../../../../../intl.zh-CN/用户指南/可视化分析/其他可视化方案/控制台分享内嵌.md)
-    -   [对接Grafana](../../../../../intl.zh-CN/用户指南/可视化分析/其他可视化方案/对接Grafana.md)
-    -   [对接DataV](../../../../../intl.zh-CN/用户指南/可视化分析/其他可视化方案/对接DataV.md)
-    -   [对接Jaeger](../../../../../intl.zh-CN/用户指南/可视化分析/其他可视化方案/对接Jaeger.md)
+    -   [控制台分享内嵌](../../../../intl.zh-CN/用户指南/可视化分析/其他可视化方案/控制台分享内嵌.md)
+    -   [对接Grafana](../../../../intl.zh-CN/用户指南/可视化分析/其他可视化方案/对接Grafana.md)
+    -   [对接DataV](../../../../intl.zh-CN/用户指南/可视化分析/其他可视化方案/对接DataV.md)
+    -   [对接Jaeger](../../../../intl.zh-CN/用户指南/可视化分析/其他可视化方案/对接Jaeger.md)
     平台上线2个月后：
 
     1.  每天查询的调用量大幅上升，开发逐步开始习惯在运维平台进行日志查询与分析，提升了研发的效率，运维部门也回收了线上登录的权限。
     2.  除Nginx日志外，把App日志、移动端日志、容器日志也进行接入，规模是之前10倍。
     3.  除查询日志外，也衍生出很多新的玩法，例如通过Jaeger插件与控制台基于日志搭建了Trace系统，将线上错误配置成每天的告警与报表进行巡检。
     4.  通过统一日志接入管理，规范了各平台对接总线，不再有一份数据同时被采集多次的情况，大数据部门Spark、Flink等平台可以直接去订阅实时日志数据进行处理。
--   **成本**
+-   **成本** 
 
     以上述测试数据为例，一天写入50GB数据（其中27GB 为实际的内容），保存90天，平均一个月的耗费。
 
-    -   日志服务（LogSearch/LogAnalytics）计费规则参考[计费方式](../../../../../intl.zh-CN/产品定价/计费方式.md)，包括读写流量、索引流量、存储空间等计费项，查询功能免费。
+    -   日志服务（LogSearch/LogAnalytics）计费规则参考[按量付费](../../../../intl.zh-CN/产品定价/按量付费.md)，包括读写流量、索引流量、存储空间等计费项，查询功能免费。
 
         |计费项目|值|单价|费用（元\)|
         |:---|:-|:-|:-----|
@@ -406,7 +407,7 @@ ES在docvalue之上提供一层聚合（Aggregation）语法，并且在6.x版�
 
         同样性能，使用LogSearch/Analytics与ELK（SSD）费用比为 13.6%。在测试过程中，我们也尝试把SSD换成SATA以节省费用（LogAnalytics与SATA版费用比为 34%），但测试发现延时会从40ms上升至150ms，在长时间读写下，查询和读写延时变得很高，无法正常工作了。
 
--   **时间成本（Time to Value）**
+-   **时间成本（Time to Value）** 
 
     除硬件成本外，日志服务在新数据接入、搭建新业务、维护与资源扩容成本基本为0。
 
