@@ -2,7 +2,7 @@
 
 ## Download address {#section_xlg_r1r_12b .section}
 
-Log Service Java SDK allows Java developers to conveniently use Alibaba Cloud Log Service  by using the Java programs. You can directly use Maven dependencies to add the SDK or download the package to your local machine. Currently, Log Service Java SDK supports J2SE 6.0 or later versions. Click [here](https://github.com/aliyun/aliyun-log-java-sdk) to download the latest SDK.
+Log Service Java SDK allows Java developers to conveniently use Alibaba Cloud Log Service by using the Java programs. You can directly use Maven dependencies to add the SDK or download the package to your local machine. Currently, Log Service Java SDK supports J2SE 6.0 or later versions. Click [here](https://github.com/aliyun/aliyun-log-java-sdk) to download the latest SDK.
 
 ## Procedure {#section_ylg_r1r_12b .section}
 
@@ -10,13 +10,13 @@ Follow these steps to start using Log Service Java SDK quickly.
 
 ## Step 1. Create an Alibaba Cloud account {#section_zlg_r1r_12b .section}
 
-For more information, see[Sign up with Alibaba Cloud](https://www.alibabacloud.com/help/zh/doc-detail/50482.htm) .
+For more information, see[Sign up with Alibaba Cloud](https://www.alibabacloud.com/help/doc-detail/50482.htm) .
 
 ## Step 2. Obtain an Alibaba Cloud AccessKey {#section_amg_r1r_12b .section}
 
 Before using Log Service Java SDK, you must apply for an Access Key.
 
-Log on to the Access Key Management page. Select an AccessKey for  for SDK. If you do not have any, create one and make sure the AccessKey is **enabled**. The AccessKey is used in the following steps and must be kept confidential. For more information about how to use the AccessKey in SDK, see [Preparation](../../../../reseller.en-US/User Guide/Preparation/Preparation.md) SDK configuration.
+Log on to the Access Key Management page. Select an AccessKey for for SDK. If you do not have any, create one and make sure the AccessKey is **enabled**. The AccessKey is used in the following steps and must be kept confidential. For more information about how to use the AccessKey in SDK, see [Preparation](../../../../reseller.en-US/User Guide/Preparation/Preparation.md) SDK configuration.
 
 This access key will be used in the following steps. It must be kept confidential. See [Configurations](reseller.en-US/SDK Reference/Basic Descriptions /Configurations.md) for more information about how to use the AccessKey in SDK.
 
@@ -31,17 +31,17 @@ For how to create a project and Logstore, see [Preparation](../../../../reseller
 -   Make sure that you use the same Alibaba Cloud account to obtain the Alibaba Cloud AccessKey and create the Log Service project and Logstore.
 -   For more information about the concepts of Log Service such as project and Logstore, see Core concept.
 -   A project name must be globally unique in Log Service, and a Logstore name must be unique in the same project.
--   After the project is created, you cannot modify the region  or migrate the project across regions.
+-   After the project is created, you cannot modify the region or migrate the project across regions.
 
 ## Step 4. Install the Java development environment {#section_csq_dbr_12b .section}
 
-Currently, Log Service Java SDK supports the Java runtime environment of J2SE 6.0 or later versions. You can download the installation package at the [Java  official website](http://developers.sun.com/downloads/) and follow the instructions to install the Java development environment.
+Currently, Log Service Java SDK supports the Java runtime environment of J2SE 6.0 or later versions. You can download the installation package at the [Java official website](http://developers.sun.com/downloads/) and follow the instructions to install the Java development environment.
 
 ## Step 5. Install Log Service Java SDK {#section_dsq_dbr_12b .section}
 
 Install the Log Service Java SDK after you build the Java development environment. Currently, two installation methods are available.
 
-1.  We recommend that you use  [Apache Maven](http://maven.apache.org/)  to obtain the latest SDK version. You can add the following configurations to your Maven  project.
+1.  We recommend that you use [Apache Maven](http://maven.apache.org/) to obtain the latest SDK version. You can add the following configurations to your Maven project.
 
     ```
     <dependency>
@@ -63,13 +63,13 @@ Install the Log Service Java SDK after you build the Java development environmen
     ```
 
 2.  You can download the Java SDK package and then directly reference the local package in your Java project.
-    1.  Click [here](https://github.com/aliyun/aliyun-log-java-sdk) to clone the Java SDK  package. Version updates are provided periodically. Use Maven to obtain the latest version.
+    1.  Click [here](https://github.com/aliyun/aliyun-log-java-sdk) to clone the Java SDK package. Version updates are provided periodically. Use Maven to obtain the latest version.
     2.  Extract the downloaded package to a specified directory. The Java SDK does not require installation.
     3.  Add all .jar packages \(including third-party dependent packages\) in the SDK package to your Java project. For detailed instructions, see the corresponding IDE document.
 
 ## Step 6. Start a new Java project {#section_ekk_sbj_sy .section}
 
-Now you can start using the Java SDK. To interact with Log Service and obtain the relevant output,  run the following sample code in a text editor or Java IDE. For more information about using Java SDK, see Instructions in this document.
+Now you can start using the Java SDK. To interact with Log Service and obtain the relevant output, run the following sample code in a text editor or Java IDE. For more information about using Java SDK, see Instructions in this document.
 
 ```
 package sdksample;
@@ -244,6 +244,6 @@ public class sdksample {
 
 ## Precautions {#section_jqj_rrf_jdb .section}
 
-1.  To improve the I/O efficiency of your system, try not to directly use SDKs to write data to Log Service. For more information about the standard way to write data, see [Producer Library](../../../../reseller.en-US/User Guide/Data Collection/SDK collection/Producer Library.md).
-2.  To consume data in Log Service, try not to directly use SDKs to pull data interfaces. An advanced consumer library [Consumer group - Usage](../../../../reseller.en-US/User Guide/Real-time subscription and consumption/Consumer group - Usage.md) is provided, which shields the implementation details of Log Service and provides the advanced functions such as load balancing and consumption in order.
+1.  To improve the I/O efficiency of your system, try not to directly use SDKs to write data to Log Service. For more information about the standard way to write data, see [Producer Library](../../../../reseller.en-US/User Guide/Other collection methods/SDK collection/Producer Library.md).
+2.  To consume data in Log Service, try not to directly use SDKs to pull data interfaces. An advanced consumer library [Consumer group - Usage](../../../../reseller.en-US/User Guide/Real-time subscription and consumption/Consumption by consumer groups/Consumer group - Usage.md) is provided, which shields the implementation details of Log Service and provides the advanced functions such as load balancing and consumption in order.
 
