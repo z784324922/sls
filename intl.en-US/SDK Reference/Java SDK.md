@@ -10,7 +10,7 @@ Follow these steps to start using Log Service Java SDK quickly.
 
 ## Step 1. Create an Alibaba Cloud account {#section_zlg_r1r_12b .section}
 
-For more information, see[Sign up with Alibaba Cloud](https://www.alibabacloud.com/help/doc-detail/50482.htm) .
+For more information, see [Sign up with Alibaba Cloud](https://www.alibabacloud.com/help/doc-detail/50482.htm) .
 
 ## Step 2. Obtain an Alibaba Cloud AccessKey {#section_amg_r1r_12b .section}
 
