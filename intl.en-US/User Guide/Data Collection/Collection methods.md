@@ -9,14 +9,14 @@ Log Service can collect logs from the following sources:
 |Type|Source|Access method|Details|
 |:---|:-----|:------------|:------|
 |Application|Program output|[Logtail](reseller.en-US/User Guide/Logtail collection/Overview/Overview.md)|-|
-|Access logs|[Logtail](reseller.en-US/User Guide/Logtail collection/Overview/Overview.md)|[../../../../dita-oss-bucket/SP\_7/DNSLS11878107/EN-US\_TP\_13019.md](../../../../reseller.en-US/Quick Start/Analysis - Nginx access logs.md)|
+|Access logs|[Logtail](reseller.en-US/User Guide/Logtail collection/Overview/Overview.md)|[../../../../dita-oss-bucket/SP\_7/DNSLS11878107/EN-US\_TP\_13019.md\#](../../../../reseller.en-US/Quick Start/Collect and analyze Nginx access logs.md#)|
 |Link track|Jaeger Collector and [Logtail](reseller.en-US/User Guide/Logtail collection/Overview/Overview.md)|-|
 |Programming language|Java|[SDK](../../../../reseller.en-US/SDK Reference/Basic Descriptions /Overview.md) and [Java Producer Library](reseller.en-US/User Guide/Other collection methods/SDK collection/Producer Library.md)|-|
 |Log4J Appender|[1.x](https://github.com/aliyun/aliyun-log-log4j-appender) and [2.x](https://github.com/aliyun/aliyun-log-log4j2-appender)|-|
 |LogBack Appender|[LogBack](https://github.com/aliyun/aliyun-log-logback-appender)|-|
 |C|[Native](../../../../reseller.en-US/SDK Reference/Basic Descriptions /Overview.md)|-|
 |Python|[Python](../../../../reseller.en-US/SDK Reference/Basic Descriptions /Overview.md)|-|
-|Python Logging|[Python Logging Handler](https://aliyun-log-python-sdk.readthedocs.io/tutorials/tutorial_logging_handler.html)|-|
+|Python Logging|Python Logging Handler|-|
 |PHP|[PHP](../../../../reseller.en-US/SDK Reference/Basic Descriptions /Overview.md)|-|
 |C\#|[C\#](../../../../reseller.en-US/SDK Reference/Basic Descriptions /Overview.md)|-|
 |C++|[C++ SDK](../../../../reseller.en-US/SDK Reference/Basic Descriptions /Overview.md)|-|
@@ -31,9 +31,10 @@ Log Service can collect logs from the following sources:
 |Mobile client|iOS/Android|[../../../../dita-oss-bucket/SP\_7/DNSLS11879553/EN-US\_TP\_13288.md\#](../../../../reseller.en-US/SDK Reference/IOS SDK.md#) and [../../../../dita-oss-bucket/SP\_7/DNSLS11879553/EN-US\_TP\_13285.md](../../../../reseller.en-US/SDK Reference/Android SDK.md)|-|
 |Websites|[JS/Web Tracking](reseller.en-US/User Guide/Other collection methods/Web Tracking.md)|-|
 |Intelligent IoT|[C Producer Library](https://github.com/aliyun/aliyun-log-c-sdk)|-|
-|Cloud product|Various products, such as ECS and OSSFor more information, see [Cloud product logs](#)
+|Cloud product|Various products, such as ECS and OSS For more information, see [Cloud product logs](#)
 
-|Cloud product console|[Cloud product logs](reseller.en-US/User Guide/Cloud product collection/Cloud product logs.md)|
+ |Cloud product console|[Cloud product logs](reseller.en-US/User Guide/Cloud product collection/Cloud product logs.md)|
+|Import MaxCompute data|Use Dataworks to export MaxCompute data|[EN-US\_TP\_15131.md\#](reseller.en-US/User Guide/Other collection methods/Use DataWorks to export MaxCompute data to Log Service.md#)|
 |Third-party software|Logstash|[Logstash](reseller.en-US/User Guide/Other collection methods/Logstash/Create Logstash collection configurations.md)|-|
 
 The following table lists the cloud products from which Log Service can collect logs:
@@ -61,19 +62,19 @@ Log Service provides [service endpoints](../../../../reseller.en-US/API Referenc
 
 ## FAQ {#section_sdp_zpc_wgb .section}
 
--   Q: **Which type of network applies to physical connections?**
+-   Q: **Which type of network applies to physical connections?** 
 
     A: Intranet/private networks
 
--   Q: **Can Internet IP addresses be collected during Internet data collection?**
+-   Q: **Can Internet IP addresses be collected during Internet data collection?** 
 
     A: Yes. You can follow the instructions provided in [EN-US\_TP\_13024.md\#](reseller.en-US/User Guide/Preparation/Manage a Logstore.md#) and enable the Internet IP address recording function.
 
--   Q: **Which type of network can I use if I want to collect logs from an ECS server located in region A and send them to a project on a Log Service server located in region B?**
+-   Q: **Which type of network can I use if I want to collect logs from an ECS server located in region A and send them to a project on a Log Service server located in region B?** 
 
-    A: Use the Internet to transfer logs after install the Internet-version Logtail on the ECS server. As for other scenarios, follow the instructions provided in [EN-US\_TP\_18799.md](reseller.en-US/User Guide/Logtail collection/Select a network type.md).
+    A: Use the Internet to transfer logs after install the Internet-version Logtail on the ECS server. As for other scenarios, follow the instructions provided in [EN-US\_TP\_18799.md\#](reseller.en-US/User Guide/Logtail collection/Select a network type.md#).
 
--   Q: **How can I determine whether access is established successfully?**
+-   Q: **How can I determine whether access is established successfully?** 
 
     A: Access is established successfully if information is returned after you run the following command:
 
