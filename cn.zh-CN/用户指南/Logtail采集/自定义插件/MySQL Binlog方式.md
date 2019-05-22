@@ -1,19 +1,19 @@
 # MySQL Binlog方式 {#concept_ypy_xvc_wdb .concept}
 
-MySQL Binlog同步类似 [canal](https://github.com/alibaba/canal) 功能，以MySQL slave的形式基于Binlog进行同步，性能较高。
+MySQL Binlog 同步类似 [canal](https://github.com/alibaba/canal) 功能，以MySQL slave 的形式基于 Binlog 进行同步，性能较高。
 
-**说明：** 此功能目前只支持Linux，依赖Logtail 0.16.0及以上版本，版本查看与升级参见[安装Logtail（Linux系统）](cn.zh-CN/用户指南/Logtail采集/安装/安装Logtail（Linux系统）.md)。
+**说明：** 此功能目前只支持 Linux，依赖 Logtail 0.16.0 及以上版本，版本查看与升级参见[安装Logtail（Linux系统）](cn.zh-CN/用户指南/Logtail采集/安装/安装Logtail（Linux系统）.md)。
 
 ## 功能 {#section_pwd_n5q_pdb .section}
 
--   通过Binlog订阅数据库增量更新数据，性能优越，支持RDS等MySQL协议的数据库。
+-   通过 Binlog 订阅数据库增量更新数据，性能优越，支持 RDS 等 MySQL 协议的数据库。
 -   支持数据库过滤（支持正则）。
 -   支持同步点设置。
--   支持Checkpoint保存同步状态。
+-   支持 Checkpoint 保存同步状态。
 
 ## 实现原理 {#section_ihv_n5q_pdb .section}
 
-如下图所示，Logtail内部实现了MySQL Slave的交互协议，将自己伪装成为MySQL的Slave节点，向MySQL master发送dump协议；MySQL的master收到dump请求后，会将自身的Binary log实时推送给Logtail，Logtail对Binlog进行事件解析、过滤、数据解析等，并将解析好的数据上传到日志服务。
+如下图所示，Logtail 内部实现了 MySQL Slave 的交互协议，将自己伪装成为 MySQL 的 Slave 节点，向 MySQL master 发送 dump 协议；MySQL 的 master 收到 dump 请求后，会将自身的 Binary log 实时推送给 Logtail，Logtail 对Binlog进行事件解析、过滤、数据解析等，并将解析好的数据上传到日志服务。
 
 ![](images/2929_zh-CN.png "实现原理")
 
@@ -61,15 +61,20 @@ MySQL Binlog方式输入源类型为：`service_canal`。
 
  示例：假设数据表有三列 c1，c2，c3，在不开启此功能下，row\_insert 事件数据中会有 c1，c2，c3 三个字段，而开启此功能后，c1，c2，c3会被统一打包到 data 字段，值为 `{"c1":"...", "c2": "...", "c3": "..."}`。
 
- **说明：** 此功能仅支持 0.16.19 及以上版本。
+ **说明：** 该参数仅在 0.16.19 及以上版本支持。
+
+ |
+|EnableEventMeta|bool|可选| 是否采集事件的元数据，默认为 false，表示不采集。
+
+ Binlog 事件的元数据包括 event\_time、event\_log\_position、event\_size 以及 event\_server\_id 四项。 **说明：** 该参数仅在 0.16.21 及以上版本支持。
 
  |
 
 ## 使用限制 {#section_bss_bvq_pdb .section}
 
-此功能目前仅支持Linux，依赖Logtail 0.16.0及以上版本，版本查看与升级参见[安装Logtail（Linux系统）](cn.zh-CN/用户指南/Logtail采集/安装/安装Logtail（Linux系统）.md)。
+此功能目前仅支持 Linux，依赖Logtail 0.16.0 及以上版本，版本查看与升级参见[安装Logtail（Linux系统）](cn.zh-CN/用户指南/Logtail采集/安装/安装Logtail（Linux系统）.md)。
 
--   MySQL 必须开启Binlog，且Binlog必须为row模式（默认RDS已经开启）。
+-   MySQL 必须开启 Binlog，且 Binlog 必须为 row 模式（默认 RDS 已经开启）。
 
     ```
     # 查看是否开启Binlog
