@@ -14,7 +14,7 @@ After you install the Logtail client on your server and configure a Logtail Conf
 **Note:** 
 
 -   For more information, see [Alibaba Cloud Community](https://yq.aliyun.com/articles/204554).
--   After a Logtail Config is configured for a machine group, unmodified logs on a server in the machine group will be regarded as historical files. However, Logtail does not collect historical files. If you want to collect historical logs, see [Text-Import history logs](reseller.en-US/User Guide/Logtail collection/Text logs/Text-Import history logs.md).
+-   After a Logtail Config is configured for a machine group, unmodified logs on a server in the machine group will be regarded as historical files. However, Logtail does not collect historical files. If you want to collect historical logs, see [Import history logs](reseller.en-US/User Guide/Logtail collection/Text logs/Import history logs.md).
 
 ## Monitor files {#section_u2b_x5s_cfb .section}
 
@@ -67,7 +67,7 @@ Logtail splits a log into lines, parses the log, and confirms the correctness of
 
 ## Filter logs {#section_k14_y5s_cfb .section}
 
-Logtail filters logs according to the [filter settings](https://www.alibabacloud.com/help/zh/doc-detail/28967.htm) in the Logtail Config.
+Logtail filters logs according to the [filter settings](reseller.en-US/User Guide/Logtail collection/Text logs/Collect text logs.md#) in the Logtail Config.
 
 -   If the filter is not set, Logtail will not filter logs but directly aggregates logs.
 -   If the filter is set, Logtail will traverse and verify all fields in each log.
@@ -86,7 +86,7 @@ During caching, Logtail will immediately package logs and send them if any of th
 
 ## Send logs {#section_rf4_z5s_cfb .section}
 
-Logtail sends the aggregated log to Log Service. You can set the startup parameters `max_bytes_per_sec` and `send_request_concurrency` by following the instructions provided in [Configure startup parameters](https://www.alibabacloud.com/help/zh/doc-detail/32278.htm) to adjust the log sending rate and the maximum number of logs that can be concurrently sent. In this case, Logtail ensures that the preset values are not exceeded.
+Logtail sends the aggregated log to Log Service. You can set the startup parameters `max_bytes_per_sec` and `send_request_concurrency` by following the instructions provided in [Configure startup parameters](reseller.en-US/User Guide/Logtail collection/Install/Configure startup parameters.md#) to adjust the log sending rate and the maximum number of logs that can be concurrently sent. In this case, Logtail ensures that the preset values are not exceeded.
 
 If the log sending fails, Logtail automatically retries or quits the task according to the corresponding error message.
 
