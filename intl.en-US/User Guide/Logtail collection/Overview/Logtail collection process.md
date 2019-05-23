@@ -11,10 +11,7 @@ After you install the Logtail client on your server and configure a Logtail Conf
 5.  [Aggregate logs](#)
 6.  [Send logs](#)
 
-**Note:** 
-
--   For more information, see [Alibaba Cloud Community](https://yq.aliyun.com/articles/204554).
--   After a Logtail Config is configured for a machine group, unmodified logs on a server in the machine group will be regarded as historical files. However, Logtail does not collect historical files. If you want to collect historical logs, see [Import history logs](reseller.en-US/User Guide/Logtail collection/Text logs/Import history logs.md).
+**Note:** After a Logtail Config is configured for a machine group, unmodified logs on a server in the machine group will be regarded as historical files. However, Logtail does not collect historical files. If you want to collect historical logs, see [Import history logs](reseller.en-US/User Guide/Logtail collection/Text logs/Import history logs.md).
 
 ## Monitor files {#section_u2b_x5s_cfb .section}
 
