@@ -48,21 +48,21 @@ The following operators can be used in query statements:
 
 |Operator|Description|
 |:-------|:----------|
-|and|Binary operator. Format: query1 and  query2. Indicates the intersection of the query results of query1 and query2.  With no syntax keyword among  multiple words, the relation is and by default.|
-|or|Binary operator. Format:`query1 or query2`. Indicates the union of the query results of `query1` and `query2` .|
-|not|Binary operator. Format: `query1 not query2`. Indicates a result that matches `query1`  and does not match `query2`, which is equivalent to `query1–query2`.  If only `not query1` exists, it indicates to select the results excluding `query1` from all the logs.|
+|and|Binary operator. Format: query1 and query2. Indicates the intersection of the query results of query1 and query2. With no syntax keyword among multiple words, the relation is and by default.|
+|or|Binary operator. Format: `query1 or query2`. Indicates the union of the query results of `query1` and `query2` .|
+|not|Binary operator. Format: `query1 not query2`. Indicates a result that matches `query1` and does not match `query2`, which is equivalent to `query1–query2`. If only `not query1` exists, it indicates to select the results excluding `query1` from all the logs.|
 |\( , \)|Parentheses \(\) are used to merge one or more sub-queries into one query condition to increase the priority of the query in the parentheses \(\).|
-|:|Used to query the key-value pairs. `term1:term2` makes up a key-value pair.  If the key or value  contains reserved characters such as spaces and colons \(:\), use quotation marks \(“\) to enclose the entire key or value.|
-|“|Converts a keyword to a common query character.   Each term enclosed in quotation marks \(“\) can be queried and is not be considered as a syntax keyword. Or all the terms enclosed in quotation marks \(“\) are regarded  as a whole in the key-value query.|
-|\\|Escape character.  Used to escape quotation marks. The escaped quotation marks indicate the symbols themselves, and they cannot be used as escape characters, such as `"\""`.|
+|:|Used to query the key-value pairs. `term1:term2` makes up a key-value pair. If the key or value contains reserved characters such as spaces and colons \(:\), use quotation marks \(“\) to enclose the entire key or value.|
+|“|Converts a keyword to a common query character. Each term enclosed in quotation marks \(“\) can be queried and is not be considered as a syntax keyword. Or all the terms enclosed in quotation marks \(“\) are regarded as a whole in the key-value query.|
+|\\|Escape character. Used to escape quotation marks. The escaped quotation marks indicate the symbols themselves, and they cannot be used as escape characters, such as `"\""`.|
 |||The pipeline operator indicates more calculations based on the previous calculation, such as query1 | timeslice 1h | count.|
-|timeslice|The time-slice operator indicates how long the data is calculated as a whole. Timeslice 1h, 1m, 1s indicates 1 hour, 1  minute, and 1 second respectively. For example, query1 | timeslice 1h | count represents the query query condition, and returns to the total number of hours divided by 1 hour.|
+|timeslice|The time-slice operator indicates how long the data is calculated as a whole. Timeslice 1h, 1m, 1s indicates 1 hour, 1 minute, and 1 second respectively. For example, query1 | timeslice 1h | count represents the query query condition, and returns to the total number of hours divided by 1 hour.|
 |count|The count operator indicates the number of log lines.|
-|\*|Fuzzy query keyword. Used to replace zero or multiple characters. For example, the query results of `que*` start with `que`.**Note:** At most 100 query results can be returned.
+|\*|Fuzzy query keyword. Used to replace zero or multiple characters. For example, the query results of `que*` start with `que`. **Note:** At most 100 query results can be returned.
 
-|
+ |
 |?|Fuzzy query keyword. Used to replace one character. For example, the query results of `qu? ry` start with `qu`, end with `ry`, and have a character in the middle.|
-|`__topic__`|Topic data query. You can query the data of zero or multiple topics  in the query. For example, `__topic__:mytopicname`.|
+|`__topic__`|Topic data query. You can query the data of zero or multiple topics in the query. For example, `__topic__:mytopicname`.|
 |`__tag__`|Query a tag value in a tag key. For example, `__tag__:tagkey:tagvalue`.|
 |Source|Query the data of an IP. For example, `source:127.0.0.1`.|
 |\>|Query the logs with a field value greater than a specific number. For example, `latency > 100`.|
@@ -70,7 +70,7 @@ The following operators can be used in query statements:
 |<|Query the logs with a field value less than a specific number. For example, `latency < 100`.|
 |<=|Query the logs with a field value less than or equal to a specific number. For example, `latency <= 100`.|
 |=|Query the logs with a field value equal to a specific number. For example, `latency = 100`.|
-|in|Query the logs with a field staying within a specific range. Braces \(\[\]\) are used to indicate closed intervals and parentheses \(\(\)\) are used to indicate open intervals. Enclose two numbers in braces \(\[\]\) or parentheses \(\(\)\) and separate the numbers with several spaces.  For example, `latency in  [100 200]` or `latency in (100 200]]`.|
+|in|Query the logs with a field staying within a specific range. Braces \(\[\]\) are used to indicate closed intervals and parentheses \(\(\)\) are used to indicate open intervals. Enclose two numbers in braces \(\[\]\) or parentheses \(\(\)\) and separate the numbers with several spaces. For example, `latency in [100 200]` or `latency in (100 200]]`.|
 
 **Note:** 
 
@@ -82,7 +82,7 @@ The following operators can be used in query statements:
 
 |Query demand|Example|
 |:-----------|:------|
-|Logs that contain a and b at the same time| `a and b` or `a b`|
+|Logs that contain a and b at the same time|`a and b` or `a b`|
 |Logs that contain a or b|`a or b`|
 |Logs that contain a but do not contain b|`a not b`|
 |All the logs that do not contain a|`not a`|
@@ -104,27 +104,27 @@ The following operators can be used in query statements:
 |Logs starting with shen every 20 minutes|`shen*| timeslice 20m | count`|
 |All data in the topic1 and topic2|`__topic__:topic1 or __topic__ : topic2`|
 |All data of the tagvalue2 in the tagkey1|`__tag__ : tagkey1 : tagvalue2`|
-|All data with a latency greater than or equal to 100 and less than 200|`latency >=100 and latency < 200`或`latency in [100 200)`|
+|All data with a latency greater than or equal to 100 and less than 200|`latency >=100 and latency < 200` or `latency in [100 200)`|
 |All requests with a latency greater than 100|`latency > 100`|
 |Logs that do not contain spider and do not contain opx in http\_referer|`not spider not bot not http_referer:opx`|
 |Logs with the empty cdnIP field|`not cdnIP:""`|
 |Logs without cdnIP field|`not cdnIP:*`|
 |Logs with the cdnIP field|`cdnIP:*`|
 
-## Specified or cross-topic query  {#section_jjw_zsc_ry .section}
+## Specified or cross-topic query {#section_jjw_zsc_ry .section}
 
-Each LogStore can be divided into one or more subspaces by the topic. During therfhfrg query, specifying topics can limit the query range so as to increase the speed.  Therefore, we recommend that you use topic to divide the LogStore  if you have a secondary classification requirement for the LogStore.
+Each LogStore can be divided into one or more subspaces by the topic. During therfhfrg query, specifying topics can limit the query range so as to increase the speed. Therefore, we recommend that you use topic to divide the LogStore if you have a secondary classification requirement for the LogStore.
 
-With one or more topics specified, the query is only performed in the topics that meet the conditions.  However, if no topic is specified, data of all the topics is queried by default.
+With one or more topics specified, the query is only performed in the topics that meet the conditions. However, if no topic is specified, data of all the topics is queried by default.
 
-For example, use topic to classify logs with the different domain names:  
+For example, use topic to classify logs with the different domain names:
 
 ![](images/5523_en-US.png "Log topic")
 
 Topic query syntax:
 
 -   Data of all the topics can be queried. If no topic is specified in the query syntax and parameter, data of all the topics is queried.
--   Supports query by topic. The query syntax is `__topic__:topicName`.  The old mode \(specify the topic in the URL parameter\)  is still supported.
+-   Supports query by topic. The query syntax is `__topic__:topicName`. The old mode \(specify the topic in the URL parameter\) is still supported.
 -   Multiple topics can be queried. For example, `__topic__:topic1 or __topic__:topic2` indicates the union query of data from Topic1 and Topic2 .
 
 ## Fuzzy search {#section_zst_xlv_m2b .section}
@@ -133,7 +133,7 @@ Log Service support fuzzy search. Specify a word within 64 characters, and add f
 
 **Limits**:
 
--   Prefix must be specified when query logs, that is, the word can not begin with `*` and `?`  .
+-   Prefix must be specified when query logs, that is, the word can not begin with `*` and `?` .
 -   Precise the specified word, you will get a more accurate result.
 -   Fuzzy search cannot be used to search for words that exceeds 64 characters. It is recommended that you specified a word under 64 characters.
 
