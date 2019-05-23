@@ -75,7 +75,7 @@ When debugging a function, you can obtain the cursor by using the GetCursor API 
 
 You can implement functions by using many languages such as Java, Python, and Node.js. Log Service provides the corresponding runtime [SDKs in various languages](../../../../reseller.en-US/SDK Reference/Basic Descriptions /Overview.md) to facilitate function integration.
 
-In this section, use Java 8 runtime as an example to show how to develop a Log Service ETL function. As this involves details of Java 8 function programming, read the [Java programming guide for Function Compute](https://www.alibabacloud.com/help/doc-detail/58887.htm) first.
+In this section, use Java 8 runtime as an example to show how to develop a Log Service ETL function. As this involves details of Java 8 function programming, read the [Java programming guide for Function Compute](https://www.alibabacloud.com/help/doc-detail/113519.htm) first.
 
  **Java function Template** 
 
