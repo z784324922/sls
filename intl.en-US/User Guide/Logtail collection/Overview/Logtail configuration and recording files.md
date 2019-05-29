@@ -9,7 +9,7 @@ The running of Logtail depends on a series of configuration files, which generat
 -   [User-defined identity file \(user\_defined\_id\)](#)
 -   [Logtail Config file \(user\_log\_config.json\)](#)
 
-**Recording files**:
+ **Recording files**:
 
 -   [AppInfo recording file \(app\_info.json\)](#)
 -   [Logtail operational log file \(ilogtail.LOG\)](#)
@@ -40,14 +40,14 @@ The following table lists default configuration items. For details about other c
 
 |Configuration item|Description|
 |:-----------------|:----------|
-|config\_server\_address|Address of the configuration file Logtail obtains from your server. The address is determined by the parameters and commands you use during installation.The address must be accessible, and the region specified by the parameters must be the same as the region where Log Service resides.
+|config\_server\_address|Address of the configuration file Logtail obtains from your server. The address is determined by the parameters and commands you use during installation. The address must be accessible, and the region specified by the parameters must be the same as the region where Log Service resides.
 
-|
-|data\_server\_list|Address of the data server, which is determined by the parameters and commands you use during installationThe address must be accessible, and the region specified by the parameters must be the same as the region where Log Service resides.
+ |
+|data\_server\_list|Address of the data server, which is determined by the parameters and commands you use during installation The address must be accessible, and the region specified by the parameters must be the same as the region where Log Service resides.
 
-|
+ |
 |cluster|Region name|
-|endpoint|[Service endpoint](../../../../../reseller.en-US/API Reference/Service endpoint.md)|
+|endpoint|[Service endpoint](../../../../reseller.en-US/API Reference/Service endpoint.md)|
 |cpu\_usage\_limit|CPU usage threshold, which is calculated by core|
 |mem\_usage\_limit|Resident memory usage threshold|
 |max\_bytes\_per\_sec|Maximum amount of raw data Logtail can send. The amount will not be limited if the data sending rate exceeds 20 Mbit/s.|
@@ -86,7 +86,7 @@ $cat /usr/local/ilogtail/ilogtail_config.json
 
 ## AliUid configuration file {#section_f4y_5rk_2fb .section}
 
-The file contains the AliUid of your Alibaba Cloud account. AliUid is used to indicate that your Alibaba Cloud account has the permissions to access your server and collect logs. You need to manually create the AliUid configuration file when collecting logs from an ECS instance that does belong to your Alibaba Cloud account or from on-premises IDCs. For more information, see [Collect logs from non-Alibaba Cloud ECS instances or ECS instances not in your account](reseller.en-US/User Guide/Logtail collection/Machine Group/Collect logs from non-Alibaba Cloud ECS instances or ECS instances not in your account.md).
+The file contains the AliUid of your Alibaba Cloud account. AliUid is used to indicate that your Alibaba Cloud account has the permissions to access your server and collect logs. You need to manually create the AliUid configuration file when collecting logs from an ECS instance that does belong to your Alibaba Cloud account or from on-premises IDCs. For more information, see [Configure AliUids for ECS servers under other Alibaba Cloud accounts or on-premises IDCs](reseller.en-US/User Guide/Logtail collection/Machine Group/Configure AliUids for ECS servers under other Alibaba Cloud accounts or on-premises IDCs.md).
 
 **Note:** 
 
@@ -95,35 +95,35 @@ The file contains the AliUid of your Alibaba Cloud account. AliUid is used to in
 -   The file name cannot contain any suffix.
 -   Logtail can be configured with multiple AliUid configuration files, but a Logtail container can be configured with only one AliUid configuration file.
 
-**File address**
+**File address** 
 
 -   Linux: `/etc/ilogtail/users/`
 -   Container: The file is directly configured through the environment variable `ALIYUN_LOGTAIL_USER_ID` in the Logtail container. You can view the file through `docker inspect ${logtail_container_name} | grep ALIYUN_LOGTAIL_USER_ID`.
 -   Windows: `C:\LogtailData\users\`
 
-**File example**
+**File example** 
 
 ```
 $ls /etc/ilogtail/users/
-1559122535028493 1329232535020452
+155912253502**** 132923253502****
 ```
 
 ## User-defined identity file \(user\_defined\_id\) {#section_cwh_ctk_2fb .section}
 
-The file is used to configure machine groups with custom identifiers. For more information, see [Configure a user-defined identity for a machine group](reseller.en-US/User Guide/Logtail collection/Machine Group/Configure a user-defined identity for a machine group.md).
+The file is used to configure machine groups with custom identifiers. For more information, see [Create an ID to identify a machine group](reseller.en-US/User Guide/Logtail collection/Machine Group/Create an ID to identify a machine group.md).
 
 **Note:** 
 
 -   This file is optional and is used only when configuring machine groups with custom identifiers.
 -   If multiple custom identifiers are configured for a machine group, they must be separated by delimiters.
 
-**File address**
+**File address** 
 
 -   Linux: /etc/ilogtail/user\_defined\_id
 -   Container: The file is directly configured through the environment variable `ALIYUN_LOGTAIL_USER_DEFINED_ID` in the Logtail container. You can view the file through docker inspect $\{logtail\_container\_name\} | grep ALIYUN\_LOGTAIL\_USER\_DEFINED\_ID.
 -   Windows: C:\\LogtailData\\user\_defined\_id
 
-**File example**
+**File example** 
 
 ```
 $cat /etc/ilogtail/user_defined_id
@@ -139,7 +139,7 @@ The file contains Logtail Config information Logtail obtains from your server. T
 -   We recommend that you do not modify the file unless you need to manually configure keys and modify database passwords.
 -   The file must be uploaded when you open a ticket.
 
-**File address**
+**File address** 
 
 -   Linux: /usr/local/ilogtail/user\_log\_config.json
 -   Container: /usr/local/ilogtail/user\_log\_config.json
@@ -147,7 +147,7 @@ The file contains Logtail Config information Logtail obtains from your server. T
     -   x64: C:\\Program Files \(x86\)\\Alibaba\\Logtail\\user\_log\_config.json
     -   x32: C:\\Program Files\\Alibaba\\Logtail\\user\_log\_config.json
 
-**File example**
+**File example** 
 
 ```
 $cat /usr/local/ilogtail/user_log_config.json
@@ -202,7 +202,7 @@ $cat /usr/local/ilogtail/user_log_config.json
 
 ## AppInfo recording file \(app\_info.json\) {#section_acx_5tk_2fb .section}
 
-The file contains various time information, such as the Logtail startup time and the time when Logtail obtains the IP address and host name. The IP address is needed when you configure [machine groups with IP addresses as identifiers](reseller.en-US/User Guide/Logtail collection/Machine Group/Create a machine group.md).
+The file contains various time information, such as the Logtail startup time and the time when Logtail obtains the IP address and host name. The IP address is needed when you configure [machine groups with IP addresses as identifiers](reseller.en-US/User Guide/Logtail collection/Machine Group/Create a machine group with an IP address as its identifier.md).
 
 In normal cases, Logtail obtains the server IP address according to the following rules:
 
@@ -219,14 +219,14 @@ In normal cases, Logtail obtains the server IP address according to the followin
 |UUID|Server serial number|
 |hostname|Host name|
 |instance\_id|Randomly generated identifier for uniquely indicating Logtail|
-|ip|IP address obtained by Logtail. An empty field indicates that Logtail does not obtain the IP address and cannot function normally. In this case, you need to set an IP address for your server and restart Logtail.**Note:** If the target machine group uses an IP address as an identifier, the IP address configured in the machine group must be the same as the one specified by this field. If an incorrect IP address is configured on your server, you need to modify the IP address within the machine group, wait one minute, and then check again.
+|ip|IP address obtained by Logtail. An empty field indicates that Logtail does not obtain the IP address and cannot function normally. In this case, you need to set an IP address for your server and restart Logtail. **Note:** If the target machine group uses an IP address as an identifier, the IP address configured in the machine group must be the same as the one specified by this field. If an incorrect IP address is configured on your server, you need to modify the IP address within the machine group, wait one minute, and then check again.
 
-|
+ |
 |logtail\_version|Version of the Logtail client|
 |os|OS version|
 |update\_time|Time when Logtail is last started|
 
-**File address**
+ **File address** 
 
 -   Linux: /usr/local/ilogtail/app\_info.json
 -   Container: /usr/local/ilogtail/app\_info.json
@@ -234,7 +234,7 @@ In normal cases, Logtail obtains the server IP address according to the followin
     -   x64: C:\\Program Files \(x86\)\\Alibaba\\Logtail\\app\_info.json
     -   x32: C:\\Program Files\\Alibaba\\Logtail\\app\_info.json
 
-**File example**
+ **File example** 
 
 ```
 $cat /usr/local/ilogtail/app_info.json
@@ -255,10 +255,10 @@ The file contains running information about the Logtail client. Log levels are r
 
 **Note:** 
 
--   First, you need to [diagnose collection exceptions](reseller.en-US/FAQ/Log collection/Procedure.md) and troubleshoot errors according to specific error types and Logtail operational logs.
+-   First, you need to [diagnose collection exceptions](reseller.en-US/FAQ/Log collection/Diagnose collection errors.md) and troubleshoot errors according to specific error types and Logtail operational logs.
 -   The file must be uploaded when you open a ticket due to Logtail collection exceptions.
 
-**File address**
+ **File address** 
 
 -   Linux: /usr/local/ilogtail/ilogtail.LOG
 -   Container: /usr/local/ilogtail/ilogtail.LOG
@@ -266,7 +266,7 @@ The file contains running information about the Logtail client. Log levels are r
     -   x64: C:\\Program Files \(x86\)\\Alibaba\\Logtail\\logtail\_\*.log
     -   x32: C:\\Program Files\\Alibaba\\Logtail\\logtail\_\*.log
 
-**File example**
+ **File example** 
 
 ```
 $tail /usr/local/ilogtail/ilogtail.LOG
@@ -286,17 +286,17 @@ $tail /usr/local/ilogtail/ilogtail.LOG
 
 The file contains running information about the container stdout, binlogs, http plug-in, and other plug-ins. Log levels are ranked as follows in ascending order: `INFO`, `WARN`, `ERROR`. `INFO`-type logs can be ignored.
 
-If there is any plug-in error, for example, **CANAL\_RUNTIME\_ALARM**, when you [diagnose collection exceptions](reseller.en-US/FAQ/Log collection/Procedure.md), you can troubleshoot the error according to Logtail plug-in logs.
+If there is any plug-in error, for example, **CANAL\_RUNTIME\_ALARM**, when you [diagnose collection exceptions](reseller.en-US/FAQ/Log collection/Diagnose collection errors.md), you can troubleshoot the error according to Logtail plug-in logs.
 
 **Note:** The file must be uploaded when you open a ticket due to plug-in exceptions.
 
-**File address**
+ **File address** 
 
 -   Linux: /usr/local/ilogtail/logtail\_plugin.LOG
 -   Container: /usr/local/ilogtail/logtail\_plugin.LOG
 -   Windows: plug-in logs are not supported.
 
-**File example**
+ **File example** 
 
 ```
 $tail /usr/local/ilogtail/logtail_plugin.LOG
@@ -316,18 +316,18 @@ $tail /usr/local/ilogtail/logtail_plugin.LOG
 
 The file is automatically created only when container files are collected. The file is used to record the mapping between the path of container files and the actual file path. The file is in JSON format.
 
-When you [diagnose collection exceptions](reseller.en-US/FAQ/Log collection/Procedure.md), if an error indicating **DOCKER\_FILE\_MAPPING\_ALARM** is reported, Logtail fails to add Docker file mapping. In this case, you can use the file to troubleshoot the error.
+When you [diagnose collection exceptions](reseller.en-US/FAQ/Log collection/Diagnose collection errors.md), if an error indicating **DOCKER\_FILE\_MAPPING\_ALARM** is reported, Logtail fails to add Docker file mapping. In this case, you can use the file to troubleshoot the error.
 
 **Note:** 
 
 -   The file only contains information. Any modification to the file does not take effect. The file will be automatically recreated once is deleted. This does not impact services.
 -   The file must be uploaded when you open a ticket due to container log collection exceptions.
 
-**File address**
+ **File address** 
 
 /usr/local/ilogtail/docker\_path\_config.json
 
-**File example**
+ **File example** 
 
 ```
 $cat /usr/local/ilogtail/docker_path_config.json
