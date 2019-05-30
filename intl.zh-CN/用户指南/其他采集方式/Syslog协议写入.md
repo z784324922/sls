@@ -35,7 +35,7 @@
 |\_\_unixtimestamp\_\_|日志中的时间戳（单位纳秒）。|
 |content|Syslog的msg字段。|
 
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/150480/155797026142014_zh-CN.png)
+![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/150480/155921071642014_zh-CN.png)
 
 ## 配置示例 {#section_iwm_jyd_ghb .section}
 
