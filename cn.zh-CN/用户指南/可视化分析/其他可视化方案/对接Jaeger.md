@@ -9,7 +9,7 @@
 
 从以上两个变化可以看到这种弹性、标准化的架构背后，原先运维与诊断的需求也变得越来越复杂。为了应对这种变化趋势，诞生了一系列面向 DevOps 的诊断与分析系统，包括集中式日志系统（Logging）、集中式度量系统（Metrics）和分布式追踪系统（Tracing）。
 
-除Jaeger外，阿里云还提供[XTrace](https://www.aliyun.com/product/xtrace)来支持 OpenTracing 链路追踪，欢迎使用。
+除Jaeger外，阿里云还提供支持 OpenTracing 链路追踪产品[XTrace](https://www.aliyun.com/product/xtrace)，欢迎使用。
 
 ## Logging，Metrics 和 Tracing {#section_z1s_p3q_12b .section}
 
@@ -56,7 +56,7 @@ Tracing 是在90年代就已出现的技术。但真正让该领域流行起来�
 
 ![](images/5877_zh-CN.png "分布式调用示例")
 
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13157/15592104965883_zh-CN.png)
+![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13157/15592902925883_zh-CN.png)
 
 数据被采集存储后，分布式追踪系统一般会选择使用包含时间轴的时序图来呈现这个 Trace。但在数据采集过程中，由于需要侵入用户代码，并且不同系统的 API 并不兼容，这就导致了如果用户希望切换追踪系统，往往会带来较大改动。
 
@@ -77,7 +77,7 @@ OpenTracing 中的 Trace（调用链）通过归属于此调用链的 Span 来�
 
 例如：下面的示例 Trace 就是由8个 Span 组成：
 
-```
+``` {#codeblock_2zi_v9w_9ay}
 单个 Trace 中，span 间的因果关系
         [Span A]  ←←←(the root span)
             |
@@ -96,7 +96,7 @@ OpenTracing 中的 Trace（调用链）通过归属于此调用链的 Span 来�
 
 有些时候，使用下面这种，基于时间轴的时序图可以更好的展现 Trace（调用链）：
 
-```
+``` {#codeblock_hd5_kky_cxm}
 单个 Trace 中，span 间的时间关系
 ––|–––––––|–––––––|–––––––|–––––––|–––––––|–––––––|–––––––|–> time
  [Span A···················································]
@@ -185,7 +185,7 @@ HotROD 是由多个微服务组成的应用程序，它使用了 OpenTracing API
 
 -   以分钟为单位统计 frontend 服务的 HTTP GET /dispatch 操作的平均延迟以及请求个数。
 
-    ```
+    ``` {#codeblock_v3x_c6f_hw0}
     process.serviceName: "frontend" and operationName: "HTTP GET /dispatch" |
     select from_unixtime( __time__ - __time__ % 60) as time,
     truncate(avg(duration)/1000/1000) as avg_duration_ms,
@@ -195,7 +195,7 @@ HotROD 是由多个微服务组成的应用程序，它使用了 OpenTracing API
 
 -   比较两条 trace 各个操作的耗时。
 
-    ```
+    ``` {#codeblock_56z_m5a_tdi}
     traceID: "trace1" or traceID: "trace2" |
     select operationName,
     (max(duration)-min(duration))/1000/1000 as duration_diff_ms
@@ -205,7 +205,7 @@ HotROD 是由多个微服务组成的应用程序，它使用了 OpenTracing API
 
 -   统计延迟大于 1.5s 的 trace 的 IP 情况。
 
-    ```
+    ``` {#codeblock_qej_ng3_18e}
     process.serviceName: "frontend" and operationName: "HTTP GET /dispatch" and duration > 1500000000 |
     select "process.tags.ip" as IP,
     truncate(avg(duration)/1000/1000) as avg_duration_ms,
