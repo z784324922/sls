@@ -15,7 +15,7 @@ Log Service uses Logtail to collect Kubernetes cluster logs and manages collecti
 
 **Procedure**
 
-1.  Log on to the master node of your Alibaba Cloud Container Service Kubernetes. For more information, see [Access Kubernetes clusters by using SSH](../../../../../reseller.en-US/User Guide/Kubernetes cluster/Clusters/Access Kubernetes clusters by using SSH.md).
+1.  Log on to the master node of your Alibaba Cloud Container Service Kubernetes. For more information, see [Access Kubernetes clusters by using SSH](../../../../reseller.en-US/User Guide/Kubernetes cluster/Clusters/Access Kubernetes clusters by using SSH.md).
 2.  Replace `${your_k8s_cluster_id}` in the following command with your Kubernetes cluster ID and run the command:
 
     ```
@@ -81,7 +81,7 @@ After successful installation, log on to the Log Service console. The Log Servic
 
 ## Installation of managed Kubernetes clusters in Container Service {#section_w4n_cbq_pgb .section}
 
-For more information about how to install Logtail in a managed Kubernetes cluster, see the **Manually install Log Service components** section in [Use Log Service to collect Kubernetes cluster logs](../../../../../reseller.en-US/User Guide/Kubernetes cluster/Log management/Use Log Service to collect Kubernetes cluster logs.md#section_zhf_y5r_gfb).
+For more information about how to install Logtail in a managed Kubernetes cluster, see the **Manually install Log Service components** section in [Use Log Service to collect Kubernetes cluster logs](../../../../reseller.en-US/User Guide/Kubernetes cluster/Log management/Use Log Service to collect Kubernetes cluster logs.md#section_zhf_y5r_gfb).
 
 ## Self-built Kubernetes installation {#section_kdx_bqr_zdb .section}
 
@@ -104,8 +104,8 @@ For more information about how to install Logtail in a managed Kubernetes cluste
     |Name|Description|
     |----|-----------|
     |\{your-project-suffix\} |The maid-later part of the project name that you created in the second step.`k8s-log-custom-` that you have created in the second step. For example, the created project is `k8s-log-custom-xxxx`, then you mast enter `xxxx`.|
-    |\{regionId\} |The ID of the region where your project is located. You can view the [Service endpoint](../../../../../reseller.en-US/API Reference/Service endpoint.md), for example, the region ID of `China East 1  (Hangzhou)` is  `cn-hangzhou`|
-    |\{aliuid\}|User ID \(AliUid\), replace the parameter value with your Alibaba Cloud account ID of the string type. For more information about how to check the ID, see section 2.1 [of](reseller.en-US/User Guide/Logtail collection/Machine Group/Collect logs from non-Alibaba Cloud ECS instances or ECS instances not in your account.md)the user identity configuration.|
+    |\{regionId\} |The ID of the region where your project is located. You can view the [Service endpoint](../../../../reseller.en-US/API Reference/Service endpoint.md), for example, the region ID of `China East 1  (Hangzhou)` is  `cn-hangzhou`|
+    |\{aliuid\}|User ID \(AliUid\), replace the parameter value with your Alibaba Cloud account ID of the string type. For more information about how to check the ID, see section 2.1 [of](reseller.en-US/User Guide/Logtail collection/Machine Group/Configure AliUids for ECS servers under other Alibaba Cloud accounts or on-premises IDCs.md)the user identity configuration.|
     |\{access-key-id\}|Your account access key ID. Sub-account access is recommended Key, and grant permission, specific settings reference.[Authorization - Overview](reseller.en-US/User Guide/Access control RAM/Authorization - Overview.md)|
     |\{access-key-secret\} |Your account access key secret. We recommend that you use the sub-account AccessKey and  grant AliyunLogFullAccess permission. For more information, see [Authorization - Overview](reseller.en-US/User Guide/Access control RAM/Authorization - Overview.md).|
 
