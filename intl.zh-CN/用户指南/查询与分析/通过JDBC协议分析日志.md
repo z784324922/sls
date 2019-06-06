@@ -22,7 +22,8 @@ use sample-project; // 使用某个Project
 
 ## 前提条件 {#section_yvl_vgk_5cb .section}
 
-访问JDBC接口，必须使用主账号的AK或者子帐号的AK。子帐号必须是Project owner的子帐号，同时子帐号具有Project级别的读权限。
+-   访问JDBC接口，必须使用主账号的AK或者子帐号的AK。子帐号必须是Project owner的子帐号，同时子帐号具有Project级别的读权限。
+-   MySQL JDBC不支持分页。
 
 ## 语法说明 {#section_pbb_wgk_5cb .section}
 
