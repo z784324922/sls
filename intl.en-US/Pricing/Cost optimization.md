@@ -19,8 +19,6 @@ Configurations can be optimized in the following two aspects:
 
     -   If you collect the logs for stream computing, we recommend that you only use LogHub, without creating indexes.
 
-    -   If you want to query the logs within the past 90 days, and barely query the logs earlier than that, we recommend that you change the storage time of indexes to 90 days, and import the data to MaxCompute.  To query data within 90 days, use Log Service. To query data earlier than that, use MaxCompute.
-
     -   If you want to store and back up logs for a long time, we recommend that you configure the Object Storage Service \(OSS\) Shipper, and import the logs to OSS.
 
 
