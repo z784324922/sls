@@ -14,7 +14,7 @@
 
 **为了更好满足分析场景，推荐Nginx日志格式采用如下`log_format`配置。**
 
-```
+``` {#codeblock_sp3_6rh_d5i}
     log_format  main  '$remote_addr - $remote_user [$time_local] "$request" $http_host '
                         '$status $request_length $body_bytes_sent "$http_referer" '
                         '"$http_user_agent"  $request_time $upstream_response_time';
@@ -109,7 +109,7 @@
 
 ![Nginx访问日志的默认仪表盘](images/5896_zh-CN.png "Nginx访问日志仪表盘")
 
--   **PV/UV统计\(pv\_uv\)**
+-   **PV/UV统计\(pv\_uv\)** 
 
     统计最近一天的PV数和UV数。
 
@@ -117,7 +117,7 @@
 
     统计语句：
 
-    ```
+    ``` {#codeblock_a0a_qx5_k68}
       * | select approx_distinct(remote_addr) as uv ,
              count(1) as pv , 
              date_format(date_trunc('hour', __time__), '%m-%d %H:%i')  as time
@@ -126,7 +126,7 @@
              limit 1000
     ```
 
--   **访问前十地址\(top\_page\)**
+-   **访问前十地址\(top\_page\)** 
 
     统计最近一天访问PV前十的地址。
 
@@ -134,14 +134,14 @@
 
     统计语句：
 
-    ```
+    ``` {#codeblock_arm_5x1_717}
      * | select split_part(request_uri,'?',1) as path, 
          count(1) as pv  
          group by split_part(request_uri,'?',1) 
          order by pv desc limit 10
     ```
 
--   **请求方法占比\(http\_method\_percentage\)**
+-   **请求方法占比\(http\_method\_percentage\)** 
 
     统计最近一天各种请求方法的占比。
 
@@ -149,13 +149,13 @@
 
     统计语句：
 
-    ```
+    ``` {#codeblock_hu3_jeh_1it}
      * | select count(1) as pv,
              request_method
              group by request_method
     ```
 
--   **请求状态占比\(http\_status\_percentage\)**
+-   **请求状态占比\(http\_status\_percentage\)** 
 
     统计最近一天各种http状态码的占比。
 
@@ -163,13 +163,13 @@
 
     统计语句：
 
-    ```
+    ``` {#codeblock_zwb_xjc_a4e}
      * | select count(1) as pv,
              status
              group by status
     ```
 
--   **请求UA占比\(user\_agent\)**
+-   **请求UA占比\(user\_agent\)** 
 
     统计最近一天各种浏览器的占比。
 
@@ -177,7 +177,7 @@
 
     统计语句：
 
-    ```
+    ``` {#codeblock_ati_wdf_4mf}
      * | select count(1) as pv,
          case when http_user_agent like '%Chrome%' then 'Chrome' 
          when http_user_agent like '%Firefox%' then 'Firefox' 
@@ -188,7 +188,7 @@
          limit 10
     ```
 
--   **前十访问来源\(top\_10\_referer\)**
+-   **前十访问来源\(top\_10\_referer\)** 
 
     统计最近一天访问前十的来源信息。
 
@@ -196,7 +196,7 @@
 
     统计语句：
 
-    ```
+    ``` {#codeblock_mnk_d18_aie}
      * | select count(1) as pv,
              http_referer
              group by http_referer
@@ -208,58 +208,58 @@
 
 除了一些默认的访问指标外，站长常常还需要对一些访问请求进行诊断，分析Nginx访问日志中记录的处理请求的延时如何、有哪些比较大的延时、哪些页面的延时比较大。此时可以进入查询页面进行快速分析。
 
--   **统计平均延时和最大延时**
+-   **统计平均延时和最大延时** 
 
     通过每5分钟的平均延时和最大延时，从整体上了解延时情况。
 
     统计语句：
 
-    ```
+    ``` {#codeblock_s2k_816_rfv}
       * | select from_unixtime(__time__ -__time__% 300) as time, 
               avg(request_time) as avg_latency ,
               max(request_time) as max_latency  
               group by __time__ -__time__% 300
     ```
 
--   **统计最大延时对应的请求页面**
+-   **统计最大延时对应的请求页面** 
 
-    知道了最大延时之后，需要明确最大延时对应的请求页面是，以方便进一步优化页面响应。
+    知道了最大延时之后，需要明确最大延时对应的请求页面，以方便进一步优化页面响应。
 
     统计语句：
 
-    ```
+    ``` {#codeblock_ynq_94i_jzr}
       * | select from_unixtime(__time__ - __time__% 60) , 
               max_by(request_uri,request_time)  
               group by __time__ - __time__%60
     ```
 
--   **统计请求延时的分布**
+-   **统计请求延时的分布** 
 
     统计网站的所有请求的延时的分布，把延时分布在十个桶里面，看每个延时区间的请求个数。
 
     统计语句：
 
-    ```
+    ``` {#codeblock_ek2_qas_n34}
     * |select numeric_histogram(10,request_time)
     ```
 
--   **统计最大的十个延时**
+-   **统计最大的十个延时** 
 
     除最大的延时之外，还需要统计最大的十个延时及其对应值。
 
     统计语句：
 
-    ```
+    ``` {#codeblock_w30_i4n_g6a}
     * | select max(request_time,10)
     ```
 
--   **对延时最大的页面调优**
+-   **对延时最大的页面调优** 
 
     假如`/url2`这个页面的访问延时最大，为了对`/url2`页面进行调优，接下来需要统计`/url2`这个页面的访问PV、UV、各种method次数、各种status次数、各种浏览器次数、平均延时和最大延时。
 
     统计语句：
 
-    ```
+    ``` {#codeblock_is3_isq_096}
        request_uri:"/url2" | select count(1) as pv,
               approx_distinct(remote_addr) as uv,
               histogram(method) as method_pv,
