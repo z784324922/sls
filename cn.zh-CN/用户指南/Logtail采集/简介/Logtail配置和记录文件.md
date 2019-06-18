@@ -9,10 +9,10 @@ Logtail运行时会依赖一系列的配置文件并产生部分信息记录文�
 -   [用户自定义标识文件（user\_defined\_id）](#)
 -   [采集配置文件（user\_log\_config.json）](#)
 
-**记录文件**：
+ **记录文件**：
 
 -   [AppInfo记录文件（app\_info.json）](#)
--   [Logtail运行日志（ilogtail.LOG）](#)
+-   [Logtail运行日志（ilogtail.LOG）](#section_dwy_rwk_2fb)
 -   [Logtail插件日志（logtail\_plugin.LOG）](#)
 -   [容器路径映射文件（docker\_path\_config.json）](#)
 
@@ -40,14 +40,14 @@ Logtail运行时会依赖一系列的配置文件并产生部分信息记录文�
 
 |配置项|说明|
 |:--|:-|
-|config\_server\_address|Logtail从服务端获取配置文件的地址，取决于安装时选择的参数和安装命令。请保证该地址能够联通，且其中的区域和日志服务所在区域一致。
+|config\_server\_address|Logtail从服务端获取配置文件的地址，取决于安装时选择的参数和安装命令。 请保证该地址能够联通，且其中的区域和日志服务所在区域一致。
 
-|
-|data\_server\_list|数据服务器地址，取决于安装时选择的参数和安装命令。请保证该地址能够联通，且其中的区域和日志服务所在区域一致。
+ |
+|data\_server\_list|数据服务器地址，取决于安装时选择的参数和安装命令。 请保证该地址能够联通，且其中的区域和日志服务所在区域一致。
 
-|
+ |
 |cluster|区域名称。|
-|endpoint|[服务入口](../../../../../intl.zh-CN/API 参考/服务入口.md)。|
+|endpoint|[服务入口](../../../../intl.zh-CN/API 参考/服务入口.md)。|
 |cpu\_usage\_limit|CPU 使用阈值，以单核计算。|
 |mem\_usage\_limit|常驻内存使用阈值。|
 |max\_bytes\_per\_sec|Logtail 发送原始数据的流量限制，超过20 MB/s则不限流。|
@@ -64,7 +64,7 @@ Logtail运行时会依赖一系列的配置文件并产生部分信息记录文�
 
 **文件示例**：
 
-```
+``` {#codeblock_861_8qz_uun}
 $cat /usr/local/ilogtail/ilogtail_config.json
 {
     "config_server_address" : "http://logtail.cn-hangzhou-intranet.log.aliyuncs.com",
@@ -86,7 +86,7 @@ $cat /usr/local/ilogtail/ilogtail_config.json
 
 ## AliUid配置文件 {#section_f4y_5rk_2fb .section}
 
-AliUid配置文件中包含阿里云账号的AliUid账号信息，主要用于标识这台服务器有权限被该账号访问、采集日志。采集非本账号ECS、自建IDC的日志时，需要手动创建AliUid配置文件。详细说明以及配置参见[为非本账号ECS、自建IDC配置AliUid](intl.zh-CN/用户指南/Logtail采集/机器组/为非本账号ECS、自建IDC配置AliUid.md)。
+AliUid配置文件中包含阿里云账号的AliUid账号信息，主要用于标识这台服务器有权限被该账号访问、采集日志。采集非本账号ECS、自建IDC的日志时，需要手动创建AliUid配置文件。详细说明以及配置参见[为非本账号ECS、自建IDC配置主账号AliUid](intl.zh-CN/用户指南/Logtail采集/机器组/为非本账号ECS、自建IDC配置主账号AliUid.md)。
 
 **说明：** 
 
@@ -95,15 +95,15 @@ AliUid配置文件中包含阿里云账号的AliUid账号信息，主要用于�
 -   AliUid文件只需配置文件名即可，文件不能有后缀。
 -   一个Logtail可配置多个AliUid文件，Logtail容器仅可配置一个AliUid文件。
 
-**文件地址**
+**文件地址** 
 
 -   Linux：`/etc/ilogtail/users/`。
 -   容器：该AliUid直接配置在Logtail容器的环境变量`ALIYUN_LOGTAIL_USER_ID`中，可通过`docker inspect ${logtail_container_name} | grep ALIYUN_LOGTAIL_USER_ID`查看。
 -   Windows：`C:\LogtailData\users\`。
 
-**文件示例**
+**文件示例** 
 
-```
+``` {#codeblock_sip_elx_gqe}
 $ls /etc/ilogtail/users/
 **************** *****************
 ```
@@ -117,15 +117,15 @@ $ls /etc/ilogtail/users/
 -   该文件为可选配置，只有在配置自定义标识机器组时使用。
 -   若配置多个自定义标识，使用换行符分隔。
 
-**文件地址**
+**文件地址** 
 
 -   Linux：/etc/ilogtail/user\_defined\_id。
 -   容器：该标识直接配置在Logtail容器的环境变量`ALIYUN_LOGTAIL_USER_DEFINED_ID`中，可通过docker inspect $\{logtail\_container\_name\} | grep ALIYUN\_LOGTAIL\_USER\_DEFINED\_ID查看。
 -   Windows：C:\\LogtailData\\user\_defined\_id。
 
-**文件示例**
+**文件示例** 
 
-```
+``` {#codeblock_2s1_tnp_ys6}
 $cat /etc/ilogtail/user_defined_id
 aliyun-ecs-rs1e16355
 ```
@@ -139,7 +139,7 @@ aliyun-ecs-rs1e16355
 -   除手动配置密钥信息、数据库密码等敏感信息外，不建议修改该文件。
 -   提交工单时，请上传此文件。
 
-**文件地址**
+**文件地址** 
 
 -   Linux：/usr/local/ilogtail/user\_log\_config.json。
 -   容器：/usr/local/ilogtail/user\_log\_config.json。
@@ -147,9 +147,9 @@ aliyun-ecs-rs1e16355
     -   x64：C:\\Program Files \(x86\)\\Alibaba\\Logtail\\user\_log\_config.json。
     -   x32：C:\\Program Files\\Alibaba\\Logtail\\user\_log\_config.json。
 
-**文件示例**
+**文件示例** 
 
-```
+``` {#codeblock_nr3_spy_r7t}
 $cat /usr/local/ilogtail/user_log_config.json
 {
    "metrics" : {
@@ -219,14 +219,14 @@ AppInfo记录文件（app\_info.json）记录Logtail的启动时间、获取到�
 |UUID|服务器序列号。|
 |hostname|主机名。|
 |instance\_id|随机生成的Logtail唯一标识。|
-|ip|Logtail获取到的IP地址。该字段为空时表示Logtail没有获取到IP地址，Logtail无法正常运行。请为服务器设置IP地址并重启Logtail。**说明：** 如果机器组为IP地址机器组，请确保机器组中配置的IP与此处显示的IP地址一致。若服务端机器组填写了错误的IP地址，请修改机器组内IP地址并保存，等待1分钟再查看。
+|ip|Logtail获取到的IP地址。该字段为空时表示Logtail没有获取到IP地址，Logtail无法正常运行。请为服务器设置IP地址并重启Logtail。 **说明：** 如果机器组为IP地址机器组，请确保机器组中配置的IP与此处显示的IP地址一致。若服务端机器组填写了错误的IP地址，请修改机器组内IP地址并保存，等待1分钟再查看。
 
-|
+ |
 |logtail\_version|Logtail客户端版本。|
 |os|操作系统版本。|
 |update\_time|Logtail最近一次启动时间。|
 
-**文件地址**
+ **文件地址** 
 
 -   Linux：/usr/local/ilogtail/app\_info.json。
 -   容器：/usr/local/ilogtail/app\_info.json。
@@ -234,9 +234,9 @@ AppInfo记录文件（app\_info.json）记录Logtail的启动时间、获取到�
     -   x64：C:\\Program Files \(x86\)\\Alibaba\\Logtail\\app\_info.json。
     -   x32：C:\\Program Files\\Alibaba\\Logtail\\app\_info.json。
 
-**文件示例**
+ **文件示例** 
 
-```
+``` {#codeblock_5nk_hw0_2oo}
 $cat /usr/local/ilogtail/app_info.json
 {
    "UUID" : "",
@@ -258,7 +258,7 @@ Logtail运行日志（ilogtail.LOG）记录Logtail客户端的运行信息，日
 -   请先[诊断采集错误](intl.zh-CN/常见问题/日志采集/诊断采集错误.md)，根据具体的错误类型和Logtail运行日志排查问题。
 -   若因Logtail采集异常提交工单时，请同时上传该日志。
 
-**文件地址**
+ **文件地址** 
 
 -   Linux：/usr/local/ilogtail/ilogtail.LOG。
 -   容器：/usr/local/ilogtail/ilogtail.LOG。
@@ -266,9 +266,9 @@ Logtail运行日志（ilogtail.LOG）记录Logtail客户端的运行信息，日
     -   x64：C:\\Program Files \(x86\)\\Alibaba\\Logtail\\logtail\_\*.log。
     -   x32：C:\\Program Files\\Alibaba\\Logtail\\logtail\_\*.log。
 
-**文件示例**
+ **文件示例** 
 
-```
+``` {#codeblock_yy2_jl3_obu}
 $tail /usr/local/ilogtail/ilogtail.LOG
 [2018-09-13 01:13:59.024679]    [INFO]    [3155]    [build/release64/sls/ilogtail/elogtail.cpp:123]    change working dir:/usr/local/ilogtail/
 [2018-09-13 01:13:59.025443]    [INFO]    [3155]    [build/release64/sls/ilogtail/AppConfig.cpp:175]    load logtail config file, path:/etc/ilogtail/conf/ap-southeast-2/ilogtail_config.json
@@ -290,15 +290,15 @@ Logtail插件日志（logtail\_plugin.LOG）记录容器标准输出、binlog、
 
 **说明：** 若因插件异常提交工单时，请同时上传该日志。
 
-**文件地址**
+ **文件地址** 
 
 -   Linux：/usr/local/ilogtail/logtail\_plugin.LOG。
 -   容器：/usr/local/ilogtail/logtail\_plugin.LOG。
 -   Windows：不支持插件功能。
 
-**文件示例**
+ **文件示例** 
 
-```
+``` {#codeblock_qf7_xod_5wr}
 $tail /usr/local/ilogtail/logtail_plugin.LOG
 2018-09-13 02:55:30 [INF] [docker_center.go:525] [func1] docker fetch all:start
 2018-09-13 02:55:30 [INF] [docker_center.go:529] [func1] docker fetch all:stop
@@ -323,13 +323,13 @@ $tail /usr/local/ilogtail/logtail_plugin.LOG
 -   该文件为信息记录文件，任何修改操作均不会生效；删除后会自动创建，不影响业务的正常运行。
 -   因容器日志采集异常而提交工单时，请同时在工单中上传此文件。
 
-**文件地址**
+ **文件地址** 
 
 /usr/local/ilogtail/docker\_path\_config.json。
 
-**文件示例**
+ **文件示例** 
 
-```
+``` {#codeblock_xtn_emz_328}
 $cat /usr/local/ilogtail/docker_path_config.json
 {
    "detail" : [
