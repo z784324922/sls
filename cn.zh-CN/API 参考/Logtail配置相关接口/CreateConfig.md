@@ -4,13 +4,13 @@
 
 示例：
 
-```
+``` {#codeblock_05o_cmy_woq}
 POST /configs
 ```
 
 ## 请求语法 {#section_j5v_14t_12b .section}
 
-```
+``` {#codeblock_fes_57i_d5m}
 POST /configs HTTP/1.1
 Authorization: <AuthorizationString> 
 Content-Type:application/json
@@ -49,19 +49,19 @@ x-log-signaturemethod: hmac-sha1
 
 **说明：** 请求参数和各种模式的Logtail配置样例请参考[Logtail配置](intl.zh-CN/API 参考/公共资源说明/Logtail配置.md)。
 
-**请求头**
+ **请求头** 
 
 无特有请求头。关于 Log Service API 的公共请求头，请参考 [公共请求头](intl.zh-CN/API 参考/公共请求头.md)。
 
-**响应头**
+ **响应头** 
 
 无特有响应头。请参考 [公共响应头](intl.zh-CN/API 参考/公共响应头.md)。
 
-**响应元素**
+ **响应元素** 
 
 HTTP 状态码返回 200。
 
-**错误码**
+ **错误码** 
 
 除了返回 Log Service API 的 [通用错误码](intl.zh-CN/API 参考/通用错误码.md)，还可能返回如下特有错误码：
 
@@ -71,15 +71,15 @@ HTTP 状态码返回 200。
 |400|InvalidParameter|invalid config resource json|
 |500|InternalServerError|internal server error|
 
-**细节描述**
+ **细节描述** 
 
-创建过程中遇到配置已经存在、格式错误、必要参数遗失、或者 quota 超过限制等错误，则会创建失败。
+创建过程中遇到配置已经存在、格式错误、必要参数遗失或者 quota 超过限制等错误，则会创建失败。
 
 ## 示例 {#section_e5p_d4t_12b .section}
 
-**请求示例：**
+**请求示例：** 
 
-```
+``` {#codeblock_6v4_rig_of0}
 POST /configs HTTP/1.1
 Header :
 {
@@ -92,7 +92,7 @@ Header :
     'x-log-apiversion': '0.6.0', 
     'User-Agent': 'log-python-sdk-v-0.6.0', 
     'Content-Type': 'application/json', 
-    'Authorization': 'LOG 94to3z418yupi6ikawqqd370:x/L1ymdn9wxe2zrwzcdSG82nXL0='
+    'Authorization': 'LOG <yourAccessKeyId>:<yourSignature>'
 }
 Body:
 {
@@ -120,9 +120,9 @@ Body:
 }
 ```
 
-**响应示例：**
+ **响应示例：** 
 
-```
+``` {#codeblock_nrx_3o2_x17}
 HTTP/1.1 200 OK
 Header
 {
