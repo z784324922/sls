@@ -4,7 +4,7 @@ GetProjectLogs是Project 级别的SQL查询接口。
 
 ## 请求语法 {#section_x1q_tdf_jdb .section}
 
-```
+``` {#codeblock_e1c_fb8_ku1}
 GET /logs/?query=SELECT avg(latency) as avg_latency FROM  where __date__ >'2017-09-01 00:00:00' and __date__ < '2017-09-02 00:00:00'
 Authorization: <AuthorizationString>
 Date: Wed, 3 Sept. 2014 08:33:46 GMT
@@ -52,8 +52,8 @@ GetProjectLogs接口无特有请求头。关于 API 的公共请求头，请参�
 -   该接口的query是一个标准的SQL查询语句。
 -   查询的Project，在请求的域名中指定。
 -   查询的logstore，在查询语句的from条件中指定。logstore相当于SQL中的表。
--   在查询的SQL条件中，必须指定要查询的时间范围，时间范围由\_\_date\_\_\(timestamp类型\)来指定，或\_\_time\_\_\(int 类型，单位是unix\_time\)来指定。
--   如上所述，该接口一次调用必须要在限定时间内返回结果，每次查询只能扫描指定条数的日志量。如果一次请求需要处理的数据量非常大的时候，该请求会返回不完整的结果（并在返回结果中的 x-log-progress 成员标示是否完整）。如此同时，服务端会缓存 15 分钟内的查询结果。当查询请求的结果有部分被缓存命中，则服务端会在这次请求中继续扫描未被缓存命中的日志数据。为了减少您合并多次查询结果的工作量，服务端会把缓存命中的查询结果与本次查询新命中的结果合并返回给您。因此，日志服务可以让您通过以相同参数反复调用该接口来获取最终完整结果。因为您的查询涉及的日志数据量变化非常大，日志服务 API 无法预测需要调用多少次该接口而获取完整结果。所以需要用户通过检查每次请求的返回结果中的x-log-progress成员状态值来确定是否需要继续。需要注意的是，每次重复调用该接口都会重新消耗相同数量的查询 CU。
+-   在查询的SQL条件中，必须指定要查询的时间范围，时间范围由\_\_date\_\_（timestamp类型）来指定，或\_\_time\_\_（int 类型，单位是unix\_time）来指定。
+-   如上所述，该接口一次调用必须要在限定时间内返回结果，每次查询只能扫描指定条数的日志量。如果一次请求需要处理的数据量非常大的时候，该请求会返回不完整的结果（并在返回结果中的 x-log-progress 成员标示是否完整）。与此同时，服务端会缓存 15 分钟内的查询结果。当查询请求的结果有部分被缓存命中，则服务端会在这次请求中继续扫描未被缓存命中的日志数据。为了减少您合并多次查询结果的工作量，服务端会把缓存命中的查询结果与本次查询新命中的结果合并返回给您。因此，日志服务可以让您通过以相同参数反复调用该接口来获取最终完整结果。因为您的查询涉及的日志数据量变化非常大，日志服务 API 无法预测需要调用多少次该接口而获取完整结果。所以需要用户通过检查每次请求的返回结果中的x-log-progress成员状态值来确定是否需要继续。需要注意的是，每次重复调用该接口都会重新消耗相同数量的查询 CU。
 
 ## 特有错误码 {#section_uhx_p2f_jdb .section}
 
@@ -69,7 +69,7 @@ GetProjectLogs 接口除了返回 API 的 [通用错误码](intl.zh-CN/API 参�
 
 ## 请求示例 {#section_cpt_w2f_jdb .section}
 
-```
+``` {#codeblock_uhg_ocg_ime}
 GET /logs/?query=SELECT * FROM <logStoreName> where __line__ = 'abc' and __date__ >'2017-09-01 00:00:00' and __date__ < '2017-09-02 00:00:00'&line=20&offset=0 HTTP/1.1
 Authorization: <AuthorizationString>
 Date: Wed, 3 Sept. 2014 08:33:46 GMT
@@ -81,7 +81,7 @@ x-log-signaturemethod: hmac-sha1
 
 ## 响应示例 {#section_mvw_x2f_jdb .section}
 
-```
+``` {#codeblock_9pg_952_jr1}
 HTTP/1.1 200 OK
 Content-MD5: 36F9F7F0339BEAF571581AF1B0AAAFB5
 Content-Type: application/json
