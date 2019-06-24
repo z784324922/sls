@@ -32,7 +32,7 @@ Windows版Logtail客户端支持以下操作系统：
 2.  解压缩 `logtail_installer.zip` 到当前目录。
 3.  根据服务器类型和所在区域[选择网络类型](intl.zh-CN/用户指南/Logtail采集/选择网络.md)后，按照日志服务所在区域安装Logtail。
 
-    以管理员身份运行Windows Powershell或cmd进入`logtail_installer` 目录，即您所下载安装包的解压目录，并根据地域和网络环境执行相应的安装命令。
+    以管理员身份运行Windows Powershell或cmd，进入`logtail_installer`目录，即您所下载安装包的解压目录，并根据地域和网络环境执行相应的安装命令。
 
     安装命令：
 
@@ -59,7 +59,7 @@ Windows版Logtail客户端支持以下操作系统：
     |**中东东部 1（迪拜）**|`.\logtail_installer.exe install me-east-1`|`.\logtail_installer.exe install me-east-1-internet`|`.\logtail_installer.exe install me-east-1-acceleration`|
     |**英国（伦敦）**|`.\logtail_installer.exe install eu-west-1`|`.\logtail_installer.exe install eu-west-1-internet`|`.\logtail_installer.exe install eu-west-1-acceleration`|
 
-    **说明：** 在自建IDC或其他云厂商服务器使用Logtail时，由于日志服务无法获取非本账号下ECS、其他服务器的属主信息，请在安装Logtail后手动配置用户标识（AliUid），否则Logtail心跳异常、无法收集日志。详细说明请参见 [为非本账号ECS、自建IDC配置AliUid](intl.zh-CN/用户指南/Logtail采集/机器组/为非本账号ECS、自建IDC配置AliUid.md)。
+    **说明：** 在自建IDC或其他云厂商服务器使用Logtail时，由于日志服务无法获取非本账号下ECS、其他服务器的属主信息，请在安装Logtail后手动配置用户标识（AliUid），否则Logtail心跳异常、无法收集日志。详细说明请参见 [为非本账号ECS、自建IDC配置主账号AliUid](intl.zh-CN/用户指南/Logtail采集/机器组/为非本账号ECS、自建IDC配置主账号AliUid.md)。
 
 
 ## 安装路径 {#section_r5z_y32_qgb .section}
@@ -81,19 +81,19 @@ Logtail会自动安装到[默认目录](#)中，您可以进入该目录，使�
 
 例如，以下内容表示Logtail的版本号为1.0.0.0：
 
-```
+``` {#codeblock_xtw_tcg_9o4}
 {
-	"logtail_version" : "1.0.0.0"
+    "logtail_version" : "1.0.0.0"
 }
 ```
 
 ## 升级Logtail {#section_fks_lwg_cfb .section}
 
--   **自动升级**
+-   **自动升级** 
 
     通常情况下，Windows版Logtail支持自动升级。但将1.0.0.0之前的旧版升级为1.0.0.0及以上版本时，必须手动升级。
 
--   **手动升级**
+-   **手动升级** 
 
     将1.0.0.0之前的旧版升级为1.0.0.0及以上版本时，必须手动升级。手动升级的步骤和[安装Logtail](#)相同，您只需要下载并解压最新的安装包，然后按照步骤执行安装即可。
 
@@ -122,7 +122,7 @@ Logtail会自动安装到[默认目录](#)中，您可以进入该目录，使�
 
 以管理员身份运行Windows Powershell或cmd进入 `logtail_installer` 目录，即您所下载安装包的解压目录，执行命令：
 
-```
+``` {#codeblock_aey_xbd_fw2}
 .\logtail_installer.exe uninstall
 ```
 
