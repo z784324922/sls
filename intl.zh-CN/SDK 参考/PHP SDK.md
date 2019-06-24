@@ -14,9 +14,9 @@
 
 ## 步骤 2 获取阿里云访问密钥 {#section_amg_r1r_12b .section}
 
-为了使用 Log Service PHP SDK，您必须申请阿里云的 [访问秘钥](../../../../../intl.zh-CN/API 参考/访问秘钥.md)。
+为了使用 Log Service PHP SDK，您必须申请阿里云的 [访问秘钥](../../../../intl.zh-CN/API 参考/访问秘钥.md)。
 
-登录阿里云[秘钥管理页面](https://ak-console.aliyun.com/#/accesskey) 。选择一对用于 SDK 的访问密钥对。如果没有，请创建一对新访问密钥，且保证它处于**启用**状态。有关如何创建访问密钥，参见 [准备流程](../../../../../intl.zh-CN/用户指南/准备工作/准备流程.md)。
+登录阿里云[秘钥管理页面](https://ak-console.aliyun.com/#/accesskey)。选择一对用于 SDK 的访问密钥对。如果没有，请创建一对新访问密钥，且保证它处于**启用**状态。有关如何创建访问密钥，参见 [准备流程](../../../../intl.zh-CN/用户指南/准备工作/准备流程.md)。
 
 该密钥对会在下面的步骤使用，且需要保管好，不能对外泄露。另外，您可以参考 [配置](intl.zh-CN/SDK 参考/基本介绍/配置.md) 了解更多 SDK 如何使用访问密钥的信息。
 
@@ -24,12 +24,12 @@
 
 在使用日志服务PHP SDK之前，请先在控制台上创建好项目（Project）和日志库（Logstore）。
 
-有关如何创建Project和Logstore，参见[准备流程](../../../../../intl.zh-CN/用户指南/准备工作/准备流程.md)。
+有关如何创建Project和Logstore，参见[准备流程](../../../../intl.zh-CN/用户指南/准备工作/准备流程.md)。
 
 **说明：** 
 
 -   请确保使用同一阿里云账号获取阿里云访问密钥和创建日志项目及日志库。
--   关于日志的项目、日志库等概念请参考 Log [基本概念](../../../../../intl.zh-CN/产品简介/基本概念/简介.md#)。
+-   关于日志的项目、日志库等概念请参考 Log [基本概念](../../../../intl.zh-CN/产品简介/基本概念/简介.md#)。
 -   Log 的 Project 名称为日志服务全局唯一，而 Logstore 名称在一个 Project 下面唯一。
 -   Log 的 Project 一旦创建则无法更改它的所属区域。目前也不支持在不同阿里云 Region 间迁移 Log Project。
 
@@ -42,13 +42,15 @@ PHP SDK 支持 PHP 5.2.1 及以上版本，您可以在本地安装 SDK 所支�
 搭建好 PHP 开发环境后，您需要安装 PHP SDK。具体如下：
 
 1.  从 [GitHub](https://github.com/aliyun/aliyun-log-php-sdk) 下载最新的 PHP SDK 包。
-2.  解压完整下载的包到指定的目录即可。PHP SDK 是一个软件开发包，不需要额外的安装操作。在个软件开发包除了包括 SDK 自身的代码外，还有一组第三方依赖包和一个 autoloader 类帮助你简化使用流程。您可以按照下面的步骤直接在自己的 PHP 项目中使用。
+2.  下载完成后，解压到指定的目录即可。
+
+PHP SDK 是一个软件开发包，不需要额外的安装操作。整个软件开发包除了包括 SDK 自身的代码外，还有一组第三方依赖包和一个 autoloader 类帮助你简化使用流程。您可以按照下面的步骤直接在自己的 PHP 项目中使用。
 
 ## 步骤 6 开始一个新的 PHP 项目 {#section_rv2_ydj_sy .section}
 
-在，您可以开始使用 SDK PHP SDK。使用任何文本编辑器或者 PHP IDE，运行如下示例代码即可与日志服务端交互并得到相应输出。
+现在，您可以开始使用PHP SDK。使用任何文本编辑器或者 PHP IDE，运行如下示例代码即可与日志服务端进行交互。
 
-```
+``` {#codeblock_yvr_7s1_rjg}
 <?php
 /* 使用 autoloader 类自动加载所有需要的 PHP 模块。注意使用合适的路径指向 autoloader 类所在文件*/
 require_once realpath(dirname(__FILE__) . '/../Log_Autoload.php');
@@ -82,7 +84,7 @@ for ($i = 0; $i < 5; $i++)
 $req2 = new Aliyun_Log_Models_PutLogsRequest($project, $logstore, $topic, $source, $logitems);
 $res2 = $client->putLogs($req2);
 var_dump($res2);
-#不必等待，立即拖数据
+#实时采集数据
 #首先遍历有哪些 shardId
 $listShardRequest = new Aliyun_Log_Models_ListShardsRequest($project,$logstore);
 $listShardResponse = $client -> listShards($listShardRequest);
@@ -119,9 +121,9 @@ foreach($listShardResponse-> getShardIds()  as $shardId)
         $cursor = $response -> getNextCursor();
     }
 }
-#等待 1 分钟让日志可查询
+#等待 1 分钟后对日志进行查询
 sleep(60);
-#查询日志分布情况询（注意，要查询日志，必须保证已经创建了索引，PHP SDK 不提供该接口，请在控制台创建）
+#查询日志分布情况询（注意，要查询日志，必须保证已经创建了索引，PHP SDK 不提供该接口，请在控制台创建索引。）
 $topic = "";
 $query='';
 $from = time()-3600;
