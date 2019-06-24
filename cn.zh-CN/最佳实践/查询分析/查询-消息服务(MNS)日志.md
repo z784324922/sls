@@ -21,7 +21,7 @@
 
     -   查询结果：如下图所示，查询结果中展示了该消息从发送到删除的过程。
 
-        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13207/155963536432448_zh-CN.jpg)
+        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13207/156136220532448_zh-CN.jpg)
 
 
 ## 查看队列消息写入量 {#section_h3a_19r_fio .section}
@@ -37,7 +37,7 @@
 
     -   查询结果：如下图所示，当前查询时段内，有4条写入操作。
 
-        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13207/155963536432449_zh-CN.jpg)
+        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13207/156136220532449_zh-CN.jpg)
 
 
 ## 查看队列消息消费量 {#section_qfu_bne_t53 .section}
@@ -53,7 +53,7 @@
 
     -   查询结果：如下图所示，当前查询时段内，有5条消费记录。
 
-        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13207/155963536432450_zh-CN.jpg)
+        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13207/156136220532450_zh-CN.jpg)
 
 
 ## 查看队列消息删除量 {#section_frz_kjh_dkt .section}
@@ -69,7 +69,7 @@
 
     -   查询结果：如下图所示，搜索结果中展示了loglog队列消息的删除日志，您可以查看删除量。
 
-        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13207/155963536432451_zh-CN.jpg)
+        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13207/156136220632451_zh-CN.jpg)
 
 
 ## 查看主题消息的消息轨迹 {#section_oq2_53p_88w .section}
@@ -85,7 +85,7 @@
 
     -   查询结果：如下图所示，搜索结果中展示了logtesttt主题中消息从发送到通知的过程。
 
-        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13207/155963536432452_zh-CN.jpg)
+        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13207/156136220632452_zh-CN.jpg)
 
 
 ## 查看主题消息发布量 {#section_ptp_9eh_o8d .section}
@@ -99,7 +99,7 @@
 
 -   查询结果：如下图所示，当前查询时段内，有5条消息发布记录。
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13207/155963536432453_zh-CN.jpg)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13207/156136220632453_zh-CN.jpg)
 
 
 ## 查看某个客户端消息处理量 {#section_73g_s4b_c1z .section}
@@ -107,7 +107,7 @@
 -   **步骤** 
     1.  索框中输入客户端IP。格式：`$ClientIP`，如果希望查询某个客户端的某类操作日志，搜索框中增加具体操作即可，例如：`$ClientIP and (SendMessage or BatchSendMessage)`。
 
-    2.  适的时间范围后，单击搜索按钮即可查看该客户端所有的消息操作日志。
+    2.  选择合适的时间范围后，单击搜索按钮即可查看该客户端所有的消息操作日志。
 
 -   **示例**：
 
@@ -117,7 +117,7 @@
 
     -   查询结果：如下图所示，当前查询时段内，有3条消息处理记录。
 
-        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13207/155963536432454_zh-CN.jpg)
+        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13207/156136220632454_zh-CN.jpg)
 
 
 ## 实时计算 & 离线计算 {#section_7rm_rca_bqx .section}
