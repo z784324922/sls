@@ -6,14 +6,14 @@
 
 写入时有两种模式：
 
--   负载均衡模式（LoadBalance）: 自动根据 Logstore 下所有可写的 shard 进行负载均衡写入。该方法对写入可用性较高（SLA: 99.95%），适合写入与消费数据与 shard 无关的场景，例如不保序。
+-   负载均衡模式（LoadBalance）：自动根据 Logstore 下所有可写的 shard 进行负载均衡写入。该方法对写入可用性较高（SLA：99.95%），适合写入与消费数据与 shard 无关的场景，例如不保序。
 -   根据 Key 路由 shard 模式（KeyHash）：写入时需要传递一个 Key，服务端自动根据 Key 选择当前符合该 Key 区间的 Shard 写入。例如，可以将某个生产者（例如 instance）根据名称 Hash 到固定 Shard 上，这样就能保证写入与消费在该 Shard 上是严格有序的（在 Merge/Split 过程中能够严格保证对于 Key 在一个时间点只会出现在一个 Shard 上，[参见 shard 数据模型](../../../../intl.zh-CN/产品简介/基本概念/分区.md)）。
 
 ## 请求语法 {#section_j5v_14t_12b .section}
 
 **负载均衡写入模式** 
 
-```
+``` {#codeblock_yqv_7s3_uny}
 POST /logstores/<logstorename>/shards/lb HTTP/1.1
 Authorization: <AuthorizationString>
 Content-Type: application/x-protobuf
@@ -32,7 +32,7 @@ x-log-signaturemethod: hmac-sha1
 
 在 header 中增加 x-log-hashkey，用来判断落在哪个 shard 的 range 中。该参数为可选参数，不填情况下自动切换负载均衡写模式。
 
-```
+``` {#codeblock_6qm_t9u_sqa}
 POST /logstores/<logstorename>/shards/lb HTTP/1.1
 Authorization: <AuthorizationString>
 Content-Type: application/x-protobuf
@@ -94,7 +94,7 @@ x-log-signaturemethod: hmac-sha1
 
 **请求示例：** 
 
-```
+``` {#codeblock_z5q_o6g_008}
 POST /logstores/sls-test-logstore
 {
     "Content-Length": 118,
@@ -113,7 +113,7 @@ POST /logstores/sls-test-logstore
 
  **响应示例：** 
 
-```
+``` {#codeblock_u9d_vzj_ayg}
 Header
 {   
     "date": "Thu, 12 Nov 2015 06:53:03 GMT",
