@@ -2,9 +2,9 @@
 
 ## 创建External Store {#section_iq3_nk5_12b .section}
 
-**请求语法**
+ **请求语法** 
 
-```
+``` {#codeblock_9a6_c9v_z8r}
 POST /externalstores HTTP/1.1
 'x-log-bodyrawsize': '0',
 'Content-Type': 'application/json', 
@@ -31,7 +31,7 @@ POST /externalstores HTTP/1.1
 }'
 ```
 
-**请求参数**
+ **请求参数** 
 
 |属性名称|类型|是否必须|描述|
 |:---|:-|:---|:-|
@@ -46,13 +46,13 @@ POST /externalstores HTTP/1.1
 |table|string|是|表名。|
 |region|string|是|RDS所在region，目前仅支持cn-qingdao、cn-beijing、cn-hangzhou。|
 
-**请求头**
+ **请求头** 
 
-CreateExternalStore 接口无特有请求头，关于 Log Service API 的公共请求头请参考 公共请求头。
+CreateExternalStore 接口无特有请求头，关于 Log Service API 的公共请求头请参考[公共请求头](intl.zh-CN/API 参考/公共请求头.md#)。
 
-**创建样例**
+ **创建样例** 
 
-```
+``` {#codeblock_3fl_s0y_m2h}
 POST /externalstores HTTP/1.1
 'x-log-bodyrawsize': '0',
 'Content-Type': 'application/json', 
@@ -80,9 +80,9 @@ POST /externalstores HTTP/1.1
 
 ## 修改External Store {#section_ozr_rn5_12b .section}
 
-**请求语法**
+ **请求语法** 
 
-```
+``` {#codeblock_qzq_pw0_84i}
 PUT /externalstores/<ExternalStoreName> HTTP/1.1
 'x-log-bodyrawsize': '0',
 'Content-Type': 'application/json', 
@@ -109,7 +109,7 @@ PUT /externalstores/<ExternalStoreName> HTTP/1.1
 }'
 ```
 
-**请求参数**
+ **请求参数** 
 
 |属性名称|类型|是否必须|描述|
 |:---|:-|:---|:-|
@@ -124,9 +124,9 @@ PUT /externalstores/<ExternalStoreName> HTTP/1.1
 |table|string|是|表名。|
 |region|string|是|RDS所在Region，目前仅支持cn-qingdao、cn-beijing、cn-hangzhou。|
 
-**修改样例**
+ **修改样例** 
 
-```
+``` {#codeblock_dgx_5p4_dbs}
 PUT http://ali-yunlei-chengdu.cn-chengdu.log.aliyuncs.com:80/externalstores/rds_store  HTTP/1.1
 'x-log-bodyrawsize': '0',
 'Content-Type': 'application/json', 
@@ -154,9 +154,9 @@ PUT http://ali-yunlei-chengdu.cn-chengdu.log.aliyuncs.com:80/externalstores/rds_
 
 ## 列出所有的External Store {#section_ivh_vn5_12b .section}
 
-**请求语法**
+**请求语法** 
 
-```
+``` {#codeblock_d2m_vmp_loi}
 GET /externalstores?externalStoreName=<external_store_name_prefix>&offset=<offset>&lines=<lines>
 'Content-Length': '0', 
 'x-log-bodyrawsize': '0', 
@@ -168,7 +168,7 @@ GET /externalstores?externalStoreName=<external_store_name_prefix>&offset=<offse
 'Authorization': 'LOG <yourAccessKeyId>:<yourSignature>'}
 ```
 
-**请求参数**
+ **请求参数** 
 
 |属性名称|类型|是否必须|描述|
 |:---|:-|:---|:-|
@@ -176,9 +176,9 @@ GET /externalstores?externalStoreName=<external_store_name_prefix>&offset=<offse
 |offset|integer|否|表示从offset开始获取。|
 |lines|integer|否|表示获取lines个External Store。|
 
-**样例**
+ **样例** 
 
-```
+``` {#codeblock_9et_8p7_590}
 GET http://ali-yunlei-chengdu.cn-chengdu.log.aliyuncs.com:80/externalstores?externalStoreName=&offset=0&lines=10
 'Content-Length': '0', 
 'x-log-bodyrawsize': '0', 
@@ -190,15 +190,15 @@ GET http://ali-yunlei-chengdu.cn-chengdu.log.aliyuncs.com:80/externalstores?exte
 'Authorization': 'LOG <yourAccessKeyId>:<yourSignature>'}
 ```
 
-**响应**
+ **响应** 
 
-```
+``` {#codeblock_rhe_yux_tkz}
 {'count': 3, 'externalstores': ['ecs_store', 'rds_store', 'ecs_store1'], 'total': 3}
 ```
 
 ## 获取External Store详情 {#section_qxr_yn5_12b .section}
 
-```
+``` {#codeblock_0as_agn_9z2}
 http://ali-yunlei-chengdu.cn-chengdu.log.aliyuncs.com:80/externalstores/<external_store_name> 
 'Content-Length': '0', 
 'x-log-bodyrawsize': '0', 
@@ -209,15 +209,15 @@ http://ali-yunlei-chengdu.cn-chengdu.log.aliyuncs.com:80/externalstores/<externa
 'Authorization': 'LOG <yourAccessKeyId>:<yourSignature>'
 ```
 
-**请求参数**
+ **请求参数** 
 
 |属性名称|类型|是否必须|描述|
 |:---|:-|:---|:-|
 |external\_store\_name|string|是|用于获取External Store名称|
 
-**样例**
+ **样例** 
 
-```
+``` {#codeblock_fdj_de9_8lx}
 http://ali-yunlei-chengdu.cn-chengdu.log.aliyuncs.com:80/externalstores/rds_store
 'Content-Length': '0', 
 'x-log-bodyrawsize': '0', 
@@ -228,9 +228,9 @@ http://ali-yunlei-chengdu.cn-chengdu.log.aliyuncs.com:80/externalstores/rds_stor
 'Authorization': 'LOG <yourAccessKeyId>:<yourSignature>'
 ```
 
-**响应**
+ **响应** 
 
-```
+``` {#codeblock_a4h_v28_llz}
 {
   'storeType': 'rds-vpc', 
   'parameter': {
@@ -248,7 +248,7 @@ http://ali-yunlei-chengdu.cn-chengdu.log.aliyuncs.com:80/externalstores/rds_stor
 
 ## 删除External Store {#section_nq2_j45_12b .section}
 
-```
+``` {#codeblock_o7p_qak_rhn}
 DELETE /externalstores/<external_store_name>
 'Content-Length': '0',
 'x-log-bodyrawsize': '0', 
@@ -259,15 +259,15 @@ DELETE /externalstores/<external_store_name>
 'Authorization': 'LOG <yourAccessKeyId>:<yourSignature>'
 ```
 
-**请求参数**
+ **请求参数** 
 
 |属性名称|类型|是否必须|描述|
 |:---|:-|:---|:-|
 |external\_store\_name|string|是|要删除的External Store名称。|
 
-**样例**
+ **样例** 
 
-```
+``` {#codeblock_r8v_qlt_0xb}
  DELETE http://ali-yunlei-chengdu.cn-chengdu.log.aliyuncs.com:80/externalstores/rds_store
 'Content-Length': '0',
 'x-log-bodyrawsize': '0', 
