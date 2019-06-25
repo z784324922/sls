@@ -96,9 +96,12 @@ Apache Lucene是Apache软件基金会一个开放源代码的全文检索引擎�
 
 查询主要将符合条件的日志快速命中，分析功能是对数据进行统计与计算。
 
-例如我们有如下需求：所有状态码大于200的读请求，根据IP统计次数和流量，这样的分析请求就可以转化为两个操作：查询到指定结果，对结果进行统计分析。在一些情况下我们也可以不进行查询，直接对所有日志进行分析。
+例如我们需要所有状态码大于200的读请求，根据IP统计次数和流量。这样的分析请求就可以转化为两个操作：
 
-```
+-   查询到指定结果，对结果进行统计分析。
+-   在一些情况下我们也可以不进行查询，直接对所有日志进行分析。
+
+``` {#codeblock_66b_wdd_51m}
 1. Status in (200,500] and Method:Get*
 2. select count(1) as c, sum(inflow) as sum_inflow, ip group by Ip
 ```
@@ -126,7 +129,7 @@ Apache Lucene是Apache软件基金会一个开放源代码的全文检索引擎�
 
     -   ES 支持的数据类型丰富度，原生查询能力比LOG更完整。
     -   LOG​ 能够通过SQL方式（如下）来代替字符串模糊查询，Geo等比较函数，但性能会比原生查询稍差。
-    ```
+    ``` {#codeblock_owt_v5m_9tg}
     子串命中
     * | select content where content like '%substring%' limit 100
     
@@ -156,7 +159,7 @@ Apache Lucene是Apache软件基金会一个开放源代码的全文检索引擎�
 
         在传统的运维方式中，如果需要对日志文件进行实时监控，需要到服务器上对日志文件执行`tail -f`命令，如果实时监控的日志信息不够直观，可以加上`grep`或者`grep -v`进行关键词过滤。LOG在控制台提供了日志数据实时监控的交互功能LiveTail，针对线上日志进行实时监控分析，减轻运维压力。
 
-        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13138/155748032937745_zh-CN.png)
+        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13138/156142996637745_zh-CN.png)
 
         Livetail特点如下：
 
@@ -169,9 +172,9 @@ Apache Lucene是Apache软件基金会一个开放源代码的全文检索引擎�
 
         -   系统有潜在异常，但被淹没在海量日志中。
         -   机器被入侵，有异常登录，却后知后觉。
-        -   新版本上线，系统行为有变化，却无法感知 这些问题，归根到底，是信息太多、太杂，不能良好归类，同时记录信息的日志，往往还都是无Schema，格式多样，归类难道更大。LOG提供实时日志智能聚类\(LogReduce\)功能根据日志的相似性进行归类，快速掌握日志全貌：
+        -   新版本上线，系统行为有变化，却无法感知这些问题，归根到底，是信息太多、太杂，不能良好归类，同时记录信息的日志，往往还都是无主题，格式多样，归类难度更大。LOG提供实时日志**智能聚类（LogReduce）**功能根据日志的相似性进行归类，快速掌握日志全貌：
             -   支持任意格式日志：Log4J、Json、单行（syslog）。
-            -   日志经任意条件过滤后再Reduce；对Reduce后Pattern，根据signature反查原始数据。
+            -   日志经任意条件过滤后再Reduce；对日志Reduce后Pattern，根据signature反查原始数据。
             -   不同时间段Pattern比较。
             -   动态调整Reduce精度。
             -   亿级数据，秒级出结果。
@@ -188,11 +191,11 @@ ES在docvalue之上提供一层聚合（Aggregation）语法，并且在6.x版�
 
     同比环比函数能够通过SQL嵌套对任意计算（单值、多值、曲线）计算同环比（任意时段），以便洞察增长趋势。
 
-    ```
+    ``` {#codeblock_pa3_c6o_v9q}
     * | select compare( pv , 86400) from (select count(1) as pv from log)
     ```
 
-    ```
+    ``` {#codeblock_mku_zb7_qhs}
     *|select t, diff[1] as current, diff[2] as yestoday, diff[3] as percentage from(select t, compare( pv , 86400) as diff from (select count(1) as pv, date_format(from_unixtime(__time__), '%H:%i') as t from log group by t) group by t order by t) s 
     ```
 
@@ -203,11 +206,11 @@ ES在docvalue之上提供一层聚合（Aggregation）语法，并且在6.x版�
     -   支持logstore，MySQL，OSS（CSV）等数据源。
     -   支持left，right，out，innerjoin。
     -   SQL查询外表，SQLJoin外表。
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13138/155748033037750_zh-CN.png)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13138/156142996637750_zh-CN.png)
 
     Join外表的样例：
 
-    ```
+    ``` {#codeblock_mo0_41h_enz}
     sql
     创建外表：
     * | create table user_meta ( userid bigint, nick varchar, gender varchar, province varchar, gender varchar,age bigint) with ( endpoint='oss-cn-hangzhou.aliyuncs.com',accessid='LTA288',accesskey ='EjsowA',bucket='testossconnector',objects=ARRAY['user.csv'],type='oss')
@@ -225,7 +228,7 @@ ES在docvalue之上提供一层聚合（Aggregation）语法，并且在6.x版�
     -   GeoHash：Geo位置与坐标转换。
     查询结果分析样例：
 
-    ```
+    ``` {#codeblock_5ln_3m1_bl5}
     sql
     * | SELECT count(1) as pv, ip_to_province(ip) as province WHERE ip_to_domain(ip) != 'intranet' GROUP BY province ORDER BY pv desc limit 10
     
@@ -264,12 +267,12 @@ ES在docvalue之上提供一层聚合（Aggregation）语法，并且在6.x版�
         -   延时\>10S请求中某个ID构成比例远远大于其他维度组合。
         -   并且该ID在对比集合（B）中的比例较低。
         -   A和B中差异明显。
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13138/155748033037754_zh-CN.png)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13138/156142996737754_zh-CN.png)
 
 
 ## 性能 {#section_xcv_hxy_zdb .section}
 
-接针对相同数据集，分别对比写入数据及查询，和聚合计算能力。
+针对相同数据集，分别对比写入数据及查询，和聚合计算能力。
 
 -   **实验环境** 
     1.  测试配置
@@ -288,7 +291,7 @@ ES在docvalue之上提供一层聚合（Aggregation）语法，并且在6.x版�
         -   日志行数：162,640,232 （约为1.6亿条）。
         以上字段完全随机，如下为一条测试日志样例：
 
-        ```
+        ``` {#codeblock_uu4_lmq_6fz}
         timestamp:August 27th 2017, 21:50:19.000 
         long_1:756,444 double_1:0 text_1:value_136 
         long_2:-3,839,872,295 double_2:-11.13 text_2:value_475 
@@ -312,7 +315,7 @@ ES在docvalue之上提供一层聚合（Aggregation）语法，并且在6.x版�
     从测试结果来看
 
     -   日志服务写入延时好于ES，40ms vs 14 ms。
-    -   空间：原始数据50G，因测试数据比较随机所以存储空间会有膨胀（大部分真实场景下，存储会因压缩后会比原始数据小）。ES胀到86G，膨胀率为172%，在存储空间超出日志服务 58%。这个数据与ES推荐的存储大小为原始大小2.2倍比较接近。
+    -   空间：原始数据50G，因测试数据比较随机所以存储空间会有膨胀（大部分真实场景下，存储因压缩会比原始数据小）。ES胀到86G，膨胀率为172%，在存储空间超出日志服务 58%。这个数据与ES推荐的存储大小为原始大小2.2倍比较接近。
 -   **读取（查询+分析）测试** 
     -   **测试场景** 
 
@@ -320,14 +323,14 @@ ES在docvalue之上提供一层聚合（Aggregation）语法，并且在6.x版�
 
         1.  针对全量数据，对任意text列计算group by，计算5列数值的avg/min/max/sum/count，并按照count排序，取前1000个结果，例如：
 
-            ```
+            ``` {#codeblock_12k_a3p_fsl}
             select count(long_1) as pv,sum(long_2),min(long_3),max(long_4),sum(long_5) 
               group by text_1 order by pv desc limit 1000
             ```
 
         2.  针对全量数据，随机查询日志中的关键词，例如查询 "value\_126"，获取命中的日志数目与前100行，例如：
 
-            ```
+            ``` {#codeblock_aon_sqv_e9l}
             value_126
             ```
 
@@ -347,7 +350,7 @@ ES在docvalue之上提供一层聚合（Aggregation）语法，并且在6.x版�
         -   针对统计类场景（case 1）， ES和日志服务延时处同一量级。ES采用SSD云盘，在读取大量数据时IO优势比较高。
         -   针对查询类场景（case 2）， LogAnalytics在延时明显优于ES。随着并发的增加，ELK延时对应增加，而LogAnalytics延时保持稳定甚至略有下降。
 
-## 规模与成本 { .section}
+## 规模与成本 {#section_q08_sod_2xt .section}
 
 -   **规模能力** 
 
@@ -415,7 +418,7 @@ ES在docvalue之上提供一层聚合（Aggregation）语法，并且在6.x版�
     -   在全球化部署（有20+ Region），方便拓展全球化业务。
     -   提供30+日志接入SDK，与阿里云产品无缝打通集成。
 
-## 总结 { .section}
+## 总结 {#section_bx2_8x8_ahy .section}
 
 ES支撑更新、查询、删除等更通用场景，在搜索、数据分析、应用开发等领域有广泛使用，ELK组合在日志分析场景上把ES灵活性与性能发挥到极致；日志服务是纯定位在日志类数据分析场景的服务，在该领域内做了很多定制化开发。一个服务更广，一个场景更具针对性。当然离开了场景纯数字的比较没有意义，找到适合自己场景的才重要。
 
