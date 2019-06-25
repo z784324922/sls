@@ -4,7 +4,7 @@ Logtail配置叫做config，每个Project默认可以创建100个配置（config
 
 您可以通过config指定日志收集的位置、方式和参数。
 
-**Logtail配置命名规范：** 
+ **Logtail配置命名规范：** 
 
 -   只能包括小写字母、数字、连字符（-）和下划线（\_）
 -   必须以小写字母或者数字开头和结尾
@@ -43,9 +43,9 @@ Logtail配置叫做config，每个Project默认可以创建100个配置（config
 |configName|string|是|配置名称，同一Project下配置名必须唯一。|
 |logSample|string|否|日志样例。|
 |inputType|string|是|配置类型，可选`plugin`、`file`。|
-|[inputDetail](#)|object|是|输入类型配置。|
+| [inputDetail](#) |object|是|输入类型配置。|
 |outputType|string|是|输出类型，目前只支持`LogService`。|
-|[outputDetail](#)|object|是|输出类型配置。|
+| [outputDetail](#) |object|是|输出类型配置。|
 |createTime\(output-only\)|int32|否|创建时间。 服务端返回参数，不支持设置。|
 |lastModifyTime\(output-only\)|int32|否|最后一次修改时间。 服务端返回参数，不支持设置。|
 
@@ -57,9 +57,9 @@ Logtail配置叫做config，每个Project默认可以创建100个配置（config
 |:-|:-|:---|:-|
 |filterKey|array|否|用于过滤日志所用到的 key，只有 key 的值满足对应 filterRegex 列中设定的正则表达式，日志才是符合要求的。|
 |filterRegex|array|否|与 filterKey 对应的正则表达式， filterRegex 的长度和 filterKey 的长度必须相同。|
-|shardHashKey|array|否|默认按照[负载均衡模式](cn.zh-CN/API 参考/日志库相关接口/PutLogs.md)写入，开启后按照[ShardHashKey模式](cn.zh-CN/API 参考/日志库相关接口/PutLogs.md)写入。支持的值包括 `__topic__`，`__hostname__`, `__source__`。|
+|shardHashKey|array|否|默认按照[负载均衡模式](intl.zh-CN/API 参考/日志库相关接口/PutLogs.md)写入，开启后按照[ShardHashKey模式](intl.zh-CN/API 参考/日志库相关接口/PutLogs.md)写入。支持的值包括 `__topic__`，`__hostname__`, `__source__`。|
 |enableRawLog|bool|否|是否上传原始日志。|
-|[sensitive\_keys](#)|array|否|脱敏功能配置，类型为数组，`SensitiveKey`详细介绍参考下述表格。|
+| [sensitive\_keys](#) |array|否|脱敏功能配置，类型为数组，`SensitiveKey`详细介绍参考下述表格。|
 |mergeType|string|否|聚合方式，默认按照Topic方式聚合。取值为 `topic`、`logstore`。|
 |delayAlarmBytes|int|否|采集进度落后的告警阈值，默认为`209715200`，即200 MB。|
 |adjustTimezone|bool|否|是否调整日志时区，仅在配置时间解析情况下使用。|
@@ -115,9 +115,9 @@ Logtail配置叫做config，每个Project默认可以创建100个配置（config
  |
 |logPath|string|是|日志所在的父目录，例如`/var/logs/`。|
 |filePattern|string|是|日志文件的Pattern，例如 `access*.log`。|
-|topicFormat|string|是|Topic 生成方式，支持以下四种类型： -   `none`，表示 topic 为空。
--   `default`，表示将日志文件路径作为 topic。
--   `group_topic`，表示将应用该配置的机器组 topic 属性作为 topic。
+|topicFormat|string|是|Topic 生成方式，支持以下四种类型： -    `none`，表示 topic 为空。
+-    `default`，表示将日志文件路径作为 topic。
+-    `group_topic`，表示将应用该配置的机器组 topic 属性作为 topic。
 -   其他值表示将日志文件路径的某部分作为 topic，如`/var/log/(.*).log`。
 
  |
@@ -128,13 +128,13 @@ Logtail配置叫做config，每个Project默认可以创建100个配置（config
 |discardUnmatch|bool|否|是否丢弃匹配失败的日志。|
 |maxDepth|int|否|最大目录监控深度范围0-1000，0代表只监控本层目录。|
 |delaySkipBytes|int|否|采集落后的丢弃阈值，默认为0，即不丢弃。当采集落后超过该值时，则直接丢弃落后的数据。|
-|isDocherFile|bool|否|是否为容器内文件，默认为false。详细字段含义请参考[容器内文件采集](../../../../cn.zh-CN/用户指南/Logtail采集/容器日志采集/容器文本日志.md)。|
+|isDocherFile|bool|否|是否为容器内文件，默认为false。详细字段含义请参考[容器内文件采集](../../../../intl.zh-CN/用户指南/Logtail采集/容器日志采集/容器文本日志.md)。|
 |dockerIncludeLabel|object|否|容器label白名单，采集包含白名单中Label的Docker容器日志，为空表示全部采集。|
-|dockerExcludeLabel|object|否|容器llabel黑名单，不采集包含黑名单中Label的Docker容器日志，为空表示全部采集。|
+|dockerExcludeLabel|object|否|容器label黑名单，不采集包含黑名单中Label的Docker容器日志，为空表示全部采集。|
 |dockerIncludeEnv|object|否|容器环境变量白名单，采集包含白名单中的环境变量的日志，为空表示全部采集。|
 |dockerExcludeEnv|object|否|容器环境变量黑名单，采集不包含黑名单中的环境变量的日志，为空表示全部采集。|
 
--   **完整正则/极简日志配置** 
+-    **完整正则/极简日志配置** 
 
     下述为完整正则/极简模式特有的匹配：
 
@@ -152,7 +152,7 @@ Logtail配置叫做config，每个Project默认可以创建100个配置（config
     "regex" : "(.*)"
     ```
 
--   **JSON日志配置** 
+-    **JSON日志配置** 
 
     下述为JSON默认特有配置：
 
@@ -160,7 +160,7 @@ Logtail配置叫做config，每个Project默认可以创建100个配置（config
     |:-|:-|:---|:-|
     |timeKey|string|否|指定时间字段的key 名称。|
 
--   **分隔符日志配置** 
+-    **分隔符日志配置** 
 
     下述为分隔符模式特有配置：
 
@@ -172,7 +172,7 @@ Logtail配置叫做config，每个Project默认可以创建100个配置（config
     |timeKey|string|是|指定时间字段key名称，必须在key列表里面。|
     |autoExtend|bool|否|当日志中实际的key数量大于配置的key数量时，是否自动扩展。|
 
--   **飞天日志配置** 
+-    **飞天日志配置** 
 
     下述为飞天模式特有配置：
 
@@ -180,14 +180,6 @@ Logtail配置叫做config，每个Project默认可以创建100个配置（config
     |:-|:-|:---|:-|
     |logBeginRegex|string|否|行首正则表达式。|
 
-
-## inputDetail 插件配置 {#section_smt_bpc_mgb .section}
-
-下述为插件模式特有的配置，具体请参考[插件输入类型](../../../../cn.zh-CN/用户指南/Logtail采集/自定义插件/简介.md)。
-
-|属性|类型|是否必须|描述|
-|:-|:-|:---|:-|
-|plugin|object|是|插件所需json对象，具体请参考[插件输入类型](../../../../cn.zh-CN/用户指南/Logtail采集/自定义插件/简介.md)。|
 
 ## outputDetail {#section_sjv_3pc_mgb .section}
 
