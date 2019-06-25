@@ -55,9 +55,9 @@
 
 目前提供Appender如下，底层均使用 aliyun-log-producer-java 完成数据的写入。
 
--   [aliyun-log-log4j-appender](https://github.com/aliyun/aliyun-log-log4j-appender?spm=a2c4e.11153959.blogcont409045.20.510e49bdIKC4NA)
--   [aliyun-log-log4j2-appender](https://github.com/aliyun/aliyun-log-log4j2-appender?spm=a2c4e.11153959.blogcont409045.21.510e49bdIKC4NA)
--   [aliyun-log-logback-appender](https://github.com/aliyun/aliyun-log-logback-appender?spm=a2c4e.11153959.blogcont409045.22.510e49bdIKC4NA)
+-    [aliyun-log-log4j-appender](https://github.com/aliyun/aliyun-log-log4j-appender?spm=a2c4e.11153959.blogcont409045.20.510e49bdIKC4NA) 
+-    [aliyun-log-log4j2-appender](https://github.com/aliyun/aliyun-log-log4j2-appender?spm=a2c4e.11153959.blogcont409045.21.510e49bdIKC4NA) 
+-    [aliyun-log-logback-appender](https://github.com/aliyun/aliyun-log-logback-appender?spm=a2c4e.11153959.blogcont409045.22.510e49bdIKC4NA) 
 
 这四者的差别如下：
 
@@ -74,7 +74,7 @@
 
 配置文件`log4j.properties`的内容如下：
 
-```
+``` {#codeblock_fdn_172_7yv}
 log4j.rootLogger=WARN,loghub
 log4j.appender.loghub=com.aliyun.openservices.log.log4j.LoghubAppender
 #日志服务的project名，必选参数
@@ -90,11 +90,11 @@ log4j.appender.loghub.accessKey=[your accesskey]
 
 ## 步骤2 查询与分析 {#section_hkt_mqq_12b .section}
 
-通过上述方式配置好appender 后，Java 应用产生的日志会被自动发往日志服务。可以通过 [LogSearch/Analytics](../../../../intl.zh-CN/用户指南/查询与分析/简介.md) 对这些日志实时查询和分析。本文提供的样例的日志格式如下：
+通过上述方式配置好appender 后，Java 应用产生的日志会被自动发往日志服务。可以通过 [LogSearch/Analytics](../intl.zh-CN/用户指南/查询与分析/简介.md) 对这些日志实时查询和分析。本文提供的样例的日志格式如下：
 
 -   记录用户登录行为的日志：
 
-    ```
+    ``` {#codeblock_p0h_huf_frc}
     level:  INFO  
     location:  com.aliyun.log4jappendertest.Log4jAppenderBizDemo.login(Log4jAppenderBizDemo.java:38)
     message:  User login successfully. requestID=id4 userID=user8  
@@ -104,7 +104,7 @@ log4j.appender.loghub.accessKey=[your accesskey]
 
 -   记录用户购买行为的日志：
 
-    ```
+    ``` {#codeblock_7ox_vbm_usy}
     level:  INFO  
     location:  com.aliyun.log4jappendertest.Log4jAppenderBizDemo.order(Log4jAppenderBizDemo.java:46)
     message:  Place an order successfully. requestID=id44 userID=user8 itemID=item3 amount=9  
@@ -117,11 +117,10 @@ log4j.appender.loghub.accessKey=[your accesskey]
 
 若要对数据进行查询和分析，需要首先开启查询分析功能。开启步骤如下：
 
-1.  登录日志服务管理控制台。
-2.  选择目标项目，单击项目名称。
-3.  选择目标日志库并单击日志索引列下的**查询**。
-4.  单击右上角的**查询分析属性** \> **设置**。
-5.  进入设置菜单，为下列字段开启查询。
+1.  登录[日志服务控制台](https://sls.console.aliyun.com)，单击Project名称。
+2.  选择目标日志库并单击日志索引列下的**查询**。
+3.  单击右上角的**查询分析属性** \> **设置**。
+4.  进入设置菜单，为下列字段开启查询。
 
 ![](images/5909_zh-CN.png "指定字段查询")
 
@@ -129,29 +128,29 @@ log4j.appender.loghub.accessKey=[your accesskey]
 
 1.  统计过去1小时发生Error最多的3个位置。
 
-    ```
+    ``` {#codeblock_dga_l3t_25l}
     level: ERROR | select location ,count(*) as count GROUP BY  location  ORDER BY count DESC LIMIT 3
     ```
 
 2.  统计过去15分钟各种日志级别产生的日志条数。
 
-    ```
+    ``` {#codeblock_oyn_gbk_ums}
     | select level ,count(*) as count GROUP BY level ORDER BY count DESC
     ```
 
 3.  日志上下文查询。
 
-    对于任意一条日志，能够精确还原原始日志文件上下文日志信息。详情请参考[上下文查询](../../../../intl.zh-CN/用户指南/查询与分析/查询语法与功能/上下文查询.md)。
+    对于任意一条日志，能够精确还原原始日志文件上下文日志信息。详情请参考[上下文查询](../intl.zh-CN/用户指南/查询与分析/查询语法与功能/上下文查询.md)。
 
 4.  统计过去1小时，登录次数最多的三个用户。
 
-    ```
+    ``` {#codeblock_225_e29_w0p}
     login | SELECT regexp_extract(message, 'userID=(?<userID>[a-zA-Z\d]+)', 1) AS userID, count(*) as count GROUP BY userID ORDER BY count DESC LIMIT 3
     ```
 
 5.  统计过去15分钟，每个用户的付款总额。
 
-    ```
+    ``` {#codeblock_ltw_qb2_7zz}
     order | SELECT regexp_extract(message, 'userID=(?<userID>[a-zA-Z\d]+)', 1) AS userID, sum(cast(regexp_extract(message, 'amount=(?<amount>[a-zA-Z\d]+)', 1) AS double)) AS amount GROUP BY userID
     ```
 
