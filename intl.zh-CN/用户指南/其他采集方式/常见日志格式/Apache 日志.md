@@ -8,26 +8,26 @@ Apache日志配置文件中默认定义了两种打印格式，分别为combined
 
 -   combined格式：
 
-    ```
+    ``` {#codeblock_fh1_jh7_8q4}
     LogFormat "%h %l %u %t \"%r\" %>s %b \"%{Referer}i\" \"%{User-Agent}i\"" combined
     ```
 
 -   common格式：
 
-    ```
+    ``` {#codeblock_4io_33y_wso}
     LogFormat "%h %l %u %t \"%r\" %>s %b" 
     ```
 
 -   自定义格式：
 
-    ```
+    ``` {#codeblock_dhu_w38_mhv}
     LogFormat "%h %l %u %t \"%r\" %>s %b \"%{Referer}i\" \"%{User-Agent}i\" %D %f %k %p %q %R %T %I %O" customized
     ```
 
 
 Apache日志配置文件中同时需要指定当前日志的打印格式、日志文件路径及名称。例如以下声明表示日志打印时使用配置文件中定义的combined格式，且日志路径和名称为/var/log/apache2/access\_log。
 
-```
+``` {#codeblock_rs8_25t_48h}
 CustomLog "/var/log/apache2/access_log" combined
 ```
 
@@ -66,7 +66,7 @@ CustomLog "/var/log/apache2/access_log" combined
 
 ## 日志样例 {#section_ng3_hl4_y1b .section}
 
-```
+``` {#codeblock_obx_a5t_eeq}
 192.168.1.2 - - [02/Feb/2016:17:44:13 +0800] "GET /favicon.ico HTTP/1.1" 404 209 "http://localhost/x1.html" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/48.0.2564.97 Safari/537.36" 
 ```
 
@@ -87,13 +87,13 @@ CustomLog "/var/log/apache2/access_log" combined
 
         **说明：** 如您的**日志格式**为**common**或**combined**格式，此处会自动匹配对应格式的配置字段，请确认是否和本地Apache配置文件中定义的格式一致。
 
-        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/17637/15477096849380_zh-CN.png)
+         ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/17637/15614571369380_zh-CN.png) 
 
     4.  确认**APACHE键名称**。
 
         日志服务会自动读取您的Apache键。请在当前页面确认APACHE键名称。
 
-        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/17637/15477096849381_zh-CN.png)
+         ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/17637/15614571369381_zh-CN.png) 
 
     5.  选择是否**丢弃解析失败日志**。
 
@@ -115,18 +115,18 @@ CustomLog "/var/log/apache2/access_log" combined
         -   gbk：指定使用GBK编码。
  |
         |最大监控目录深度|指定从日志源采集日志时，监控目录的最大深度，即最多监控几层日志。最大目录监控深度范围0-1000，0代表只监控本层目录。|
-        |超时属性|如果一个日志文件在指定时间内没有任何更新，则认为该文件已超时。您可以对**超时属性**指定以下配置。        -   永不超时：指定持续监控所有日志文件，永不超时。
+        |超时属性|如果一个日志文件在指定时间内没有任何更新，则认为该文件已超时。您可以对**超时属性**指定以下配置。         -   永不超时：指定持续监控所有日志文件，永不超时。
         -   30分钟超时：如日志文件在30分钟内没有更新，则认为已超时，并不再监控该文件。
-|
-        |过滤器配置|日志只有**完全符合**过滤器中的条件才会被收集。例如：
+ |
+        |过滤器配置|日志只有**完全符合**过滤器中的条件才会被收集。 例如：
 
         -   **满足条件即收集**：配置`Key:level Regex:WARNING|ERROR`，表示只收集level为WARNING或ERROR类型的日志。
         -   **[过滤不符合条件的数据](http://www.regular-expressions.info/lookaround.html)**：
-            -   配置`Key:level Regex:^(?!.*(INFO|DEBUG))`，表示代表不收集level为INFO或DEBUG类型的日志。
+            -   配置`Key:level Regex:^(?!.*(INFO|DEBUG)).*`，表示代表不收集level为INFO或DEBUG类型的日志。
             -   配置`Key:url Regex:.*^(?!.*(healthcheck)).*`，表示不采集url中带有healthcheck的日志，例如key为url，value为`/inner/healthcheck/jiankong.html`的日志将不会被采集。
 更多示例可参考[regex-exclude-word](https://stackoverflow.com/questions/2404010/match-everything-except-for-specified-strings)、[regex-exclude-pattern](https://stackoverflow.com/questions/2078915/a-regular-expression-to-exclude-a-word-string)。
 
-|
+ |
 
 4.  单击**下一步**。
 5.  选择机器组，并单击**应用到机器组**。
