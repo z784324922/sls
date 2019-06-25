@@ -2,11 +2,11 @@
 
 日志服务除支持Logtail、SDK、OpenAPI等写入方式外，还支持使用Kafka协议写入，您可以使用各类Kafka Producer SDK、支持输出到Kafka的采集Agent将数据写入到日志服务。
 
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/150479/155797022344691_zh-CN.png)
+![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/150479/156145687644691_zh-CN.png)
 
 ## 相关限制 {#section_gg2_34c_ghb .section}
 
--   支持的Kafka协议版本为：0.8.0到2.1.IV2。
+-   支持的Kafka协议版本为：0.8.0到2.1.1 V2。
 -   为保证数据传输安全性，连接协议必须为SASL\_SSL。
 -   若您的Logstore有多个Shard，请使用负载均衡模式写入数据。
 -   目前只支持通过Producer、Agent等方式使用Kafka协议写入数据。
@@ -54,7 +54,7 @@
 
     Beats（MetricBeat、PacketBeat、Winlogbeat、Auditbeat、Filebeat、Heartbeat等）系列软件采集均支持将数据输出到Kafka（详细配置请参考[Beats-Kafka-Output](https://www.elastic.co/guide/en/beats/filebeat/master/kafka-output.html)）。
 
-    ```
+    ``` {#codeblock_394_664_j6j}
     output.kafka: 
       # initial brokers for reading cluster metadata 
       hosts: ["cn-hangzhou.log.aliyuncs.com:10012"] 
@@ -73,17 +73,17 @@
 
     Beats默认输出到Kafka的日志为JSON类型，您可以给content字段创建JSON类型的索引（创建方式参考[JSON类型](intl.zh-CN/用户指南/查询与分析/索引数据类型/JSON类型.md#)），日志样例如下：
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/150479/155797022341999_zh-CN.png)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/150479/156145687641999_zh-CN.png)
 
 -   示例2：Collectd采集数据到日志服务
 
-    [Collectd](https://collectd.org/)是一个守护（daemon）进程，用来定期收集系统和应用程序的性能指标，Collectd也支持将数据输出到Kafka中（插件请参考[Write Kafka Plugin](https://collectd.org/wiki/index.php/Plugin:Write_Kafka)）。
+     [Collectd](https://collectd.org/)是一个守护（daemon）进程，用来定期收集系统和应用程序的性能指标，Collectd也支持将数据输出到Kafka中（插件请参考[Write Kafka Plugin](https://collectd.org/wiki/index.php/Plugin:Write_Kafka)）。
 
     Collectd输出到Kafka需要额外安装Kafka插件以及相关依赖，在Centos下，您可以直接使用yum安装（RPM参见[Collectd-write\_kafka](https://rpmfind.net/linux/rpm2html/search.php?query=collectd-write_kafka)），命令为`sudo yum install collectd-write_kafka`。
 
     配置模板样例如下：
 
-    ```
+    ``` {#codeblock_f7u_xpj_s66}
     <Plugin write_kafka>
       Property "metadata.broker.list" "cn-hangzhou.log.aliyuncs.com:10012" 
       Property "security.protocol" "sasl_ssl" 
@@ -103,15 +103,15 @@
 
     使用JSON模式采集后，您可以给content字段创建JSON类型的索引（创建方式参考[JOSN索引类型](intl.zh-CN/用户指南/查询与分析/索引数据类型/JSON类型.md#)），日志样例如下：
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/150479/155797022442000_zh-CN.png)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/150479/156145687642000_zh-CN.png)
 
 -   示例3：使用Telegraf采集数据到日志服务
 
-    [Telegraf](https://github.com/influxdata/telegraf)是 InfluxData 下的子项目，是由 Go 语言编写的 metrics 收集、处理、聚合的代理。其设计目标是较小的内存使用，通过插件来构建各种服务和第三方组件的 metrics 收集。Telegraf 具有插件或集成功能，可以直接从其运行的系统中获取各种指标，从第三方API中提取指标，甚至通过 statsd 和 Kafka 消费者服务监听指标。
+     [Telegraf](https://github.com/influxdata/telegraf)是 InfluxData 下的子项目，是由 Go 语言编写的 metrics 收集、处理、聚合的代理。其设计目标是较小的内存使用，通过插件来构建各种服务和第三方组件的 metrics 收集。Telegraf 具有插件或集成功能，可以直接从其运行的系统中获取各种指标，从第三方API中提取指标，甚至通过 statsd 和 Kafka 消费者服务监听指标。
 
     Telegraf支持将数据发送到Kafka，因此您只需修改配置文件即可使用Telegraf采集数据并发送到日志服务：
 
-    ```
+    ``` {#codeblock_k6r_dgw_t4i}
     [[outputs.kafka]] 
       ## URLs of kafka brokers 
       brokers = ["cn-hangzhou.log.aliyuncs.com:10012"] 
@@ -143,17 +143,17 @@
 
     使用JSON模式采集后，您可以给content字段创建JSON类型的索引（创建方式参考[JOSN索引类型](intl.zh-CN/用户指南/查询与分析/索引数据类型/JSON类型.md#)），日志样例如下：
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/150479/155797022442180_zh-CN.png)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/150479/156145687642180_zh-CN.png)
 
 -   示例4：使用Fluentd采集数据到日志服务
 
-    [Fluentd](https://www.fluentd.org/)是一个用于统一日志层的开源数据收集器。Fluentd允许您统一收集数据，以便更好地使用和理解数据。Fluentd是云端原生计算基金会\(CNCF\)的成员项目之一，遵循Apache 2 License协议。
+     [Fluentd](https://www.fluentd.org/)是一个用于统一日志层的开源数据收集器。Fluentd允许您统一收集数据，以便更好地使用和理解数据。Fluentd是云端原生计算基金会\(CNCF\)的成员项目之一，遵循Apache 2 License协议。
 
     Fluentd具有众多输入、处理、输出插件，其中[Kafka插件](https://github.com/fluent/fluent-plugin-kafka)支持将数据发送到Kafka，您只需[安装](https://github.com/fluent/fluent-plugin-kafka)并配置该插件即可将数据采集到日志服务。
 
     配置样例如下：
 
-    ```
+    ``` {#codeblock_i73_0b1_iqh}
     <match **>
       @type kafka 
       # Brokers: you can choose either brokers or zookeeper. 
@@ -178,17 +178,17 @@
 
     使用JSON模式采集后，您可以给content字段创建JSON类型的索引（创建方式参考[JOSN索引类型](intl.zh-CN/用户指南/查询与分析/索引数据类型/JSON类型.md#)），日志样例如下：
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/150479/155797022442204_zh-CN.png)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/150479/156145687642204_zh-CN.png)
 
 -   示例5：使用Logstash采集数据到日志服务
 
-    [Logstash](https://www.elastic.co/products/logstash)是一个具备实时处理能力开源的数据收集引擎。可以动态地从不同的来源收集数据，将数据处理（过滤、变形）过之后统一输出到某个特定地址，为将来更多样化的数据分析做准备。
+     [Logstash](https://www.elastic.co/products/logstash)是一个具备实时处理能力开源的数据收集引擎。可以动态地从不同的来源收集数据，将数据处理（过滤、变形）过之后统一输出到某个特定地址，为将来更多样化的数据分析做准备。
 
     Logstash内置了Kafka输出插件，因此您可以直接配置Logstash将数据采集到日志服务。由于日志服务Kafka协议使用SASL\_SSL连接协议，因此需要额外配置SSL证书、SASL的jaas文件。
 
     1.  创建jaas文件，保存到任意路径，例如： /etc/kafka/kafka\_client\_jaas.conf。
 
-        ```
+        ``` {#codeblock_xm1_y2b_6yi}
         KafkaClient { 
           org.apache.kafka.common.security.plain.PlainLoginModule required 
           username="<yourusername>" 
@@ -200,13 +200,13 @@
 
         日志服务的域名均为可信任证书，您只需下载[GlobalSign Root CA](https://support.globalsign.com/customer/portal/articles/1426602-globalsign-root-certificates)根证书即可，保存base64编码的根证书到任意路径，例如/etc/kafka/ca-root。然后输入[keytool](https://docs.oracle.com/javase/8/docs/technotes/tools/unix/keytool.html)命令生成jks格式的文件（首次生成jks您需要配置密码）。
 
-        ```
+        ``` {#codeblock_5oo_isu_uoq}
         keytool -keystore client.truststore.jks -alias root -import -file /etc/kafka/ca-root
         ```
 
     3.  配置Logstash，示例如下：
 
-        ```
+        ``` {#codeblock_zn2_5rg_u9m}
         input { stdin { } } 
         output { 
           stdout { codec => rubydebug } 
@@ -230,6 +230,6 @@
 
         使用JSON模式采集后，您可以给content字段创建JSON类型的索引（创建方式参考[JOSN索引类型](intl.zh-CN/用户指南/查询与分析/索引数据类型/JSON类型.md#)），日志样例如下：
 
-        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/150479/155797022442205_zh-CN.png)
+        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/150479/156145687642205_zh-CN.png)
 
 
