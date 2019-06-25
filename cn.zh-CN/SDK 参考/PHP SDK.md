@@ -16,7 +16,7 @@
 
 为了使用 Log Service PHP SDK，您必须申请阿里云的 [访问秘钥](../../../../intl.zh-CN/API 参考/访问秘钥.md)。
 
-登录阿里云[秘钥管理页面](https://ak-console.aliyun.com/#/accesskey)。选择一对用于 SDK 的访问密钥对。如果没有，请创建一对新访问密钥，且保证它处于**启用**状态。有关如何创建访问密钥，参见 [准备流程](../../../../intl.zh-CN/用户指南/准备工作/准备流程.md)。
+登录阿里云 [秘钥管理页面](https://ak-console.aliyun.com/#/accesskey)  。选择一对用于 SDK 的访问密钥对。如果没有，请创建一对新访问密钥，且保证它处于**启用**状态。有关如何创建访问密钥，参见 [准备流程](../../../../intl.zh-CN/用户指南/准备工作/准备流程.md)。
 
 该密钥对会在下面的步骤使用，且需要保管好，不能对外泄露。另外，您可以参考 [配置](intl.zh-CN/SDK 参考/基本介绍/配置.md) 了解更多 SDK 如何使用访问密钥的信息。
 
@@ -51,7 +51,6 @@ PHP SDK 是一个软件开发包，不需要额外的安装操作。整个软件
 现在，您可以开始使用PHP SDK。使用任何文本编辑器或者 PHP IDE，运行如下示例代码即可与日志服务端进行交互。
 
 ``` {#codeblock_yvr_7s1_rjg}
-<?php
 /* 使用 autoloader 类自动加载所有需要的 PHP 模块。注意使用合适的路径指向 autoloader 类所在文件*/
 require_once realpath(dirname(__FILE__) . '/../Log_Autoload.php');
 $endpoint = 'cn-hangzhou.sls.aliyuncs.com'; // 选择与上面步骤创建 project 所属区域匹配的 Endpoint
