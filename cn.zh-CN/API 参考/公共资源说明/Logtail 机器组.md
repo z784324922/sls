@@ -2,13 +2,13 @@
 
 机器：当机器安装 Logtail 并正常启动后，会根据 Logtail 配置中的用户信息自动关联到当前用户。目前 machine 有三种标示的方式，分别为：
 
--   IP: hostname 对应 IP 地址。最容易理解，但在 VPC 等环境下可能会有重复。
+-   IP：hostname 对应 IP 地址。最容易理解，但在 VPC 等环境下可能会有重复。
 -   UUID \(machine-uniqueid\)：DMI 设备中 UUID，参见 [RFC4122](http://www.ietf.org/rfc/rfc4122.txt)。
--   Userdefined-id: 用户在 Logtail 目录下自定义该机器标识。
+-   Userdefined-id：用户在 Logtail 目录下自定义该机器标识。
 
 每台机器属性如下：
 
-```
+``` {#codeblock_14d_oto_ec2}
 {
     "ip" : "testip1",
     "machine-uniqueid" : "testuuid1",
@@ -28,7 +28,7 @@
 
 ## machinegroup {#section_lyj_k4f_sy .section}
 
-project 下当前用户拥有的机器分组。机器分组可以通过两种方式来标示（IP 与 userdefined）。IP 较为容易辨识，userdefined 可以解决 VPC 下 IP 相同的问题，用户可以选任意一种方式进行机器标识。
+Project 下当前用户拥有的机器分组。机器分组可以通过两种方式来标示（IP 与 userdefined）。IP 较为容易辨识，userdefined 可以解决 VPC 下 IP 相同的问题，用户可以选任意一种方式进行机器标识。
 
 machinegroup 命名规范：
 
@@ -38,7 +38,7 @@ machinegroup 命名规范：
 
 ## 完整资源示例 {#section_ktz_l4f_sy .section}
 
-```
+``` {#codeblock_po5_4hp_n3g}
 {
     "groupName" : "testgroup",
     "groupType" : "",
