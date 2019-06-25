@@ -44,37 +44,37 @@ MySQL Binlog 同步类似 [canal](https://github.com/alibaba/canal) 功能，以
 }
 ```
 
-## 参数说明 {#section_pvl_s5q_pdb .section}
+## 配置项 {#section_pvl_s5q_pdb .section}
 
 MySQL Binlog方式输入源类型为：`service_canal`。
 
-|参数|类型|必选或可选|参数说明|
-|:-|:-|:----|:---|
-|Host|string|可选|数据库主机，默认为127.0.0.1。|
-|Port|int|可选|数据库端口，默认为3306。|
-|User|string|可选|数据库用户名，默认为root。|
-|Password|string|可选|数据库密码；默认为空。|
-|ServerID|int|可选|Logtail伪装成的Mysql Slave ID，默认为125。 **说明：** ServerID对于一个MySQL数据库必须唯一，否则同步失败。
+|配置项|类型|是否必须|说明|
+|:--|:-|:---|:-|
+|Host|string|否|数据库主机，默认为127.0.0.1。|
+|Port|int|否|数据库端口，默认为3306。|
+|User|string|否|数据库用户名，默认为root。|
+|Password|string|否|数据库密码；默认为空。|
+|ServerID|int|否|Logtail伪装成的Mysql Slave ID，默认为125。 **说明：** ServerID对于一个MySQL数据库必须唯一，否则同步失败。
 
  |
-|IncludeTables|string 数组|必选|包含的表名称（包括db，例如`test_db.test_table`），为**正则表达式**，若某表不符合IncludeTables任一条件则该表不会被采集；如果您希望采集所有表，请将此参数指定为`.*\\..*`。 **说明：** 若需要完全匹配，请在前后分别加上`^``$`，例如`^test_db\\.test_table$`。
+|IncludeTables|string 数组|是|包含的表名称（包括db，例如`test_db.test_table`），为**正则表达式**，若某表不符合IncludeTables任一条件则该表不会被采集；如果您希望采集所有表，请将此参数指定为`.*\\..*`。 **说明：** 若需要完全匹配，请在前后分别加上`^` `$`，例如`^test_db\\.test_table$`。
 
  |
-|ExcludeTables|string 数组|可选|忽略的表名称（包括db，例如`test_db.test_table`），为**正则表达式**，若某表符合ExcludeTables任一条件则该表不会被采集；不设置时默认收集所有表。 **说明：** 若需要完全匹配，请在前后分别加上`^``$`，例如`^test_db\\.test_table$`。
+|ExcludeTables|string 数组|否|忽略的表名称（包括db，例如`test_db.test_table`），为**正则表达式**，若某表符合ExcludeTables任一条件则该表不会被采集；不设置时默认收集所有表。 **说明：** 若需要完全匹配，请在前后分别加上`^` `$`，例如`^test_db\\.test_table$`。
 
  |
-|StartBinName|string|可选|首次采集的Binlog文件名，不设置时默认从当前时间点开始采集。|
-|StartBinLogPos|int|可选|首次采集的Binlog文件名的offset，默认为0。|
-|EnableGTID|bool|可选|是否附加[全局事务ID](https://dev.mysql.com/doc/refman/5.7/en/replication-gtids-concepts.html)，默认为true，为false时上传的数据将不附加。|
-|EnableInsert|bool|可选|是否收集insert事件的数据，默认为true，为false时insert事件将不采集。|
-|EnableUpdate|bool|可选|是否收集update事件的数据，默认为true，为false时update事件将不采集。|
-|EnableDelete|bool|可选|是否收集delete事件的数据，默认为true，为false时delete事件将不采集。|
-|EnableDDL|bool|可选|是否收集DDL（data definition language）事件的数。 **说明：** 该选项默认为false，为false时DDL事件将不采集。该选项不支持`IncludeTables``ExcludeTables`过滤。
+|StartBinName|string|否|首次采集的Binlog文件名，不设置时默认从当前时间点开始采集。|
+|StartBinLogPos|int|否|首次采集的Binlog文件名的offset，默认为0。|
+|EnableGTID|bool|否|是否附加[全局事务ID](https://dev.mysql.com/doc/refman/5.7/en/replication-gtids-concepts.html)，默认为true，为false时上传的数据将不附加。|
+|EnableInsert|bool|否|是否收集insert事件的数据，默认为true，为false时insert事件将不采集。|
+|EnableUpdate|bool|否|是否收集update事件的数据，默认为true，为false时update事件将不采集。|
+|EnableDelete|bool|否|是否收集delete事件的数据，默认为true，为false时delete事件将不采集。|
+|EnableDDL|bool|否|是否收集DDL（data definition language）事件的数。 **说明：** 该选项默认为false，为false时DDL事件将不采集。该选项不支持`IncludeTables` `ExcludeTables`过滤。
 
  |
-|Charset|string|可选|编码方式，默认为`utf-8`。|
-|TextToString|bool|可选|是否将`text`类型数据转换成string，默认为false。|
-|PackValues|bool|可选| 是否将事件的数据打包成 JSON 格式。默认为 false，表示不打包。
+|Charset|string|否|编码方式，默认为`utf-8`。|
+|TextToString|bool|否|是否将`text`类型数据转换成string，默认为false。|
+|PackValues|bool|否| 是否将事件的数据打包成 JSON 格式。默认为 false，表示不打包。
 
  如果启用此功能，Logtail 会将事件数据以 JSON 格式集中打包到 data 和 old\_data 两个字段中，其中 old\_data 仅在 row\_update 事件中有意义。
 
@@ -83,7 +83,7 @@ MySQL Binlog方式输入源类型为：`service_canal`。
  **说明：** 该参数仅在 0.16.19 及以上版本支持。
 
  |
-|EnableEventMeta|bool|可选| 是否采集事件的元数据，默认为 false，表示不采集。
+|EnableEventMeta|bool|否| 是否采集事件的元数据，默认为 false，表示不采集。
 
  Binlog 事件的元数据包括 event\_time、event\_log\_position、event\_size 以及 event\_server\_id 四项。 **说明：** 该参数仅在 0.16.21 及以上版本支持。
 
@@ -95,7 +95,7 @@ MySQL Binlog方式输入源类型为：`service_canal`。
 
 -   MySQL 必须开启 Binlog，且 Binlog 必须为 row 模式（默认 RDS 已经开启）。
 
-    ```
+    ``` {#codeblock_ue0_m4i_zlv}
     # 查看是否开启Binlog
     mysql> show variables like "log_bin";
     +---------------+-------+
@@ -117,7 +117,7 @@ MySQL Binlog方式输入源类型为：`service_canal`。
 -   ServerID 必须唯一，确保需同步的MySQL所有Slave的ID不重复。
 -   需保证配置的用户具有需要采集的数据库读权限以及MySQL REPLICATION权限，示例如下：
 
-    ```
+    ``` {#codeblock_yb0_b2l_m65}
     CREATE USER canal IDENTIFIED BY 'canal';  
     GRANT SELECT, REPLICATION SLAVE, REPLICATION CLIENT ON *.* TO 'canal'@'%';
     -- GRANT ALL PRIVILEGES ON *.* TO 'canal'@'%' ;
@@ -132,7 +132,7 @@ MySQL Binlog方式输入源类型为：`service_canal`。
 
     当指定`StartBinName`时，第一次采集会产生较大开销。
 
-    ```
+    ``` {#codeblock_szy_tnx_42x}
     # StartBinName 设置成 "mysql-bin.000063", StartBinLogPos 设置成 0
     mysql> show binary logs;
     +------------------+-----------+
@@ -152,12 +152,12 @@ MySQL Binlog方式输入源类型为：`service_canal`。
 
     -   修改完毕后请执行以下命令重启Logtail：
 
-        ```
+        ``` {#codeblock_ofe_96x_qj1}
         sudo /etc/init.d/ilogtaild stop; sudo /etc/init.d/ilogtaild start
         ```
 
     -   如果您再次在Web端修改此配置，您的手动修改会被覆盖，请再次手动修改本地配置。
--   **RDS 相关限制：** 
+-    **RDS 相关限制：** 
     -   无法直接在RDS服务器上安装Logtail，您需要将Logtail安装在能连通RDS实例的任意一台ECS上。
     -   RDS 只读备库当前不支持Binlog采集，您需要配置主库进行采集。
 
@@ -165,11 +165,11 @@ MySQL Binlog方式输入源类型为：`service_canal`。
 
 建议您启用MySQL服务器的全局事务ID（GTID）功能，并将Logtail升级到0.16.15及以上的版本以保证数据可靠性，避免因主备切换造成的数据重复采集。但在网络长时间中断时，依旧有可能发生数据漏采集情况。
 
--   **数据漏采集**：Logtail与MySQL服务器之间的网络**长时间中断**时，可能会产生数据漏采集情况。
+-    **数据漏采集**：Logtail与MySQL服务器之间的网络**长时间中断**时，可能会产生数据漏采集情况。
 
-    MySQL Binlog插件通过伪装成MySQL的slave节点来不断从master节点获取binlog数据，因此，Logtail会和master节点之间建立连接以获取数据。一旦Logtail和master之间的网络发生中断，Logtail会不断地尝试重连直至恢复，而master仍可以在和Logtail的网络中断期间不断地提供服务，产生新的binlog数据，并且回收旧的binlog数据。当网络恢复且Logtail重连成功后，Logtail会使用自身的checkpoint去向master请求更多的binlog数据，而由于长时间的网络中断，它所需要的数据很可能已经被回收了，这时就会触发Logtail的异常恢复机制。**在异常恢复机制中，Logtail会从master获取最近的binlog位置，以它为起点继续采集，这样就会跳过checkpoint和最近的binlog位置之间的数据，导致数据漏采集。**
+    MySQL Binlog插件通过伪装成MySQL的slave节点来不断从master节点获取binlog数据，因此，Logtail会和master节点之间建立连接以获取数据。一旦Logtail和master之间的网络发生中断，Logtail会不断地尝试重连直至恢复，而master仍可以在和Logtail的网络中断期间不断地提供服务，产生新的binlog数据，并且回收旧的binlog数据。当网络恢复且Logtail重连成功后，Logtail会使用自身的checkpoint去向master请求更多的binlog数据，而由于长时间的网络中断，它所需要的数据很可能已经被回收了，这时就会触发Logtail的异常恢复机制。**在异常恢复机制中，Logtail会从master获取最近的binlog位置，以它为起点继续采集，这样就会跳过checkpoint和最近的binlog位置之间的数据，导致数据漏采集。** 
 
--   **数据重复采集**：如果master和slave之间的binlog序号不同步时，发生了主备切换事件，可能会产生数据重复采集情况。如果您的MySQL服务器支持并启用了GTID（MySQL 5.6引入），且Logtail是0.16.15及以上版本，即可避免以下场景中的数据重复采集情况。
+-    **数据重复采集**：如果master和slave之间的binlog序号不同步时，发生了主备切换事件，可能会产生数据重复采集情况。如果您的MySQL服务器支持并启用了GTID（MySQL 5.6引入），且Logtail是0.16.15及以上版本，即可避免以下场景中的数据重复采集情况。
 
     在MySQL主备同步的设置下，master会将产生的binlog同步给slave，slave在收到后会存储到本地的binlog文件中。如果master和slave之间的binlog序号不同步时，发生了主备切换事件，以binlog文件名和偏移作为checkpoint的机制将导致数据重复采集。
 
@@ -182,15 +182,15 @@ MySQL Binlog方式输入源类型为：`service_canal`。
 
 1.  选择输入源。
 
-    单击**数据接入向导**图标或**创建配置**，进入数据接入向导。并在**选择数据库类型**步骤中选择**BINLOG**。
+    单击**数据接入向导**图标或**创建配置**，进入数据接入向导。并在**选择数据库类型**步骤中选择**MYSQL BINLOG**。
 
 2.  填写输入配置。
 
     进入**输入源配置**页面，填写**插件配置**。
 
-    **插件配置**输入框中已为您提供配置模板，请根据您的需求替换配置参数信息。
+     **插件配置**输入框中已为您提供配置模板，请根据您的需求替换配置参数信息。
 
-    `inputs`部分为采集配置，是必选项；`processors`部分为处理配置，是可选项。采集配置部分需要按照您的数据源配置对应的采集语句，处理配置部分请参考[处理采集数据](cn.zh-CN/用户指南/Logtail采集/自定义插件/处理采集数据.md)配置一种或多种采集方式。
+     `inputs`部分为采集配置，是必选项；`processors`部分为处理配置，是可选项。采集配置部分需要按照您的数据源配置对应的采集语句，处理配置部分请参考[处理采集数据](cn.zh-CN/用户指南/Logtail采集/自定义插件/处理采集数据.md)配置一种或多种采集方式。
 
     **说明：** 
 
@@ -198,7 +198,7 @@ MySQL Binlog方式输入源类型为：`service_canal`。
     -   请将Host/User/Password/Port替换为实际访问参数。
     示例配置如下：
 
-    ```
+    ``` {#codeblock_6od_09m_1o9}
     {
      "inputs": [
          {
@@ -224,7 +224,7 @@ MySQL Binlog方式输入源类型为：`service_canal`。
 
 3.  应用到机器组。
 
-    进入**应用到机器组**页面。请在此处勾选**运行有此插件的Logtail机器组**。
+    进入**应用到机器组**页面。请在此处勾选运行有此插件的Logtail机器组。
 
     如您之前没有创建过机器组，单击**+创建机器组**以创建一个新的机器组。
 
@@ -239,7 +239,7 @@ MySQL Binlog方式输入源类型为：`service_canal`。
     1.  登录Logtail所在服务器，查找`/usr/local/ilogtail/user_log_config.json`文件中`service_canal`关键词，修改下述对应的`Host`、`User`、`Password`等字段。
     2.  执行以下命令重启Logtail。
 
-        ```
+        ``` {#codeblock_ih5_drm_rbd}
         sudo /etc/init.d/ilogtaild stop; sudo /etc/init.d/ilogtaild start
         ```
 
@@ -254,7 +254,7 @@ MySQL Binlog方式输入源类型为：`service_canal`。
 
 -   表结构
 
-    ```
+    ``` {#codeblock_yld_r0d_t46}
     CREATE TABLE `SpecialAlarm` (
     `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
     `time` datetime NOT NULL,
@@ -271,7 +271,7 @@ MySQL Binlog方式输入源类型为：`service_canal`。
 
     对数据库执行INSERT、DELETE和UPDATE三种操作：
 
-    ```
+    ``` {#codeblock_tz4_hcs_ui2}
     insert into specialalarm (`time`, `alarmType`, `ip`, `count`) values(now(), "NO_ALARM", "10.10.**.***", 55);
     delete from specialalarm where id = 4829235  ;
     update specialalarm set ip = "10.11.***.**" where id = "4829234";
@@ -279,7 +279,7 @@ MySQL Binlog方式输入源类型为：`service_canal`。
 
     并为`zc.specialalarm`创建一个索引：
 
-    ```
+    ``` {#codeblock_rma_yzb_9ns}
     ALTER TABLE `zc`.`specialalarm` 
     ADD INDEX `time_index` (`time` ASC);
     ```
@@ -290,7 +290,7 @@ MySQL Binlog方式输入源类型为：`service_canal`。
 
     -   INSERT语句
 
-        ```
+        ``` {#codeblock_yuk_402_pq4}
         __source__:  10.30.**.**  
         __tag__:__hostname__:  iZbp145dd9fccu*****  
         __topic__:    
@@ -309,7 +309,7 @@ MySQL Binlog方式输入源类型为：`service_canal`。
 
     -   DELETE语句
 
-        ```
+        ``` {#codeblock_dag_crb_i0e}
         __source__:  10.30.**.**  
         __tag__:__hostname__:  iZbp145dd9fccu****
         __topic__:    
@@ -328,7 +328,7 @@ MySQL Binlog方式输入源类型为：`service_canal`。
 
     -   UPDATE语句
 
-        ```
+        ``` {#codeblock_wkb_qlh_hkj}
         __source__:  10.30.**.**  
         __tag__:__hostname__:  iZbp145dd9fccu****  
         __topic__:    
@@ -352,7 +352,7 @@ MySQL Binlog方式输入源类型为：`service_canal`。
 
     -   DDL（data definition language）语句
 
-        ```
+        ``` {#codeblock_6aj_ww0_jhd}
         __source__:  10.30.**.**  
         __tag__:__hostname__:  iZbp145dd9fccu****  
         __topic__:    
@@ -374,12 +374,12 @@ binlog采集会将一些元数据和日志一起上传，具体上传的元数�
 
 |字段|说明|示例|
 |:-|:-|:-|
-|`_host_`|数据库host名称。|`*********.mysql.rds.aliyuncs.com`|
-|`_db_`|数据库名称。|`my-database`|
-|`_table_`|表的名称。|`my-table`|
-|`_event_`|事件类型。|`row_update`、`row_insert`、`row_delete`等|
-|`_id_`|本次采集的自增ID，从0开始，每次采集一个binlog事件后加1。|`1`|
-|`_gtid_`|GTID。|`7d2ea78d-b631-11e7-8afb-00163e0eef52:536`|
-|`_filename_`|binlog文件名。|`binlog.001`|
-|`_offset_`|binlog文件偏移量，该值只会在每次commit后更新。|`12876`|
+| `_host_` |数据库host名称。| `*********.mysql.rds.aliyuncs.com` |
+| `_db_` |数据库名称。| `my-database` |
+| `_table_` |表的名称。| `my-table` |
+| `_event_` |事件类型。| `row_update`、`row_insert`、`row_delete`等|
+| `_id_` |本次采集的自增ID，从0开始，每次采集一个binlog事件后加1。| `1` |
+| `_gtid_` |GTID。| `7d2ea78d-b631-11e7-8afb-00163e0eef52:536` |
+| `_filename_` |binlog文件名。| `binlog.001` |
+| `_offset_` |binlog文件偏移量，该值只会在每次commit后更新。| `12876` |
 
