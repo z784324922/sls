@@ -32,28 +32,28 @@ Logtail客户端是日志服务提供的日志采集客户端，请参考本文�
 
 ## 安装方式 {#section_h2x_fmv_vdb .section}
 
-[选择网络](intl.zh-CN/用户指南/Logtail采集/选择网络.md)后，请根据您的网络类型选择对应的安装命令。
+ [选择网络](intl.zh-CN/用户指南/Logtail采集/选择网络.md)后，请根据您的网络类型选择对应的安装命令。
 
--   [阿里云内网（经典网络、VPC）](#)
--   [公网](#)
--   [全球加速](#)
+-    [阿里云内网（经典网络、VPC）](#) 
+-    [公网](#) 
+-    [全球加速](#) 
 
 执行安装命令之前，您需要将安装命令中的$\{your\_region\_name\}替换为您的区域名称。各区域的安装参数如下，您也可以直接拷贝执行对应区域和网络类型的安装命令。
 
 |区域|安装参数|区域|安装参数|
 |:-|:---|:-|:---|
-|**华东 1（杭州）**|cn-hangzhou|**亚太东南 2（悉尼）**|ap-southeast-2|
-|**华东 2（上海）**|cn-shanghai|**亚太东南 3（吉隆坡）**|ap-southeast-3|
-|**华北 1（青岛）**|cn-qingdao|**亚太东南 5（雅加达）**|ap-southeast-5|
-|**华北 2（北京）**|cn-beijing|**亚太南部 1（孟买）**|ap-south-1|
-|**华北 3（张家口）**|cn-zhangjiakou|**亚太东北 1（日本）**|ap-northeast-1|
-|**华北 5（呼和浩特）**|cn-huhehaote|**欧洲中部 1（法兰克福）**|eu-central-1|
-|**华南 1（深圳）**|cn-shenzhen|**中东东部 1（迪拜）**|me-east-1|
-|**西南 1（成都）**|cn-chengdu|**英国（伦敦）**|eu-west-1|
-|**香港**|cn-hongkong|**-**|**-**|
-|**美国西部 1（硅谷）**|us-west-1|**-**|**-**|
-|**美国东部 1（弗吉尼亚）**|us-east-1|**-**|**-**|
-|**亚太东南 1（新加坡）**|ap-southeast-1|-|-|
+| **华东 1（杭州）** |cn-hangzhou| **亚太东南 2（悉尼）** |ap-southeast-2|
+| **华东 2（上海）** |cn-shanghai| **亚太东南 3（吉隆坡）** |ap-southeast-3|
+| **华北 1（青岛）** |cn-qingdao| **亚太东南 5（雅加达）** |ap-southeast-5|
+| **华北 2（北京）** |cn-beijing| **亚太南部 1（孟买）** |ap-south-1|
+| **华北 3（张家口）** |cn-zhangjiakou| **亚太东北 1（日本）** |ap-northeast-1|
+| **华北 5（呼和浩特）** |cn-huhehaote| **欧洲中部 1（法兰克福）** |eu-central-1|
+| **华南 1（深圳）** |cn-shenzhen| **中东东部 1（迪拜）** |me-east-1|
+| **西南 1（成都）** |cn-chengdu| **英国（伦敦）** |eu-west-1|
+| **香港** |cn-hongkong| **-** | **-** |
+| **美国西部 1（硅谷）** |us-west-1| **-** | **-** |
+| **美国东部 1（弗吉尼亚）** |us-east-1| **-** | **-** |
+| **亚太东南 1（新加坡）** |ap-southeast-1|-|-|
 
 ## 阿里云内网（经典网络、VPC） {#section_inb_fbn_1fb .section}
 
@@ -66,7 +66,7 @@ Logtail客户端是日志服务提供的日志采集客户端，请参考本文�
 
 执行安装命令时，需要根据区域选择安装参数，您可以选择**自动选择安装参数**和**手动安装**两种方式。
 
--   **自动选择安装参数** 
+-    **自动选择安装参数** 
 
     如果您无法确定ECS所在的区域，可以使用Logtail安装器的auto参数进行安装，当指定该参数后，Logtail 安装器会通过服务器获取您的[../../../../dita-oss-bucket/SP\_2/DNA0011894323/ZH-CN\_TP\_9661.md](../../../../intl.zh-CN/实例/管理实例/使用实例元数据/什么是实例元数据.md)，自动确定ECS所在区域。
 
@@ -82,122 +82,123 @@ Logtail客户端是日志服务提供的日志采集客户端，请参考本文�
         ./logtail.sh install auto
         ```
 
--   **手动安装** 
+-    **手动安装** 
 
     您也可以选择手动安装Logtail。通过内网下载Logtail安装器，不消耗公网流量。
 
-    1.  **根据日志服务Project所在区域选择安装参数。** 
+    1.   **根据日志服务Project所在区域选择安装参数。** 
 
         安装命令中的`${your_region_name}`表示日志服务Project所在区域，根据[安装参数](#)选择正确参数，如华东一区域的安装参数为`cn-hangzhou`。
 
-    2.  **替换参数后执行安装命令。** 
+    2.   **替换参数后执行安装命令。** 
 
         替换参数`${your_region_name}`后，执行安装命令。
 
         ``` {#codeblock_0mj_tma_uzo}
         wget http://logtail-release-$\{your\_region\_name\}.oss-$\{your\_region\_name\}-internal.aliyuncs.com/linux64/logtail.sh -O logtail.sh; chmod 755 logtail.sh; ./logtail.sh install $\{your\_region\_name\}
+                                   
         ```
 
-        **您也可以根据日志服务Project所在的区域直接执行下述对应的命令进行安装**：
+         **您也可以根据日志服务Project所在的区域直接执行下述对应的命令进行安装**：
 
         |日志服务Project所在的区域|安装命令|
         |:---------------|:---|
-        |**华东 1（杭州）**|         ``` {#codeblock_4i6_7sf_tad}
+        | **华东 1（杭州）** |         ``` {#codeblock_4i6_7sf_tad}
 wget http://logtail-release-cn-hangzhou.oss-cn-hangzhou-internal.aliyuncs.com/linux64/logtail.sh -O logtail.sh; chmod 755 logtail.sh; ./logtail.sh install cn-hangzhou
         ```
 
  |
-        |**华东 2（上海）**|         ``` {#codeblock_7yv_a7g_go2}
+        | **华东 2（上海）** |         ``` {#codeblock_7yv_a7g_go2}
 wget http://logtail-release-cn-shanghai.oss-cn-shanghai-internal.aliyuncs.com/linux64/logtail.sh -O logtail.sh; chmod 755 logtail.sh; ./logtail.sh install cn-shanghai
         ```
 
  |
-        |**华北 1（青岛）**|         ``` {#codeblock_93f_8rz_v5i}
+        | **华北 1（青岛）** |         ``` {#codeblock_93f_8rz_v5i}
 wget http://logtail-release-cn-qingdao.oss-cn-qingdao-internal.aliyuncs.com/linux64/logtail.sh -O logtail.sh; chmod 755 logtail.sh; ./logtail.sh install cn-qingdao
         ```
 
  |
-        |**华北 2（北京）**|         ``` {#codeblock_eu4_g11_up0}
+        | **华北 2（北京）** |         ``` {#codeblock_eu4_g11_up0}
 wget http://logtail-release-cn-beijing.oss-cn-beijing-internal.aliyuncs.com/linux64/logtail.sh -O logtail.sh; chmod 755 logtail.sh; ./logtail.sh install cn-beijing
         ```
 
  |
-        |**华北 3 （张家口）**|         ``` {#codeblock_s3n_lwm_nj3}
+        | **华北 3 （张家口）** |         ``` {#codeblock_s3n_lwm_nj3}
 wget http://logtail-release-cn-zhangjiakou.oss-cn-zhangjiakou-internal.aliyuncs.com/linux64/logtail.sh -O logtail.sh; chmod 755 logtail.sh; ./logtail.sh install cn-zhangjiakou
         ```
 
  |
-        |**华北 5 （呼和浩特）**|         ``` {#codeblock_6ei_tzc_xq9}
+        | **华北 5 （呼和浩特）** |         ``` {#codeblock_6ei_tzc_xq9}
 wget http://logtail-release-cn-huhehaote.oss-cn-huhehaote-internal.aliyuncs.com/linux64/logtail.sh -O logtail.sh; chmod 755 logtail.sh; ./logtail.sh install cn-huhehaote
         ```
 
  |
-        |**华南 1（深圳）**|         ``` {#codeblock_hta_k84_icb}
+        | **华南 1（深圳）** |         ``` {#codeblock_hta_k84_icb}
 wget http://logtail-release-cn-shenzhen.oss-cn-shenzhen-internal.aliyuncs.com/linux64/logtail.sh -O logtail.sh; chmod 755 logtail.sh; ./logtail.sh install cn-shenzhen
         ```
 
  |
-        |**西南 1（成都）**|         ``` {#codeblock_bzw_ra6_5io}
+        | **西南 1（成都）** |         ``` {#codeblock_bzw_ra6_5io}
 wget http://logtail-release-cn-chengdu.oss-cn-chengdu-internal.aliyuncs.com/linux64/logtail.sh -O logtail.sh; chmod 755 logtail.sh; ./logtail.sh install cn-chengdu
         ```
 
  |
-        |**香港**|         ``` {#codeblock_fya_8b2_14m}
+        | **香港** |         ``` {#codeblock_fya_8b2_14m}
 wget http://logtail-release-cn-hongkong.oss-cn-hongkong-internal.aliyuncs.com/linux64/logtail.sh -O logtail.sh; chmod 755 logtail.sh; ./logtail.sh install cn-hongkong
         ```
 
  |
-        |**美国西部 1 （硅谷）**|         ``` {#codeblock_p33_71k_y3j}
+        | **美国西部 1 （硅谷）** |         ``` {#codeblock_p33_71k_y3j}
 wget http://logtail-release-us-west-1.oss-us-west-1-internal.aliyuncs.com/linux64/logtail.sh -O logtail.sh; chmod 755 logtail.sh; ./logtail.sh install us-west-1
         ```
 
  |
-        |**美国东部 1（弗吉尼亚）**|         ``` {#codeblock_to1_ksq_xdp}
+        | **美国东部 1（弗吉尼亚）** |         ``` {#codeblock_to1_ksq_xdp}
 wget http://logtail-release-us-east-1.oss-us-east-1-internal.aliyuncs.com/linux64/logtail.sh -O logtail.sh; chmod 755 logtail.sh; ./logtail.sh install us-east-1
         ```
 
  |
-        |**亚太东南 1 （新加坡）**|         ``` {#codeblock_asc_m7n_hzz}
+        | **亚太东南 1 （新加坡）** |         ``` {#codeblock_asc_m7n_hzz}
 wget http://logtail-release-ap-southeast-1.oss-ap-southeast-1-internal.aliyuncs.com/linux64/logtail.sh -O logtail.sh; chmod 755 logtail.sh; ./logtail.sh install ap-southeast-1
         ```
 
  |
-        |**亚太东南 2 （悉尼）**|         ``` {#codeblock_6fe_c32_xez}
+        | **亚太东南 2 （悉尼）** |         ``` {#codeblock_6fe_c32_xez}
 wget http://logtail-release-ap-southeast-2.oss-ap-southeast-2-internal.aliyuncs.com/linux64/logtail.sh -O logtail.sh; chmod 755 logtail.sh; ./logtail.sh install ap-southeast-2
         ```
 
  |
-        |**亚太东南 3 （吉隆坡）**|         ``` {#codeblock_m7l_ys0_r4a}
+        | **亚太东南 3 （吉隆坡）** |         ``` {#codeblock_m7l_ys0_r4a}
 wget http://logtail-release-ap-southeast-3.oss-ap-southeast-3-internal.aliyuncs.com/linux64/logtail.sh -O logtail.sh; chmod 755 logtail.sh; ./logtail.sh install ap-southeast-3
         ```
 
  |
-        |**亚太东南 5（雅加达）**|         ``` {#codeblock_8uv_u4o_yr8}
+        | **亚太东南 5（雅加达）** |         ``` {#codeblock_8uv_u4o_yr8}
 wget http://logtail-release-ap-southeast-5.oss-ap-southeast-5-internal.aliyuncs.com/linux64/logtail.sh -O logtail.sh; chmod 755 logtail.sh; ./logtail.sh install ap-southeast-5
         ```
 
  |
-        |**亚太东北 1 （日本）**|         ``` {#codeblock_42o_wkr_txf}
+        | **亚太东北 1 （日本）** |         ``` {#codeblock_42o_wkr_txf}
 wget http://logtail-release-ap-northeast-1.oss-ap-northeast-1-internal.aliyuncs.com/linux64/logtail.sh -O logtail.sh; chmod 755 logtail.sh; ./logtail.sh install ap-northeast-1
         ```
 
  |
-        |**亚太南部 1（孟买）**|         ``` {#codeblock_tr9_d8f_02m}
+        | **亚太南部 1（孟买）** |         ``` {#codeblock_tr9_d8f_02m}
 wget http://logtail-release-ap-south-1.oss-ap-south-1-internal.aliyuncs.com/linux64/logtail.sh -O logtail.sh; chmod 755 logtail.sh; ./logtail.sh install ap-south-1
         ```
 
  |
-        |**欧洲中部 1 （法兰克福）**|         ``` {#codeblock_w3x_44t_c2e}
+        | **欧洲中部 1 （法兰克福）** |         ``` {#codeblock_w3x_44t_c2e}
 wget http://logtail-release-eu-central-1.oss-eu-central-1-internal.aliyuncs.com/linux64/logtail.sh -O logtail.sh; chmod 755 logtail.sh; ./logtail.sh install eu-central-1
         ```
 
  |
-        |**中东东部 1 （迪拜）**|         ``` {#codeblock_wyq_7j3_1om}
+        | **中东东部 1 （迪拜）** |         ``` {#codeblock_wyq_7j3_1om}
 wget http://logtail-release-me-east-1.oss-me-east-1-internal.aliyuncs.com/linux64/logtail.sh -O logtail.sh; chmod 755 logtail.sh; ./logtail.sh install me-east-1
         ```
 
  |
-        |**英国（伦敦）**|         ``` {#codeblock_qa1_121_2s1}
+        | **英国（伦敦）** |         ``` {#codeblock_qa1_121_2s1}
 wget http://logtail-release-eu-west-1.oss-eu-west-1-internal.aliyuncs.com/linux64/logtail.sh -O logtail.sh; chmod 755 logtail.sh; ./logtail.sh install eu-west-1
         ```
 
@@ -210,11 +211,11 @@ wget http://logtail-release-eu-west-1.oss-eu-west-1-internal.aliyuncs.com/linux6
 
 **说明：** 日志服务无法获取ECS之外服务器的属主信息，请在安装Logtail后手动配置用户标识（AliUid，参见 [为非本账号ECS、自建IDC配置主账号AliUid](intl.zh-CN/用户指南/Logtail采集/机器组/为非本账号ECS、自建IDC配置主账号AliUid.md)），否则 Logtail心跳异常、无法收集日志。
 
-1.  **根据日志服务Project所在区域选择安装参数。** 
+1.   **根据日志服务Project所在区域选择安装参数。** 
 
     安装命令中的`${your_region_name}`表示日志服务Project所在区域，根据[安装参数](#)选择正确参数，如华东一区域的安装参数为`cn-hangzhou`。
 
-2.  **替换参数后执行安装命令。** 
+2.   **替换参数后执行安装命令。** 
 
     替换参数`${your_region_name}`后，执行安装命令。
 
@@ -222,106 +223,106 @@ wget http://logtail-release-eu-west-1.oss-eu-west-1-internal.aliyuncs.com/linux6
     wget http://logtail-release-$\{your\_region\_name\}.oss-$\{your\_region\_name\}.aliyuncs.com/linux64/logtail.sh -O logtail.sh; chmod 755 logtail.sh; ./logtail.sh install $\{your\_region\_name\}-internet
     ```
 
-    **您也可以根据日志服务Project所在的区域直接执行下述对应的命令进行安装**：
+     **您也可以根据日志服务Project所在的区域直接执行下述对应的命令进行安装**：
 
     |日志服务Project所在的区域|安装命令|
     |:---------------|:---|
-    |**华东 1（杭州）**|     ``` {#codeblock_m2h_3in_o8t}
+    | **华东 1（杭州）** |     ``` {#codeblock_m2h_3in_o8t}
 wget http://logtail-release-cn-hangzhou.oss-cn-hangzhou.aliyuncs.com/linux64/logtail.sh -O logtail.sh; chmod 755 logtail.sh; ./logtail.sh install cn-hangzhou-internet
     ```
 
  |
-    |**华东 2（上海）**|     ``` {#codeblock_euf_59p_pk6}
+    | **华东 2（上海）** |     ``` {#codeblock_euf_59p_pk6}
 wget http://logtail-release-cn-shanghai.oss-cn-shanghai.aliyuncs.com/linux64/logtail.sh -O logtail.sh; chmod 755 logtail.sh; ./logtail.sh install cn-shanghai-internet
     ```
 
  |
-    |**华北 1（青岛）**|     ``` {#codeblock_xoo_f52_t7c}
+    | **华北 1（青岛）** |     ``` {#codeblock_xoo_f52_t7c}
 wget http://logtail-release-cn-qingdao.oss-cn-qingdao.aliyuncs.com/linux64/logtail.sh -O logtail.sh; chmod 755 logtail.sh; ./logtail.sh install cn-qingdao-internet
     ```
 
  |
-    |**华北 2（北京）**|     ``` {#codeblock_cyp_qwt_ygn}
+    | **华北 2（北京）** |     ``` {#codeblock_cyp_qwt_ygn}
 wget http://logtail-release-cn-beijing.oss-cn-beijing.aliyuncs.com/linux64/logtail.sh -O logtail.sh; chmod 755 logtail.sh; ./logtail.sh install cn-beijing-internet
     ```
 
  |
-    |**华北 3 （张家口）**|     ``` {#codeblock_rqu_nxp_2x0}
+    | **华北 3 （张家口）** |     ``` {#codeblock_rqu_nxp_2x0}
 wget http://logtail-release-cn-zhangjiakou.oss-cn-zhangjiakou.aliyuncs.com/linux64/logtail.sh -O logtail.sh; chmod 755 logtail.sh; ./logtail.sh install cn-zhangjiakou-internet
     ```
 
  |
-    |**华北 5 （呼和浩特）**|     ``` {#codeblock_t9o_alj_zyt}
+    | **华北 5 （呼和浩特）** |     ``` {#codeblock_t9o_alj_zyt}
 wget http://logtail-release-cn-huhehaote.oss-cn-huhehaote.aliyuncs.com/linux64/logtail.sh -O logtail.sh; chmod 755 logtail.sh; ./logtail.sh install cn-huhehaote-internet
     ```
 
  |
-    |**华南 1（深圳）**|     ``` {#codeblock_s1r_ekl_hpt}
+    | **华南 1（深圳）** |     ``` {#codeblock_s1r_ekl_hpt}
 wget http://logtail-release-cn-shenzhen.oss-cn-shenzhen.aliyuncs.com/linux64/logtail.sh -O logtail.sh; chmod 755 logtail.sh; ./logtail.sh install cn-shenzhen-internet
     ```
 
  |
-    |**西南 1 （成都）**|     ``` {#codeblock_owm_tag_sgq}
+    | **西南 1 （成都）** |     ``` {#codeblock_owm_tag_sgq}
 wget http://logtail-release-cn-chengdu.oss-cn-chengdu.aliyuncs.com/linux64/logtail.sh -O logtail.sh; chmod 755 logtail.sh; ./logtail.sh install cn-chengdu-internet
     ```
 
  |
-    |**香港**|     ``` {#codeblock_rp0_xkp_n7r}
+    | **香港** |     ``` {#codeblock_rp0_xkp_n7r}
 wget http://logtail-release-cn-hongkong.oss-cn-hongkong.aliyuncs.com/linux64/logtail.sh -O logtail.sh; chmod 755 logtail.sh; ./logtail.sh install cn-hongkong-internet
     ```
 
  |
-    |**美国西部 1 （硅谷）**|     ``` {#codeblock_9mh_drg_g7g}
+    | **美国西部 1 （硅谷）** |     ``` {#codeblock_9mh_drg_g7g}
 wget http://logtail-release-us-west-1.oss-us-west-1.aliyuncs.com/linux64/logtail.sh -O logtail.sh; chmod 755 logtail.sh; ./logtail.sh install us-west-1-internet
     ```
 
  |
-    |**美国东部 1 （弗吉尼亚）**|     ``` {#codeblock_hqu_n2h_m7m}
+    | **美国东部 1 （弗吉尼亚）** |     ``` {#codeblock_hqu_n2h_m7m}
 wget http://logtail-release-us-east-1.oss-us-east-1.aliyuncs.com/linux64/logtail.sh -O logtail.sh; chmod 755 logtail.sh; ./logtail.sh install us-east-1-internet
     ```
 
  |
-    |**亚太东南 1 （新加坡）**|     ``` {#codeblock_ctf_ddr_zb0}
+    | **亚太东南 1 （新加坡）** |     ``` {#codeblock_ctf_ddr_zb0}
 wget http://logtail-release.oss-cn-hangzhou.aliyuncs.com/linux64/logtail.sh -O logtail.sh; chmod 755 logtail.sh; sh logtail.sh install ap-southeast-1-internet
     ```
 
  |
-    |**亚太东南 2 （悉尼）**|     ``` {#codeblock_dzx_9v6_br5}
+    | **亚太东南 2 （悉尼）** |     ``` {#codeblock_dzx_9v6_br5}
 wget http://logtail-release-ap-southeast-2.oss-ap-southeast-2.aliyuncs.com/linux64/logtail.sh -O logtail.sh; chmod 755 logtail.sh; ./logtail.sh install ap-southeast-2-internet
     ```
 
  |
-    |**亚太东南 3 （吉隆坡）**|     ``` {#codeblock_90v_6gg_snn}
+    | **亚太东南 3 （吉隆坡）** |     ``` {#codeblock_90v_6gg_snn}
 wget http://logtail-release-ap-southeast-3.oss-ap-southeast-3.aliyuncs.com/linux64/logtail.sh -O logtail.sh; chmod 755 logtail.sh; ./logtail.sh install ap-southeast-3-internet
     ```
 
  |
-    |**亚太东南 5 （雅加达）**|     ``` {#codeblock_6hd_s82_u7q}
+    | **亚太东南 5 （雅加达）** |     ``` {#codeblock_6hd_s82_u7q}
 wget http://logtail-release-ap-southeast-5.oss-ap-southeast-5.aliyuncs.com/linux64/logtail.sh -O logtail.sh; chmod 755 logtail.sh; ./logtail.sh install ap-southeast-5-internet
     ```
 
  |
-    |**亚太东北 1 （日本）**|     ``` {#codeblock_vkq_uz1_3vk}
+    | **亚太东北 1 （日本）** |     ``` {#codeblock_vkq_uz1_3vk}
 wget http://logtail-release-ap-northeast-1.oss-ap-northeast-1.aliyuncs.com/linux64/logtail.sh -O logtail.sh; chmod 755 logtail.sh; ./logtail.sh install ap-northeast-1-internet
     ```
 
  |
-    |**欧洲中部 1 （法兰克福）**|     ``` {#codeblock_djo_2lu_vpg}
+    | **欧洲中部 1 （法兰克福）** |     ``` {#codeblock_djo_2lu_vpg}
 wget http://logtail-release-eu-central-1.oss-eu-central-1.aliyuncs.com/linux64/logtail.sh -O logtail.sh; chmod 755 logtail.sh; ./logtail.sh install eu-central-1-internet
     ```
 
  |
-    |**中东东部 1 （迪拜）**|     ``` {#codeblock_pxl_au0_rwl}
+    | **中东东部 1 （迪拜）** |     ``` {#codeblock_pxl_au0_rwl}
 wget http://logtail-release-me-east-1.oss-me-east-1.aliyuncs.com/linux64/logtail.sh -O logtail.sh; chmod 755 logtail.sh; ./logtail.sh install me-east-1-internet
     ```
 
  |
-    |**亚太南部 1 （孟买）**|     ``` {#codeblock_dq9_iy1_25j}
+    | **亚太南部 1 （孟买）** |     ``` {#codeblock_dq9_iy1_25j}
 wget http://logtail-release-ap-south-1.oss-ap-south-1.aliyuncs.com/linux64/logtail.sh -O logtail.sh; chmod 755 logtail.sh; ./logtail.sh install ap-south-1-internet
     ```
 
  |
-    |**英国（伦敦）**|     ``` {#codeblock_rbq_osw_rks}
+    | **英国（伦敦）** |     ``` {#codeblock_rbq_osw_rks}
 wget http://logtail-release-eu-west-1.oss-eu-west-1.aliyuncs.com/linux64/logtail.sh -O logtail.sh; chmod 755 logtail.sh; ./logtail.sh install eu-west-1-internet
     ```
 
@@ -330,120 +331,121 @@ wget http://logtail-release-eu-west-1.oss-eu-west-1.aliyuncs.com/linux64/logtail
 
 ## 全球加速 {#section_xpy_tvs_s2b .section}
 
-如果您的服务器分布在海外各地的自建机房、或者来自海外云厂商，使用公网传输数据可能会出现网络延迟高、传输不稳定等问题，可以通过[全球加速](intl.zh-CN/用户指南/数据采集/采集加速/简介.md)传输数据。[全球加速](intl.zh-CN/用户指南/数据采集/采集加速/简介.md)利用阿里云CDN边缘节点进行日志采集加速，相对公网采集在网络延迟、稳定性上具有很大优势。
+如果您的服务器分布在海外各地的自建机房或者来自海外云厂商，使用公网传输数据可能会出现网络延迟高、传输不稳定等问题，可以通过[全球加速](intl.zh-CN/用户指南/数据采集/采集加速/简介.md)传输数据。[全球加速](intl.zh-CN/用户指南/数据采集/采集加速/简介.md)利用阿里云CDN边缘节点进行日志采集加速，相对公网采集在网络延迟、稳定性上具有很大优势。
 
-1.  **根据日志服务Project所在区域选择安装参数。** 
+1.   **根据日志服务Project所在区域选择安装参数。** 
 
     安装命令中的$\{your\_region\_name\}表示日志服务Project所在区域，根据[安装参数](#)选择正确参数，如华东一区域的安装参数为`cn-hangzhou`。
 
-2.  **替换参数后执行安装命令。** 
+2.   **替换参数后执行安装命令。** 
 
     替换参数`${your_region_name}`后，执行安装命令。
 
     ``` {#codeblock_417_tqa_bsz}
     wget http://logtail-release-$\{your\_region\_name\}.oss-$\{your\_region\_name\}.aliyuncs.com/linux64/logtail.sh -O logtail.sh; chmod 755 logtail.sh; ./logtail.sh install $\{your\_region\_name\}-acceleration
+                      
     ```
 
-    **您也可以根据日志服务Project所在的区域直接执行下述对应的命令进行安装**：
+     **您也可以根据日志服务Project所在的区域直接执行下述对应的命令进行安装**：
 
     | | |
     |:-|:-|
-    |**华北 2（北京）**|     ``` {#codeblock_sea_quv_poy}
+    | **华北 2（北京）** |     ``` {#codeblock_sea_quv_poy}
 wget http://logtail-release-cn-beijing.oss-cn-beijing.aliyuncs.com/linux64/logtail.sh -O logtail.sh; chmod 755 logtail.sh; ./logtail.sh install cn-beijing-acceleration
     ```
 
  |
-    |**华北 1（青岛）**|     ``` {#codeblock_jai_gnz_x62}
+    | **华北 1（青岛）** |     ``` {#codeblock_jai_gnz_x62}
 wget http://logtail-release-cn-qingdao.oss-cn-qingdao.aliyuncs.com/linux64/logtail.sh -O logtail.sh; chmod 755 logtail.sh; ./logtail.sh install cn-qingdao-acceleration
     ```
 
  |
-    |**华东 1（杭州）**|     ``` {#codeblock_e4e_hh1_2er}
+    | **华东 1（杭州）** |     ``` {#codeblock_e4e_hh1_2er}
 wget http://logtail-release-cn-hangzhou.oss-cn-hangzhou.aliyuncs.com/linux64/logtail.sh -O logtail.sh; chmod 755 logtail.sh; ./logtail.sh install cn-hangzhou-acceleration
     ```
 
  |
-    |**华东 2（上海）**|     ``` {#codeblock_clf_m0d_cnf}
+    | **华东 2（上海）** |     ``` {#codeblock_clf_m0d_cnf}
 wget http://logtail-release-cn-shanghai.oss-cn-shanghai.aliyuncs.com/linux64/logtail.sh -O logtail.sh; chmod 755 logtail.sh; ./logtail.sh install cn-shanghai-acceleration
     ```
 
  |
-    |**华南 1（深圳）**|     ``` {#codeblock_3se_cmw_5jm}
+    | **华南 1（深圳）** |     ``` {#codeblock_3se_cmw_5jm}
 wget http://logtail-release-cn-shenzhen.oss-cn-shenzhen.aliyuncs.com/linux64/logtail.sh -O logtail.sh; chmod 755 logtail.sh; ./logtail.sh install cn-shenzhen-acceleration
     ```
 
  |
-    |**华北 3 （张家口）**|     ``` {#codeblock_2ng_xax_jlw}
+    | **华北 3 （张家口）** |     ``` {#codeblock_2ng_xax_jlw}
 wget http://logtail-release-cn-zhangjiakou.oss-cn-zhangjiakou.aliyuncs.com/linux64/logtail.sh -O logtail.sh; chmod 755 logtail.sh; ./logtail.sh install cn-zhangjiakou-acceleration
     ```
 
  |
-    |**华北 5 （呼和浩特）**|     ``` {#codeblock_vkp_hlp_3zy}
+    | **华北 5 （呼和浩特）** |     ``` {#codeblock_vkp_hlp_3zy}
 wget http://logtail-release-cn-huhehaote.oss-cn-huhehaote.aliyuncs.com/linux64/logtail.sh -O logtail.sh; chmod 755 logtail.sh; ./logtail.sh install cn-huhehaote-acceleration
     ```
 
  |
-    |**西南 1 （成都）**|     ``` {#codeblock_17g_64t_ytd}
+    | **西南 1 （成都）** |     ``` {#codeblock_17g_64t_ytd}
 wget http://logtail-release-cn-chengdu.oss-cn-chengdu.aliyuncs.com/linux64/logtail.sh -O logtail.sh; chmod 755 logtail.sh; ./logtail.sh install cn-chengdu-acceleration
     ```
 
  |
-    |**香港**|     ``` {#codeblock_hf5_o9v_a6c}
+    | **香港** |     ``` {#codeblock_hf5_o9v_a6c}
 wget http://logtail-release-cn-hongkong.oss-cn-hongkong.aliyuncs.com/linux64/logtail.sh -O logtail.sh; chmod 755 logtail.sh; ./logtail.sh install cn-hongkong-acceleration
     ```
 
  |
-    |**美国西部 1 （硅谷）**|     ``` {#codeblock_mea_0on_h90}
+    | **美国西部 1 （硅谷）** |     ``` {#codeblock_mea_0on_h90}
 wget http://logtail-release-us-west-1.oss-us-west-1.aliyuncs.com/linux64/logtail.sh -O logtail.sh; chmod 755 logtail.sh; ./logtail.sh install us-west-1-acceleration
     ```
 
  |
-    |**美国东部 1 （弗吉尼亚）**|     ``` {#codeblock_asr_pj0_ae1}
+    | **美国东部 1 （弗吉尼亚）** |     ``` {#codeblock_asr_pj0_ae1}
 wget http://logtail-release-us-east-1.oss-us-east-1.aliyuncs.com/linux64/logtail.sh -O logtail.sh; chmod 755 logtail.sh; ./logtail.sh install us-east-1-acceleration
     ```
 
  |
-    |**亚太东南 1 （新加坡）**|     ``` {#codeblock_3cu_awx_ubb}
+    | **亚太东南 1 （新加坡）** |     ``` {#codeblock_3cu_awx_ubb}
 wget http://logtail-release-ap-southeast-1.oss-ap-southeast-1.aliyuncs.com/linux64/logtail.sh -O logtail.sh; chmod 755 logtail.sh; ./logtail.sh install ap-southeast-1-acceleration
     ```
 
  |
-    |**亚太东南 2 （悉尼）**|     ``` {#codeblock_ydn_zeb_bbn}
+    | **亚太东南 2 （悉尼）** |     ``` {#codeblock_ydn_zeb_bbn}
 wget http://logtail-release-ap-southeast-2.oss-ap-southeast-2.aliyuncs.com/linux64/logtail.sh -O logtail.sh; chmod 755 logtail.sh; ./logtail.sh install ap-southeast-2-acceleration
     ```
 
  |
-    |**亚太东南 3 （吉隆坡）**|     ``` {#codeblock_efv_e7l_ijn}
+    | **亚太东南 3 （吉隆坡）** |     ``` {#codeblock_efv_e7l_ijn}
 wget http://logtail-release-ap-southeast-3.oss-ap-southeast-3.aliyuncs.com/linux64/logtail.sh -O logtail.sh; chmod 755 logtail.sh; ./logtail.sh install ap-southeast-3-acceleration
     ```
 
  |
-    |**亚太东南 5 （雅加达）**|     ``` {#codeblock_i1y_fdy_04c}
+    | **亚太东南 5 （雅加达）** |     ``` {#codeblock_i1y_fdy_04c}
 wget http://logtail-release-ap-southeast-5.oss-ap-southeast-5.aliyuncs.com/linux64/logtail.sh -O logtail.sh; chmod 755 logtail.sh; ./logtail.sh install ap-southeast-5-acceleration
     ```
 
  |
-    |**亚太东北 1 （日本）**|     ``` {#codeblock_984_glw_ck2}
+    | **亚太东北 1 （日本）** |     ``` {#codeblock_984_glw_ck2}
 wget http://logtail-release-ap-northeast-1.oss-ap-northeast-1.aliyuncs.com/linux64/logtail.sh -O logtail.sh; chmod 755 logtail.sh; ./logtail.sh install ap-northeast-1-acceleration
     ```
 
  |
-    |**欧洲中部 1 （法兰克福）**|     ``` {#codeblock_rrl_j2h_y6m}
+    | **欧洲中部 1 （法兰克福）** |     ``` {#codeblock_rrl_j2h_y6m}
 wget http://logtail-release-eu-central-1.oss-eu-central-1.aliyuncs.com/linux64/logtail.sh -O logtail.sh; chmod 755 logtail.sh; ./logtail.sh install eu-central-1-acceleration
     ```
 
  |
-    |**中东东部 1 （迪拜）**|     ``` {#codeblock_h2y_mhv_fyz}
+    | **中东东部 1 （迪拜）** |     ``` {#codeblock_h2y_mhv_fyz}
 wget http://logtail-release-me-east-1.oss-me-east-1.aliyuncs.com/linux64/logtail.sh -O logtail.sh; chmod 755 logtail.sh; ./logtail.sh install me-east-1-acceleration
     ```
 
  |
-    |**亚太南部 1 （孟买）**|     ``` {#codeblock_zxj_3sm_5l5}
+    | **亚太南部 1 （孟买）** |     ``` {#codeblock_zxj_3sm_5l5}
 wget http://logtail-release-ap-south-1.oss-ap-south-1.aliyuncs.com/linux64/logtail.sh -O logtail.sh; chmod 755 logtail.sh; ./logtail.sh install ap-south-1-acceleration
     ```
 
  |
-    |**英国（伦敦）**|     ``` {#codeblock_b4z_3g1_1qi}
+    | **英国（伦敦）** |     ``` {#codeblock_b4z_3g1_1qi}
 wget http://logtail-release-eu-west-1.oss-eu-west-1.aliyuncs.com/linux64/logtail.sh -O logtail.sh; chmod 755 logtail.sh; ./logtail.sh install eu-west-1-acceleration
     ```
 
