@@ -2,7 +2,7 @@
 
 JSON日志 建构于两种结构：
 
--   Object：“键/值”对的集合（A collection of name/value pairs）。
+-   Object：“键/值”对的集合（A collection of key/value pairs）。
 -   Array：值的有序列表（An ordered list of values）。
 
 logtail 支持的 JSON 日志是 Object 类型，可以自动提取 Object 首层的键作为字段名称，Object 首层的值作为字段值。字段值可以是Object、Array或基本类型，如String、Number等。JSON行与行之间用`\n`进行分割，每一行作为一条单独日志进行提取。
