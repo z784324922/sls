@@ -87,13 +87,13 @@ CustomLog "/var/log/apache2/access_log" combined
 
         **说明：** 如您的**日志格式**为**common**或**combined**格式，此处会自动匹配对应格式的配置字段，请确认是否和本地Apache配置文件中定义的格式一致。
 
-         ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/17637/15614571369380_zh-CN.png) 
+         ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/17637/15615127089380_zh-CN.png) 
 
     4.  确认**APACHE键名称**。
 
         日志服务会自动读取您的Apache键。请在当前页面确认APACHE键名称。
 
-         ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/17637/15614571369381_zh-CN.png) 
+         ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/17637/15615127089381_zh-CN.png) 
 
     5.  选择是否**丢弃解析失败日志**。
 
@@ -106,9 +106,9 @@ CustomLog "/var/log/apache2/access_log" combined
         |配置项|详情|
         |:--|:-|
         |上传原始日志|请选择是否需要上传原始日志。开启该功能后，原始日志内容会作为\_\_raw\_\_字段与解析过的日志一并上传。|
-        |Topic生成方式|         -   **空-不生成Topic**：默认选项，表示设置Topic为空字符串，在查询日志时不需要输入Topic即可查询。
-        -   **机器组Topic属性**：设置Topic生成方式为机器组Topic属性，可以用于明确区分不同前端服务器产生的日志数据。
-        -   **文件路径正则**：选择此项之后，您需要填写下方的**自定义正则**，用正则式从路径里提取一部分内容作为Topic。可以用于区分具体用户或实例产生的日志数据。
+        |Topic生成方式|         -    **空-不生成Topic**：默认选项，表示设置Topic为空字符串，在查询日志时不需要输入Topic即可查询。
+        -    **机器组Topic属性**：设置Topic生成方式为机器组Topic属性，可以用于明确区分不同前端服务器产生的日志数据。
+        -    **文件路径正则**：选择此项之后，您需要填写下方的**自定义正则**，用正则式从路径里提取一部分内容作为Topic。可以用于区分具体用户或实例产生的日志数据。
  |
         |自定义正则|如您选择了**文件路径正则**方式生成Topic，需要在此处填写您的自定义正则式。|
         |日志文件编码|         -   utf8：指定使用UTF-8编码。
@@ -120,9 +120,9 @@ CustomLog "/var/log/apache2/access_log" combined
  |
         |过滤器配置|日志只有**完全符合**过滤器中的条件才会被收集。 例如：
 
-        -   **满足条件即收集**：配置`Key:level Regex:WARNING|ERROR`，表示只收集level为WARNING或ERROR类型的日志。
-        -   **[过滤不符合条件的数据](http://www.regular-expressions.info/lookaround.html)**：
-            -   配置`Key:level Regex:^(?!.*(INFO|DEBUG)).*`，表示代表不收集level为INFO或DEBUG类型的日志。
+        -    **满足条件即收集**：配置`Key:level Regex:WARNING|ERROR`，表示只收集level为WARNING或ERROR类型的日志。
+        -    ** [过滤不符合条件的数据](http://www.regular-expressions.info/lookaround.html) **：
+            -   配置`Key:level Regex:^(?!.*(INFO|DEBUG)).*`，表示不收集level为INFO或DEBUG类型的日志。
             -   配置`Key:url Regex:.*^(?!.*(healthcheck)).*`，表示不采集url中带有healthcheck的日志，例如key为url，value为`/inner/healthcheck/jiankong.html`的日志将不会被采集。
 更多示例可参考[regex-exclude-word](https://stackoverflow.com/questions/2404010/match-everything-except-for-specified-strings)、[regex-exclude-pattern](https://stackoverflow.com/questions/2078915/a-regular-expression-to-exclude-a-word-string)。
 
