@@ -10,15 +10,15 @@ Log Service 的 Java SDK 让 Java 开发人员可以非常方便地使用 Java �
 
 ## 步骤 1 创建阿里云账号 {#section_zlg_r1r_12b .section}
 
-具体方法请参考 [阿里云账号注册流程](https://www.alibabacloud.com/help/zh/doc-detail/50482.htm)。
+具体方法请参考[阿里云账号注册流程](https://www.alibabacloud.com/help/zh/doc-detail/50482.htm)。
 
 ## 步骤 2 获取阿里云访问密钥 {#section_amg_r1r_12b .section}
 
 为了使用 Log Service Java SDK，您必须申请阿里云的[访问秘钥](../../../../intl.zh-CN/API 参考/访问秘钥.md)。
 
-登录阿里云[秘钥管理页面](https://ak-console.aliyun.com/#/accesskey)。选择一对用于 SDK 的访问密钥对。如果没有，请创建一对新访问密钥，且保证它处于**启用**状态。有关如何创建访问密钥，参见 [准备流程](../../../../intl.zh-CN/用户指南/准备工作/准备流程.md)。
+登录阿里云 [秘钥管理页面](https://ak-console.aliyun.com/#/accesskey)  。选择一对用于 SDK 的访问密钥对。如果没有，请创建一对新访问密钥，且保证它处于**启用**状态。有关如何创建访问密钥，参见[准备流程](../../../../intl.zh-CN/用户指南/准备工作/准备流程.md)。
 
-该密钥对会在下面的步骤使用，且需要保管好，不能对外泄露。另外，您可以参考 [配置](intl.zh-CN/SDK 参考/基本介绍/配置.md) 了解更多 SDK 如何使用访问密钥的信息。
+该密钥对会在下面的步骤使用，且需要保管好，不能对外泄露。另外，您可以参考[配置](intl.zh-CN/SDK 参考/基本介绍/配置.md)了解更多 SDK 如何使用访问密钥的信息。
 
 ## 步骤 3 创建日志服务项目和日志库 {#section_zrq_dbr_12b .section}
 
@@ -29,21 +29,21 @@ Log Service 的 Java SDK 让 Java 开发人员可以非常方便地使用 Java �
 **说明：** 
 
 -   请确保使用同一阿里云账号获取阿里云访问密钥和创建日志项目及日志库。
--   关于日志的项目、日志库等概念请参考 Log [基本概念](../../../../intl.zh-CN/产品简介/基本概念/简介.md#)。
+-   关于日志的项目、日志库等概念请参考 Log[基本概念](../../../../intl.zh-CN/产品简介/基本概念/简介.md#)。
 -   Log 的 Project 名称为日志服务全局唯一，而 Logstore 名称在一个 Project 下面唯一。
 -   Log 的 Project 一旦创建则无法更改它的所属区域。目前也不支持在不同阿里云 Region 间迁移 Log Project。
 
 ## 步骤 4 安装 Java 开发环境 {#section_csq_dbr_12b .section}
 
-目前，Log Java SDK 支持 J2SE 6.0 及以上的 Java 运行环境，您可以从 [Java 官方网站](http://developers.sun.com/downloads/) 下载并按说明安装 Java 开发环境。
+目前，Log Java SDK 支持 J2SE 6.0 及以上的 Java 运行环境，您可以从[Java 官方网站](http://developers.sun.com/downloads/)下载并按说明安装 Java 开发环境。
 
 ## 步骤 5 安装 Log Service Java SDK {#section_dsq_dbr_12b .section}
 
 在安装完 Java 开发环境后，您需要安装 Log Service Java SDK。目前，我们提供两种方式安装日志服务的 Java SDK：
 
-1.  建议使用 [Apache Maven](http://maven.apache.org/) 获取最新版本的 SDK，您可以添加如下配置到您的 Maven 项目。
+1.  建议使用[Apache Maven](http://maven.apache.org/)获取最新版本的 SDK，您可以添加如下配置到您的 Maven 项目。
 
-    ```
+    ``` {#codeblock_sl2_75b_7ed}
     <dependency>
              <groupId>com.google.protobuf</groupId>
              <artifactId>protobuf-java</artifactId>
@@ -63,15 +63,15 @@ Log Service 的 Java SDK 让 Java 开发人员可以非常方便地使用 Java �
     ```
 
 2.  您也可以完整下载 Java SDK 软件包，然后在自己的 Java 项目中直接引用本地软件包。
-    1.  从 [这里](https://github.com/aliyun/aliyun-log-java-sdk) 克隆 Java SDK 包（版本会定期更新，如需使用最新版本请使用 Maven）。
-    2.  解压完整下载的包到指定的目录即可。Java SDK 是一个软件开发包，不需要额外的安装操作。
+    1.  从[这里](https://github.com/aliyun/aliyun-log-java-sdk)克隆 Java SDK 包（版本会定期更新，如需使用最新版本请使用 Maven）。
+    2.  下载完成后，解压到指定的目录即可。Java SDK 是一个软件开发包，不需要额外的安装操作。
     3.  把 SDK 包中的所有 Jar 包（包括依赖的第三方包）添加到您的 Java 工程（具体操作请参照不同的 IDE 文档）。
 
 ## 步骤 6 开始一个新的 Java 项目 {#section_ekk_sbj_sy .section}
 
-现在，您可以开始使用 SDK Java SDK。使用任何文本编辑器或者 Java IDE，运行如下示例代码即可与 Log Service 服务端交互并得到相应输出。Java SDK使用上的一些注意事项请参考注意事项章节。
+现在，您可以开始使用 Java SDK。使用任何文本编辑器或者 Java IDE，运行如下示例代码即可与 Log Service 服务端交互并得到相应输出。Java SDK使用上的一些注意事项请参考注意事项章节。
 
-```
+``` {#codeblock_8vt_iye_5ds}
 package sdksample;
 import java.util.ArrayList;
 import java.util.List;
