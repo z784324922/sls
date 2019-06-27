@@ -11,7 +11,7 @@
 
 ## 请求语法 {#section_j5v_14t_12b .section}
 
-**负载均衡写入模式** 
+ **负载均衡写入模式** 
 
 ``` {#codeblock_yqv_7s3_uny}
 POST /logstores/<logstorename>/shards/lb HTTP/1.1
@@ -28,7 +28,7 @@ x-log-signaturemethod: hmac-sha1
 <PB 格式日志压缩数据>
 ```
 
-**根据 Key 路由 shard 模式**
+ **根据 Key 路由 shard 模式** 
 
 在 header 中增加 x-log-hashkey，用来判断落在哪个 shard 的 range 中。该参数为可选参数，不填情况下自动切换负载均衡写模式。
 
@@ -52,7 +52,7 @@ x-log-signaturemethod: hmac-sha1
 
 |名称|类型|必选|描述|
 |:-|:-|:-|:-|
-|logstorename|字符串|是|需要写入日志的 Logstore 名称。|
+|logstorename|string|是|需要写入日志的 Logstore 名称。|
 
  **请求头** 
 
@@ -92,7 +92,7 @@ x-log-signaturemethod: hmac-sha1
 
 ## 示例 {#section_e5p_d4t_12b .section}
 
-**请求示例：** 
+ **请求示例：** 
 
 ``` {#codeblock_z5q_o6g_008}
 POST /logstores/sls-test-logstore
