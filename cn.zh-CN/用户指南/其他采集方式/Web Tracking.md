@@ -2,7 +2,7 @@
 
 日志服务支持通过Web Tracking功能进行HTML、H5、iOS和 Android平台日志数据的采集，支持自定义维度和指标。
 
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13028/15614568112604_zh-CN.png)
+![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13028/15616038412604_zh-CN.png)
 
 如上图所示，使用Web Tracking功能可以采集各种浏览器以及iOS/Android APP的用户信息（除[iOS/Android SDK](../../../../intl.zh-CN/SDK 参考/基本介绍/概述.md)外\)，例如：
 
@@ -13,8 +13,8 @@
 ## 注意事项 {#section_xzk_lwm_lfb .section}
 
 -   使用 Web Tracking 意味着该 Logstore 打开互联网匿名写入的权限，没有经过有效鉴权，可能会产生脏数据。
--   Get 请求不支持 POST 请求；且不支持上传16KB以上的 body。
--   Post请求限制与 [PutLogs](../../../../intl.zh-CN/API 参考/日志库相关接口/PutLogs.md#) 一致，大小不超过3MB，条数不超过4096条。
+-   仅支持 GET 请求，不支持 POST 请求；且不支持上传16KB以上的 body。
+-   POST 请求限制与 [PutLogs](../../../../intl.zh-CN/API 参考/日志库相关接口/PutLogs.md#) 一致，大小不超过3MB，条数不超过4096条。
 
 ## 配置步骤 {#section_kt1_2m5_vdb .section}
 
@@ -26,7 +26,7 @@
     1.  在Logstore列表页面，选中需要开通Web Tracking功能的Logstore，单击右侧的**修改**。
     2.  打开 Web Tracking 开关。
 
-        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13028/15614568112605_zh-CN.png)
+        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13028/15616038412605_zh-CN.png)
 
 -    **通过 Java SDK 开通Web Tracking** 
 
