@@ -35,7 +35,7 @@
 |\_\_unixtimestamp\_\_|日志中的时间戳（单位纳秒）。|
 |content|Syslog的msg字段。|
 
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/150480/156160579442014_zh-CN.png)
+![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/150480/156168492342014_zh-CN.png)
 
 ## 配置示例 {#section_iwm_jyd_ghb .section}
 
@@ -51,7 +51,7 @@
 
         其中`$DefaultNetstreamDriverCAFile`配置为系统的根证书位置。
 
-        ```
+        ``` {#codeblock_zis_8ok_irt}
         # Setup disk assisted queues 
         $WorkDirectory /var/spool/rsyslog # where to place spool files 
         $ActionQueueFileName fwdRule1     # unique name prefix for spool files 
@@ -73,7 +73,7 @@
 
         其中`$DefaultNetstreamDriverCAFile`配置为系统的根证书位置。
 
-        ```
+        ``` {#codeblock_7wx_few_0pp}
         # Setup disk assisted queues 
         $WorkDirectory /var/spool/rsyslog       # where to place spool files 
         $ActionQueueFileName fwdRule1           # unique name prefix for spool files $ActionQueueMaxDiskSpace 1g             # 1gb space limit (use as much as possible) $ActionQueueSaveOnShutdown on           # save messages to disk on shutdown 
@@ -96,7 +96,7 @@
 
     Syslog-ng是一款开源的日志管理Daemon，为Unix以及Unix-like的系统提供Syslog协议的实现。通常Syslog-ng的安装方式为：`sudo yum install syslog-ng` 、 `sudo apt-get install syslog-ng`。
 
-    ```
+    ``` {#codeblock_am4_y02_604}
     ### Syslog-ng Logging Config for LogService ### 
     template LogServiceFormat { 
         template("<${PRI}>1 ${ISODATE} ${HOST:--} ${PROGRAM:--} ${PID:--} ${MSGID:--} [logservice project=\"test-project-1\" logstore=\"test-logstore-1\" access-key-id=\"<yourAccessKeyId>\" access-key-secret=\"<yourAccessKeySecret>\"] $MSG\n"); template_escape(no); 
@@ -123,13 +123,13 @@
 
 -   手动上传日志
 
-    您可使用ncat命令模拟上报Syslog，以此检查网络连通性以及AccessKey是否具备上报权限。若您的机器上没有安装ncat，可使用`sudo yum install nmap-ncat`命令安装。例如下述命令则向日志服务发送一条Syslog，其中日志服务Project名为`test-project-1`，Logstore名为`test-logstore-1`，Project所在地域为杭州（cn-hangzhou），具有写入权限的子账号AccessKey ID为`<yourAccessKeyId>`、AccessKey Secret为`<yourAccessKeySecret>`。
+    您可使用ncat命令模拟上报Syslog，以此检查网络连通性以及AccessKey是否具备上报权限。若您的机器上没有安装ncat，可使用`sudo yum install nmap-ncat`命令安装。例如下述命令向日志服务发送一条Syslog，其中日志服务Project名为`test-project-1`，Logstore名为`test-logstore-1`，Project所在地域为杭州（cn-hangzhou），具有写入权限的子账号AccessKey ID为`<yourAccessKeyId>`、AccessKey Secret为`<yourAccessKeySecret>`。
 
     **说明：** 
 
     -   上报的时间为0时区时间，例如2019-03-28T03:00:15.003Z的东八区时间为：2019-03-28T11:00:15.003。
     -   ncat命令不会判断连接中断，请在ncat命令执行30秒内输入待发送的信息并输入回车触发发送。
-    ```
+    ``` {#codeblock_80v_bex_i6k}
     [root@iZbp145dd9fccuidd7g**** ~]# ncat --ssl cn-hangzhou.log.aliyuncs.com 10009 
     <34>1 2019-03-28T03:00:15.003Z mymachine.example.com su - ID47 [logservice project="test-project-1" logstore="test-logstore-1" access-key-id="<yourAccessKeyId>" access-key-secret="<yourAccessKeySecret>"] this is a test message
     ```
@@ -146,7 +146,7 @@
 
     -   Rsyslog报错信息：
 
-        ```
+        ``` {#codeblock_mhf_dap_0se}
         dlopen: /usr/lib64/rsyslog/lmnsd_gtls.so: cannot open shared object file: No such file or directory
         ```
 
@@ -154,7 +154,7 @@
 
     -   Rsyslog报错信息：
 
-        ```
+        ``` {#codeblock_qc9_uyq_yj4}
         unexpected GnuTLS error -53 - this could be caused by a broken connection. GnuTLS reports:Error in the push function
         ```
 
@@ -166,7 +166,7 @@
 
     Syslog-ng启动报错：
 
-    ```
+    ``` {#codeblock_9ab_orl_m3o}
     Job for syslog-ng.service failed because the control process exited with error code. See "systemctl status syslog-ng.service" and "journalctl -xe" for details
     ```
 
