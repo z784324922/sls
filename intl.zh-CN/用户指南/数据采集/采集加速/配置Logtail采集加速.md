@@ -5,9 +5,9 @@
 ## 前提条件 {#section_mw1_4ml_dgb .section}
 
 1.  [开启HTTP加速](intl.zh-CN/用户指南/数据采集/采集加速/开启全球加速.md#section_sst_dsz_q2b)。
-2.  （可选）[开启HTTPS加速](intl.zh-CN/用户指南/数据采集/采集加速/开启全球加速.md#section_sst_dsz_q2b)。
+2.  （可选）[开启HTTPS加速](intl.zh-CN/用户指南/数据采集/采集加速/开启全球加速.md#section_ugs_nhm_q2b)。
 
-    若您使用HTTPS访问日志服务，请确认已经开启HTTPS的加速功能，并参考[开启HTTP加速](intl.zh-CN/用户指南/数据采集/采集加速/开启全球加速.md#section_sst_dsz_q2b)配置HTTPS加速。
+    若您使用HTTPS访问日志服务，请确认已经开启HTTPS的加速功能，并参考[开启HTTPS加速](intl.zh-CN/用户指南/数据采集/采集加速/开启全球加速.md#section_ugs_nhm_q2b)配置HTTPS加速。
 
 3.  确认加速功能已生效。
 
