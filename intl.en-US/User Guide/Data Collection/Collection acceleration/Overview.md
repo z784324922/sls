@@ -1,80 +1,80 @@
 # Overview {#concept_u4v_j54_p2b .concept}
 
-Log Service adds a network type of **Global Acceleration Public Network** on the basis of Virtual Private Cloud \(VPC\) and public network. Compared with the ordinary public network access, Global Acceleration Public Network has significant advantages in terms of delay and stability, and is suitable for scenarios with high demands for data collection, low consumption delay, and reliability. Global Acceleration for Log Service depends on the acceleration environment provided by Alibaba Cloud [Dynamic Route for CDN](https://www.aliyun.com/product/dcdn) products. This function improves overall site performance and user experience by solving problems of slow response, packet loss, and unstable services. These problems are caused by factors such as cross-carriers access, network instability, traffic spikes, and network congestion.
+In addition to Virtual Private Cloud \(VPC\) and the Internet, Log Service adds a network type of **Internet-based Global Acceleration**. Compared with the ordinary Internet access, Internet-based Global Acceleration has significant advantages in terms of latency and stability. It is suitable for scenarios with high requirements for data collection, low consumption latency, and reliability. Global Acceleration for Log Service depends on the acceleration environment provided by Alibaba Cloud [Dynamic Route for CDN](https://www.aliyun.com/product/dcdn). Cross-carrier access, network instability, burst traffic, and network congestion used to cause problems such as slow response, packet loss, and unstable services. In this acceleration environment, Alibaba Cloud has solved such problems to improve overall performance and user experience.
 
-Global Acceleration for Log Service is based on Alibaba Cloud Content Delivery Network \(CDN\) hardware resources, and optimizes the stability of log collection and data transmission from various forms of data sources such as mobile phones, Internet of Things \(IoT\) devices, smart devices, self-built Internet Data Centers \(IDCs\), and other cloud servers.
+Global Acceleration for Log Service is based on Alibaba Cloud Content Delivery Network \(CDN\) hardware resources. Alibaba Cloud has optimized the stability of log collection and data transmission from various forms of data sources, such as mobile phones, Internet of Things \(IoT\) devices, smart devices, on-premises Internet Data Centers \(IDCs\), and other cloud servers.
 
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/16815/15368945508060_en-US.png)
+![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/16815/15620499288060_en-US.png)
 
 ## Technical principles {#section_qjb_cjm_q2b .section}
 
-Global Acceleration for Log Service is based on Alibaba Cloud CDN hardware resources. Your global access terminals \(such as mobile phones, IOT devices, smart devices, self-built IDCs, and other cloud servers\), access the nearest edge node of Alibaba Cloud CDN all over the world and route to Log Service through CDN inner high-speed channels. Compared with common public network transmission, network delay and jitter can be reduced greatly in this method.
+Global Acceleration for Log Service is based on Alibaba Cloud CDN hardware resources. Your terminals \(such as mobile phones, IoT devices, smart devices, on-premises IDCs, and other cloud servers\) can access the nearest edge node of Alibaba Cloud CDN all over the world and be routed to Log Service through the inner high-speed channels of CDN. Compared with data transmission on the Internet, this method can greatly reduce the network latency and jitter.
 
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/16815/15368945518061_en-US.png)
+![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/16815/15620499298061_en-US.png)
 
-The processing flow of Global Acceleration requests for Log Service is shown in the preceding figure. The overall flow is detailed as follows:
+The preceding figure shows the flowchart for processing Global Acceleration requests for Log Service. The overall process is described as follows:
 
-1.  The client needs to send a domain name resolution request to the public DNS before sending requests of log upload or log download to the Log Service acceleration domain name `your-project.log-global.aliyuncs.com`.
-2.  The domain name at the public DNS `your-project.log-global.aliyuncs.com` points to the CNAME address `your-project.log-global.aliyuncs.com.w.kunlungr.com`. The domain name resolution is forwarded to the CNAME nodes of Alibaba Cloud CDN.
-3.  Based on Alibaba Cloud CDN smart scheduling system, CNAME nodes return the IP address of the optimal CDN edge node to the public DNS.
-4.  The public DNS returns the IP address finally resolved to the client.
+1.  Before sending requests for log upload or log download to the accelerating domain name `your-project.log-global.aliyuncs.com` of Log Service, the client needs to send a domain name resolution request to the public DNS.
+2.  The public DNS resolves the domain name `your-project.log-global.aliyuncs.com` into the CNAME `your-project.log-global.aliyuncs.com.w.kunlungr.com`. The domain name resolution request is then forwarded to the CNAME in Alibaba Cloud CDN.
+3.  Based on the intelligent scheduling system, Alibaba Cloud CDN returns the IP address of the optimal edge node to the public DNS.
+4.  The public DNS returns the resolved IP address to the client.
 5.  The client sends a request to the server based on the obtained IP address.
-6.  After receiving the request, the CDN edge node routes the request to the node closest to the Log Service server based on the dynamic route lookup and private transport protocol. Finally, the request is forwarded to Log Service.
-7.  After receiving the request from the CDN node, the server of Log Service returns the result of the request to the CDN node.
+6.  After receiving the request, the CDN edge node uses dynamic routing and a private transport protocol to route the request to the node nearest to the Log Service server. The request is then forwarded to Log Service.
+7.  After receiving the request from the CDN edge node, the Log Service server returns the result of the request to the CDN edge node.
 8.  CDN transparently transmits the result or data returned by Log Service to the client.
 
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/16815/15368945518062_en-US.png)
+![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/16815/15620499298062_en-US.png)
 
-## Billing method  {#section_ujb_cjm_q2b .section}
+## Billing methods {#section_ujb_cjm_q2b .section}
 
 Global Acceleration costs for Log Service include:
 
--   Costs for accessing Log Service
+-   Cost for accessing Log Service
 
-    Costs for accessing Log Service is the same as that in common public network. Log Service supports **Pay-As-You-Go** billing method, and provides **FreeTier quota**. For more information, see [Billing method](../../../../intl.en-US/Pricing/Billing method.md).
+    Log Service charges the access in **pay-as-you-go** mode, which is the same as Internet access. Log Service also provides certain **FreeTier quota**. For more information, see [Billing method](../../../../intl.en-US/Pricing/Billing method.md).
 
--   Service costs for Dynamic Route for CDN
+-   Service cost for Dynamic Route for CDN
 
-    For information about cloud product costs of Dynamic Route for CDN, see [Billing Method of Dynamic Route for CDN](https://www.aliyun.com/price/product?spm=5176.197032.1035646.btn4.10725df1wi3RBN#/dcdn/detail).
+    For more information, see [the pricing of Dynamic Route for CDN](https://www.aliyun.com/price/product?spm=5176.197032.1035646.btn4.10725df1wi3RBN#/dcdn/detail).
 
 
 ## Scenarios {#section_w32_jlm_q2b .section}
 
--   Advertisement
+-   Advertising
 
-    Log data about advertising browsing and clicking are extremely important for advertising billing. Advertising carriers include mobile terminal embedding, H5 pages, PC ends, and more all over the world. In some remote areas, the public network data transmission is less stable and risks of log loss exist. A more stable and reliable log upload channel can be obtained through Global Acceleration.
+    Log data about ad views and clicks is crucial to the billing of ads. In addition, advertising carriers are distributed all over the world, including mobile terminals, HTML 5 pages, and PCs. In some remote areas, data transmission is less stable on the Internet and logs may be lost during transmission. In this scenario, Global Acceleration for Log Service can provide a more stable and reliable channel for you to upload logs.
 
 -   Online game
 
-    The online game industry has high requirements on the performance and stability of data collection in the official website, logon service, sales service, game service, and other services. The timeliness and stability of data collection are hard to be guaranteed in the case of mobile game data collection and data back transmission from globalized games. We recommend that you use Global Acceleration for Log Service to solve the preceding issues.
+    The online game industry raises high requirements for the performance and stability of data collection from various sources, such as the official website, logon service, sales service, and game service. In scenarios where data is collected from mobile games or transmitted from globalized games, timely and stable data collection is hard to be guaranteed. We recommend that you use Global Acceleration for Log Service to resolve the preceding issues.
 
 -   Finance
 
-    Financial-related applications require high availability and high security for network. Audit logs of each transaction and each user action must be collected securely and reliably to the server. At present, mobile transactions have become mainstream. For example, online banking, credit card malls, mobile securities, and other types of transactions can achieve secure, fast, and stable log collection by using HTTPS Global Acceleration for Log Service.
+    Financial applications require a highly available and secured network. Audit logs of each transaction and each user operation must be collected securely and reliably on the server. At present, mobile transactions are popular, such as online banking, credit card malls, and mobile securities. HTTPS Global Acceleration for Log Service can provide a secure, fast, and stable channel for you to collect logs for such transactions.
 
--   Internet of Things
+-   IoT
 
-    IoT devices and smart devices \(for example, smart speakers and smart watches\) collect sensor data, operation logs, critical system logs, and other data to the server for data analysis. These devices are usually distributed all over the world and the surrounding network is not always reliably. To achieve stable and reliable log collection, we recommend using Global Acceleration for Log Service.
+    IoT devices and smart devices \(such as smart speakers and smart watches\) send collected sensor data, operations logs, critical system logs, and other data to the server for data analysis. These devices are usually distributed all over the world. The surrounding network is not always reliable. To collect logs stably and reliably, we recommend that you use Global Acceleration for Log Service.
 
 
-## Acceleration effect {#section_ckb_cjm_q2b .section}
+## Acceleration effects {#section_ckb_cjm_q2b .section}
 
-|Region|Delay ms \(common public network\)|Delay ms \(acceleration\)|Time-out ratio % \(common public network\)|Time-out ratio % \(acceleration\)|
-|:-----|:---------------------------------|:------------------------|:-----------------------------------------|:--------------------------------|
+|Region|Latency in ms \(Internet\)|Latency in ms \(Global Acceleration\)|Percentage of timed-out requests \(Internet\)|Percentage of timed-out requests \(Global Acceleration\)|
+|:-----|:-------------------------|:------------------------------------|:--------------------------------------------|:-------------------------------------------------------|
 |Hangzhou|152.881|128.501|0.0|0.0|
 |Europe|1750.738|614.227|0.5908|0.0|
-|USA|736.614|458.340|0.0010|0.0|
+|United States|736.614|458.340|0.0010|0.0|
 |Singapore|567.287|277.897|0.0024|0.0|
 |Middle East|2849.070|444.523|1.0168|0.0|
 |Australia|1491.864|538.403|0.014|0.0|
 
 The test environment is as follows:
 
--   Region of Log service: North China 5 \(Hohhot\)
--   Average upload packet size: 10KB
+-   Region of Log Service: China \(Hohhot\)
+-   Average upload packet size: 10 KB
 -   Test time range: one day \(average\)
--   Request type: HTTPS
--   Request server: Alibaba Cloud ECS \(Specification 1C1GB\)
+-   Request method: HTTPS
+-   Request server: Alibaba Cloud Elastic Compute Service \(ECS\) \(instance type: 1 vCPU 1 GiB\)
 
-**Note:** The acceleration effect is for reference only.
+**Note:** The acceleration effects are for reference only.
 
