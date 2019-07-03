@@ -26,9 +26,9 @@ LiveTail是日志服务在控制台提供了日志数据实时监控的交互功
 
     -   快捷开启LiveTail。
 
-        1.  在**原始日志**页签中，单击指定原始日志的序号右侧图标![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/23704/154694136813747_zh-CN.png)，并选择**LiveTail**。
+        1.  在**原始日志**页签中，单击指定原始日志的序号右侧图标![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/23704/156214720213747_zh-CN.png)，并选择**LiveTail**。
 
-            ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/23704/154694136813762_zh-CN.png)
+            ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/23704/156214720213762_zh-CN.png)
 
         2.  系统为您自动开启LiveTail，并开始计时。
 
@@ -36,7 +36,7 @@ LiveTail是日志服务在控制台提供了日志数据实时监控的交互功
 
             开启LiveTail后，Logtail采集到的日志数据会实时显示排列在页面中。最新的日志数据始终在页面底部，且滚动条默认在最下方，即显示最新数据。页面最多显示1000条数据，满1000条后页面自动刷新并重新填充日志数据。
 
-            ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/23704/154694136813763_zh-CN.png)
+            ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/23704/156214720313763_zh-CN.png)
 
         3.  （可选）在搜索框中输入关键词。
 
@@ -51,16 +51,16 @@ LiveTail是日志服务在控制台提供了日志数据实时监控的交互功
     -   自定义设置LiveTail。
         1.  单击LiveTail页签。
 
-            ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/23704/154694136813764_zh-CN.png)
+            ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/23704/156214720313764_zh-CN.png)
 
         2.  配置LiveTail。
 
             |配置|是否必选|说明|
             |:-|:---|:-|
-            |**来源类型**|必选|日志的来源，包括：            -   普通日志
+            |**来源类型**|必选|日志的来源，包括：             -   普通日志
             -   Kubernetes
             -   Docker
-|
+ |
             |**机器名称**|必选|日志来源服务器的名称。|
             |**文件名称**|必选|日志文件的完整路径及文件名。|
             |**过滤条件**|可选|关键词，设置关键词后，只有包含关键词的日志才会显示在实时监控窗口中。|
@@ -84,24 +84,24 @@ LiveTail是日志服务在控制台提供了日志数据实时监控的交互功
 
     所有的字段都进行过分词处理，单击指定异常字段内容，页面自动跳转到原始日志页签中，按照关键词筛选出该字段相关的所有日志内容。另外也可以对包含该关键字的日志进行上下文查询、查看统计图表等方式进行分析。
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/23704/154694136813765_zh-CN.png)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/23704/156214720313765_zh-CN.png)
 
 -   根据日志分布直方图（histogram）缩小查询的时间范围。
 
     LiveTail开启时，日志分布直方图也在进行同步更新。如果发现某个时段的日志分布有异常，例如日志数量显著增加时，可以单击该时段的绿色矩形缩小查询的时间范围。跳转后的原始日志内的时间轴与LivaTail内选择的点击的时间轴是相关联的，可以查看在这段时间内所有的原始日志内容及详细的时间分布。
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/23704/154694136813766_zh-CN.png)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/23704/156214720313766_zh-CN.png)
 
 -   通过列设置强调关键信息。
 
     LiveTail页签中，单击日志列表右上角的**列设置**可以将指定字段单独选设置为一列，使该列的数据更加醒目。可以将需要重点关注的数据设为一列，便于查看和判断异常。
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/23704/154694136813767_zh-CN.png)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/23704/156214720313767_zh-CN.png)
 
 -   对日志数据进行快速分析。
 
     LiveTail页签中，单击日志列表左上角的箭头，可以展开快速分析区域。快速分析的时间区间是LiveTail开启到停止的时间段，分析的功能与原始日志内提供的快速分析相同。详细说明请参考[快速分析](intl.zh-CN/用户指南/查询与分析/查询语法与功能/快速分析.md)。
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/23704/154694136813768_zh-CN.png)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/23704/156214720313768_zh-CN.png)
 
 
