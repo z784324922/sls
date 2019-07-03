@@ -1,6 +1,6 @@
 # Apache 日志 {#concept_zcn_wq5_vdb .concept}
 
-apache日志格式和目录通常在配置文件 /etc/apache2/httpd.conf中。
+Apache日志格式和目录通常在配置文件 /etc/apache2/httpd.conf中。
 
 ## 日志格式 {#section_k1d_5sb_ry .section}
 
@@ -25,7 +25,7 @@ Apache日志配置文件中默认定义了两种打印格式，分别为combined
     ```
 
 
-Apache日志配置文件中同时需要指定当前日志的打印格式、日志文件路径及名称。例如以下声明表示日志打印时使用配置文件中定义的combined格式，且日志路径和名称为/var/log/apache2/access\_log。
+Apache日志配置文件中需要同时指定当前日志的打印格式、日志文件路径及名称。例如以下声明表示日志打印时使用配置文件中定义的combined格式，且日志路径和名称为/var/log/apache2/access\_log。
 
 ``` {#codeblock_rs8_25t_48h}
 CustomLog "/var/log/apache2/access_log" combined
@@ -59,8 +59,8 @@ CustomLog "/var/log/apache2/access_log" combined
 |%U|request\_uri\_supple|请求的URI路径，不带query。|
 |%v|server\_name|服务器名称。|
 |%V|server\_name\_canonical|服务器权威规范名称。|
-|%I|bytes\_received|服务器接收得字节数，需要启用mod\_logio模块。|
-|%O|bytes\_sent|服务器发送得字节数，需要启用mod\_logio模块。|
+|%I|bytes\_received|服务器接收的字节数，需要启用mod\_logio模块。|
+|%O|bytes\_sent|服务器发送的字节数，需要启用mod\_logio模块。|
 |"%\{User-Agent\}i"|http\_user\_agent|客户端信息。|
 |"%\{Rererer\}i"|http\_referer|来源页。|
 
@@ -72,7 +72,7 @@ CustomLog "/var/log/apache2/access_log" combined
 
 ## 配置Logtail收集Apache日志 {#section_al1_gl4_y1b .section}
 
-1.  在Logstore列表界面单击**数据接入向导**图表，进入数据接入向导。
+1.  在Logstore列表界面单击**数据接入向导**图标，进入数据接入向导。
 2.  选择数据类型。
 
     选择**APACHE访问日志**。
@@ -83,17 +83,17 @@ CustomLog "/var/log/apache2/access_log" combined
     2.  选择**日志格式**。
     3.  填写**APACHE配置字段**。
 
-        请填写标准APACHE配置文件日志配置部分，通常以LogFormat开头。
+        请填写标准Apache配置文件日志配置部分，通常以LogFormat开头。
 
         **说明：** 如您的**日志格式**为**common**或**combined**格式，此处会自动匹配对应格式的配置字段，请确认是否和本地Apache配置文件中定义的格式一致。
 
-         ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/17637/15615127089380_zh-CN.png) 
+        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/17637/15621183489380_zh-CN.png)
 
     4.  确认**APACHE键名称**。
 
-        日志服务会自动读取您的Apache键。请在当前页面确认APACHE键名称。
+        日志服务会自动读取您的Apache键。请在当前页面确认Apache键名称。
 
-         ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/17637/15615127089381_zh-CN.png) 
+        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/17637/15621183489381_zh-CN.png)
 
     5.  选择是否**丢弃解析失败日志**。
 
