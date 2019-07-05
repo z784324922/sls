@@ -4,13 +4,13 @@
 
 示例：
 
-```
+``` {#codeblock_kbu_uk0_q4h}
 POST /logstores/{logstoreName}/consumergroups
 ```
 
 ## 请求语法 {#section_o54_dhh_f2b .section}
 
-```
+``` {#codeblock_aqh_v5t_wxp}
 POST /logstores/<logstoreName>/consumergroups HTTP/1.1
 Authorization: <AuthorizationString>
 x-log-bodyrawsize: 0
@@ -36,26 +36,26 @@ Content-Length: <ContentLength>
 |logstoreName|string|是|Logstore 的名称。|
 |consumerGroup|string|是|消费组名称，在Project 下必须唯一。|
 |timeout|integer|是|超时时间，在超时时间段内没有收到心跳，消费组将被删除。|
-|order|bool|是|在单个shard中是否按顺序消费。-   true：表示在单个shard中按顺序消费。shard分裂后，先消费原shard数据，然后并列消费两个新shard的数据。
+|order|bool|是|在单个shard中是否按顺序消费。 -   true：表示在单个shard中按顺序消费。shard分裂后，先消费原shard数据，然后并列消费两个新shard的数据。
 -   false：表示不按顺序消费。
 
-|
+ |
 
-**请求头**
+ **请求头** 
 
-CreateConsumerGroup 接口无特有请求头，关于 Log Service API 的公共请求头请参考[公共请求头](cn.zh-CN/API 参考/公共请求头.md)。
+CreateConsumerGroup 接口无特有请求头，关于 Log Service API 的公共请求头，请参考[公共请求头](intl.zh-CN/API 参考/公共请求头.md)。
 
-**响应头**
+ **响应头** 
 
-CreateConsumerGroup 接口无特有响应头，关于 Log Service API 的公共响应头请参考[公共响应头](cn.zh-CN/API 参考/公共响应头.md)。
+CreateConsumerGroup 接口无特有响应头，关于 Log Service API 的公共响应头，请参考[公共响应头](intl.zh-CN/API 参考/公共响应头.md)。
 
-**响应元素**
+ **响应元素** 
 
 HTTP 状态码返回 200。
 
-**错误码**
+ **错误码** 
 
-除了返回 Log Service API 的[通用错误码](cn.zh-CN/API 参考/通用错误码.md)，还可能返回如下特有错误码：
+除了返回 Log Service API 的[通用错误码](intl.zh-CN/API 参考/通用错误码.md)，还可能返回如下特有错误码：
 
 |**HTTP状态码**|**ErrorCode**|**ErrorMessage**|
 |:----------|:------------|:---------------|
@@ -67,12 +67,12 @@ HTTP 状态码返回 200。
 
 ## 示例 {#section_p5z_ghh_f2b .section}
 
-**请求示例：**
+**请求示例：** 
 
-```
+``` {#codeblock_wv4_48f_tcz}
 POST /logstores/my-logstore/consumergroups HTTP/1.1
 Header:
-Authorization: LOG LTRTfdR7fbosJYad:OK7Sldsxcv/8gz6YtrrmzR19Tgh=
+Authorization: LOG <yourAccessKeyId>:<yourSignature>
 x-log-bodyrawsize: 0
 User-Agent: sls-java-sdk-v-0.6.1
 x-log-apiversion: 0.6.0
@@ -91,9 +91,9 @@ Body:
 }
 ```
 
-**响应示例：**
+**响应示例：** 
 
-```
+``` {#codeblock_cld_waw_t8z}
 HTTP/1.1 200
 Server: nginx/1.12.1
 Content-Length: 0
