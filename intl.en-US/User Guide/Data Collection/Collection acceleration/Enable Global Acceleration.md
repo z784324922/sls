@@ -1,102 +1,96 @@
 # Enable Global Acceleration {#concept_bfn_n54_p2b .concept}
 
-To enable Global Acceleration for Log Service, see the following steps.
+This topic describes how to enable Global Acceleration for Log Service.
 
-## Prerequisite {#section_r43_1sz_q2b .section}
+## Prerequisites {#section_r43_1sz_q2b .section}
 
--   You have enabled Log Service and created the project and Logstore.
--   You have enabled [Dynamic Route for CDN](https://dcdn.console.aliyun.com/).
--   To [Enable HTTPS acceleration](#), [Enable HTTP acceleration](#) first.
+-   Log Service is activated. A project and a Logstore are created.
+-   [Dynamic Route for CDN](https://dcdn.console.aliyun.com/) is activated.
+-   [HTTP acceleration](#) is enabled before you enable [HTTPS acceleration](#) as needed.
 
-## Configuration {#section_emc_bw1_r2b .section}
+## Procedure {#section_emc_bw1_r2b .section}
 
-After HTTP Global Acceleration is enabled for the project, you can also configure Global Acceleration of Logtail, SDK, and other methods according to your needs.
+After you enable HTTP Global Acceleration for the target project, you can also configure the Logtail, SDK, and other methods as required to collect logs by using Global Acceleration.
 
 1.  [Enable HTTP acceleration](#).
-2.  Enable Global Acceleration of Logtail, SDK, and other methods.
-    -   HTTPS
+2.  \(Optional\) [Enable HTTPS acceleration](#).
 
-        If you use HTTPS to access Log Service, make sure that HTTPS acceleration is enabled. To configure HTTPS acceleration, see [Enable HTTPS acceleration](#).
+    If you use HTTPS to access Log Service, ensure that HTTPS acceleration is enabled. For more information about how to configure HTTPS acceleration, see [Enable HTTPS acceleration](#).
 
-    -   Logtail log collection
+3.  Collect logs by using Global Acceleration.
+    -   Logtail
+        -   To install Logtail after Global Acceleration is enabled, you can follow the installation procedure for **Global Acceleration** in [Install Logtail in Linux](reseller.en-US/User Guide/Logtail collection/Install/Install Logtail in Linux.md#). Then, Global Acceleration is automatically enabled when Log Service collects logs through Logtail.
+        -   If Logtail is installed before you enable Global Acceleration, you need to manually switch the Logtail collection mode to global acceleration. For more information, see [Install Logtail in Windows](reseller.en-US/User Guide/Logtail collection/Install/Install Logtail in Windows.md#).
+    -   SDK, Producer, or Consumer
 
-        When you install Logtail, select the **Global Acceleration** network type at the page prompt. Then you can obtain global acceleration when you collect logs by using Logtail.
-
-    -   SDK, Producer, and Consumer
-
-        Other ways to access Log Service such as SDK, Producer, and Consumer, can be accelerated by replacing the endpoint with `log-global.aliyuncs.com`.
+        If you use other methods such as the SDK, Producer, and Consumer to access Log Service, you can replace the configured endpoint with `log-global.aliyuncs.com` to achieve global acceleration.
 
 
 ## Enable HTTP acceleration {#section_sst_dsz_q2b .section}
 
-1.  Log on to the [Dynamic Route for CDN Console](https://dcdn.console.aliyun.com/). Click **Domain Names** in the left-side navigation pane to enter the Domain Names page.
-2.  Click **Add Domain Name** in the upper left corner to enter the Add Domain Name page.
-3.  Enter the DCDN Domain and other information, and click **Next**.
+1.  Log on to the [Dynamic Route for CDN console](https://dcdn.console.aliyun.com/). In the left-side navigation pane, click **Domain Names** to go to the Domain Names page.
+2.  Click **Add Domain Name** in the upper-left corner to go to the Add Domain Name page.
+3.  Set DCDN Domain Name, enter other information as required, and then click **Next**.
 
-    |Configuration|Description|
-    |:------------|:----------|
-    |Accelerated domain name|`project\_name.log-global.aliyuncs.com` Replace project\_name with your project name.|
-    |Origin site type|Select Origin Domain.|
-    |Domain name|Enter the public network endpoint for the region to which your project belongs. For information about endpoints, see [Service endpoint](../../../../../reseller.en-US/API Reference/Service endpoint.md).|
-    |Port|Please select port 80. If you have an HTTPS acceleration requirement, see **Enable HTTPS acceleration**.|
-    |Accelerated area|By default, this configuration item is not displayed and the acceleration area is Domesticate acceleration.If you have a demand for Global Acceleration, open a ticket for the Dynamic Route for CDN product to apply for a whitelist.
+    |Parameter|Description|
+    |:--------|:----------|
+    |DCDN Domain Name|Enter `project\_name.log-global.aliyuncs.com`, where project\_name is replaced with your project name.|
+    |Origin Type|Select Origin Domain.|
+    |Domain Name|Enter the Internet service endpoint for the region of your project. For more information about endpoints, see [Service endpoint](../../../../reseller.en-US/API Reference/Service endpoint.md#).|
+    |Port|Select Port 80. If you need HTTPS acceleration, you can configure HTTPS separately. For more information, see **Enable HTTPS acceleration** in this topic.|
+    |Acceleration Region|Mainland China is selected by default. If you need to use Global Acceleration, open a ticket to apply for a whitelist from Dynamic Route for CDN.
 
-After your application is approved, you can select an acceleration region based on your needs.|
+ After your application is approved, you can select an acceleration region based on your needs.|
 
-    For more information about adding domain names, see 8.
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/16815/15623087398063_en-US.png)
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/16815/15530672108063_en-US.png)
+4.  Go to the Domain Names page as prompted.
 
-4.  Go to the Domain management page as prompted.
+    You can view the **CNAME** of the added accelerating domain name on the Domain Names page.
 
-    You can view the **CNAME** of each corresponding domain name in the Domain name management page.
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/16815/15623087398064_en-US.png)
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/16815/15530672108064_en-US.png)
+5.  Log on to the Log Service console. On the Projects page, click **Global Acceleration** in the Actions column of the target project.
+6.  In the dialog box that appears, enter the **CNAME** of the accelerating domain name. Click **Enable Acceleration**.
 
-5.  Log on to the Log Service console and click **Global Acceleration** at the right of a specified project in the Project list.
-6.  Enter the **CNAME** corresponding to the accelerated domain name in the dialog box. Click **Enable acceleration**.
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/16815/15623087398065_en-US.png)
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/16815/15530672108065_en-US.png)
-
-    After you complete the preceding steps, Global Acceleration for Log Service is enabled.
+    After you complete the preceding steps, Global Acceleration is enabled for Log Service.
 
 
 ## Enable HTTPS acceleration {#section_ugs_nhm_q2b .section}
 
-After enabling HTTP acceleration, if you have HTTPS access requirements, you can use the following steps to enable HTTPS acceleration.
+After HTTP acceleration is enabled, if you need to use HTTPS to access Log Service, you can enable HTTPS acceleration. The procedure is as follows:
 
-1.  Log on to the [Dynamic Route for CDN Console](https://dcdn.console.aliyun.com/). Click **Domain Names** in the left-side navigation pane to enter the Domain Names page.
-2.  Click **Configure** to the right of a specified domain name.
-3.  Click **HTTPS Settings** in the left-side navigation pane and click **Modify** in the column of **SSL Certificate** to enter the HTTPS Settings page.
+1.  Log on to the [Dynamic Route for CDN console](https://dcdn.console.aliyun.com/). In the left-side navigation pane, click **Domain Names** to go to the Domain Names page.
+2.  Click **Configure** in the Actions column of the target domain name.
+3.  In the left-side navigation pane, click **HTTPS Settings**. On the page that appears, click **Modify** in the **SSL Certificate** section. The HTTPS Settings dialog box appears.
 4.  Configure SSL Acceleration and Certificate Type.
 
     -   Enable SSL Acceleration.
     -   Select Free Certificate for Certificate Type.
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/16815/15530672108066_en-US.png)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/16815/15623087398066_en-US.png)
 
-    After the configuration is completed, select **Agree to grant Alibaba Cloud permission to apply for a free certificate.**, and click **Confirm**.
+    After the configuration is completed, select **Agree to grant Alibaba Cloud permission to apply for a free certificate.**, and click **OK**.
 
-
-## Verify if the acceleration configuration takes effect {#section_tgs_nhm_q2b .section}
 
 ## FAQ {#section_xgs_nhm_q2b .section}
 
--   **How to verify if the acceleration configuration takes effect**？
+-   **How do I check whether the acceleration configuration takes effect?** 
 
-    After the configuration is completed, you can verify if the acceleration takes effect by accessing your accelerated domain name.
+    After the configuration is completed, you can access your accelerating domain name to check whether the acceleration configuration takes effect.
 
-    For example, if Global Acceleration is enabled for the test-project project, you can use `curl` to send a request to the accelerated domain name. If the following type of output is returned, the acceleration takes effect.
+    For example, if Global Acceleration is enabled for the test-project project, you can run a `curl` command to send a request to the accelerating domain name. The following response indicates that the acceleration configuration takes effect:
 
-    ```
+    ``` {#codeblock_3cv_85e_4ga}
     $curl test-project.log-global.aliyuncs.com
     {"Error":{"Code":"OLSInvalidMethod","Message":"The script name is invalid : /","RequestId":"5B55386A2CE41D1F4FBCF7E7"}}
-    
     ```
 
--   **How to handle the error of** `project not exist` reported in accessing accelerated domain name?
+-   **What can I do if the**`project not exist`**error is reported for access to an accelerating domain name?** 
 
-    This problem is caused usually by an invalid source site address. Log on to the Dynamic Route for CDN console and change the source site address to  the public network address of the region to which your project belongs. For information about address list, see [Service endpoint](../../../../../reseller.en-US/API Reference/Service endpoint.md).
+    This error is caused usually by an invalid origin domain name. You need to log on to the Dynamic Route for CDN console and change the origin domain name of the accelerating domain name to the Internet service endpoint for the region of your project. For more information, see [Service endpoint](../../../../reseller.en-US/API Reference/Service endpoint.md#).
 
-    **Note:** Changing the source site address has a synchronization delay of several minutes.
+    **Note:** The change of the origin domain name takes several minutes. You can wait patiently.
 
 
