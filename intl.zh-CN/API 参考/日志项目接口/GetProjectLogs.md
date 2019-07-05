@@ -22,11 +22,11 @@ x-log-signaturemethod: hmac-sha1
 
 ## 请求头 {#section_l3t_b2f_jdb .section}
 
-GetProjectLogs接口无特有请求头。关于 API 的公共请求头，请参考 [公共请求头](intl.zh-CN/API 参考/公共请求头.md)。
+GetProjectLogs接口无特有请求头。关于 Log Service API 的公共请求头，请参考 [公共请求头](intl.zh-CN/API 参考/公共请求头.md)。
 
 ## 响应头 {#section_whj_d2f_jdb .section}
 
-关于 API 的公共响应头，请参考 [公共响应头](intl.zh-CN/API 参考/公共响应头.md)。
+关于 Log Service API 的公共响应头，请参考 [公共响应头](intl.zh-CN/API 参考/公共响应头.md)。
 
 响应头中有专门成员表示请求返回结果是否完整。具体响应元素格式如下：
 
