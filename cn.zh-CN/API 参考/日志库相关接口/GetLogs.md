@@ -11,7 +11,7 @@ GetLogs 接口查询指定 Project 下某个 Logstore 中的日志数据。还�
 
 ## 请求语法 {#section_j5v_14t_12b .section}
 
-```
+``` {#codeblock_q08_k0k_2i7}
 GET /logstores/<logstorename>?type=log&topic=<logtopic>&from=<starttime>&to=<endtime>&query=<querystring>&line=<linenum>&offset=<startindex>&reverse=<ture|false> HTTP/1.1
 Authorization: <AuthorizationString>
 Date: <GMT Date>
@@ -25,47 +25,47 @@ x-log-signaturemethod: hmac-sha1
 
 |名称|类型|必选|描述|
 |:-|:-|:-|:-|
-|logstorename|字符串|是|需要查询日志的 Logstore 名称。|
-|type|字符串|是|查询 Logstore 数据的类型。在 GetLogs 接口中该参数必须为 log。|
-|from|整型|是|查询开始时间点（精度为秒，从 1970-1-1 00:00:00 UTC 计算起的秒数）。|
-|to|整型|是|查询结束时间点（精度为秒，从 1970-1-1 00:00:00 UTC 计算起的秒数）。|
-|topic|字符串|否|查询日志主题。|
-|query|字符串|否|查询表达式。关于查询表达式的详细语法，请参考 [查询语法](../../../../intl.zh-CN/用户指南/查询与分析/查询语法与功能/查询语法.md)。|
-|line|整型|否|请求返回的最大日志条数。取值范围为 0~100，默认值为 100。|
-|offset|整型|否|请求返回日志的起始点。取值范围为 0 或正整数，默认值为 0。|
-|reverse|布尔型|否|是否按日志时间戳逆序返回日志。true 表示逆序，false 表示顺序，默认值为 false。|
+|logstorename|string|是|需要查询日志的 Logstore 名称。|
+|type|string|是|查询 Logstore 数据的类型。在 GetLogs 接口中该参数必须为 log。|
+|from|int|是|查询开始时间点（精度为秒，从 1970-1-1 00:00:00 UTC 计算起的秒数）。|
+|to|int|是|查询结束时间点（精度为秒，从 1970-1-1 00:00:00 UTC 计算起的秒数）。|
+|topic|string|否|查询日志主题。|
+|query|string|否|查询表达式。关于查询表达式的详细语法，请参考 [查询语法](../../../../intl.zh-CN/用户指南/查询与分析/查询语法与功能/查询语法.md)。|
+|line|int|否|请求返回的最大日志条数。取值范围为 0~100，默认值为 100。|
+|offset|int|否|请求返回日志的起始点。取值范围为 0 或正整数，默认值为 0。|
+|reverse|bool|否|是否按日志时间戳逆序返回日志，精确到分钟级别。true 表示逆序，false 表示顺序，默认值为 false。|
 
-**请求头**
+ **请求头** 
 
-GetLogs接口无特殊请求头。关于 Log Service API 的公共请求头，请参考 [公共请求头](intl.zh-CN/API 参考/公共请求头.md)。
+GetLogs接口无特有请求头。关于 Log Service API 的公共请求头，请参考 [公共请求头](intl.zh-CN/API 参考/公共请求头.md)。
 
-**响应头**
+ **响应头** 
 
-关于 Log Service API 的公共响应头，请参考 [公共响应头](intl.zh-CN/API 参考/公共响应头.md)。
+GetLogs接口无特有响应头。关于 Log Service API 的公共响应头，请参考 [公共响应头](intl.zh-CN/API 参考/公共响应头.md)。
 
 响应头中有专门成员表示请求返回结果是否完整。具体响应元素格式如下：
 
 |名称|类型|描述|
 |:-|:-|:-|
-|x-log-progress|字符串|查询结果的状态。可以有 Incomplete 和 Complete 两个选值，表示本次是否完整。|
-|x-log-count|整型|当前查询结果的日志总数。|
+|x-log-progress|string|查询结果的状态。可以有 Incomplete 和 Complete 两个选值，表示本次是否完整。|
+|x-log-count|int|当前查询结果的日志总数。|
 
-**响应元素**
+ **响应元素** 
 
 GetLogs 请求成功，其响应 Body 会包括查询命中的日志数据。当需要查询的日志数据量非常大\(T级别\)的时候，该接口的响应结果可能并不完整，GetLogs的响应body是一个数组，数组中每个元素是一条日志结果。数组中的每个元素结构如下：
 
 |名称|类型|描述|
 |:-|:-|:-|
-|\_\_time\_\_|整型|日志的时间戳（精度为秒，从 1970-1-1 00:00:00 UTC 计算起的秒数）。|
-|\_\_source\_\_|字符串|日志的来源，由写入日志时指定。|
+|\_\_time\_\_|int|日志的时间戳（精度为秒，从 1970-1-1 00:00:00 UTC 计算起的秒数）。|
+|\_\_source\_\_|string|日志的来源，由写入日志时指定。|
 |\[content\]|Key-Value对|日志原始内容，以 Key-value 对的形式组织。|
 
-**细节描述**
+ **细节描述** 
 
 -   该接口中由请求参数 from 和 to 定义的时间区间遵循“左闭右开”原则，即该时间区间包括区间开始时间点，但不包括区间结束时间点。如果 from 和 to 的值相同，则为无效区间，函数直接返回错误。
--   如上所述，该接口一次调用必须要在限定时间内返回结果，每次查询只能扫描指定条数的日志量。如果一次请求需要处理的数据量非常大的时候，该请求会返回不完整的结果（并在返回header中的 x-log-progress 成员标示是否完整）。如此同时，服务端会缓存 15 分钟内的查询结果。当查询请求的结果有部分被缓存命中，则服务端会在这次请求中继续扫描未被缓存命中的日志数据。为了减少您合并多次查询结果的工作量，服务端会把缓存命中的查询结果与本次查询新命中的结果合并返回给您。因此，日志服务可以让您通过以相同参数反复调用该接口来获取最终完整结果。因为您的查询涉及的日志数据量变化非常大，日志服务 API 无法预测需要调用多少次该接口而获取完整结果。所以需要用户通过检查每次请求的返回结果中的x-log-progress 成员状态值来确定是否需要继续。需要注意的是，每次重复调用该接口都会重新消耗相同数量的查询 CU。
+-   如上所述，该接口一次调用必须要在限定时间内返回结果，每次查询只能扫描指定条数的日志量。如果一次请求需要处理的数据量非常大的时候，该请求会返回不完整的结果（并在返回header中的 x-log-progress 成员标示是否完整）。与此同时，服务端会缓存 15 分钟内的查询结果。当查询请求的结果有部分被缓存命中，则服务端会在这次请求中继续扫描未被缓存命中的日志数据。为了减少您合并多次查询结果的工作量，服务端会把缓存命中的查询结果与本次查询新命中的结果合并返回给您。因此，日志服务可以让您通过以相同参数反复调用该接口来获取最终完整结果。因为您的查询涉及的日志数据量变化非常大，日志服务 API 无法预测需要调用多少次该接口而获取完整结果。所以需要用户通过检查每次请求的返回结果中的x-log-progress 成员状态值来确定是否需要继续。需要注意的是，每次重复调用该接口都会重新消耗相同数量的查询 CU。
 
-**错误码**
+ **错误码** 
 
 除了返回 Log Service API 的 [通用错误码](intl.zh-CN/API 参考/通用错误码.md)，还可能返回如下特有错误码：
 
@@ -85,9 +85,9 @@ GetLogs 请求成功，其响应 Body 会包括查询命中的日志数据。当
 
 以杭州地域内名为 big-game 的 Project 为例，查询该 project 内名为 app\_log 的 Logstore 中，主题为 groupA 的日志数据。查询区间为 2014-09-01 00:00:00 到 2014-09-01 22:00:00，查询关键字为 error，且从时间区间头开始查询，最多返回 20 条日志数据。
 
-**请求示例：**
+**请求示例：** 
 
-```
+``` {#codeblock_2ji_seu_g22}
 GET /logstores/app_log？type=log&topic=groupA&from=1409529600&to=1409608800&query=error&line=20&offset=0 HTTP/1.1
 Authorization: <AuthorizationString>
 Date: Wed, 3 Sept. 2014 08:33:46 GMT
@@ -97,9 +97,9 @@ x-log-apiversion: 0.4.0
 x-log-signaturemethod: hmac-sha1
 ```
 
-**响应示例：**
+ **响应示例：** 
 
-```
+``` {#codeblock_etx_ko4_wq0}
 HTTP/1.1 200 OK
 Content-MD5: 36F9F7F0339BEAF571581AF1B0AAAFB5
 Content-Type: application/json
