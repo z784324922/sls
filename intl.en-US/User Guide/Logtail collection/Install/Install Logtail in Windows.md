@@ -1,10 +1,10 @@
 # Install Logtail in Windows {#concept_j22_xnv_vdb .concept}
 
-This topic describes how to install the Logtail client on Windows servers.
+The Logtail client is a log collection agent provided by Log Service. This topic describes how to install the Logtail client on a Windows server.
 
 ## Supported systems {#section_ppj_ynv_vdb .section}
 
-The following Windows systems are supported:
+The Logtail client for Windows supports the following operating systems:
 
 -   Windows 7 \(Client\) 32-bit
 -   Windows 7 \(Client\) 64-bit
@@ -15,26 +15,29 @@ The following Windows systems are supported:
 
 ## Prerequisites {#section_t52_5zm_1fb .section}
 
--   Your account has at least one server under it.
--   You have determined the required network type for log collection according to the server type and region to which the server belongs. For more information, see [Select a network type](reseller.en-US/User Guide/Logtail collection/Select a network type.md).
+1.  One or more servers are available.
+2.  The network type for log collection is selected based on the server type and the region of the server. For more information, see [Select a network type](reseller.en-US/User Guide/Logtail collection/Select a network type.md).
 
-    ![](images/38900_en-US.png "Select a network type")
+    ![](images/12057_en-US.png "Select a network type")
 
 
 ## Install Logtail {#section_d1z_znv_vdb .section}
 
-1.  Download the required Logtail installation package as follows:
-    -   For users in Mainland China: [Logtail installation package](http://logtail-release.oss-cn-hangzhou.aliyuncs.com/win/logtail_installer.zip)
-    -   For users in all other areas: [Logtail installation package](http://logtail-release-global.log-global.aliyuncs.com/win/logtail_installer.zip)
-2.  Decompress `logtail_installer.zip` to the current directory.
-3.  Install Logtail according to the region to which the Log Service project belongs.
+1.  Download the installation package.
 
-    Run Windows PowerShell or CMD as the admin user to enter the `logtail_installer` directory, where you decompress the Logtail installation package. Then, run the installation command according to the region and network type.
+    Download links:
 
-    The following table describes installation commands you can use according to the network type.
+    -   If you are in Mainland China, click [here](http://logtail-release.oss-cn-hangzhou.aliyuncs.com/win/logtail_installer.zip).
+    -   If you are outside Mainland China, click [here](http://logtail-release-global.log-global.aliyuncs.com/win/logtail_installer.zip).
+2.  Decompress the `logtail_installer.zip` package to the current directory.
+3.  After [selecting a network type](reseller.en-US/User Guide/Logtail collection/Select a network type.md) based on the server type and region of the server, install Logtail based on the region of the Log Service project.
 
-    |Region|Alibaba Cloud intranet|Internet|Global acceleration|
-    |:-----|:---------------------|:-------|:------------------|
+    Run Windows Powershell or CMD as an administrator to go to the `logtail_installer` directory where you decompress the Logtail installation package. Then, run the installation command based on the region and network type.
+
+    The following table lists the installation commands for different network types in different regions.
+
+    |Region|Alibaba Cloud intranet \(classic network or VPC\)|Internet|Global Acceleration|
+    |:-----|:------------------------------------------------|:-------|:------------------|
     |**China \(Qingdao\)**|`.\logtail_installer.exe install cn-qingdao`|`.\logtail_installer.exe install cn-qingdao-internet`|`.\logtail_installer.exe install cn-qingdao-acceleration`|
     |**China \(Beijing\)**|`.\logtail_installer.exe install cn-beijing`|`.\logtail_installer.exe install cn-beijing-internet`|`.\logtail_installer.exe install cn-beijing-acceleration`|
     |**China \(Zhangjiakou\)**|`.\logtail_installer.exe install cn-zhangjiakou`|`.\logtail_installer.exe install cn-zhangjiakou-internet`|`.\logtail_installer.exe install cn-zhangjiakou-acceleration`|
@@ -56,25 +59,27 @@ The following Windows systems are supported:
     |**UAE \(Dubai\)**|`.\logtail_installer.exe install me-east-1`|`.\logtail_installer.exe install me-east-1-internet`|`.\logtail_installer.exe install me-east-1-acceleration`|
     |**UK \(London\)**|`.\logtail_installer.exe install eu-west-1`|`.\logtail_installer.exe install eu-west-1-internet`|`.\logtail_installer.exe install eu-west-1-acceleration`|
 
-    **Note:** When you use Logtail on a server deployed in an on-premises IDC or provided by another cloud product vendor, Log Service cannot obtain the owner information about ECS servers under other Alibaba Cloud accounts or other types of servers. In this case, after installing Logtail, you need to manually configure AliUids for the servers by following the instructions provided in [Configure AliUids for ECS servers under other Alibaba Cloud accounts and on-premises IDCs](reseller.en-US/User Guide/Logtail collection/Machine Group/Collect logs from non-Alibaba Cloud ECS instances or ECS instances not in your account.md). Otherwise, Logtail heartbeats become abnormal, or Logtail cannot collect logs.
+    **Note:** If you use Logtail on a server deployed in an on-premises IDC or provided by another cloud product vendor, Log Service cannot obtain the owner information about ECS instances under other Alibaba Cloud accounts or other types of servers. In this case, you must manually configure AliUids after installing Logtail. Otherwise, Logtail has abnormal heartbeats and cannot collect logs. For more information, see [Configure AliUids for ECS servers under other Alibaba Cloud accounts or on-premises IDCs](reseller.en-US/User Guide/Logtail collection/Machine Group/Configure AliUids for ECS servers under other Alibaba Cloud accounts or on-premises IDCs.md).
 
 
 ## Installation path {#section_r5z_y32_qgb .section}
 
-By default, Logtail is installed in the specified path, which cannot be changed. In this path, you can [view the Logtail version](#) in the app\_info.json file or [uninstall Logtail](#).
+After you run the installation command, Logtail is installed in the specified path by default and cannot be changed. In this path, you can [view the Logtail version](#) in the app\_info.json file or [uninstall Logtail](#).
 
-The installation path is:
+The installation path is as follows:
 
--   C:\\Program Files\\Alibaba\\Logtail in Windows 32-bit systems
--   C:\\Program Files \(x86\)\\Alibaba\\Logtail in Windows 64-bit systems
+-   32-bit Windows: C:\\Program Files\\Alibaba\\Logtail
+-   64-bit Windows: C:\\Program Files \(x86\)\\Alibaba\\Logtail
 
-**Note:** Logtail is a 32-bit program. For Windows 64-bit systems, Logtail will be installed in the Program Files \(x86\) directory.
+**Note:** You can run a 32-bit or 64-bit application in a Windows 64-bit system. However, the Windows 64-bit system stores 32-bit applications in an x86 folder to ensure compatibility.
+
+Logtail for Windows is a 32-bit application. Therefore, it is installed in the Program Files \(x86\) folder in the Windows 64-bit system. If Logtail for 64-bit Window is available in the future, it is automatically installed in the Program Files folder.
 
 ## View the Logtail version {#section_dxc_1gf_ggb .section}
 
-Logtail is automatically installed to the [default directory](#). You can open the app\_info.json file to view the `logtail_version` field, which indicates your Logtail version.
+Logtail is automatically installed in the [default directory](#). To view the Logtail version, you can go to the directory and use Notepad or another text editor to open the app\_info.json file. The `logtail_version` field indicates the version of the installed Logtail.
 
-The following examples shows that the Logtail version is 1.0.0.0:
+In the following example, the Logtail version is 1.0.0.0:
 
 ```
 {
@@ -86,41 +91,44 @@ The following examples shows that the Logtail version is 1.0.0.0:
 
 -   **Automatic upgrade**
 
-    In normal cases, Windows supports automatic Logtail upgrades.
+    In normal cases, Logtail for Windows is automatically upgraded. However, you must manually upgrade Logtail earlier than 1.0.0.0 to Logtail 1.0.0.0 or a later version.
 
 -   **Manual upgrade**
 
-    You need to manually upgrade Logtail if the source version is earlier than 1.0.0.0 and the target version is 1.0.0.0 or later. For more information about how to manually upgrade Logtail, see [Install Logtail](#).
+    You must manually upgrade Logtail earlier than 1.0.0.0 to Logtail 1.0.0.0 or a later version. The procedure for manually upgrading Logtail is the same as that for [installing Logtail](#). You only need to download and decompress the latest installation package and install Logtail by following the steps.
 
-    **Note:** Manually upgrading Logtail means that Logtail will be automatically uninstalled and then reinstalled. In this case, files in the original installation path will be deleted. We recommend that you back up the files before manually upgrading Logtail.
+    **Note:** During manual upgrade, Logtail is automatically uninstalled and then reinstalled. In this case, files in the original installation directory are deleted. If necessary, we recommend that you back up the files before manually upgrading Logtail.
 
 
 ## Manually start and stop Logtail {#section_u2t_4wg_cfb .section}
 
-In the **Control Panel**, choose **System and Security** \> **Administrative Tools**, and then open the **Services** program.
+In the **Control Panel**, choose System and Security \> **Administrative Tools**, and then double-click **Services**.
 
-Find the target service according to your Logtail version:
+Find the target service based on your Logtail version:
 
--   For Logtail 0.x.x.x: **LogtailWorker**
--   For Logtail 1.0.0.0 and later: **LogtailDaemon**
+-   Logtail 0.x.x.x: **LogtailWorker**.
+-   Logtail 1.0.0.0 and later: **LogtailDaemon**.
 
-Then, perform the following operations as needed:
+Perform the following operations as required:
 
--   **Manually start Logtail**: Right-click Logtail and click **Start** in the shortcut menu.
--   **Stop Logtail**: Right-click Logtail and click **Stop** in the shortcut menu.
--   **Restart Logtail**: Right-click Logtail and click **Restart** in the shortcut menu.
+-   **Manually start Logtail**: Right-click Logtail and click **Start** from the drop-down menu.
+
+-   **Stop Logtail**: Right-click Logtail and click **Stop** from the drop-down menu.
+
+-   **Restart Logtail**: Right-click Logtail and click **Restart** from the drop-down menu.
+
 
 ## Uninstall Logtail {#section_bk1_14v_vdb .section}
 
-Run Windows PowerShell or CMD as the admin user to enter the `logtail_installer` directory, namely, the directory for decompressing the installation package you have downloaded. Then, run the following command:
+Run Windows Powershell or CMD as an administrator to go to the `logtail_installer` directory where you decompress the Logtail installation package. Then, run the following command:
 
 ```
 .\logtail_installer.exe uninstall
 ```
 
-After Logtail is deleted successfully, the Logtail [installation path](#) will be deleted. However, some residual configuration information will be retained in the C:\\LogtailData directory. You can manually delete the information as needed. The information includes the following:
+After Logtail is uninstalled, the Logtail [installation directory](#) is deleted. However, some residual configuration information is kept in the C:\\LogtailData path. You can manually delete the information as required. The residual configuration information includes:
 
--   checkpoint: contains checkpoint information of all agents \(for example, the Windows event log agent\).
+-   checkpoint: contains checkpoint information of all plug-ins \(for example, the Windows event log plug-in\).
 -   logtail\_check\_point: contains major checkpoint information of Logtail.
 -   users: contains all AliUids.
 
