@@ -5,8 +5,11 @@
 ## 使用限制 {#section_olr_xqd_5cb .section}
 
 -   **数加控制台创建、修改投递配置必须由主账号完成，不支持子账号操作。**
+-   不同Logstore的数据请勿导入到同一个MaxCompute表中，否则会造成分区冲突、丢失数据等后果。
 -   投递MaxCompute是批量任务，请谨慎设置分区列及其类型：保证一个同步任务内处理的数据分区数小于512个；用作分区列的字段值不能为空或包括`/`等MaxCompute保留字段 。配置细节请参考下文投递配置说明。
--   不支持海外Region的MaxCompute投递，海外Region的MaxCompute请使用[dataworks进行数据同步](https://help.aliyun.com/document_detail/66089.html)。国内Region投递支持如下：
+-   不支持海外Region的MaxCompute投递，海外Region的MaxCompute请使用[Dataworks](../../../../cn.zh-CN/使用指南/数据集成/最佳实践/日志服务（Loghub）通过数据集成投递数据.md)进行数据同步。
+
+    支持数据投递的国内Region如下：
 
     |日志服务Region|MaxCompute Region|
     |:---------|:----------------|
@@ -47,7 +50,7 @@
 
 举例日志服务的一条日志如下：
 
-```
+``` {#codeblock_dcz_3p8_bu3}
 16年01月27日20时50分13秒
 10.10.*.*
 ip:10.10.*.*
@@ -60,73 +63,69 @@ user-agent:aliyun-sdk-java
 
 日志左侧的ip、status、thread、time、url、user-agent等是日志服务数据的字段名称，需要在下方配置中应用到。
 
-## 步骤1 初始化数加平台 {#section_rqn_s4m_12b .section}
+1.  **初始化数加平台** 
+    1.  在日志服务的控制台Logstore列表单击日志投递列的MaxCompute。
 
-1.  在日志服务的控制台Logstore列表单击日志投递列的MaxCompute。
+        自动跳转到初始化数加平台的页面。MaxCompute默认为按量付费模式，具体参见MaxCompute文档说明。
 
-    自动跳转到初始化数加平台的页面。MaxCompute默认为按量付费模式，具体参见MaxCompute文档说明。
+    2.  查看服务协议和条款后单击确定，初始化数加平台。
 
-2.  查看服务协议和条款后单击确定，初始化数加平台。
+        初始化开通需10~20秒左右，请耐心等待。如果已经开通数加及大数据计算服务MaxCompute（原ODPS），将直接跳过该步骤。
 
-    初始化开通需10~20秒左右，请耐心等待。如果已经开通数加及大数据计算服务MaxCompute（原ODPS），将直接跳过该步骤。
+2.  **数据模型映射** 
 
+    在日志服务和大数据计算服务MaxCompute（原ODPS）之间同步数据，涉及两个服务的数据模型映射问题。您可以参考[日志服务日志数据结构](../../../../cn.zh-CN/产品简介/基本概念/日志.md)了解数据结构。
 
-## 步骤2 数据模型映射 {#section_pr2_mpm_12b .section}
+    将样例日志导入MaxCompute，分别定义MaxCompute数据列、分区列与日志服务字段的映射关系：
 
-在日志服务和大数据计算服务MaxCompute（原ODPS）之间同步数据，涉及两个服务的数据模型映射问题。您可以参考[日志服务日志数据结构](../../../../cn.zh-CN/产品简介/基本概念/日志.md)了解数据结构。
+    |MaxCompute 列类型|MaxCompute 列名（可自定义）|MaxCompute 列类型（可自定义）|日志服务字段名（投递配置里填写）|日志服务字段类型|日志服务字段语义|
+    |--------------|-------------------|--------------------|----------------|--------|--------|
+    |数据列|log\_source|string|\_\_source\_\_|系统保留字段|日志来源的机器IP。|
+    | |log\_time|bigint|\_\_time\_\_|系统保留字段|日志的Unix时间戳（是从1970年1月1日开始所经过的秒数），对应数据模型中的Time域。|
+    | |log\_topic|string|\_\_topic\_\_|系统保留字段|日志主题。|
+    | |time|string|time|日志内容字段|解析自日志，对应数据模型中的key-value，例如Logtail采集的数据在很多时候\_\_time\_\_与time取值相同。|
+    | |ip|string|ip|日志内容字段|解析自日志。|
+    | |thread|string|thread|日志内容字段|解析自日志。|
+    | |log\_extract\_others|string|\_\_extract\_others\_\_|系统保留字段|未在配置中进行映射的其他日志内字段会通过key-value序列化到json，该json是一层结构，不支持字段内部 json嵌套。|
+    |分区列|log\_partition\_time|string|\_\_partition\_time\_\_|系统保留字段|由日志的 \_\_time\_\_ 字段对齐计算而得，分区粒度可配置，在配置项部分详述。|
+    | |status|string|status|日志内容字段|解析自日志，该字段取值应该是可以枚举的，保证分区数目不会超出上限。|
 
-将样例日志导入MaxCompute，分别定义MaxCompute数据列、分区列与日志服务字段的映射关系：
+    -   MaxCompute表至少包含一个数据列、一个分区列。
+    -   系统保留字段中建议使用 \_\_partition\_time\_\_，\_\_source\_\_，\_\_topic\_\_。
+    -   MaxCompute单表有分区数目6万的限制，分区数超出后无法再写入数据，所以日志服务导入MaxCompute表至多支持3个分区列。请谨慎选择自定义字段作为分区列，保证其值是可枚举的。
+    -   系统保留字段\_\_extract\_others\_\_历史上曾用名\_extract\_others\_，填写后者也是兼容的。
+    -   MaxCompute分区列的值不支持”/“等特殊字符，这些是 MaxCompute 的保留字段。
+    -   MaxCompute分区列取值不支持空，所以映射到分区列的字段必须出自保留字段或日志字段，且可以通过cast运算符将string类型字段值转换为对应分区列类型，空分区列的日志会在投递中被丢弃。
+    -   日志服务数据的一个字段最多允许映射到一个MaxCompute表的列（数据列或分区列），不支持字段冗余，同一个字段名第二次使用时其投递的值为null，如果null出现在分区列会导致数据无法被投递。
+3.  **配置投递规则** 
+    1.  开启投递。
 
-|MaxCompute 列类型|MaxCompute 列名（可自定义）|MaxCompute 列类型（可自定义）|日志服务字段名（投递配置里填写）|日志服务字段类型|日志服务字段语义|
-|:-------------|:------------------|:-------------------|:---------------|:-------|:-------|
-|数据列|log\_source|string|\_\_source\_\_|系统保留字段|日志来源的机器 IP。|
-| |log\_time|bigint|\_\_time\_\_|系统保留字段|日志的 Unix 时间戳（是从1970 年 1 月 1 日开始所经过的秒数），对应数据模型中的Time域。|
-| |log\_topic|string|\_\_topic\_\_|系统保留字段|日志主题。|
-| |time|string|time|日志内容字段|解析自日志，对应数据模型中的key-value，例如Logtail采集的数据在很多时候\_\_time\_\_与time取值相同。|
-| |ip|string|ip|日志内容字段|解析自日志。|
-| |thread|string|thread|日志内容字段|解析自日志。|
-| |log\_extract\_others|string|\_\_extract\_others\_\_|系统保留字段|未在配置中进行映射的其他日志内字段会通过 key-value 序列化到json，该 json 是一层结构，不支持字段内部 json 嵌套。|
-|分区列|log\_partition\_time|string|\_\_partition\_time\_\_|系统保留字段|由日志的 \_\_time\_\_ 字段对齐计算而得，分区粒度可配置，在配置项部分详述。|
-| |status|string|status|日志内容字段|解析自日志，该字段取值应该是可以枚举的，保证分区数目不会超出上限。|
+        初始化数加平台之后，根据页面提示进入LogHub —— 数据投递页面，选择需要投递的Logstore，并单击**开启投递**。
 
--   MaxCompute 表至少包含一个数据列、一个分区列。
--   系统保留字段中建议使用 \_\_partition\_time\_\_，\_\_source\_\_，\_\_topic\_\_。
--   MaxCompute 单表有分区数目 6 万的限制，分区数超出后无法再写入数据，所以日志服务导入 MaxCompute表至多支持3个分区列。请谨慎选择自定义字段作为分区列，保证其值是可枚举的。
--   系统保留字段 \_\_extract\_others\_\_ 历史上曾用名 \_extract\_others\_，填写后者也是兼容的。
--   MaxCompute 分区列的值不支持”/“等特殊字符，这些是 MaxCompute 的保留字段。
--   MaxCompute 分区列取值不支持空，所以映射到分区列的字段必须出自保留字段或日志字段，且可以通过cast运算符将string类型字段值转换为对应分区列类型，空分区列的日志会在投递中被丢弃。
--   日志服务数据的一个字段最多允许映射到一个MaxCompute表的列（数据列或分区列），不支持字段冗余，同一个字段名第二次使用时其投递的值为null，如果null出现在分区列会导致数据无法被投递。
+        您也可以在日志库页面单击**MaxCompute（原ODPS）**，进入MaxCompute（原ODPS）投递管理页面。在MaxCompute（原ODPS）投递管理页面选择需要投递的Logstore，并单击**开启投递**以进入LogHub —— 数据投递页面。
 
-## 步骤3 配置投递规则 {#section_wbv_b4h_tbb .section}
+        ![](images/5814_zh-CN.png "开启投递")
 
-1.  开启投递。
+    2.  配置投递规则。
 
-    初始化数加平台之后，根据页面提示进入LogHub —— 数据投递页面，选择需要投递的Logstore，并单击**开启投递**。
+        在LogHub —— 数据投递页面配置**字段关联**等相关内容。
 
-    您也可以在日志库页面单击**MaxCompute（原ODPS）**，进入MaxCompute（原ODPS）投递管理页面。在MaxCompute（原ODPS）投递管理页面选择需要投递的Logstore，并单击**开启投递**以进入LogHub —— 数据投递页面。
+        ![](images/5816_zh-CN.png "配置投递规则")
 
-    ![](images/5814_zh-CN.png "开启投递")
+        配置项含义：
 
-2.  配置投递规则。
+        |参数|语义|
+        |:-|:-|
+        |投递名称|自定义一个投递的名称，方便后续管理。|
+        |MaxCompute Project|MaxCompute项目名称，该项默认为新创建的Project，如果已经是MaxCompute老客户，可以下拉选择已创建其他Project。|
+        |MaxCompute Table|MaxCompute表名称，请输入自定义的新建的MaxCompute表名称或者选择已有的MaxCompute表。|
+        |MaxCompute 普通列|按序，左边填写与MaxCompute表数据列相映射的日志服务字段名称，右边填写或选择MaxCompute表的普通字段名称及字段类型。|
+        |MaxCompute 分区列|按序，左边填写与MaxCompute表分区列相映射的日志服务字段名称，右边填写或选择MaxCompute表的普通字段名称及字段类型。|
+        |分区时间格式|\_\_partition\_time\_\_输出的日期格式，参考 [Java SimpleDateFormat](https://docs.oracle.com/javase/6/docs/api/java/text/SimpleDateFormat.html?spm=5176.doc29001.2.4.vP4zF4)。|
+        |导入MaxCompute间隔|MaxCompute数据投递间隔，默认1800，单位：秒。|
 
-    在LogHub —— 数据投递页面配置**字段关联**等相关内容。
-
-    ![](images/5816_zh-CN.png "配置投递规则")
-
-    配置项含义：
-
-    |参数|语义|
-    |:-|:-|
-    |投递名称|自定义一个投递的名称，方便后续管理。|
-    |MaxCompute Project|MaxCompute项目名称，该项默认为新创建的Project，如果已经是MaxCompute老客户，可以下拉选择已创建其他Project。|
-    |MaxCompute Table|MaxCompute表名称，请输入自定义的新建的MaxCompute表名称或者选择已有的MaxCompute表。|
-    |MaxCompute 普通列|按序，左边填写与MaxCompute表数据列相映射的日志服务字段名称，右边填写或选择MaxCompute表的普通字段名称及字段类型。|
-    |MaxCompute 分区列|按序，左边填写与MaxCompute表分区列相映射的日志服务字段名称，右边填写或选择MaxCompute表的普通字段名称及字段类型。|
-    |分区时间格式|\_\_partition\_time\_\_输出的日期格式，参考 [Java SimpleDateFormat](https://docs.oracle.com/javase/6/docs/api/java/text/SimpleDateFormat.html?spm=5176.doc29001.2.4.vP4zF4)。|
-    |导入MaxCompute间隔|MaxCompute数据投递间隔，默认1800，单位：秒。|
-
-    -   该步会默认为客户创建好新的MaxCompute Project和Table，其中如果已经是MaxCompute老客户，可以下拉选择其他已创建Project。
-    -   日志服务投递MaxCompute功能按照字段与列的顺序进行映射，修改MaxCompute表列名不影响数据导入，如更改MaxCompute表schema，请重新配置字段与列映射关系。
+        -   该步会默认为客户创建好新的MaxCompute Project和Table，其中如果已经是MaxCompute老客户，可以下拉选择其他已创建Project。
+        -   日志服务投递MaxCompute功能按照字段与列的顺序进行映射，修改MaxCompute表列名不影响数据导入，如更改MaxCompute表schema，请重新配置字段与列映射关系。
 
 ## 参考信息 {#section_o2c_cmf_vdb .section}
 
@@ -153,7 +152,7 @@ user-agent:aliyun-sdk-java
 
 使用MaxCompute的字符串比较筛选数据，可以避免全表扫描。比如查询2016年1月26日一天内日志数据：
 
-```
+``` {#codeblock_uas_kyg_691}
 select * from {ODPS_TABLE_NAME} where log_partition_time >= "2015_01_26" and log_partition_time < "2016_01_27";
 ```
 
@@ -161,7 +160,7 @@ select * from {ODPS_TABLE_NAME} where log_partition_time >= "2015_01_26" and log
 
 log\_extract\_others为一个json字符串，如果想获取该字段的user-agent内容，可以进行如下查询：
 
-```
+``` {#codeblock_6j4_e66_27y}
 select get_json_object(sls_extract_others, "$.user-agent") from {ODPS_TABLE_NAME} limit 10;
 ```
 
@@ -174,7 +173,7 @@ select get_json_object(sls_extract_others, "$.user-agent") from {ODPS_TABLE_NAME
 
 **编辑投递配置**
 
-在Logstore列表投递项，单击“修改”即可针对之前的配置信息进行编辑。其中如果想新增列，可以在大数据计算服务MaxCompute（原ODPS）修改投递的数据表列信息，则点击“修改”后会加载最新的数据表信息。
+在Logstore列表投递项，单击**修改**即可针对之前的配置信息进行编辑。其中如果想新增列，可以在大数据计算服务MaxCompute（原ODPS）修改投递的数据表列信息，则单击**修改**后会加载最新的数据表信息。
 
 **投递任务管理**
 
@@ -190,13 +189,13 @@ select get_json_object(sls_extract_others, "$.user-agent") from {ODPS_TABLE_NAME
 |MaxCompute错误|显示投递任务收到的MaxCompute错误，请参考MaxCompute相关文档或联系MaxCompute团队解决。日志服务会自动重试最近两天时间的失败任务。|
 |日志服务导入字段配置无法匹配MaxCompute表的列|重新配置MaxCompute表格的列与日志服务数据字段的映射配置。|
 
-当投递任务发生错误时，请查看错误信息，问题解决后可以通过云控制台中“日志投递任务管理”或SDK来重试失败任务。
+当投递任务发生错误时，请查看错误信息，问题解决后可以通过云控制台中日志投递任务管理或SDK来重试失败任务。
 
 ## MaxCompute中消费日志 {#section_q4k_3pp_yy .section}
 
 MaxCompute用户表中示例数据如下：
 
-```
+``` {#codeblock_ccd_wr5_0xf}
 | log_source | log_time | log_topic | time | ip | thread | log_extract_others | log_partition_time | status |
 +------------+------------+-----------+-----------+-----------+-----------+------------------+--------------------+-----------+
 | 10.10.*.* | 1453899013 | | 27/Jan/2016:20:50:13 +0800 | 10.10.*.* | 414579208 | {"url":"POST /PutData?Category=YunOsAccountOpLog&AccessKeyId=****************&Date=Fri%2C%2028%20Jun%202013%2006%3A53%3A30%20GMT&Topic=raw&Signature=******************************** HTTP/1.1","user-agent":"aliyun-sdk-java"} | 2016_01_27_20_50 | 200 |
@@ -211,7 +210,7 @@ MaxCompute用户表中示例数据如下：
 
 在MaxCompute项目空间下添加用户：
 
-```
+``` {#codeblock_d31_oud_gkw}
 ADD USER aliyun$shennong_open@aliyun.com;
 ```
 
@@ -219,19 +218,19 @@ shennong\_open@aliyun.com 是日志服务系统账号（请不要用自己的账
 
 MaxCompute项目空间Read/List权限授予：
 
-```
+``` {#codeblock_cb7_mez_qo9}
 GRANT Read, List ON PROJECT {ODPS_PROJECT_NAME} TO USER aliyun$shennong_open@aliyun.com;
 ```
 
 MaxCompute项目空间的表Describe/Alter/Update权限授予：
 
-```
+``` {#codeblock_ndx_sdq_ph4}
 GRANT Describe, Alter, Update ON TABLE {ODPS_TABLE_NAME} TO USER aliyun$shennong_open@aliyun.com;
 ```
 
 确认MaxCompute授权是否成功：
 
-```
+``` {#codeblock_7jj_nzo_v9m}
 SHOW GRANTS FOR aliyun$shennong_open@aliyun.com;
 
 A       projects/{ODPS_PROJECT_NAME}: List | Read
