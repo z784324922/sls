@@ -159,7 +159,7 @@ Apache Lucene是Apache软件基金会一个开放源代码的全文检索引擎�
 
         在传统的运维方式中，如果需要对日志文件进行实时监控，需要到服务器上对日志文件执行`tail -f`命令，如果实时监控的日志信息不够直观，可以加上`grep`或者`grep -v`进行关键词过滤。LOG在控制台提供了日志数据实时监控的交互功能LiveTail，针对线上日志进行实时监控分析，减轻运维压力。
 
-        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13138/156142996637745_zh-CN.png)
+        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13138/156266742837745_zh-CN.png)
 
         Livetail特点如下：
 
@@ -206,7 +206,7 @@ ES在docvalue之上提供一层聚合（Aggregation）语法，并且在6.x版�
     -   支持logstore，MySQL，OSS（CSV）等数据源。
     -   支持left，right，out，innerjoin。
     -   SQL查询外表，SQLJoin外表。
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13138/156142996637750_zh-CN.png)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13138/156266742937750_zh-CN.png)
 
     Join外表的样例：
 
@@ -267,7 +267,7 @@ ES在docvalue之上提供一层聚合（Aggregation）语法，并且在6.x版�
         -   延时\>10S请求中某个ID构成比例远远大于其他维度组合。
         -   并且该ID在对比集合（B）中的比例较低。
         -   A和B中差异明显。
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13138/156142996737754_zh-CN.png)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13138/156266742937754_zh-CN.png)
 
 
 ## 性能 {#section_xcv_hxy_zdb .section}
@@ -358,7 +358,7 @@ ES在docvalue之上提供一层聚合（Aggregation）语法，并且在6.x版�
     2.  ES比较适合服务场景为：写入GB-TB/Day、存储在TB级。主要受限于2个原因：
         -   单集群规模：比较理想为20台左右，据了解业界比较大为100节点一个集群，为了应对业务往往拆成多个集群。
         -   写入扩容：shard创建后便不可再修改，当吞吐率增加时，需要动态扩容节点，最多可使用的节点数便是shard的个数。
-        -   存储扩容：主shard达到磁盘的上线时，要么迁移到更大的一块磁盘上，要么只能分配更多的shard。一般做法是创建一个新的索引，指定更多shard，并且rebuild旧的数据。
+        -   存储扩容：主shard达到磁盘的上限时，要么迁移到更大的一块磁盘上，要么只能分配更多的shard。一般做法是创建一个新的索引，指定更多shard，并且rebuild旧的数据。
     **用户案例（规模带来的问题）**
 
     客户A是国内最大资讯类网站之一，有数千台机器与百号开发人员。运维团队原先负责一套ELK集群用来处理Nginx日志，但始终处于无法大规模使用状态：
