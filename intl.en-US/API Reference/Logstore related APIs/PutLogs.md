@@ -1,13 +1,17 @@
 # PutLogs {#reference_a5t_kxr_zdb .reference}
 
-Write log data to a specified Logstore in the following modes. Currently, only log groups in [Protocol Buffer \(PB\)](reseller.en-US/API Reference/Common resources/Data encoding method.md) format can be written. There are two modes in writing:
+You can call this operation to write log data to a specific Logstore. Currently, you can write only log groups in [Protocol Buffers \(Protobuf\)](reseller.en-US/API Reference/Common resources/Data encoding method.md) format.
 
--   Load balancing mode: Automatically write logs to all writable shards in a Logstore in the load balancing mode. This mode is highly available for writing \(SLA: 99.95%\), applicable to scenarios in which data writing and consumption are independent of shards , for example, scenarios that do not preserve the order.
--   KeyHash mode: A key is required when writing data. Log Service automatically writes data to the shard that meets the key range. For example, hash a producer \(for example, an instance\) to a fixed shard based on the name to make sure the data writing and consumption in this shard are strictly ordered \(when merging or splitting shards, a key can only appear in one shard at a time point\). For more information, see [Shard](../../../../reseller.en-US/Product Introduction/Basic concepts/Shard.md).
+**Note:** Log data is packaged in units of log groups.
+
+You can write log data in either of the following modes:
+
+-   LoadBalance mode: Log Service automatically writes log data to all writable shards in a Logstore in load balancing mode. This mode is highly available for writing data, with the SLA at 99.95%. It is applicable to scenarios in which data is written and consumed irrelevant to shards, for example, scenarios that do not preserve the order of logs.
+-   KeyHash mode: A key is specified for writing data. Log Service automatically writes log data to the shard whose MD5 value range contains the key value. For example, Log Service can hash a producer such as an instance to a fixed shard based on the name to ensure that data is written and consumed in strict order in this shard. When shards are merged or split, a key is included only in the MD5 value range of a shard at a time. For more information, see [Shard](../../../../reseller.en-US/Product Introduction/Basic concepts/Shard.md).
 
 ## Request syntax {#section_j5v_14t_12b .section}
 
-**Load balancing mode** 
+**LoadBalance mode** 
 
 ```
 POST /logstores/<logstorename>/shards/lb HTTP/1.1
@@ -21,12 +25,12 @@ x-log-apiversion: 0.6.0
 x-log-bodyrawsize: <BodyRawSize>
 x-log-compresstype: lz4
 x-log-signaturemethod: hmac-sha1
-<Compressed log data in PB format>
+<Compressed data of logs in Protobuf format>
 ```
 
 **KeyHash mode**
 
-Add x-log-hashkey in the header to determine which shard range the key belongs to. This parameter is optional. If left blank, Log Service automatically switches to the load balancing
+Log Service adds the x-log-hashkey field to the request header to specify the shard whose MD5 value range contains the key value. This field is optional. If you do not specify this field, Log Service automatically writes log data in LoadBalance mode.
 
 ```
 POST /logstores/<logstorename>/shards/lb HTTP/1.1
@@ -41,54 +45,54 @@ x-log-bodyrawsize: <BodyRawSize>
 x-log-compresstype: lz4
 x-log-hashkey : 14d2f850ad6ea48e46e4547edbbb27e0
 x-log-signaturemethod: hmac-sha1
-<Compressed log data in PB format>
+<Compressed data of logs in Protobuf format>
 ```
 
 ## Request parameters {#section_mx5_b4t_12b .section}
 
-|Parameter name|Type|Required|Description|
-|:-------------|:---|:-------|:----------|
+|Parameter|Type|Required|Description|
+|:--------|:---|:-------|:----------|
 |logstorename|String|Yes|The name of the Logstore where logs are to be written.|
 
- **Request header** 
+ **Request header fields** 
 
-In the KeyHash mode, add the x-log-hashkey request header \(see the preceding example\).
+In KeyHash mode, the x-log-hashkey field must be added to the request header. For more information, see the preceding request syntax.
 
-For more information about the public request headers of Log Service APIs, see [Public request header](reseller.en-US/API Reference/Public request header.md).
+For more information about the common request header fields of Log Service operations, see [Common request header fields](reseller.en-US/API Reference/Public request header.md).
 
- **Response element** 
+ **Response header fields** 
 
-The PutLogs API does not have a special response header. For more information about the public response headers of Log Service APIs, see [Public response header](reseller.en-US/API Reference/Public response header.md).
+This operation does not return special response header fields. For more information about the common response header fields of Log Service operations, see [Common response header fields](reseller.en-US/API Reference/Public response header.md).
 
- **Response element** 
+ **Response parameters** 
 
-No response element after the successful request.
+After a request is sent, no response is returned.
 
  **Detailed description** 
 
--   You can use the PutLogs API to write at most 4096 logs and the size of logs is at most 3 MB. The size of the value section in each log cannot be larger than 1 MB. The request fails and no logs are successfully written if any of the preceding conditions are not met.
--   Log Service checks the format of the logs written by using the PutLogs API \(for more information about the log formats, see [Core concepts](../../../../reseller.en-US/Product Introduction/Basic concepts/Overview.md)\). The request fails and no logs are successfully written if any log does not conform to the specification.
+-   You can use the PutLogs operation to write up to 4,096 logs, with the maximum size of 3 MB. The value of each log in a log group cannot exceed 1 MB in size. A request fails and no log data can be written if any of the preceding conditions are not met.
+-   Log Service checks the format of log data written by the PutLogs operation. For more information about log formats, see [Basic concepts](../../../../reseller.en-US/Product Introduction/Basic concepts/Overview.md). A request fails and no log data can be written if any log does not conform to the format specifications.
 
- **Error code** 
+ **Error codes** 
 
-Besides the [common error codes](reseller.en-US/API Reference/Common error codes.md) of Log Service APIs, the PutLogs API may return the following special error codes.
+In addition to the [common errors](reseller.en-US/API Reference/Common error codes.md) of Log Service operations, this operation also returns some specific errors, as listed in the following table.
 
 |HTTP status code|Error code|Error message|Description|
 |:---------------|:---------|:------------|:----------|
-|400|PostBodyInvalid|Protobuffer content cannot be parsed.|The Protobuffer content cannot be parsed.|
-|400|InvalidTimestamp|Invalid timestamps are in logs.|Invalid timestamps are in logs.|
-|400|InvalidEncoding|Non-UTF8 characters are in logs.|Non-UTF8 characters are in logs.|
-|400|InvalidKey|Invalid keys are in logs.|Invalid keys are in logs.|
-|400|PostBodyTooLarge|Logs must be less than or equal to 3 MB and 4096 entries.|The number of logs must be no more than 4096 and the size of logs must be no more than 3 MB.|
-|400|PostBodyUncompressError|Failed to decompress logs.|Failed to decompress logs.|
-|499|PostBodyInvalid|The post data time is out of range|The log time is out of the valid range \[-7\*24Hour, +15Min\].|
-|404|LogStoreNotExist|logstore \{Name\} does not exist.|The Logstore does not exist.|
+|400|PostBodyInvalid|Protobuffer content cannot be parsed.|The error message returned because the logs in Protobuf format cannot be parsed.|
+|400|InvalidTimestamp|Invalid timestamps are in logs.|The error message returned because the logs contain invalid timestamps.|
+|400|InvalidEncoding|Non-UTF8 characters are in logs.|The error message returned because the logs contain non-UTF-8-encoded characters.|
+|400|InvalidKey|Invalid keys are in logs.|The error message returned because the logs contain invalid keys.|
+|400|PostBodyTooLarge|Logs must be less than or equal to 3 MB and 4096 entries.|The error message returned because the number of logs exceeds 4,096 or the size of logs is greater than 3 MB.|
+|400|PostBodyUncompressError|Failed to decompress logs.|The error message returned because the logs fail to be decompressed.|
+|499|PostBodyInvalid|The post data time is out of range|The error message returned because the log timestamp is beyond the valid interval of \[-7 × 24 hours, +15 minutes\].|
+|404|LogStoreNotExist|logstore \{Name\} does not exist.|The error message returned because the specified Logstore does not exist.|
 
-**Note:** The \{name\} in the preceding error message is replaced by a specific Logstore name.
+**Note:** The \{name\} variable in the preceding error message is replaced with a specific Logstore name.
 
-## Example {#section_e5p_d4t_12b .section}
+## Examples {#section_e5p_d4t_12b .section}
 
-**Request example:** 
+**Sample request** 
 
 ```
 POST /logstores/sls-test-logstore
@@ -104,10 +108,10 @@ POST /logstores/sls-test-logstore
     "x-log-signaturemethod": "hmac-sha1",
     "Authorization":"LOG <yourAccessKeyId>:<yourSignature>"
 }
-<Binary data from logs in PB format compressed with LZ4>
+<Binary data obtained after logs in Protobuf format are compressed by using the LZ4 algorithm>
 ```
 
- **Response example** 
+ **Sample success response** 
 
 ```
 Header
