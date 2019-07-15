@@ -1,18 +1,18 @@
 # GetLogs {#reference_bqw_wv5_zdb .reference}
 
-Query logs in a Logstore of a specific project. You can also query the logs that meet the specific condition by specifying the relevant parameters.
+You can call this operation to query logs in a Logstore of a specific project. You can also specify relevant parameters to query logs that meet the specified conditions.
 
-When a log is written to the Logstore, the latency of querying this log by using Log Service query APIs \(GetHistograms and GetLogs\) varies according to the log type. Log Service classifies logs based on the log timestamp into the following two types:
+When a log is written to a Logstore, the latency of querying this log by using the GetHistograms and GetLogs operations of Log Service varies with the log type. Based on the log timestamp, Log Service classifies logs into the following types:
 
--   Real-time data: The time point in a log is the current time point on the server \(-180 seconds, 900 seconds\]. For example, if the log time is UTC 2014-09-25 12:03:00 and the time when the server receives the log is UTC 2014-09-25 12:05:00, the log is processed as the real-time data, which usually appears in normal scenarios.
--   Historical data: The time point in a log is the current time point on the server \(-7 x 86400 seconds, -180 seconds\]. For example, if the log time is UTC 2014-09-25 12:00:00 and the time when the server receives the log is UTC 2014-09-25 12:05:00, the log is processed as the historical data,  which usually appears in the supplementary data scenario.
+-   Real-time data: Logs of this type are generated within the interval of \(-180 seconds, 900 seconds\] based on the current server time. For example, if a log was generated at 2014-09-25 12:03:00 UTC and the server received the log at 2014-09-25 12:05:00 UTC, the server processes the log as real-time data. Such logs are usually generated in normal scenarios.
+-   Historical data: Logs of this type are generated within the interval of \[-7 × 86400 seconds, -180 seconds\) based on the current server time. For example, if a log was generated at 2014-09-25 12:00:00 UTC and the server received the log at 2014-09-25 12:05:00 UTC, the server processes the log as historical data. Such logs are usually generated in data supplement scenarios.
 
-The maximum latency between real-time data writing and query is 3 seconds. \(data can be queried within one second in 99.9% cases\).
+After real-time data is written, it can be queried with a maximum latency of 3 seconds. Data can be queried within 1 second in 99.9% of cases.
 
 ## Request syntax {#section_j5v_14t_12b .section}
 
 ```
-GET /logstores/<logstorename>?type=log&topic=<logtopic>&from=<starttime>&to=<endtime>&query=<querystring>&line=<linenum>&offset=<startindex>&reverse=<ture|false> HTTP/1.1
+GET /logstores/<logstorename>? type=log&topic=<logtopic>&from=<starttime>&to=<endtime>&query=<querystring>&line=<linenum>&offset=<startindex>&reverse=<true|false> HTTP/1.1
 Authorization: <AuthorizationString>
 Date: <GMT Date>
 Host: <Project Endpoint>
@@ -23,72 +23,72 @@ x-log-signaturemethod: hmac-sha1
 
 ## Request parameters {#section_mx5_b4t_12b .section}
 
-|Parameter name|Type|Required|Description|
-|:-------------|:---|:-------|:----------|
-|logstorename|string|Yes|The name of the Logstore where the log to be queried belongs. |
-|type|string|Yes|The type of Logstore data to be queried. This parameter must be log in GetLogs API.|
-|from|int|Yes| The query start time \(the number of seconds since 1970-1-1 00:00:00 UTC\). |
-|to|int|Yes|The query end time \(the number of seconds since 1970-1-1 00:00:00 UTC\).|
-|topic|string|No |The topic of the log to be queried.|
-|query|string|No |The query expression. For more information about the query expression syntax, see  [Query syntax](../../../../../reseller.en-US/User Guide/Index and query/Query/Query syntax.md#).|
-|line|int|No |The maximum number of log lines returned by the request. The maximum number of logs returned from the request.|
-|The value range is 0–100 and the default value is 100.|int|No | The returned log start point of the request. The value can be 0 or a positive integer. The default value is 0. |
-|reverse|boolean|No |Whether or not logs are returned in reverse order according to the log timestamp.  true indicates reverse order and false indicates sequent order. The default value is false .|
+|Parameter|Type|Required|Description|
+|:--------|:---|:-------|:----------|
+|logstorename|String|Yes|The name of the Logstore where logs are to be queried.|
+|type|String|Yes|The type of data to be queried in the Logstore. Set this parameter to log for the GetLogs operation.|
+|from|Integer|Yes|The start time of queried data, in seconds. Set this parameter to the number of seconds that have elapsed since 1970-1-1 00:00:00 UTC.|
+|to|Integer|Yes|The end time of queried data, in seconds. Set this parameter to the number of seconds that have elapsed since 1970-1-1 00:00:00 UTC.|
+|topic|String|No|The topic of logs to be queried.|
+|query|String|No|The query statement. For more information about the query syntax, see [Query syntax](../../../../reseller.en-US/User Guide/Index and query/Query/Query syntax.md).|
+|line|Integer|No|The maximum number of logs to return for the request. Valid values: \[0, 100\]. Default value: 100.|
+|offset|Integer|No|The start point of the specified time interval for the request. Valid values: 0 and positive integers. Default value: 0.|
+|reverse|Boolean|No|Specifies whether to return logs in reverse order based on the log timestamp, in minutes. A value of true indicates that logs are returned in reverse order. A value of false indicates that logs are returned in regular order. Default value: false.|
 
-**Request header**
+**Request header fields**
 
-The GetLogs API does not have a special request header. For more information about the public request headers of Log Service APIs, see [Public request header](reseller.en-US/API Reference/Public request header.md).
+The GetLogs operation does not require special request header fields. For more information about the common request header fields of Log Service operations, see [Common request header fields](reseller.en-US/API Reference/Public request header.md).
 
-**Response header**
+**Response header fields**
 
-For more information about the public response headers of Log Service APIs, see [Public response header](reseller.en-US/API Reference/Public response header.md).
+For more information about the common response header fields of Log Service operations, see [Common response header fields](reseller.en-US/API Reference/Public response header.md).
 
-The response header has special elements to indicate whether or not the returned results of the request is complete.  See the following specific response element formats.
+The response header contains specific fields that indicate whether the query results returned for a request are complete. The following table describes these response header fields.
 
-|Parameter name|Type|Description|
-|:-------------|:---|:----------|
-|x-log-progress|string|The status of the query results.  The status of the query results. The two optional values Incomplete and Complete indicate whether or not the results are complete.|
-|x-log-count|int|The total number of logs in the current query results.|
+|Field|Type|Description|
+|:----|:---|:----------|
+|x-log-progress|String|The status of the query results. The value can be Incomplete or Complete, which indicates whether the results are complete.|
+|x-log-count|Integer|The total number of logs in the current query results.|
 
-**Response element**
+**Response parameters**
 
-After the successful request, the response body contains the logs that meet the query conditions. The response results of this API may be incomplete when the log volume to be queried is large \(T-level\). The response body of GetLogs API is an array, and each element in this array is a log. The structure of each element in this array is as follows.
+After a request is sent for the GetLogs operation, the response body contains logs that meet the specified query conditions. If a large number of logs \(in units of TB\) need to be queried, the response of the GetLogs operation may be incomplete. The response body of the GetLogs operation is an array, and each element in this array is a log. The following table describes the structure of each element in the array.
 
-|Parameter name|Type|Description|
-|:-------------|:---|:----------|
-|\_\_time\_\_|int|The log timestamp \(the number of seconds since 1970-1-1 00:00:00 UTC\).|
-|\_\_source\_\_|string|The log source, which is specified when logs are written.|
-|\[content\]|key-value pair|The original content of the log, which is organized in key-value pairs.|
+|Parameter|Type|Description|
+|:--------|:---|:----------|
+|\_\_time\_\_|Integer|The timestamp of the log, in seconds. The value indicates the number of seconds that have elapsed since 1970-1-1 00:00:00 UTC.|
+|\_\_source\_\_|String|The source of the log, which is specified when the log is written.|
+|\[content\]|Key-value pair|The original content of the log, which is organized in key-value pairs.|
 
 **Detailed description**
 
--   The time interval defined by the request parameters from and to in this API follows the left-closed and right-opened principle, that is, the time interval includes the start time, but not the end time. If the from and to values are the same, the time interval is invalid and the function returns an error directly.
--   Each call to this API must return results within a specified time, and each query can only scan a specified number of logs. The results returned from this request are incomplete if the log volume to be processed for this request is large \(whether or not the results are complete is indicated by using the x-log-progress in the response header\).  At the same time, Log Service caches the query results within 15 minutes. If some query request results are the same as those in the cache, Log Service continues to scan the logs that are not in the cache for this request. To reduce the workload of merging multiple query results, Log Service merges the query results that are the same as those in the cache and the results newly scanned in this query, and then returns them to you. Therefore, Log Service allows you to call the API multiple times with the same parameter to obtain the final complete results. Log Service API cannot predict how many times the API must be called before obtaining the complete results  The API cannot predict how many times it needs to call the interface to get the full result. because the log volume to be queried changes massively. Therefore, you must check the x-log-progress status in the returned results of each request to determine whether or not to continue the query. You must note that each call to this API consumes the same number of query CUs again.
+-   The time interval defined by the request parameters from and to for this operation is left-closed and right-open. That is, the time interval includes the start time but excludes the end time. If the values of the from and to parameters are the same, the time interval is invalid and the server directly returns an error.
+-   The server must return a response to each request for this operation within a specified time. For each query, the server can scan only a specified number of logs. If the server needs to process a large number of logs for a request, it may return incomplete query results. Whether the results are complete is indicated by the x-log-progress field in the response header. At the same time, the server caches the query results within 15 minutes. If some query results of a request hit the data in the cache, the server continues to scan the logs that do not hit any data in the cache for this request. To reduce your workload of merging multiple query results, the server merges the query results that hit the data in the cache with the results newly scanned in the current query, and then returns the merged results to you. In this manner, Log Service allows you to call the GetLogs operation multiple times with the same parameters to obtain the final complete results. Log Service cannot predict how many times it must call the GetLogs operation before obtaining the complete results because the volume of logs to be queried changes dramatically. Therefore, you must check the value of the x-log-progress field in the returned results of each request to determine whether to continue the query. You must note that each call of this operation consumes the same number of compute units \(CUs\).
 
-**Error code**
+**Error codes**
 
-Besides the [common error codes](reseller.en-US/API Reference/Common error codes.md) of Log Service APIs, the GetLogs API may return the following special error codes.
+In addition to the [common errors](reseller.en-US/API Reference/Common error codes.md) of Log Service operations, this operation also returns some specific errors, as listed in the following table.
 
 |HTTP status code|Error code|Error message|Description|
 |:---------------|:---------|:------------|:----------|
-|404|LogStoreNotExist|logstore \{Name\} does not exist.|The Logstore does not exist.|
-|400|InvalidTimeRange|request time range is invalid|The time interval of the request is invalid.|
-|400|InvalidQueryString|query string is invalid|The query string of the request is invalid.|
-|400|InvalidOffset|offset is invalid|The offset parameter of the request is invalid.|
-|400|InvalidLine|line is invalid|The line parameter of the request is invalid.|
-|400|InvalidReverse|Reverse value is invalid|The Reverse parameter value is invalid.|
-|400|IndexConfigNotExist|logstore without index config|The Logstore does not enable the index.|
+|404|LogStoreNotExist|logstore \{Name\} does not exist.|The error message returned because the specified Logstore does not exist.|
+|400|InvalidTimeRange|request time range is invalid|The error message returned because the specified time interval of the request is invalid.|
+|400|InvalidQueryString|query string is invalid|The error message returned because the specified query string of the request is invalid.|
+|400|InvalidOffset|offset is invalid|The error message returned because the specified offset parameter of the request is invalid.|
+|400|InvalidLine|line is invalid|The error message returned because the specified line parameter of the request is invalid.|
+|400|InvalidReverse|Reverse value is invalid|The error message returned because the specified reverse parameter is invalid.|
+|400|IndexConfigNotExist|logstore without index config|The error message returned because the index feature has not been enabled for the Logstore.|
 
-**Note:** The \{name\} in the preceding error message is replaced by a specific Logstore name.
+**Note:** The \{name\} variable in the preceding error message is replaced with a specific Logstore name.
 
-## Example {#section_e5p_d4t_12b .section}
+## Examples {#section_e5p_d4t_12b .section}
 
-Take a project named big-game in the region Hangzhou as an example. Query the logs whose topic is groupA in the app\_log Logstore of the big-game project. The time interval for this query is 2014-09-01 00:00:00–2014-09-01 22:00:00. The keyword for this query is error. The query starts from the beginning of the time interval, and a maximum of 20 logs are returned.
+Take a project named big-game in China \(Hangzhou\) as an example. Query the logs whose topic is groupA in the app\_log Logstore of the big-game project. The time interval for this query is 2014-09-01 00:00:00 to 2014-09-01 22:00:00, and the query keyword is error. The query starts from the start time of the time interval, and a maximum of 20 logs are returned.
 
-**Request example**
+**Sample request**
 
 ```
-GET /logstores/app_log？ type=log&topic=groupA&from=1409529600&to=1409608800&query=error&line=20&offset=0 HTTP/1.1
+GET /logstores/app_log? type=log&topic=groupA&from=1409529600&to=1409608800&query=error&line=20&offset=0 HTTP/1.1
 Authorization: <AuthorizationString>
 Date: Wed, 3 Sept. 2014 08:33:46 GMT
 Host: big-game.cn-hangzhou.log.aliyuncs.com
@@ -97,7 +97,7 @@ x-log-apiversion: 0.4.0
 x-log-signaturemethod: hmac-sha1
 ```
 
-**Response example**
+**Sample success response**
 
 ```
 HTTP/1.1 200 OK
@@ -106,8 +106,8 @@ Content-Type: application/json
 Content-Length: 269
 Date: Wed, 3 Sept. 2014 08:33:47 GMT
 x-log-requestid: efag01234-12341-15432f
-x-log-progress : Complete
-x-log-count : 10000
+x-log-progress: Complete
+x-log-count: 10000
 x-log-processed-rows: 10000
 x-log-elapsed-millisecond:5
 {
@@ -130,5 +130,5 @@ x-log-elapsed-millisecond:5
 }
 ```
 
-In this response example, x-log-progress In this response example, the x-log-progress status is Complete , which indicates the log query is completed and the returned results are complete. For this request, two logs meet the query condition and are displayed as the values of logs. If the x-log-progress status is Incomplete in the response result, you must repeat the request to obtain the complete results.
+In this sample response, the value of the x-log-progress field is Complete, which indicates that the log query is completed and the returned results are complete. For this request, two logs meet the specified query conditions and are displayed as the value of the logs parameter. If the value of the x-log-progress field is Incomplete in the response, you must repeat the request to obtain the complete results.
 
