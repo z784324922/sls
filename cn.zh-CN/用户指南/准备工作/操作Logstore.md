@@ -14,18 +14,19 @@
 
 -   任何一个 Logstore 必须在某一个 Project 下创建。
 -   每个日志服务项目最多可创建200个日志库。
--   Logstore 名称在其所属Project内必须唯一。
--   数据保存时间创建后还可以进行修改。您可以在 Logstore 页面，在**操作**列下单击**操作** \> **修改** ，修改 **数据保存时间** 并单击**修改** ，然后关闭对话框即可。
+-   Logstore名称在其所属Project内必须唯一。
+-   数据保存时间创建后还可以进行修改。您可以在Logstore页面，单击对应日志库名后的![修改日志库](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13024/156401968552318_zh-CN.png)，然后选择**修改**，在日志库信息页面单击右上角的**修改**按钮，修改**数据保存时间**并单击**保存**即可。
 
-1.  在Project列表页面，单击项目的名称，然后单击**创建**创建日志库。
+1.  登录[日志服务控制台](https://sls.console.aliyun.com)。
+2.  在Project列表页面，单击项目的名称，然后单击搜索框后的加号创建日志库。
 
-    或者在创建完项目后，根据系统提示创建日志库，单击 **创建**。
+    或者在创建完项目后，根据系统提示创建日志库。
 
-2.  填写日志库的配置信息并单击 **确定**。
+3.  填写日志库的配置信息并单击 **确认**。
 
     |配置项|说明|
     |---|--|
-    |Logstore名称|日志库名称须由小写字母、数字、连字符（-）和下划线（\_）组成，且以小写字母或者数字开头和结尾，长度为3-63字节。Logstore 名称在其所属项目内必须唯一。 **说明：** 日志库名称创建后不能修改。
+    |Logstore名称|日志库名称须由小写字母、数字、连字符（-）和下划线（\_）组成，且以小写字母或者数字开头和结尾，长度为3-63字节。Logstore名称在其所属项目内必须唯一。 **说明：** 日志库名称创建后不能修改。
 
  |
     |WebTracking|确认是否开启WebTracking功能。WebTracking功能支持从HTML、H5、iOS或Android平台收集日志数据到日志服务。默认关闭。|
@@ -36,7 +37,7 @@
 
  |
     |Shard数目|日志库的分区数量，每个Logstore可以创建1~10个分区。每个Project中最多可以创建200个分区。|
-    |自动分裂Shard|确认是否开启**自动分裂Shard**功能，默认为开启状态。 当数据量超过已有分区（Shard）服务能力后，开启自动分裂功能可自动根据数据量增加分区数量。关于自动分裂Shard的详细说明，请参考[操作Shard](intl.zh-CN/用户指南/准备工作/操作Shard.md)。
+    |自动分裂Shard|确认是否开启**自动分裂Shard**功能，默认为开启状态。 当数据量超过已有分区（Shard）服务能力后，开启自动分裂功能可自动根据数据量增加分区数量。关于自动分裂Shard的详细说明，请参考[操作Shard](cn.zh-CN/用户指南/准备工作/操作Shard.md)。
 
  |
     |最大分裂数|最大Shard自动分裂后的最大数目，最大可支持自动分裂至64个分区。 如果您开启了**自动分裂Shard**功能，则需要设置**最大分裂数**。
@@ -46,36 +47,38 @@
     -   `__receive_time__`：日志到达服务端的时间，格式为Unix时间戳。
  |
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13024/15607364622585_zh-CN.png)
+    ![新建日志库](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13024/15640196852585_zh-CN.png)
 
 
 ## 修改Logstore配置 {#section_evc_rjx_ndb .section}
 
 创建日志库以后，您还可以在需要的时候修改日志库的配置。
 
-1.  登录日志服务控制台。
-2.  选择所需的项目，单击项目名称。
-3.  在 Logstore列表 页面，选择所需的日志库并单击操作列下的 **修改**。
-4.  在弹出的对话框中修改日志库的配置并关闭对话框。
+1.  选择所需的项目，单击项目名称。
+2.  您可以在Logstore页面，单击对应日志库名后的![修改日志库](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13024/156401968552318_zh-CN.png)，然后选择**修改**，在日志库信息页面单击右上角的**修改**按钮，修改**数据保存时间**并单击**保存**即可。
+3.  在弹出的对话框中修改日志库的配置并关闭对话框。
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13024/15607364622586_zh-CN.png)
+    ![修改日志库](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13024/15640196852586_zh-CN.png)
 
 
 ## 删除Logstore {#section_ezq_vjx_ndb .section}
 
-在某些情况下（如希望废弃某个 Logstore），您可能需要删除指定的 Logstore。日志服务允许您在控制台上删除 Logstore。
+在某些情况下（如希望废弃某个Logstore），您可能需要删除指定的Logstore。日志服务允许您在控制台上删除Logstore。
 
 **说明：** 
 
--   一旦 Logstore 删除，其存储的日志数据将会被永久丢失，不可恢复，请谨慎操作。
--   删除指定 Logstore 前必须删除其对应的所有 Logtail 配置。
--   如果您使用主账号删除Logstore 提示权限不足，请提交工单进行删除。
+-   一旦Logstore删除，其存储的日志数据将会被永久丢失，不可恢复，请谨慎操作。
+-   删除指定Logstore前必须删除其对应的所有Logtail配置。
+-   如果您使用主账号删除Logstore提示权限不足，请提交工单进行删除。
+-   如果该Logstore上还启用了日志投递的消费模式，则不保证删除前Logstore里的所有数据都会成功投递到MaxCompute 中。如果您需要保证被删除的Logstore内所有数据都能投递到MaxCompute，请按照如下流程操作：
+    1.  删除前先停止向该Logstore写入新日志。
+    2.  确认Logstore里的所有日志数据都成功导入到MaxCompute。
+    3.  删除Logstore。
 
-1.  登录日志服务控制台。
-2.  选择所需的项目，单击项目名称。
-3.  在 Logstore列表 页面，选择要删除的日志库并单击右侧的 **删除**。
-4.  在弹出的确认对话框中，单击 **确定**。
+1.  选择所需的项目，单击项目名称。
+2.  您可以在Logstore页面，单击对应日志库名后的![修改日志库](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13024/156401968552318_zh-CN.png)，然后选择**删除**。
+3.  在弹出的确认对话框中，单击 **确认**。
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13024/15607364622587_zh-CN.png)
+    ![删除日志库](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13024/15640196862587_zh-CN.png)
 
 
