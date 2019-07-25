@@ -11,7 +11,7 @@
 
 为了贴合分析场景，推荐您对Apache日志采用以下自定义配置。
 
-```
+``` {#codeblock_q6r_lnn_m96}
 LogFormat "%h %l %u %t \"%r\" %>s %b \"%{Referer}i\" \"%{User-Agent}i\" %D %f %k %p %q %R %T %I %O" customized
 ```
 
@@ -40,22 +40,33 @@ LogFormat "%h %l %u %t \"%r\" %>s %b \"%{Referer}i\" \"%{User-Agent}i\" %D %f %k
 |%I|bytes\_received|服务器接收的字节数，需要启用mod\_logio模块。|
 |%O|bytes\_sent|服务器发送的字节数，需要启用mod\_logio模块。|
 
-1.  登录[日志服务控制台](https://sls.console.aliyun.com)，单击Project名称。 
-2.  在Logstore列表页面单击对应Logstore的数据接入向导图标。 
-3.  选择数据类型**APACHE访问日志**。 
-4.  配置数据源。 
-    1.  填写**配置名称**。 
-    2.  填写**日志路径**。 
-    3.  选择**日志格式**。 请按照您的Apache日志配置文件中声明的格式选择**日志格式**。为了便于日志数据的查询分析，日志服务推荐您使用自定义的Apache日志格式。
-    4.  填写**Apache配置字段**。 若您的**日志格式**为**common**或**combined**，此处会自动填写对应的配置。若您选择了**自定义**日志格式，请在此处填写您的自定义配置。建议填写上文中日志服务的推荐配置。
+1.  登录[日志服务控制台](https://sls.console.aliyun.com)，单击Project名称。
+2.  在对应日志库下，单击**数据接入**后的加号。
+3.  选择数据类型**APACHE-文本日志**。
+4.  选择日志库 可以选择已有的Logstore，也可以新建Project和Logstore。
+5.  创建机器组。 
+    1.  在ECS上安装Logtail客户端
 
-        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/17637/15547918699380_zh-CN.png)
+        在**ECS机器**页面勾选实例后单击**安装**。Windows系统请参考[安装Logtail（Windows系统）](../cn.zh-CN/用户指南/Logtail采集/安装/安装Logtail（Windows系统）.md)。
+
+    2.  创建机器组
+
+        如果您之前没有创建过机器组，请在安装完Logtail后单击**确认安装完毕**创建机器组。
+
+6.  应用机器组。
+7.  Logtail配置。 
+    1.  填写**配置名称**。
+    2.  填写**日志路径**。
+    3.  选择**日志格式**。 请按照您的Apache日志配置文件中声明的格式选择**日志格式**。为了便于日志数据的查询分析，日志服务推荐您使用自定义的Apache日志格式。
+    4.  填写**APACHE配置字段**。 若您的**日志格式**为**common**或**combined**，此处会自动填写对应的配置。若您选择了**自定义**日志格式，请在此处填写您的自定义配置。建议填写上文中日志服务的推荐配置。
+
+        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/17637/15640194899380_zh-CN.png)
 
     5.  确认**APACHE键名称**。 日志服务会自动解析您的APACHE键名称，您可以在页面中确认。
 
         **说明：** %r会被提取为`request_method`、`request_uri`和`request_protocol`三个键。
 
-        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/17637/15547918699381_zh-CN.png)
+        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/17637/15640194909381_zh-CN.png)
 
     6.  配置高级选项，并单击下一步。 
 
@@ -71,64 +82,64 @@ LogFormat "%h %l %u %t \"%r\" %>s %b \"%{Referer}i\" \"%{User-Agent}i\" %D %f %k
         -   gbk：指定使用GBK编码。
  |
         |最大监控目录深度|指定从日志源采集日志时，监控目录的最大深度，即最多监控几层日志。最大目录监控深度范围0-1000，0代表只监控本层目录。|
-        |超时属性|如果一个日志文件在指定时间内没有任何更新，则认为该文件已超时。您可以对**超时属性**指定以下配置。        -   永不超时：指定持续监控所有日志文件，永不超时。
+        |超时属性|如果一个日志文件在指定时间内没有任何更新，则认为该文件已超时。您可以对**超时属性**指定以下配置。         -   永不超时：指定持续监控所有日志文件，永不超时。
         -   30分钟超时：如日志文件在30分钟内没有更新，则认为已超时，并不再监控该文件。
-|
-        |过滤器配置|日志只有**完全符合**过滤器中的条件才会被收集。例如：
+ |
+        |过滤器配置|日志只有**完全符合**过滤器中的条件才会被收集。 例如：
 
         -   **满足条件即收集**：配置`Key:level Regex:WARNING|ERROR`，表示只收集level为WARNING或ERROR类型的日志。
         -   **[过滤不符合条件的数据](http://www.regular-expressions.info/lookaround.html)**：
-            -   配置`Key:level Regex:^(?!.*(INFO|DEBUG)).*`，表示代表不收集level为INFO或DEBUG类型的日志。
+            -   配置`Key:level Regex:^(?!.*(INFO|DEBUG)).*`，表示不收集level为INFO或DEBUG类型的日志。
             -   配置`Key:url Regex:.*^(?!.*(healthcheck)).*`，表示不采集url中带有healthcheck的日志，例如key为url，value为`/inner/healthcheck/jiankong.html`的日志将不会被采集。
 更多示例可参考[regex-exclude-word](https://stackoverflow.com/questions/2404010/match-everything-except-for-specified-strings)、[regex-exclude-pattern](https://stackoverflow.com/questions/2078915/a-regular-expression-to-exclude-a-word-string)。
 
-|
+ |
 
-5.  应用配置到机器组。 勾选需要应用此配置的机器组，单击**应用到机器组**。
+    7.  查询分析配置 默认已经设置好索引，如果您需要重新设置索引，请在查询分析页面选择**查询分析属性** \> **设置**进行修改。
 
-    如您尚未创建机器组，请单击**+创建机器组**创建一个机器组。
+        确保日志机器组心跳正常的情况下，可以预览采集上来的数据。
 
-6.  配置**查询分析&可视化**。 确保日志机器组心跳正常的情况下，单击右侧**浏览**按钮获取采集上来的数据。
+        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/17637/15640194909382_zh-CN.png)
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/17637/15547918699382_zh-CN.png)
-
-    如您需要对采集到日志服务的日志数据进行实时查询与分析，请在当前页面中确认您的索引属性配置。单击**展开**可查看字段索引属性。
-
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/17637/15547918699383_zh-CN.png)
+8.  **可视化分析**。 
 
     系统已为您预设了名为LogstoreName-apache-dashboard的仪表盘。配置完成后，您可以在仪表盘页面中查看来源IP分布、请求状态占比等实时动态。
 
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/17637/15640194909384_zh-CN.png)
+
     -   **访问地域分析（ip\_distribution）**：统计访问IP来源情况，统计语句如下：
 
-        ```
+        ``` {#codeblock_gfn_jj2_0q8}
         * | select ip_to_province(remote_addr) as address,
                     count(1) as c
                     group by address limit 100
         ```
 
+        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/17637/15640194909389_zh-CN.png)
+
     -   **请求状态占比（http\_status\_percentage）**：统计最近一天各种http状态码的占比，统计语句如下：
 
-        ```
+        ``` {#codeblock_nox_hs7_l6o}
         status>0 | select status,
                         count(1) as pv 
                         group by status
         ```
 
-        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/17637/15547918699388_zh-CN.png)
+        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/17637/15640194909388_zh-CN.png)
 
     -   **请求方法占比（http\_method\_percentage）**：统计最近一天各种请求方法的占比，统计语句如下：
 
-        ```
+        ``` {#codeblock_yiz_gm5_vbm}
         * | select request_method,
                     count(1) as pv 
                     group by request_method
         ```
 
-        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/17637/15547918699387_zh-CN.png)
+        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/17637/15640194919387_zh-CN.png)
 
     -   **PV/UV统计（pv\_uv）**：统计最近的PV数和UV数，统计语句如下：
 
-        ```
+        ``` {#codeblock_msr_87e_s8n}
         * | select date_format(date_trunc('hour', __time__), '%m-%d %H:%i')  as time,
                     count(1) as pv,
                     approx_distinct(remote_addr) as uv
@@ -137,11 +148,11 @@ LogFormat "%h %l %u %t \"%r\" %>s %b \"%{Referer}i\" \"%{User-Agent}i\" %D %f %k
                     limit 1000
         ```
 
-        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/17637/15547918699385_zh-CN.png)
+        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/17637/15640194919385_zh-CN.png)
 
     -   **出入流量统计（net\_in\_net\_out）**：统计流量的流入和流出情况，统计语句如下：
 
-        ```
+        ``` {#codeblock_340_zpy_kpq}
         * | select date_format(date_trunc('hour', __time__), '%m-%d %H:%i') as time, 
                     sum(bytes_sent) as net_out, 
                     sum(bytes_received) as net_in 
@@ -150,11 +161,11 @@ LogFormat "%h %l %u %t \"%r\" %>s %b \"%{Referer}i\" \"%{User-Agent}i\" %D %f %k
                     limit 10000mit 10
         ```
 
-        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/17637/15547918699391_zh-CN.png)
+        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/17637/15640194919391_zh-CN.png)
 
     -   **请求UA占比（http\_user\_agent\_percentage）**：统计最近一天各种浏览器的占比，统计语句如下：
 
-        ```
+        ``` {#codeblock_ff0_qjl_myu}
         * | select  case when http_user_agent like '%Chrome%' then 'Chrome' 
                     when http_user_agent like '%Firefox%' then 'Firefox' 
                     when http_user_agent like '%Safari%' then 'Safari'
@@ -164,38 +175,38 @@ LogFormat "%h %l %u %t \"%r\" %>s %b \"%{Referer}i\" \"%{User-Agent}i\" %D %f %k
                     limit 10
         ```
 
-        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/17637/15547918699390_zh-CN.png)
+        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/17637/15640194919390_zh-CN.png)
 
     -   **前十访问来源（top\_10\_referer）**：统计最近一天访问PV最高的前十个访问来源页面，统计语句如下：
 
-        ```
+        ``` {#codeblock_v2n_01o_ag8}
         * | select  http_referer, 
                     count(1) as pv 
                     group by http_referer 
                     order by pv desc limit 10
         ```
 
-        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/17637/155479187010098_zh-CN.png)
+        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/17637/156401949210098_zh-CN.png)
 
     -   **访问前十地址（top\_page）**：统计最近一天访问pv前十的地址，统计语句如下：
 
-        ```
+        ``` {#codeblock_cw7_plt_eua}
         * | select split_part(request_uri,'?',1) as path, 
                     count(1) as pv  
                     group by path
                     order by pv desc limit 10
         ```
 
-        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/17637/15547918709386_zh-CN.png)
+        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/17637/15640194929386_zh-CN.png)
 
     -   **请求时间前十地址（top\_10\_latency\_request\_uri）**：统计最近一天请求响应延时最长的前十个地址，统计语句如下：
 
-        ```
+        ``` {#codeblock_my4_e72_f7w}
         * | select request_uri as top_latency_request_uri,
                     request_time_sec 
                     order by request_time_sec desc limit 10 10
         ```
 
-        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/17637/155479187010099_zh-CN.png)
+        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/17637/156401949210099_zh-CN.png)
 
 
