@@ -1,12 +1,10 @@
 # Beats和Logstash输入源 {#concept_tk3_gtz_c2b .concept}
 
-## 简介 {#section_hbv_ltz_c2b .section}
-
-Logtail除支持syslog协议外，还支持Lumberjack协议作为数据输入，可支持将Beats系列软件（MetricBeat、PacketBeat、Winlogbeat、Auditbeat、Filebeat、Heartbeat等）、Logstash采集的数据转发到日志服务。
+Logtail支持Lumberjack协议作为数据输入，可将Beats系列软件（MetricBeat、PacketBeat、Winlogbeat、Auditbeat、Filebeat、Heartbeat等）、Logstash采集的数据转发到日志服务。
 
 ## 实现原理 {#section_ryt_ntz_c2b .section}
 
-![](images/6263_zh-CN.png "实现原理")
+![实现原理](images/6263_zh-CN.png "实现原理")
 
 基于Logstash、Beats系列软件对Lumberjack协议的支持，日志服务可以通过Logtail，同时对Logstash、Beats系列软件进行Logtail Lumberjack插件监听配置，实现数据采集。
 
@@ -40,13 +38,25 @@ Logtail除支持syslog协议外，还支持Lumberjack协议作为数据输入，
 
 1.  选择输入源。
 
-    单击**数据接入向导**图标或**创建配置**，进入数据接入向导。并在选择数据库类型步骤中选择**Logtail自定义插件**。
+    单击**接入数据**按钮，并在**接入数据**页面中选择**自定义数据插件**。
 
-2.  填写输入配置。
+2.  选择日志空间。
 
-    进入**数据源设置**页面，填写插件配置。
+    可以选择已有的Logstore，也可以新建Project或Logstore。
 
-     `inputs`部分为采集配置，是必选项；`processors`部分为处理配置，是可选项，由于Beats和Logstash输出的都是JSON格式数据，因此我们使用`processor_anchor`将json展开。
+3.  创建机器组。
+
+    在创建机器组之前，您需要首先确认已经安装了Logtail。 安装完Logtail后单击**确认安装完毕**创建机器组。如果您之前已经创建好机器组 ，请直接单击**使用现有机器组**。
+
+4.  机器组配置。
+
+    选择一个机器组，将该机器组从**源机器组**移动到**应用机器组**。
+
+5.  数据源设置。
+
+    请填写**配置名称**和**插件配置**。
+
+    `inputs`部分为采集配置，是必选项；`processors`部分为处理配置，是可选项，由于Beats和Logstash输出的都是JSON格式数据，因此我们使用`processor_anchor`将json展开。
 
     关于处理配置部分请参考[处理采集数据](cn.zh-CN/用户指南/Logtail采集/自定义插件/处理采集数据.md)配置一种或多种采集方式。
 
@@ -80,13 +90,11 @@ Logtail除支持syslog协议外，还支持Lumberjack协议作为数据输入，
     					
     ```
 
-3.  应用到机器组。
+6.  查询分析配置。
 
-    进入应用到机器组页面。请在此处勾选支持此插件的Logtail机器组。
+    默认已经设置好索引，您也可以手动进行修改。
 
-    如您之前没有创建过机器组，单击**+创建机器组**以创建一个新的机器组。
-
-4.  配置PacketBeat。
+7.  配置PacketBeat。
 
     配置PacketBeat输出方式为`Logstash`，具体配置方式请参见[PacketBeat-Logstash-Output](https://www.elastic.co/guide/en/beats/packetbeat/current/logstash-output.html)。
 
