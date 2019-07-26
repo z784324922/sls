@@ -16,7 +16,7 @@ HTTP输入可根据您的配置定期请求指定URL，将请求返回body值作
 
 ## 实现原理 {#section_dx3_mmx_pdb .section}
 
-![](images/2931_zh-CN.png "实现原理")
+![实现原理](images/2931_zh-CN.png "实现原理")
 
 如上图所示，Logtail内部会根据用户配置的HTTP请求url、method、header、body等信息定期对指定URL发起请求，将请求的返回的状态码、body内容以及响应时间做为数据上传到日志服务。
 
@@ -67,12 +67,12 @@ HTTP输入可根据您的配置定期请求指定URL，将请求返回body值作
 
 |字段名|说明|示例|
 |:--|:-|:-|
-| `_address_` |请求地址。|“[http://127.0.0.1/ngx\_status](http://127.0.0.1/ngx_status)“|
-| `_method_` |请求方法。|“GET”|
-| `_response_time_ms_` |响应延迟，单位为ms。|“1.320”|
-| `_http_response_code_` |状态码。|“200”|
-| `_result_` |是否成功，取值范围:`success`、`invalid_body`、`match_regex_invalid`、`mismatch`、`timeout`。|“success”|
-| `_response_match_` |返回body是否匹配`ResponseStringMatch`字段，若不存在`ResponseStringMatch`字段则为空，取值范围:`yes`、`no`。|“yes”|
+|`_address_`|请求地址。|“[http://127.0.0.1/ngx\_status](http://127.0.0.1/ngx_status)“|
+|`_method_`|请求方法。|“GET”|
+|`_response_time_ms_`|响应延迟，单位为ms。|“1.320”|
+|`_http_response_code_`|状态码。|“200”|
+|`_result_`|是否成功，取值范围:`success`、`invalid_body`、`match_regex_invalid`、`mismatch`、`timeout`。|“success”|
+|`_response_match_`|返回body是否匹配`ResponseStringMatch`字段，若不存在`ResponseStringMatch`字段则为空，取值范围:`yes`、`no`。|“yes”|
 
 ## 操作步骤 {#section_jr4_qnx_pdb .section}
 
@@ -80,17 +80,29 @@ HTTP输入可根据您的配置定期请求指定URL，将请求返回body值作
 
 1.  选择输入源。
 
-    单击**数据接入向导**图标或**创建配置**，进入数据接入向导。并在**选择数据类型**步骤中选择**Logtail自定义插件**。
+    单击**接入数据**按钮，并在**接入数据**页面中选择**自定义数据插件**。
 
-2.  填写输入配置。
+2.  选择日志空间。
 
-    进入数据源设置页面，填写**插件配置**。
+    可以选择已有的Logstore，也可以新建Project或Logstore。
 
-     `inputs`部分为采集配置，是必选项；`processors`部分为处理配置，是可选项。采集配置部分需要按照您的数据源配置对应的采集语句，处理配置部分请参考[处理采集数据](cn.zh-CN/用户指南/Logtail采集/自定义插件/处理采集数据.md)配置一种或多种采集方式。
+3.  创建机器组。
+
+    在创建机器组之前，您需要首先确认已经安装了Logtail。 安装完Logtail后单击**确认安装完毕**创建机器组。如果您之前已经创建好机器组 ，请直接单击**使用现有机器组**。
+
+4.  机器组配置。
+
+    选择一个机器组，将该机器组从**源机器组**移动到**应用机器组**。
+
+5.  数据源设置。
+
+    请填写**配置名称**和**插件配置**。
+
+    `inputs`部分为采集配置，是必选项；`processors`部分为处理配置，是可选项。采集配置部分需要按照您的数据源配置对应的采集语句，处理配置部分请参考[处理采集数据](cn.zh-CN/用户指南/Logtail采集/自定义插件/处理采集数据.md)配置一种或多种采集方式。
 
     示例配置如下：
 
-    ``` {#codeblock_kjl_zp9_7ot}
+    ``` {#codeblock_cfc_z0u_t7r}
     {
      "inputs": [
          {
@@ -129,11 +141,9 @@ HTTP输入可根据您的配置定期请求指定URL，将请求返回body值作
     }
     ```
 
-3.  应用到机器组。
+6.  查询分析配置。
 
-    进入应用到机器组页面。请在此处勾选支持此插件的Logtail机器组。
-
-    如您之前没有创建过机器组，单击**+创建机器组**以创建一个新的机器组。
+    默认已经设置好索引，您也可以手动进行修改。
 
 
 ## 示例 {#section_zmp_b4x_pdb .section}
