@@ -43,11 +43,11 @@ Logtail支持采集标准Docker日志，并附加容器的相关元数据信息�
     |--|----|
     |`${your_region_name}`|日志服务Project所在Region，请根据网络类型输入正确的格式。包括：     -   公网：`region-internet`。例如，华东一地域为`cn-hangzhou-internet`。
     -   阿里云内网：`region`。例如，华东一地域为`cn-hangzhou`。
- 其中，region为[表 1](intl.zh-CN/用户指南/Logtail采集/安装/安装Logtail（Linux系统）.md#table_eyz_pmv_vdb)，请根据Project地域选择正确的参数。
+ 其中，各区域的安装参数请参考[表1 Logtail安装参数](cn.zh-CN/用户指南/Logtail采集/安装/安装Logtail（Linux系统）.md#table_eyz_pmv_vdb)，请根据Project地域选择正确的参数。
 
  |
-    |`${your_aliyun_user_id}`|用户标识，请替换为您的阿里云主账号用户ID。主账号用户ID为字符串形式，如何查看ID请参考[为非本账号ECS、自建IDC配置主账号AliUid](intl.zh-CN/用户指南/Logtail采集/机器组/为非本账号ECS、自建IDC配置主账号AliUid.md)中的2.1节。|
-    |`${your_machine_group_user_defined_id}`|您集群的机器组自定义标识。如您尚未开启自定义标识，请参考[创建用户自定义标识机器组](intl.zh-CN/用户指南/Logtail采集/机器组/创建用户自定义标识机器组.md)的步骤一，开启userdefined-id。|
+    |`${your_aliyun_user_id}`|用户标识，请替换为您的阿里云主账号用户ID。主账号用户ID为字符串形式，如何查看ID请参考[配置主账号AliUid](cn.zh-CN/用户指南/Logtail采集/机器组/配置主账号AliUid.md)中的操作步骤1。|
+    |`${your_machine_group_user_defined_id}`|您集群的机器组自定义标识。如您尚未开启自定义标识，请参考[创建用户自定义标识机器组](cn.zh-CN/用户指南/Logtail采集/机器组/创建用户自定义标识机器组.md)的步骤一，开启userdefined-id。|
 
     ``` {#codeblock_io3_lom_wjh}
     docker run -d -v /:/logtail_host:ro -v /var/run/docker.sock:/var/run/docker.sock 
@@ -66,28 +66,33 @@ Logtail支持采集标准Docker日志，并附加容器的相关元数据信息�
 4.  如果Logtail日志/usr/local/ilogtail/ilogtail.LOG中出现`The parameter is invalid : uuid=none`的错误日志，请在宿主机上创建一个product\_uuid文件，在其中输入任意合法UUID（例如`169E98C9-ABC0-4A92-B1D2-AA6239C0D261`），并把该文件挂载到Logtail容器的/sys/class/dmi/id/product\_uuid路径上。
 5.  如果您的Docker Engine 开启了[live restore](https://docs.docker.com/config/containers/live-restore/) 选项，需添加额外的健康检查，防止docker engine重启时Logtail使用的DomainSocket无效。健康检查命令：curl --unix-socket /var/run/docker.sock http:/x \> /dev/null 2\>&1
 
-## **步骤2 配置机器组** {#section_gwf_kpv_vdb .section}
+## 步骤2 配置机器组 {#section_gwf_kpv_vdb .section}
 
-1.  开通日志服务并创建Project、Logstore，详细步骤请参考[准备流程](intl.zh-CN/用户指南/准备工作/准备流程.md)。
-2.  在日志服务控制台的机器组列表页面单击[创建IP地址机器组](intl.zh-CN/用户指南/Logtail采集/机器组/创建IP地址机器组.md)。
-3.  选择**用户自定义标识**，将您上一步配置的 `ALIYUN_LOGTAIL_USER_DEFINED_ID`填入**用户自定义标识**内容框中。
+1.  开通日志服务并创建Project、Logstore，详细步骤请参考[准备流程](cn.zh-CN/用户指南/准备工作/准备流程.md)。
+2.  单击左侧导航栏的**机器组**图标展开机器组列表 。
+3.  单击机器组后的图标，选择**创建机器组**。
+
+    您也可以在数据接入向导中创建机器组。
+
+4.  选择**用户自定义标识**，将您上一步配置的 `ALIYUN_LOGTAIL_USER_DEFINED_ID`填入**用户自定义标识**内容框中。
 
     ![](images/2677_zh-CN.png "配置机器组")
 
 
-配置完成一分钟后，在**机器组列表**页面单击右侧的**查看状态**按钮，即可看到已经部署Logtail容器的心跳状态。具体参见[管理机器组](intl.zh-CN/用户指南/Logtail采集/机器组/管理机器组.md)中的**查看状态**部分。
+配置完成一分钟后，在**机器组**列表页面单击机器组名称，即可在**机器组配置**页面看到已经部署Logtail容器的心跳状态。具体参见[管理机器组](cn.zh-CN/用户指南/Logtail采集/机器组/管理机器组.md)中的**查看状态**部分。
 
-## **步骤3 创建采集配置** {#section_kkf_4pv_vdb .section}
+## 步骤3 创建采集配置 {#section_kkf_4pv_vdb .section}
 
 请根据您的需求在控制台创建Logtail采集配置，采集配置步骤请参考：
 
--   [容器内文本文件（推荐）](intl.zh-CN/用户指南/Logtail采集/容器日志采集/容器文本日志.md)
--   [容器标准输出（推荐）](intl.zh-CN/用户指南/Logtail采集/容器日志采集/容器标准输出.md)
--   [宿主机文本文件](intl.zh-CN/用户指南/Logtail采集/文本日志/采集文本日志.md) 
+-   [容器内文本文件（推荐）](cn.zh-CN/用户指南/Logtail采集/容器日志采集/容器文本日志.md)
+-   [容器标准输出（推荐）](cn.zh-CN/用户指南/Logtail采集/容器日志采集/容器标准输出.md)
+-   [宿主机文本文件](cn.zh-CN/用户指南/Logtail采集/文本日志/采集文本日志.md) 
 
     默认宿主机根目录挂载到Logtail容器的`/logtail_host`目录，配置路径时，您需要加上此前缀。例如需要采集宿主机上`/home/logs/app_log/`目录下的数据，配置页面中日志路径设置为`/logtail_host/home/logs/app_log/`。
 
--   [Syslog](intl.zh-CN/用户指南/隐藏文件夹/Syslog.md)
+-   [Syslog](cn.zh-CN/用户指南/隐藏文件夹/Syslog.md)
+-   [Logtail插件简介](cn.zh-CN/用户指南/Logtail采集/自定义插件/简介.md)
 
 ## 其他操作 {#section_sxz_4pv_vdb .section}
 
@@ -105,7 +110,7 @@ Logtail支持采集标准Docker日志，并附加容器的相关元数据信息�
 
     示例如下：
 
-    ``` {#codeblock_4y7_odr_ff3}
+    ``` {#codeblock_h6p_l30_iec}
     [root@iZbp17enxc2us3624wexh2Z ilogtail]# docker exec a287de895e40 tail -n 5 /usr/local/ilogtail/ilogtail.LOG
     [2018-02-06 08:13:35.721864]    [INFO]    [8]    [build/release64/sls/ilogtail/LogtailPlugin.cpp:104]    logtail plugin Resume:start
     [2018-02-06 08:13:35.722135]    [INFO]    [8]    [build/release64/sls/ilogtail/LogtailPlugin.cpp:106]    logtail plugin Resume:success
@@ -116,7 +121,7 @@ Logtail支持采集标准Docker日志，并附加容器的相关元数据信息�
 
     容器stdout并不具备参考意义，请忽略以下stdout输出：
 
-    ``` {#codeblock_s75_fmt_sdn}
+    ``` {#codeblock_bsd_oi3_5bf}
     
     start umount useless mount points, /shm$|/merged$|/mqueue$
     umount: /logtail_host/var/lib/docker/overlay2/3fd0043af174cb0273c3c7869500fbe2bdb95d13b1e110172ef57fe840c82155/merged: must be superuser to unmount
@@ -135,7 +140,7 @@ Logtail支持采集标准Docker日志，并附加容器的相关元数据信息�
 
     请参考以下示例重启Logtail。
 
-    ``` {#codeblock_bgk_76p_3g7}
+    ``` {#codeblock_nz9_kw3_v1g}
     [root@iZbp17enxc2us3624wexh2Z ilogtail]# docker exec a287de895e40 /etc/init.d/ilogtaild stop
     kill process Name: ilogtail pid: 7
     kill process Name: ilogtail pid: 8
