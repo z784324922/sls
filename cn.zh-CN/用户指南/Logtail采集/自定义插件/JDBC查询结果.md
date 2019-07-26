@@ -2,11 +2,11 @@
 
 以SQL形式定期采集数据库中的数据，根据SQL可实现各种自定义采集方式。
 
-**说明：** 此功能目前仅支持Linux，依赖Logtail 0.16.0及以上版本，版本查看与升级参见[Linux](cn.zh-CN/用户指南/Logtail采集/安装/Linux.md)。
+**说明：** 此功能目前仅支持Linux，依赖Logtail 0.16.0及以上版本，版本查看与升级参见[安装Logtail（Linux系统）](cn.zh-CN/用户指南/Logtail采集/安装/安装Logtail（Linux系统）.md)。
 
 ## 功能 {#section_iym_yzq_pdb .section}
 
--   支持提供MySQL接口的数据库，包括RDS
+-   支持提供MySQL接口的数据库，包括RDS：
 -   支持分页设置
 -   支持时区设置
 -   支持超时设置
@@ -16,7 +16,7 @@
 
 ## 实现原理 {#section_p3m_c1r_pdb .section}
 
-![](images/2930_zh-CN.png "实现原理")
+![实现原理](images/2930_zh-CN.png "实现原理")
 
 如上图所示，Logtail内部根据用户配置定期执行指定的SELECT语句，将SELECT返回的结果作为数据上传到日志服务。
 
@@ -52,7 +52,7 @@ Logtail在获取到执行结果时，会将结果中配置的CheckPoint字段保
 ## 使用限制 {#section_g3n_31r_pdb .section}
 
 -   建议使用`Limit`分页，使用`Limit`分页时，SQL查询会自动在`StateMent`后追加LIMIT语句。
--   使用`CheckPoint`时，`StateMent`中SELECT出的数据中必须包含checkpoint列，且where条件中必须包含checkpoint列，该列的值填`?`
+-   使用`CheckPoint`时，`StateMent`中SELECT出的数据中必须包含checkpoint列，且where条件中必须包含checkpoint列，该列的值填`?` 
 
     例如checkpoint为”id”，`StateMent`为`SELECT * from ... where id > ?`。
 
@@ -65,11 +65,21 @@ Logtail在获取到执行结果时，会将结果中配置的CheckPoint字段保
 
 1.  选择输入源。
 
-    单击**数据接入向导**图标或**创建配置**，进入数据接入向导。并在**选择数据库类型**步骤中选择**MYSQL查询结果**。
+    单击**接入数据**按钮，并在**接入数据**页面中选择**MYSQL查询结果**。
 
-2.  填写输入配置。
+2.  选择日志空间。
 
-    进入输入源配置页面，填写**插件配置**。
+    可以选择已有的Logstore，也可以新建Project或Logstore。
+
+3.  创建机器组。
+
+    在创建机器组之前，您需要首先确认已经安装了Logtail。 安装完Logtail后单击**确认安装完毕**创建机器组。如果您之前已经创建好机器组 ，请直接单击**使用现有机器组**。
+
+4.  机器组配置。
+
+    选择一个机器组，将该机器组从**源机器组**移动到**应用机器组**。
+
+5.  数据源设置。
 
     **插件配置**输入框中已为您提供配置模板，请根据您的需求替换配置参数信息。
 
@@ -79,7 +89,7 @@ Logtail在获取到执行结果时，会将结果中配置的CheckPoint字段保
 
     示例配置如下：
 
-    ```
+    ``` {#codeblock_0si_odq_48y}
     {
      "inputs": [
          {
@@ -104,22 +114,20 @@ Logtail在获取到执行结果时，会将结果中配置的CheckPoint字段保
     }
     ```
 
-3.  应用到机器组。
+6.  查询分析配置。
 
-    进入应用到机器组页面。请在此处勾选**支持此插件的Logtail机器组**。
+    默认已经设置好索引，您也可以手动进行修改。
 
-    如您之前没有创建过机器组，单击**+创建机器组**以创建一个新的机器组。
+7.  修改本地配置。
 
-4.  修改本地配置。
-
-    如果您没有在输入源配置页面输入真实的URL、账号、密码等信息，需要在采集配置下发到本地后手动修改其中的内容。
+    如果您没有在数据源设置页面输入真实的URL、账号、密码等信息，需要在采集配置下发到本地后手动修改其中的内容。
 
     **说明：** 如果您服务端输入的是真实信息，则无需此步骤。
 
     1.  登录Logtail所在服务器，查找`/usr/local/ilogtail/user_log_config.json`文件中`service_mysql`关键词，修改下述对应的`Address`、`User`、`Password`等字段。
     2.  执行以下命令重启Logtail。
 
-        ```
+        ``` {#codeblock_86x_opl_l2m}
         sudo /etc/init.d/ilogtaild stop; sudo /etc/init.d/ilogtaild start
         ```
 
@@ -128,9 +136,9 @@ Logtail在获取到执行结果时，会将结果中配置的CheckPoint字段保
 
 例如，按照以上操作步骤配置处理方式后，即可在日志服务控制台查看采集处理过的日志数据。表结构和Logtail采集的日志样例如下。
 
--   **表结构**
+-   **表结构** 
 
-    ```
+    ``` {#codeblock_y43_85a_o3v}
     CREATE TABLE `VersionOs` (
       `id` int(11) unsigned NOT NULL AUTO_INCREMENT COMMENT 'id',
       `time` datetime NOT NULL,
@@ -142,9 +150,9 @@ Logtail在获取到执行结果时，会将结果中配置的CheckPoint字段保
     )
     ```
 
--   **样例输出**
+-   **样例输出** 
 
-    ```
+    ``` {#codeblock_obw_fza_fwi}
     "count":  "4"  
     "id:  "721097"  
     "os:  "Windows"  
