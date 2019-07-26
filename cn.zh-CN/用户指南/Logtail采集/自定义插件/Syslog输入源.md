@@ -12,7 +12,7 @@ Logtail支持通过自定义插件采集syslog。
 
 通过插件对指定的地址和端口进行监听后，Logtail能够作为syslog服务器采集来自各个数据源的日志，包括通过rsyslog采集的系统日志、 [Nginx](http://nginx.org/en/docs/syslog.html)转发的访问日志或错误日志，以及[Java](https://github.com/CloudBees-community/syslog-java-client)等语言的syslog客户端库转发的日志。
 
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/19015/155358887410990_zh-CN.png)
+![实现原理](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/19015/156410474810990_zh-CN.png)
 
 ## 注意事项 {#section_agj_zh2_z2b .section}
 
@@ -25,21 +25,21 @@ Logtail支持通过自定义插件采集syslog。
 
 |配置项|类型|是否必须|说明|
 |:--|:-|:---|:-|
-|Address|string|否|指定插件监听的协议、地址和端口，Logtail插件会根据配置进行监听并获取日志数据。格式为`[tcp/udp]://[ip]:[port]`，默认为`tcp://127.0.0.1:9999`。**说明：** 
+|Address|string|否|指定插件监听的协议、地址和端口，Logtail插件会根据配置进行监听并获取日志数据。格式为`[tcp/udp]://[ip]:[port]`，默认为`tcp://127.0.0.1:9999`。 **说明：** 
 
 -   Logtail插件配置监听的协议、地址和端口号必须与rsyslog配置文件设置的转发规则相同。
 -   如果安装Logtail的服务器有多个IP地址可接收日志，可以将地址配置为0.0.0.0，表示监听服务器的所有IP地址。
 
-|
-|ParseProtocol|string|否|指定解析所使用的协议，默认为空，表示不解析。其中：-   rfc3164：指定使用RFC3164协议解析日志。
+ |
+|ParseProtocol|string|否|指定解析所使用的协议，默认为空，表示不解析。其中： -   rfc3164：指定使用RFC3164协议解析日志。
 -   rfc5424：指定使用RFC5424协议解析日志。
 -   auto：指定插件根据日志内容自动选择合适的解析协议。
 
-|
-|IgnoreParseFailure|boolean|否|指定解析失败后的行为，默认为true。其中：-   true：放弃解析直接填充所返回的content字段。
+ |
+|IgnoreParseFailure|boolean|否|指定解析失败后的行为，默认为true。其中： -   true：放弃解析直接填充所返回的content字段。
 -   false：会丢弃日志。
 
-|
+ |
 
 ## 默认字段 {#section_kg1_qh2_z2b .section}
 
@@ -70,67 +70,83 @@ Logtail支持通过自定义插件采集syslog。
     -   通过其他服务器采集本机syslog：配置转发地址为其他服务器的公网IP，端口为任意非知名的空闲端口。
     例如以下配置表示将所有的日志都通过TCP转发至127.0.0.1:9000，配置文件详细说明请参考[官网说明](https://www.rsyslog.com/doc/v8-stable/configuration/index.html)。
 
-    ```
+    ``` {#codeblock_nky_u5k_0no}
     *.* @@127.0.0.1:9000
     ```
 
 2.  执行以下命令重启rsyslog，使日志转发规则生效。
 
-    ```
+    ``` {#codeblock_swp_wuk_e23}
     sudo service rsyslog restart
     ```
 
 3.  登录[日志服务控制台](https://sls.console.aliyun.com)，单击Project名称。
-4.  在Logstore列表页面单击**数据接入向导**图标。
-5.  在**自定义数据**中单击**Logtail自定义插件**。
-6.  填写**配置名称**。
-7.  填写**插件配置**，并单击**下一步**。
+4.  单击**接入数据**按钮，并在**接入数据**页面中选择**自定义数据插件**。
+5.  选择日志空间。
 
-    `inputs`部分为采集配置，是必选项；`processors`部分为处理配置，是可选项。采集配置部分需要按照您的数据源配置对应的采集语句，处理配置部分请参考[处理采集数据](cn.zh-CN/用户指南/Logtail采集/自定义插件/处理采集数据.md)配置一种或多种采集方式。
+    可以选择已有的Logstore，也可以新建Project或Logstore。
 
-    同时监听UDP和TCP的示例配置如下：
+6.  创建并配置机器组。
 
-    ```
-    {
-         "inputs": [
-             {
-                 "type": "service_syslog",
-                 "detail": {
-                     "Address": "tcp://127.0.0.1:9000",
-                     "ParseProtocol": "rfc3164"
-                 }
-             },
-             {
-                 "type": "service_syslog",
-                 "detail": {
-                     "Address": "udp://127.0.0.1:9001",
-                     "ParseProtocol": "rfc3164"
-                 }
-             }
-         ]
-     }
-    ```
-
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/19015/155358887410991_zh-CN.png)
-
-8.  应用到机器组。
-
-    为机器组添加Logtail配置。请在此处勾选**运行有此插件的Logtail机器组**，并单击**应用到机器组**。
+    在创建机器组之前，您需要首先确认已经安装了Logtail。 安装完Logtail后单击**确认安装完毕**创建机器组。如果您之前已经创建好机器组 ，请直接单击**使用现有机器组**。
 
     **说明：** 接收syslog的服务器必须在机器组中，且安装了0.16.13及以上版本的Logtail。
 
-    若您之前没有创建过机器组，单击**+创建机器组**创建一个新的机器组，再勾选机器组并单击**应用到机器组**。
+    选择一个机器组，将该机器组从**源机器组**移动到**应用机器组**。
 
-9.  开启并配置索引。
+7.  数据源设置。
 
-    确保日志机器组心跳正常的情况下，可以点击右侧浏览按钮获取到采集上来的数据。
+    请填写**配置名称**和**插件配置**。
 
-    如果您后续需要对采集到的syslog进行实时查询与分析，可以单击**展开**，根据日志内容和格式配置字段索引，后续可以按照指定字段进行查询和分析。
+    `inputs`部分为采集配置，是必选项；`processors`部分为处理配置，是可选项。采集配置部分需要按照您的数据源配置对应的采集语句，处理配置部分请参考[处理采集数据](cn.zh-CN/用户指南/Logtail采集/自定义插件/处理采集数据.md)配置一种或多种采集方式。
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/19015/155358887410992_zh-CN.png)
+    示例配置如下：
+
+    ``` {#codeblock_10c_oyv_gli}
+    {
+     "inputs": [
+         {
+             "type": "metric_http",
+             "detail": {
+                 "IntervalMs": 1000,
+                 "Addresses": [
+                     "http://127.0.0.1/ngx_status"
+                 ],
+                 "IncludeBody": true
+             }
+         }
+     ],
+     "processors" : [
+         {
+             "type": "processor_regex",
+             "detail" : {
+                 "SourceKey": "content",
+                 "Regex": "Active connections: (\\d+)\\s+server accepts handled requests\\s+(\\d+)\\s+(\\d+)\\s+(\\d+)\\s+Reading: (\\d+) Writing: (\\d+) Waiting: (\\d+).*",
+                 "Keys": [
+                     "connection",
+                     "accepts",
+                     "handled",
+                     "requests",
+                     "reading",
+                     "writing",
+                     "waiting"
+                 ],
+                 "FullMatch": true,
+                 "NoKeyError": true,
+                 "NoMatchError": true,
+                 "KeepSource": false
+             }
+         }
+     ]
+    }
+    ```
+
+8.  查询分析配置。
+
+    默认已经设置好索引，您也可以手动进行修改。
 
 
-## 配置Logtail插件采集Nginx访问日志 {#section_rcs_bj2_z2b .section}
+## 配置Logtail插件采集Nginx日志 {#section_rcs_bj2_z2b .section}
 
 Nginx支持直接把访问日志以syslog协议转发到指定地址和端口。如果您希望把服务器上包括Nginx访问日志在内的所有数据都以syslog的形式集中投递到日志服务，可以创建Logtail配置并应用到该服务器所在的机器组。
 
@@ -140,7 +156,7 @@ Nginx支持直接把访问日志以syslog协议转发到指定地址和端口。
 
     例如，在配置文件中增加如下内容：
 
-    ```
+    ``` {#codeblock_b5v_pj3_vsj}
     http {
         ...
     
@@ -149,12 +165,12 @@ Nginx支持直接把访问日志以syslog协议转发到指定地址和端口。
     
         ...
     }
-    
+    						
     ```
 
 2.  执行以下命令重启Nginx服务，使配置生效。
 
-    ```
+    ``` {#codeblock_iad_546_q4k}
     sudo service nginx restart
     ```
 
@@ -166,6 +182,6 @@ Nginx支持直接把访问日志以syslog协议转发到指定地址和端口。
 
     在shell中执行命令`curl http://127.0.0.1/test.html`生成一条访问日志。如果采集配置已生效，可以在日志服务控制台的查询页面查看到日志信息。
 
-    ![](https://cdn.nlark.com/lark/0/2018/png/130974/1534754375749-0345311e-e29c-468b-9d89-7bdb017dec36.png)
+     ![](https://cdn.nlark.com/lark/0/2018/png/130974/1534754375749-0345311e-e29c-468b-9d89-7bdb017dec36.png)
 
 
