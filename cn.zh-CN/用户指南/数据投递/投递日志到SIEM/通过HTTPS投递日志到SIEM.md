@@ -10,7 +10,7 @@
 
 推荐使用日志服务消费组构建程序进行实时消费，然后通过 Splunk API（HEC）来发送日志给Splunk。
 
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/219725/155921009347431_zh-CN.png)
+![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/219725/156439191747431_zh-CN.png)
 
 ## 主程序示例 {#section_o11_g58_pr1 .section}
 
@@ -202,7 +202,7 @@ export SLS_PROJECT=<SLS Project Name>
 export SLS_LOGSTORE=<SLS Logstore Name>
 export SLS_CG=<消费组名，可以简单命名为"syc_data">
 
-pypy3 sync_data.py
+python3 sync_data.py
 ```
 
 ## 多源日志库示例 {#section_zis_947_7vs .section}
@@ -246,17 +246,17 @@ exeuctor, options, settings = get_option()
 
 ## 消费状态监控 {#section_t1f_n8k_40s .section}
 
--   在控制台查看[消费组状态](intl.zh-CN/用户指南/实时消费/消费组消费/消费组状态.md#)。
--   通过云监控查看[消费组延迟](intl.zh-CN/用户指南/实时消费/消费组消费/消费组监控与报警.md#)，并配置告警。
+-   在控制台查看[消费组状态](cn.zh-CN/用户指南/实时消费/消费组消费/消费组状态.md#)。
+-   通过云监控查看[消费组延迟](cn.zh-CN/用户指南/实时消费/消费组消费/消费组监控与报警.md#)，并配置告警。
 
 ## 并发消费 {#section_0x6_agr_s1w .section}
 
 基于消费组的程序，可以通过启动多次程序以达到并发的作用：
 
 ``` {#codeblock_dw6_2fj_m6i}
-nohup pypy3 sync_data.py &
-nohup pypy3 sync_data.py &
-nohup pypy3 sync_data.py &
+nohup python3 sync_data.py &
+nohup python3 sync_data.py &
+nohup python3 sync_data.py &
 ...
 ```
 
@@ -264,7 +264,7 @@ nohup pypy3 sync_data.py &
 
 ## 吞吐量 {#section_dvq_rgu_6e8 .section}
 
-基于测试，在没有带宽、接收端速率限制（如 Splunk 端）的情况下，用 pypy3 运行上述样例，单个消费者大约占用 10% 的单核 CPU 资源， 此时消费可以达到 5 MB/s 原始日志的速率。因此，10个消费者理论上可以达到 50 MB/s 原始日志每个 CPU 核，也就是每个 CPU 核每天可以消费 4 TB 原始日志。
+基于测试，在没有带宽、接收端速率限制（如 Splunk 端）的情况下，用 python3 运行上述样例，单个消费者大约占用 20% 的单核 CPU 资源， 此时消费可以达到 10 MB/s 原始日志的速率。因此，10个消费者理论上可以达到 100 MB/s 原始日志每个 CPU 核，也就是每个 CPU 核每天可以消费 0.9 TB 原始日志。
 
 ## 高可用 {#section_4fw_3id_psf .section}
 
