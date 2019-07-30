@@ -1,12 +1,14 @@
 # Python日志 {#reference_bj1_ss5_vdb .reference}
 
-Python的 logging 模块提供了通用的日志系统，可以方便第三方模块或者是应用使用。这个模块提供不同的日志级别，并可以采用不同的方式记录日志，比如：文件、HTTP GET/POST、SMTP、Socket等，甚至可以自己实现具体的日志记录方式。logging 模块与 log4j 的机制是一样的，只是具体的实现细节不同。模块提供 logger、handler、filter、formatter。
+Python的 logging 模块提供了通用的日志系统，可以方便第三方模块或者是应用使用。
+
+Python的 logging模块提供不同的日志级别，并可以采用不同的方式记录日志，比如：文件、HTTP GET/POST、SMTP、Socket等，甚至可以自己实现具体的日志记录方式。logging 模块与 log4j 的机制相同，只是具体的实现细节不同。模块提供 logger、handler、filter、formatter。
 
 采集Python日志，推荐您直接使用Logging Handler：
 
--    [使用Log Handler自动上传Python日志](https://aliyun-log-python-sdk.readthedocs.io/tutorials/tutorial_logging_handler.html) 
--    [Log Handler自动解析KV格式的日志](https://aliyun-log-python-sdk.readthedocs.io/tutorials/tutorial_logging_handler_kv.html) 
--    [Log Handler自动解析JSON格式的日志](https://aliyun-log-python-sdk.readthedocs.io/tutorials/tutorial_logging_handler_json.html) 
+-   [使用Log Handler自动上传Python日志](https://aliyun-log-python-sdk.readthedocs.io/tutorials/tutorial_logging_handler.html)
+-   [Log Handler自动解析KV格式的日志](https://aliyun-log-python-sdk.readthedocs.io/tutorials/tutorial_logging_handler_kv.html)
+-   [Log Handler自动解析JSON格式的日志](https://aliyun-log-python-sdk.readthedocs.io/tutorials/tutorial_logging_handler_json.html)
 
 ## Python日志格式 {#section_pc1_m5b_ry .section}
 
@@ -96,36 +98,41 @@ logger.debug('first debug message')
 
 ## 配置Logtail收集Python日志 {#section_akh_2d3_dbb .section}
 
-配置Logtail收集Python日志的详细操作步骤请参考[五分钟快速入门](../../../../intl.zh-CN/快速入门/五分钟快速入门.md)，根据您的网络部署和实际情况选择对应配置。
+配置Logtail收集Python日志的详细操作步骤请参考[五分钟快速入门](../../../../cn.zh-CN/快速入门/五分钟快速入门.md)，根据您的网络部署和实际情况选择对应配置。
 
-1.  创建Project和Logstore。详细步骤请参考[准备流程](intl.zh-CN/用户指南/准备工作/准备流程.md)。
-2.  在Logstore列表页面单击**数据接入向导**图标，进入数据接入向导。
-3.  选择数据类型。
+1.  创建Project和Logstore。详细步骤请参考[准备流程](cn.zh-CN/用户指南/准备工作/准备流程.md)。
+2.  单击**接入数据**按钮，并在**接入数据**页面中选择**正则-文本文件**。
+3.  选择日志空间。
 
-    选择**文本文件**并单击**下一步**。
+    可以选择已有的Logstore，也可以新建Project或Logstore。
 
-4.  配置数据源。
+4.  创建并配置机器组。
+
+    在创建机器组之前，您需要首先确认已经安装了Logtail。 安装完Logtail后单击**确认安装完毕**创建机器组。如果您之前已经创建好机器组 ，请直接单击**使用现有机器组**。
+
+    选择一个机器组，将该机器组从**源机器组**移动到**应用机器组**。
+
+5.  数据源设置。
 
     1.  填写**配置名称**、**日志路径**，并选择日志收集模式为**完整正则模式**。
     2.  开启**单行模式**。
     3.  输入**日志样例**。
 
-        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13042/15616059509834_zh-CN.png)
+        ![采集模式](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13042/15644802999834_zh-CN.png)
 
     4.  开启**提取字段**。
     5.  配置**正则表达式**。
-
-        1.  通过划选生成正则表达式。
+        -           -   通过划选生成正则表达式。
 
             如果自动生成的正则表达式不匹配您的日志样例，可以通过划选的方式生成正则表达式。日志服务支持对日志样例划词自动解析，即对您在划词时选取的字段自动生成正则表达式。请在**日志样例**中划选日志字段内容，并单击**正则**。**正则表达式**一栏中会出现划选内容的正则式。您可以通过多次划选生成日志样例的完整正则表达式。
 
-            ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13042/15616059509838_zh-CN.png)
+            ![正则表达式](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13042/15644803009838_zh-CN.png)
 
-        2.  调整正则表达式。
+        -   调整正则表达式。
 
             鉴于实际的日志数据格式可能会有细微变动，单击**手动输入正则表达式**，根据实际情况对自动生成的正则表达式做出调整，使其符合收集过程中所有可能出现的日志格式。
 
-        3.  验证正则表达式。
+        -   验证正则表达式。
 
             正则表达式修改完成后，单击**验证** 。如果正则式没有错误，会出现字段提取的结果，如果有错误请再次调整正则式。
 
@@ -135,14 +142,17 @@ logger.debug('first debug message')
 
         分别为日志字段提取结果取一个有意义的字段名称，比如时间字段的命名为time。如果不使用系统时间，您必须指定Value为时间的字段，并将其Key命名为time。
 
-        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13042/15616059519845_zh-CN.png)
+        ![日志抽取结果](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13042/15644803009845_zh-CN.png)
 
     7.  开启**使用系统时间**。
 
         如果使用系统时间，则每条日志时间为Logtail客户端解析该条日志内容的时间。
 
     8.  （可选）配置**高级选项**。
-    9.  单击 **下一步**。
     Logtail配置完成后，将此配置应用到机器组即可开始规范收集Python日志。
+
+6.  查询分析配置。
+
+    默认已经设置好索引，您也可以重新设置索引。
 
 
