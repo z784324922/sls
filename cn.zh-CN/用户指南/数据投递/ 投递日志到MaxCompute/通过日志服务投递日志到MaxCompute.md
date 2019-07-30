@@ -64,7 +64,7 @@ user-agent:aliyun-sdk-java
 日志左侧的ip、status、thread、time、url、user-agent等是日志服务数据的字段名称，需要在下方配置中应用到。
 
 1.  **初始化数加平台** 
-    1.  在日志服务的控制台Logstore列表单击日志投递列的MaxCompute。
+    1.  在日志服务控制台的日志库页面选择需要投递的日志库名称并依次展开节点，**日志库名称** \> **数据处理** \> **导出** \> **MaxCompute\(原ODPS\)**，单击**开启投递**。
 
         自动跳转到初始化数加平台的页面。MaxCompute默认为按量付费模式，具体参见MaxCompute文档说明。
 
@@ -100,9 +100,9 @@ user-agent:aliyun-sdk-java
 3.  **配置投递规则** 
     1.  开启投递。
 
-        初始化数加平台之后，根据页面提示进入LogHub —— 数据投递页面，选择需要投递的Logstore，并单击**开启投递**。
+        初始化数加平台之后，根据页面提示进入LogHub —— 数据投递页面，选择需要投递的Logstore，并单击**确定**。
 
-        您也可以在日志库页面单击**MaxCompute（原ODPS）**，进入MaxCompute（原ODPS）投递管理页面。在MaxCompute（原ODPS）投递管理页面选择需要投递的Logstore，并单击**开启投递**以进入LogHub —— 数据投递页面。
+        您也可以在日志库页面选择需要投递的日志库名称并依次展开节点，**日志库名称** \> **数据处理** \> **导出** \> **MaxCompute\(原ODPS\)**，进入MaxCompute（原ODPS）投递管理页面。单击**开启投递**以进入LogHub —— 数据投递页面。
 
         ![](images/5814_zh-CN.png "开启投递")
 
@@ -173,7 +173,7 @@ select get_json_object(sls_extract_others, "$.user-agent") from {ODPS_TABLE_NAME
 
 **编辑投递配置**
 
-在Logstore列表投递项，单击**修改**即可针对之前的配置信息进行编辑。其中如果想新增列，可以在大数据计算服务MaxCompute（原ODPS）修改投递的数据表列信息，则单击**修改**后会加载最新的数据表信息。
+在投递管理页面，单击**修改**即可针对之前的配置信息进行编辑。其中如果想新增列，可以在大数据计算服务MaxCompute（原ODPS）修改投递的数据表列信息，则单击**修改**后会加载最新的数据表信息。
 
 **投递任务管理**
 
