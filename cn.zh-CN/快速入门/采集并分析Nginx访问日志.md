@@ -12,7 +12,7 @@
 
 ## Nginx日志格式 {#section_qdx_2mq_12b .section}
 
-**为了更好满足分析场景，推荐Nginx日志格式采用如下`log_format`配置。**
+为了更好满足分析场景，推荐Nginx日志格式采用如下`log_format`配置。
 
 ``` {#codeblock_sp3_6rh_d5i}
     log_format  main  '$remote_addr - $remote_user [$time_local] "$request" $http_host '
@@ -39,7 +39,7 @@
 
 ## 采集Nginx日志 {#section_vvf_jmq_12b .section}
 
-采集日志前，请确认您已[创建Project](../cn.zh-CN/用户指南/准备工作/操作Project.md)和[创建Logstore](../cn.zh-CN/用户指南/准备工作/操作Logstore.md)。
+采集日志前，请确认您已[创建Project](../cn.zh-CN/准备工作/操作Project.md)和[创建Logstore](../cn.zh-CN/准备工作/操作Logstore.md)。
 
 1.  登录[日志服务控制台](https://sls.console.aliyun.com)，单击Project名称。
 2.  在对应日志库下，单击**数据接入**后的加号。
@@ -52,14 +52,14 @@
 
     日志服务提供多种数据类型接入（云产品、自定义代码、自建开源/商业软件等），分析NGINX访问日志请选择**自建开源/商业软件** \> **Nginx-文本日志**。
 
-4.  **创建机器组** 
-    1.  在ECS上安装Logtail客户端
+4.  创建机器组。
 
-        在**ECS机器**页面勾选实例后单击**安装**。Windows系统请参考[安装Logtail（Windows系统）](../cn.zh-CN/用户指南/Logtail采集/安装/安装Logtail（Windows系统）.md)。
+    在创建机器组之前，您需要首先确认已经安装了Logtail。
 
-    2.  创建机器组
-
-        如果您之前没有创建过机器组，请在安装完Logtail后单击**确认安装完毕**创建机器组。
+    -   集团内部机器：默认自动安装，如果没有安装，请根据界面提示进行咨询。
+    -   ECS机器： 勾选实例后单击**安装**进行一键式安装。Windows系统不支持一键式安装，请参考[安装Logtail（Windows系统）](../cn.zh-CN/数据采集/Logtail采集/安装/安装Logtail（Windows系统）.md)手动安装。
+    -   自建机器：请根据界面提示进行安装。或者参考[安装Logtail（Linux系统）](../cn.zh-CN/数据采集/Logtail采集/安装/安装Logtail（Linux系统）.md#)或[安装Logtail（Windows系统）](../cn.zh-CN/数据采集/Logtail采集/安装/安装Logtail（Windows系统）.md#)文档进行安装。
+    安装完Logtail后单击**确认安装完毕**创建机器组。如果您之前已经创建好机器组 ，请直接单击**使用现有机器组**。
 
 5.  机器组配置。
 
@@ -105,11 +105,11 @@
 
 -   使用SQL语句分析Nginx访问日志：
 
-    在日志服务查询分析页面输入查询分析语句，可以查看符合条件的Nginx原始日志，或查看可视化的分析结果。另外，查询分析页面还提供快速分析、快速查询等功能，详细说明请查看[查询日志](../cn.zh-CN/用户指南/查询与分析/查询日志.md)和[Nginx访问日志诊断及优化](cn.zh-CN/快速入门/采集并分析Nginx访问日志.md#section_qkz_mnq_12b)。
+    在日志服务查询分析页面输入查询分析语句，可以查看符合条件的Nginx原始日志，或查看可视化的分析结果。另外，查询分析页面还提供快速分析、快速查询等功能，详细说明请查看[查询日志](../cn.zh-CN/查询与分析/查询日志.md)和[Nginx访问日志诊断及优化](cn.zh-CN/快速入门/采集并分析Nginx访问日志.md#section_qkz_mnq_12b)。
 
 -   查看预设仪表盘的分析数据，分析Nginx访问日志：
 
-    日志服务预设的Nginx访问日志仪表盘中展示了各个分析指标的详细数据大盘，例如PV/UV统计等数据。关于如何使用仪表盘，请参考[创建和删除仪表盘](../cn.zh-CN/用户指南/可视化分析/仪表盘/创建和删除仪表盘.md)。
+    日志服务预设的Nginx访问日志仪表盘中展示了各个分析指标的详细数据大盘，例如PV/UV统计等数据。关于如何使用仪表盘，请参考[创建和删除仪表盘](../cn.zh-CN/查询与分析/可视化分析/仪表盘/创建和删除仪表盘.md)。
 
 
 ![Nginx访问日志的默认仪表盘](images/5896_zh-CN.png "Nginx访问日志仪表盘")
