@@ -3,12 +3,12 @@
 个人站长选用IIS作为服务器搭建网站，需要通过分析IIS访问日志来获取PV、UV、IP区域分布、错误请求、流量流入流出，以评估网站访问情况。
 
 -   已开启日志服务。
--   已创建了Project和Logstore。详细步骤请参见[准备流程](../cn.zh-CN/用户指南/准备工作/准备流程.md)。
+-   已创建了Project和Logstore。详细步骤请参见[准备流程](../cn.zh-CN/准备工作/准备流程.md)。
 -   **IIS日志采用W3C日志格式。** 
 
     为了更好满足分析场景，推荐选用W3C日志格式，在IIS管理器中单击**选择字段**按钮，勾选**发送的字节数**和**和接收的字节数**。
 
-    ![](images/6664_zh-CN.png "选择字段")
+    ![选择字段](images/6664_zh-CN.png "选择字段")
 
 
 **日志格式**
@@ -62,85 +62,57 @@ logExtFileFlags="Date, Time, ClientIP, UserName, SiteName, ComputerName, ServerI
 2.  在**接入数据**中选择**IIS-文本日志**。
 3.  选择日志库。 可以选择已有的Logstore，也可以新建Project和Logstore。
 4.  创建机器组。 
-    1.  在ECS上安装Logtail客户端
 
-        在**ECS机器**页面勾选实例后单击**安装**。Windows系统请参考[安装Logtail（Windows系统）](../cn.zh-CN/用户指南/Logtail采集/安装/安装Logtail（Windows系统）.md)。
+    在创建机器组之前，您需要首先确认已经安装了Logtail。
 
-    2.  创建机器组
+    -   集团内部机器：默认自动安装，如果没有安装，请根据界面提示进行咨询。
+    -   ECS机器： 勾选实例后单击**安装**进行一键式安装。Windows系统不支持一键式安装，请参考[安装Logtail（Windows系统）](../cn.zh-CN/数据采集/Logtail采集/安装/安装Logtail（Windows系统）.md)手动安装。
+    -   自建机器：请根据界面提示进行安装。或者参考[安装Logtail（Linux系统）](../cn.zh-CN/数据采集/Logtail采集/安装/安装Logtail（Linux系统）.md#)或[安装Logtail（Windows系统）](../cn.zh-CN/数据采集/Logtail采集/安装/安装Logtail（Windows系统）.md#)文档进行安装。
+    安装完Logtail后单击**确认安装完毕**创建机器组。如果您之前已经创建好机器组 ，请直接单击**使用现有机器组**。
 
-        如果您之前没有创建过机器组，请在安装完Logtail后单击**确认安装完毕**创建机器组。
-
-5.  应用机器组。
+5.  应用机器组。 选择一个机器组，将该机器组从**源机器组**移动到**应用机器组**。
 6.  Logtail配置。 
     1.  填写**配置名称**和**日志路径**。 您可以在IIS管理器中查看日志路径。
 
-        ![](images/6665_zh-CN.png "查看日志路径")
+        ![查看日志路径](images/6665_zh-CN.png "查看日志路径")
 
-7.  选择**日志格式**。 选择您的IIS服务器日志采用的日志格式。
-    -   IIS：Microsoft IIS日志文件格式。
-    -   NCSA：NCSA公用日志文件格式。
-    -   W3C：W3C扩展日志文件格式。
-8.  填写**IIS配置字段**。 
-    -   IIS或NCSA格式：配置字段已预设。
-    -   W3C日志：请按照以下步骤配置**IIS配置字段**。
-    1.  打开IIS配置文件。 
+    2.  选择**日志格式**。 选择您的IIS服务器日志采用的日志格式。
+        -   IIS：Microsoft IIS日志文件格式。
+        -   NCSA：NCSA公用日志文件格式。
+        -   W3C：W3C扩展日志文件格式。
+    3.  填写**IIS配置字段**。 
+        -   IIS或NCSA格式：配置字段已预设。
+        -   W3C日志：请按照以下步骤配置**IIS配置字段**。
+            1.  打开IIS配置文件。
 
-        -   IIS5配置文件默认路径：C:\\WINNT\\system32\\inetsrv\\MetaBase.bin
-        -   IIS6配置文件默认路径：C:\\WINDOWS\\system32\\inetsrv\\MetaBase.xml
-        -   IIS7配置文件默认路径：C:\\Windows\\System32\\inetsrv\\config\\applicationHost.config
-        ![](images/6666_zh-CN.png "查看配置文件")
+                -   IIS5配置文件默认路径：C:\\WINNT\\system32\\inetsrv\\MetaBase.bin
+                -   IIS6配置文件默认路径：C:\\WINDOWS\\system32\\inetsrv\\MetaBase.xml
+                -   IIS7配置文件默认路径：C:\\Windows\\System32\\inetsrv\\config\\applicationHost.config
+                ![查看配置文件](images/6666_zh-CN.png "查看配置文件")
 
-    2.  找到`logFile logExtFileFlags`字段，并复制引号内的字段内容。
-    3.  粘贴字段内容到**IIS配置字段**输入框中的引号内。 
+            2.  找到`logFile logExtFileFlags`字段，并复制引号内的字段内容。
+            3.  粘贴字段内容到**IIS配置字段**输入框中的引号内。
 
-        ![](images/6667_zh-CN.png "配置数据源")
+                ![配置数据源](images/6667_zh-CN.png "配置数据源")
 
-9.  确认IIS键名称。 IIS日志服务会自动提取出相应的键名称。
+    4.  确认IIS键名称。 IIS日志服务会自动提取出相应的键名称。
 
-    ![](images/6668_zh-CN.png "IIS键名称")
+        ![IIS键名称](images/6668_zh-CN.png "IIS键名称")
 
-10. 选择是否**丢弃解析失败日志**。 请选择解析失败的日志是否上传到日志服务。
+    5.  选择是否**丢弃解析失败日志**。 请选择解析失败的日志是否上传到日志服务。
 
-    开启后，解析失败的日志不上传到日志服务；关闭后，日志解析失败时上传原始日志，其中Key为`__raw_log__`、Value为日志内容。
+        开启后，解析失败的日志不上传到日志服务；关闭后，日志解析失败时上传原始日志，其中Key为`__raw_log__`、Value为日志内容。
 
-11. 酌情配置高级选项（可选）。 
-
-    |配置项|详情|
-    |:--|:-|
-    |上传原始日志|请选择是否需要上传原始日志。开启该功能后，原始日志内容会作为\_\_raw\_\_字段与解析过的日志一并上传。|
-    |Topic生成方式|     -   **空-不生成Topic**：默认选项，表示设置Topic为空字符串，在查询日志时不需要输入Topic即可查询。
-    -   **机器组Topic属性**：设置Topic生成方式为机器组Topic属性，可以用于明确区分不同前端服务器产生的日志数据。
-    -   **文件路径正则**：选择此项之后，您需要填写下方的**自定义正则**，用正则式从路径里提取一部分内容作为Topic。可以用于区分具体用户或实例产生的日志数据。
- |
-    |自定义正则|如您选择了**文件路径正则**方式生成Topic，需要在此处填写您的自定义正则式。|
-    |日志文件编码|     -   utf8：指定使用UTF-8编码。
-    -   gbk：指定使用GBK编码。
- |
-    |最大监控目录深度|指定从日志源采集日志时，监控目录的最大深度，即最多监控几层日志。最大目录监控深度范围0-1000，0代表只监控本层目录。|
-    |超时属性|如果一个日志文件在指定时间内没有任何更新，则认为该文件已超时。您可以对**超时属性**指定以下配置。     -   永不超时：指定持续监控所有日志文件，永不超时。
-    -   30分钟超时：如日志文件在30分钟内没有更新，则认为已超时，并不再监控该文件。
- |
-    |过滤器配置|日志只有**完全符合**过滤器中的条件才会被收集。 例如：
-
-    -   **满足条件即收集**：配置`Key:level Regex:WARNING|ERROR`，表示只收集level为WARNING或ERROR类型的日志。
-    -   **[过滤不符合条件的数据](http://www.regular-expressions.info/lookaround.html)**：
-        -   配置`Key:level Regex:^(?!.*(INFO|DEBUG)).*`，表示不收集level为INFO或DEBUG类型的日志。
-        -   配置`Key:url Regex:.*^(?!.*(healthcheck)).*`，表示不采集url中带有healthcheck的日志，例如key为url，value为`/inner/healthcheck/jiankong.html`的日志将不会被采集。
-更多示例可参考[regex-exclude-word](https://stackoverflow.com/questions/2404010/match-everything-except-for-specified-strings)、[regex-exclude-pattern](https://stackoverflow.com/questions/2078915/a-regular-expression-to-exclude-a-word-string)。
-
- |
-
-    确认配置后单击**下一步**。
-
-12. **查询分析配置**。 日志服务默认提供数据键名称以便分析使用，可以设置实际数据键名称（根据预览数据生成），和默认数据键名称形成映射关系。如果您需要重新设置索引，请在查询分析页面选择**查询分析属性** \> **设置**进行修改。
+    6.  酌情配置高级选项（可选）。 确认配置后单击**下一步**。
+7.  **查询分析配置**。 日志服务默认提供数据键名称以便分析使用，可以设置实际数据键名称（根据预览数据生成），和默认数据键名称形成映射关系。如果您需要重新设置索引，请在查询分析页面选择**查询分析属性** \> **设置**进行修改。
 
     确保日志机器组心跳正常的情况下，浏览采集上来的数据。
 
-    ![](images/6669_zh-CN.png "预览日志")
+    ![预览日志](images/6669_zh-CN.png "预览日志")
 
     系统已为您预设了名为LogstoreName-iis-dashboard的仪表盘。配置完成后，您可以在仪表盘页面中查看来源IP分布、请求状态占比等实时动态。
 
-    ![](images/6671_zh-CN.png "仪表盘")
+    ![仪表盘](images/6671_zh-CN.png "仪表盘")
 
     -   **访问地域分析\(ip\_distribution\)**：统计IP来源情况，统计语句如下：
 
@@ -148,7 +120,7 @@ logExtFileFlags="Date, Time, ClientIP, UserName, SiteName, ComputerName, ServerI
         | select ip_to_geo("c-ip") as country, count(1) as c group by ip_to_geo("c-ip") limit 100
         ```
 
-        ![](images/6672_zh-CN.png "访问地域分析")
+        ![访问地域分析](images/6672_zh-CN.png "访问地域分析")
 
     -   **PV/UV统计\(pv\_uv\)**：统计最近的PV数和UV数，统计语句如下：
 
@@ -156,7 +128,7 @@ logExtFileFlags="Date, Time, ClientIP, UserName, SiteName, ComputerName, ServerI
         *| select approx_distinct("c-ip") as uv ,count(1) as pv , date_format(date_trunc('hour', __time__), '%m-%d %H:%i') as time group by date_format(date_trunc('hour', __time__), '%m-%d %H:%i') order by time limit 1000
         ```
 
-        ![](images/6673_zh-CN.png "PV/UV统计")
+        ![pv/uv统计](images/6673_zh-CN.png "PV/UV统计")
 
     -   **请求状态占比\(http\_status\_percentage\)**：统计http请求状态码的占比，统计语句如下：
 
@@ -164,7 +136,7 @@ logExtFileFlags="Date, Time, ClientIP, UserName, SiteName, ComputerName, ServerI
         *| select count(1) as pv ,"sc-status" group by "sc-status"
         ```
 
-        ![](images/6674_zh-CN.png "请求状态占比")
+        ![请求状态占比](images/6674_zh-CN.png "请求状态占比")
 
     -   **浏览流入流出统计（net\_in\_net\_out）**：统计流量的流入和流出情况，统计语句如下：
 
@@ -172,7 +144,7 @@ logExtFileFlags="Date, Time, ClientIP, UserName, SiteName, ComputerName, ServerI
         *| select sum("sc-bytes") as net_out, sum("cs-bytes") as net_in ,date_format(date_trunc('hour', time), '%m-%d %H:%i') as time group by date_format(date_trunc('hour', time), '%m-%d %H:%i') order by time limit 10000
         ```
 
-        ![](images/6675_zh-CN.png "出入流量统计")
+        ![出入流量统计](images/6675_zh-CN.png "出入流量统计")
 
     -   **请求方法占比\(http\_method\_percentage\)**：统计各种请求方法的占比，统计语句如下：
 
@@ -180,7 +152,7 @@ logExtFileFlags="Date, Time, ClientIP, UserName, SiteName, ComputerName, ServerI
         *| select count(1) as pv ,"cs-method" group by "cs-method"
         ```
 
-        ![](images/6676_zh-CN.png "请求方法占比")
+        ![请求方法占比](images/6676_zh-CN.png "请求方法占比")
 
     -   **请求UA占比\(user\_agent\)**：统计各种浏览器的占比，统计语句如下：
 
@@ -188,7 +160,7 @@ logExtFileFlags="Date, Time, ClientIP, UserName, SiteName, ComputerName, ServerI
         *| select count(1) as pv, case when "user-agent" like '%Chrome%' then 'Chrome' when "user-agent" like '%Firefox%' then 'Firefox' when "user-agent" like '%Safari%' then 'Safari' else 'unKnown' end as "user-agent" group by case when "user-agent" like '%Chrome%' then 'Chrome' when "user-agent" like '%Firefox%' then 'Firefox' when "user-agent" like '%Safari%' then 'Safari' else 'unKnown' end order by pv desc limit 10
         ```
 
-        ![](images/6677_zh-CN.png "请求UA占比")
+        ![请求UA占比](images/6677_zh-CN.png "请求UA占比")
 
     -   **访问前十地址（top\_10\_page）**：统计访问数量前十的地址，统计语句如下：
 
@@ -196,6 +168,6 @@ logExtFileFlags="Date, Time, ClientIP, UserName, SiteName, ComputerName, ServerI
         *| select count(1) as pv, split_part("cs-uri-stem",'?',1) as path group by split_part("cs-uri-stem",'?',1) order by pv desc limit 10
         ```
 
-        ![](images/6678_zh-CN.png "访问前十地址")
+        ![访问前十地址](images/6678_zh-CN.png "访问前十地址")
 
 
