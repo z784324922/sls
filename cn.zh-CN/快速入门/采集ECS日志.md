@@ -17,24 +17,11 @@
 ## 前提条件 {#section_f34_lys_xdb .section}
 
 -   已开通ECS和日志服务。
--   已创建了日志服务Project和Logstore。详细步骤请参考[准备流程](../../../../cn.zh-CN/用户指南/准备工作/准备流程.md)。
+-   已创建了日志服务Project和Logstore。详细步骤请参考[准备流程](../../../../cn.zh-CN/准备工作/准备流程.md)。
 
     **说明：** 如果您的ECS为经典网络或VPC专有网络，请保证日志服务Project和ECS位于同一地域。
 
--   如果您的日志服务和ECS不在同一账号名下，则不能自动获取ECS对应的owner信息，需要[为非本账号ECS、自建IDC配置主账号AliUid](../../../../cn.zh-CN/用户指南/Logtail采集/机器组/为非本账号ECS、自建IDC配置主账号AliUid.md)。
-
-## 步骤2 配置机器组 {#section_uy3_vxs_xdb .section}
-
-1.  在日志服务控制台首页单击Project名称，进入日志库概览界面。
-2.  单击左侧导航栏中的![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13802/156401940652194_zh-CN.png)图标，切换到机器组列表导航栏。
-3.  单击机器组右侧的![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13802/156401940652195_zh-CN.png)图标，选择**创建机器组**，填写您的ECS内网IP或自定义标识，单击**确认**。
-
-    **说明：** 
-
-    -   只支持当前Project所在地域的云服务器。
-    -   同一机器组中不允许同时存在Windows与Linux云服务器。
-
-![](images/3874_zh-CN.png "配置机器组")
+-   如果您的日志服务和ECS不在同一账号名下，则不能自动获取ECS对应的owner信息，需要[配置主账号AliUid](../../../../cn.zh-CN/数据采集/Logtail采集/机器组/配置主账号AliUid.md)。
 
 ## 采集步骤 {#section_wt2_vzs_xdb .section}
 
@@ -53,14 +40,14 @@
 
     **说明：** 如果您的ECS为经典网络或VPC专有网络，请保证日志服务Project和ECS位于同一地域。
 
-5.  **创建机器组** 
-    1.  在ECS上安装Logtail客户端
+5.  创建机器组。
 
-        在**ECS机器**页面勾选实例后单击**安装**。Windows系统请参考[安装Logtail（Windows系统）](../../../../cn.zh-CN/用户指南/Logtail采集/安装/安装Logtail（Windows系统）.md)。
+    在创建机器组之前，您需要首先确认已经安装了Logtail。
 
-    2.  创建机器组
-
-        如果您之前没有创建过机器组，请在安装完Logtail后单击**确认安装完毕**创建机器组。
+    -   集团内部机器：默认自动安装，如果没有安装，请根据界面提示进行咨询。
+    -   ECS机器： 勾选实例后单击**安装**进行一键式安装。Windows系统不支持一键式安装，请参考[安装Logtail（Windows系统）](../../../../cn.zh-CN/数据采集/Logtail采集/安装/安装Logtail（Windows系统）.md)手动安装。
+    -   自建机器：请根据界面提示进行安装。或者参考[安装Logtail（Linux系统）](../../../../cn.zh-CN/数据采集/Logtail采集/安装/安装Logtail（Linux系统）.md#)或[安装Logtail（Windows系统）](../../../../cn.zh-CN/数据采集/Logtail采集/安装/安装Logtail（Windows系统）.md#)文档进行安装。
+    安装完Logtail后单击**确认安装完毕**创建机器组。如果您之前已经创建好机器组 ，请直接单击**使用现有机器组**。
 
 6.  机器组配置。
 
@@ -68,11 +55,11 @@
 
 7.  Logtail配置。
 
-    详细数据源配置请参考[文本日志](../../../../cn.zh-CN/用户指南/Logtail采集/文本日志/采集文本日志.md)，本文档以**极简模式**为例说明。
+    详细数据源配置请参考[文本日志](../../../../cn.zh-CN/数据采集/Logtail采集/文本日志/采集文本日志.md)，本文档以**极简模式**为例说明。
 
     填写ECS日志所在的文件路径，并单击**下一步**。
 
-    ![](images/3873_zh-CN.png "极简模式")
+    ![极简模式](images/3873_zh-CN.png "极简模式")
 
     **说明：** 
 
@@ -92,7 +79,7 @@
 
     1.  全文索引和字段索引属性必须至少启用一种。同时启用时，以字段索引属性为准。
     2.  索引类型为long/double时，大小写敏感和分词符属性无效。
-    3.  如何设置索引请参考[开启并配置索引](../../../../cn.zh-CN/用户指南/查询与分析/开启并配置索引.md)。个别字段为日志服务[保留字段](../../../../cn.zh-CN/产品简介/限制说明/保留字段.md)，请知悉。
+    3.  如何设置索引请参考[开启并配置索引](../../../../cn.zh-CN/查询与分析/开启并配置索引.md)。个别字段为日志服务[保留字段](../../../../cn.zh-CN/产品简介/限制说明/保留字段.md)，请知悉。
     4.  如需使用Nginx模板或消息服务模板，请在查询界面的**查询分析属性**中配置。
 
 完成以上步骤后，您已成功配置Logtail方式采集ECS日志。如果您需要为采集到的日志配置日志投递，请根据页面提示，在后续步骤中完成。
@@ -101,11 +88,11 @@
 
 成功配置后，您可以尝试重新登录ECS，或输入命令`echo "test message" >> /var/log/message`，本地`/var/log/message`文件会有新的日志产生，这部分日志会被Logtail采集到日志服务中。
 
-请返回至概览页面，单击日志库名称后的![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13018/156401940752166_zh-CN.png)图标，选择**查询分析**或**消费预览**，可以查看Logtail采集到的日志数据。
+请返回至概览页面，单击日志库名称后的![管理图标](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13018/156499006452166_zh-CN.png)图标，选择**查询分析**或**消费预览**，可以查看Logtail采集到的日志数据。
 
-![](images/3876_zh-CN.png "日志查看方式")
+![预览日志](images/3876_zh-CN.png "日志查看方式")
 
-![](images/3877_zh-CN.png "预览日志")
+![消费预览](images/3877_zh-CN.png "预览日志")
 
-![](images/3878_zh-CN.png "检索日志")
+![检索日志](images/3878_zh-CN.png "检索日志")
 
