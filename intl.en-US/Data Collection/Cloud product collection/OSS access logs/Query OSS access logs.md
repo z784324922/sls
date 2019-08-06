@@ -24,7 +24,7 @@ Log Service provides the following default dashboards:
 
 -   **oss\_operation\_center: displays overall operation status.** 
 
-    ![Analyze Logs](images/39796_en-US.png "c")
+    ![Analyze Logs](images/39796_en-US.png "Analyze Logs")
 
 -   **oss\_access\_center: displays statistics of access logs.** 
 
