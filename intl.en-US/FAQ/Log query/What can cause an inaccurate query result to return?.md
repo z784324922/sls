@@ -2,8 +2,6 @@
 
 When you query or analyze logs, a message indicating **The results are inaccurate.** may be displayed. This is displayed when only partial logs are scanned for query and analysis results, meaning the results do not include scans of full-log queries or analysis, and are therefore considered inaccurate.
 
-![](images/35302_en-US.png)
-
 Possible causes include:
 
 ## 1. The time range for queries is excessive. {#section_xcn_sll_ggb .section}
