@@ -49,8 +49,8 @@ LogFormat "%h %l %u %t \"%r\" %>s %b \"%{Referer}i\" \"%{User-Agent}i\" %D %f %k
     在创建机器组之前，您需要首先确认已经安装了Logtail。
 
     -   集团内部机器：默认自动安装，如果没有安装，请根据界面提示进行咨询。
-    -   ECS机器： 勾选实例后单击**安装**进行一键式安装。Windows系统不支持一键式安装，请参考[安装Logtail（Windows系统）](../cn.zh-CN/数据采集/Logtail采集/安装/安装Logtail（Windows系统）.md)手动安装。
-    -   自建机器：请根据界面提示进行安装。或者参考[安装Logtail（Linux系统）](../cn.zh-CN/数据采集/Logtail采集/安装/安装Logtail（Linux系统）.md#)或[安装Logtail（Windows系统）](../cn.zh-CN/数据采集/Logtail采集/安装/安装Logtail（Windows系统）.md#)文档进行安装。
+    -   ECS机器： 勾选实例后单击**安装**进行一键式安装。Windows系统不支持一键式安装，请参见[安装Logtail（Windows系统）](../intl.zh-CN/数据采集/Logtail采集/安装/安装Logtail（Windows系统）.md)手动安装。
+    -   自建机器：请根据界面提示进行安装。或者参见[安装Logtail（Linux系统）](../intl.zh-CN/数据采集/Logtail采集/安装/安装Logtail（Linux系统）.md#)或[安装Logtail（Windows系统）](../intl.zh-CN/数据采集/Logtail采集/安装/安装Logtail（Windows系统）.md#)文档进行安装。
     安装完Logtail后单击**确认安装完毕**创建机器组。如果您之前已经创建好机器组 ，请直接单击**使用现有机器组**。
 
 6.  应用机器组。
@@ -60,26 +60,24 @@ LogFormat "%h %l %u %t \"%r\" %>s %b \"%{Referer}i\" \"%{User-Agent}i\" %D %f %k
     3.  选择**日志格式**。 请按照您的Apache日志配置文件中声明的格式选择**日志格式**。为了便于日志数据的查询分析，日志服务推荐您使用自定义的Apache日志格式。
     4.  填写**APACHE配置字段**。 若您的**日志格式**为**common**或**combined**，此处会自动填写对应的配置。若您选择了**自定义**日志格式，请在此处填写您的自定义配置。建议填写上文中日志服务的推荐配置。
 
-        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/17637/15647371869380_zh-CN.png)
+        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/17637/15656892799380_zh-CN.png)
 
     5.  确认**APACHE键名称**。 日志服务会自动解析您的APACHE键名称，您可以在页面中确认。
 
         **说明：** %r会被提取为`request_method`、`request_uri`和`request_protocol`三个键。
 
-        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/17637/15647371869381_zh-CN.png)
+        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/17637/15656892799381_zh-CN.png)
 
     6.  配置高级选项，并单击下一步。 
     7.  查询分析配置 默认已经设置好索引，如果您需要重新设置索引，请在查询分析页面选择**查询分析属性** \> **设置**进行修改。
 
         确保日志机器组心跳正常的情况下，可以预览采集上来的数据。
 
-        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/17637/15647371869382_zh-CN.png)
+        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/17637/15656892799382_zh-CN.png)
 
 8.  **可视化分析**。 
 
     系统已为您预设了名为LogstoreName-apache-dashboard的仪表盘。配置完成后，您可以在仪表盘页面中查看来源IP分布、请求状态占比等实时动态。
-
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/17637/15647371879384_zh-CN.png)
 
     -   **访问地域分析（ip\_distribution）**：统计访问IP来源情况，统计语句如下：
 
@@ -89,8 +87,6 @@ LogFormat "%h %l %u %t \"%r\" %>s %b \"%{Referer}i\" \"%{User-Agent}i\" %D %f %k
                     group by address limit 100
         ```
 
-        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/17637/15647371879389_zh-CN.png)
-
     -   **请求状态占比（http\_status\_percentage）**：统计最近一天各种http状态码的占比，统计语句如下：
 
         ``` {#codeblock_nox_hs7_l6o}
@@ -99,7 +95,7 @@ LogFormat "%h %l %u %t \"%r\" %>s %b \"%{Referer}i\" \"%{User-Agent}i\" %D %f %k
                         group by status
         ```
 
-        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/17637/15647371879388_zh-CN.png)
+        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/17637/15656892799388_zh-CN.png)
 
     -   **请求方法占比（http\_method\_percentage）**：统计最近一天各种请求方法的占比，统计语句如下：
 
@@ -109,7 +105,7 @@ LogFormat "%h %l %u %t \"%r\" %>s %b \"%{Referer}i\" \"%{User-Agent}i\" %D %f %k
                     group by request_method
         ```
 
-        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/17637/15647371879387_zh-CN.png)
+        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/17637/15656892809387_zh-CN.png)
 
     -   **PV/UV统计（pv\_uv）**：统计最近的PV数和UV数，统计语句如下：
 
@@ -122,7 +118,7 @@ LogFormat "%h %l %u %t \"%r\" %>s %b \"%{Referer}i\" \"%{User-Agent}i\" %D %f %k
                     limit 1000
         ```
 
-        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/17637/15647371879385_zh-CN.png)
+        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/17637/15656892809385_zh-CN.png)
 
     -   **出入流量统计（net\_in\_net\_out）**：统计流量的流入和流出情况，统计语句如下：
 
@@ -135,7 +131,7 @@ LogFormat "%h %l %u %t \"%r\" %>s %b \"%{Referer}i\" \"%{User-Agent}i\" %D %f %k
                     limit 10000mit 10
         ```
 
-        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/17637/15647371889391_zh-CN.png)
+        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/17637/15656892809391_zh-CN.png)
 
     -   **请求UA占比（http\_user\_agent\_percentage）**：统计最近一天各种浏览器的占比，统计语句如下：
 
@@ -149,9 +145,9 @@ LogFormat "%h %l %u %t \"%r\" %>s %b \"%{Referer}i\" \"%{User-Agent}i\" %D %f %k
                     limit 10
         ```
 
-        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/17637/15647371889390_zh-CN.png)
+        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/17637/15656892809390_zh-CN.png)
 
-    -   **前十访问来源（top\_10\_referer）**：统计最近一天访问PV最高的前十个访问来源页面，统计语句如下：
+    -   **前十访问来源（top\_10\_referer）**：统计最近一天访问PV前十的访问来源页面，统计语句如下：
 
         ``` {#codeblock_v2n_01o_ag8}
         * | select  http_referer, 
@@ -160,7 +156,7 @@ LogFormat "%h %l %u %t \"%r\" %>s %b \"%{Referer}i\" \"%{User-Agent}i\" %D %f %k
                     order by pv desc limit 10
         ```
 
-        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/17637/156473718810098_zh-CN.png)
+        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/17637/156568928010098_zh-CN.png)
 
     -   **访问前十地址（top\_page）**：统计最近一天访问pv前十的地址，统计语句如下：
 
@@ -171,7 +167,7 @@ LogFormat "%h %l %u %t \"%r\" %>s %b \"%{Referer}i\" \"%{User-Agent}i\" %D %f %k
                     order by pv desc limit 10
         ```
 
-        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/17637/15647371889386_zh-CN.png)
+        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/17637/15656892809386_zh-CN.png)
 
     -   **请求时间前十地址（top\_10\_latency\_request\_uri）**：统计最近一天请求响应延时最长的前十个地址，统计语句如下：
 
@@ -181,6 +177,6 @@ LogFormat "%h %l %u %t \"%r\" %>s %b \"%{Referer}i\" \"%{User-Agent}i\" %D %f %k
                     order by request_time_sec desc limit 10 10
         ```
 
-        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/17637/156473718810099_zh-CN.png)
+        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/17637/156568928110099_zh-CN.png)
 
 
