@@ -62,9 +62,6 @@ Log Service provides the service log feature to record operations logs and other
 1.  Log on to the Log Service console with your Alibaba Cloud account and find the target project.
 2.  In the **Actions** column, click **Operations Log**.
 3.  Clear both the Operations logs and Other logs check boxes.
-
-    ![](images/10092_en-US.png)
-
 4.  Click **Confirm**.
 
 ## Authorize a RAM user {#section_cdl_nqy_pgb .section}
