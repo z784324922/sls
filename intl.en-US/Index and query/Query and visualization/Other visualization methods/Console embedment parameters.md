@@ -87,7 +87,7 @@ https://sls4service.console.aliyun.com/next/project/projectaaa/logsearch/logstor
 |26|Custom \(time frame\)|
 |99|Custom time range. In this case, you must set the startTime and endTime parameters.|
 
--   **Hide sidebars** 
+-   Hide sidebars
 
     -   URL
 
@@ -99,9 +99,9 @@ https://sls4service.console.aliyun.com/next/project/projectaaa/logsearch/logstor
 
         To hide the top navigation bar and left-side navigation pane on the search page, set parameters as follows: hideTopbar=true&hideSidebar=true. The following figure shows the display effects.
 
-        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/106800/156575506637608_en-US.png)
+        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/106800/156575542437608_en-US.png)
 
--   **Hide the back button in the navigation pane** 
+-   Hide the back button in the navigation pane
     -   URL
 
         To hide the back button in the upper-left corner of the raw log query page, set the hiddenBack parameter to true in the URL as follows:
@@ -112,15 +112,15 @@ https://sls4service.console.aliyun.com/next/project/projectaaa/logsearch/logstor
 
     -   Display effects
 
-        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/106800/156575506637609_en-US.png)
+        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/106800/156575542437609_en-US.png)
 
--   **Filter the resources listed in the navigation pane** 
+-   Filter the resources listed in the navigation pane
 
     -   URL
 
         Set the keyFilter parameter in JSON format in the URL to filter the resources listed in the left-side navigation pane. For example, you need to display Logstores whose names contain `aegis-` and whose name is `500osslog`, saved search items whose names contain oss, and dashboards whose names contain ddos.
 
-        The JSON-formatted value is `{"logstore":["aegis-","500osslog"],"savedserach":["oss"],"dashboard":["ddos"]}`, where `aegis-` specifies that all Logstores whose names contain `aegis` are queried in fuzzy match mode and `500osslog` specifies that the Logstore whose name is `500osslog` is queried in exact match mode. You can **use a hyphen \(`-`\) to specify fuzzy match**.
+        The JSON-formatted value is `{"logstore":["aegis-","500osslog"],"savedserach":["oss"],"dashboard":["ddos"]}`, where `aegis-` specifies that all Logstores whose names contain `aegis` are queried in fuzzy match mode and `500osslog` specifies that the Logstore whose name is `500osslog` is queried in exact match mode. You can use a hyphen \(`-`\) to specify fuzzy match.
 
         ``` {#codeblock_und_bd6_avh}
         https://sls4service.console.aliyun.com/next/project/${ProjectName}/logsearch/${LogstoreName}/?keyFilter=%7B"logstore":%5B"aegis-","500osslog"%5D,"savedsearch":%5B"oss"%5D,"dashboard":%5B"ddos"%5D%7D 
@@ -128,9 +128,9 @@ https://sls4service.console.aliyun.com/next/project/projectaaa/logsearch/logstor
 
     -   Display effects
 
-        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/106800/156575506637610_en-US.png)
+        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/106800/156575542537610_en-US.png)
 
--   **Configure a time selector** 
+-   Configure a time selector
     -   URL
 
         ``` {#codeblock_x2a_6u4_k93}
@@ -139,7 +139,7 @@ https://sls4service.console.aliyun.com/next/project/projectaaa/logsearch/logstor
 
     -   Display effects
 
-        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/106800/156575506737611_en-US.png)
+        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/106800/156575542537611_en-US.png)
 
 
 ## Parameters of the raw log query page {#section_ovd_zq3_mgb .section}
@@ -153,7 +153,7 @@ https://sls4service.console.aliyun.com/next/project/projectaaa/logsearch/logstor
 
 Example
 
--   **Set the queryString parameter** 
+-   Set the queryString parameter
     -   URL
 
         ``` {#codeblock_fzs_g78_jm8}
@@ -162,9 +162,9 @@ Example
 
     -   Display effects
 
-        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/106800/156575506737618_en-US.png)
+        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/106800/156575542537618_en-US.png)
 
--   **Set the readOnly parameter** 
+-   Set the readOnly parameter
     -   URL
 
         ``` {#codeblock_qse_kh4_xjb}
@@ -173,7 +173,7 @@ Example
 
     -   Display effects
 
-        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/106800/156575506737613_en-US.png)
+        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/106800/156575542537613_en-US.png)
 
 
 ## Parameters of the saved search page {#section_acb_1r3_mgb .section}
@@ -192,7 +192,7 @@ Example
 
 -   Display effects
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/106800/156575506737612_en-US.png)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/106800/156575542537612_en-US.png)
 
 
 ## Parameters of the dashboard page {#section_trb_1r3_mgb .section}
@@ -221,7 +221,7 @@ Example
 
     -   Display effects
 
-        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/106800/156575506737614_en-US.png)
+        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/106800/156575542537614_en-US.png)
 
 -   Add two filter conditions, namely, key1=value1 and key2=value2, for the dashboard page. Then, the system uses query and analysis statements to filter all charts based on the filter conditions and continues to use these statements.
 
@@ -235,7 +235,7 @@ Example
 
     -   Display effects
 
-        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/106800/156575506738975_en-US.png)
+        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/106800/156575542538975_en-US.png)
 
 -   Add multiple conditions for replacing variables.
 
@@ -249,7 +249,7 @@ Example
 
     -   Display effects
 
-        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/106800/156575506738976_en-US.png)
+        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/106800/156575542638976_en-US.png)
 
 -   Set the autoFresh parameter in the URL to refresh the dashboard page every 5 minutes.
     -   URL
@@ -260,7 +260,7 @@ Example
 
     -   Display effects
 
-        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/106800/156575506847224_en-US.png)
+        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/106800/156575542647224_en-US.png)
 
 
 ## Advanced parameters of the dashboard page {#section_ng5_sr3_mgb .section}
