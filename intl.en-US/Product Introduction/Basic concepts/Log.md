@@ -20,7 +20,7 @@ Log Service has different format requirements for different data fields, as desc
  The value can be any string of up to 1,024 bytes.|
 |Source|This field indicates the source of a log. For example, the IP address of the server where a log is generated.|Any string of up to 128 bytes in length. This field is null by default.|
 |Tags|Log tags include: -   User-defined tags: the tags that you add when you use the [PutLogs](../../../../reseller.en-US/API Reference/Logstore related APIs/PutLogs.md) API operation to write data.
--   [System tags](../../../../reseller.en-US/User Guide/Preparation/Manage a Logstore.md#ul_ubv_lws_cfb): the tags added by Log Service, including `__client_ip__` and `__receive_time__`.
+-   [System tags](../../../../reseller.en-US/Preparation/Manage a Logstore.md#ul_ubv_lws_cfb): the tags added by Log Service, including `__client_ip__` and `__receive_time__`.
 
  |Dictionary format. Both keys and values are strings. When you query logs in the console, the system displays the tags with the `__tag__:` prefix.|
 
