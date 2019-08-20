@@ -13,7 +13,7 @@
 
  |N/A|
 |Machine group|You can create a maximum of 100 machine groups for a project.|If you request more quotas, open a ticket.|
-|Consumer group|You can create a maximum of 20 consumer groups for a Logstore.|You can delete consumer groups that are no longer used.|
+|Consumer group|You can create a maximum of 10 consumer groups for a Logstore.|You can delete consumer groups that are no longer used.|
 |Saved search|You can create a maximum of 100 saved search items for a project.|N/A|
 |Dashboard| -   You can create a maximum of 50 dashboards for a project.
 -   Each dashboard can contain a maximum of 50 charts.
