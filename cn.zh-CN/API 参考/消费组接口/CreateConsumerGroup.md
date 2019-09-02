@@ -35,7 +35,7 @@ Content-Length: <ContentLength>
 |:---|:-|:---|:-|
 |logstoreName|string|是|Logstore 的名称。|
 |consumerGroup|string|是|消费组名称，在Project 下必须唯一。|
-|timeout|integer|是|超时时间，在超时时间段内没有收到心跳，消费组将被删除。|
+|timeout|integer|是|超时时间，在超时时间段内没有收到心跳，消费者将被删除。|
 |order|bool|是|在单个shard中是否按顺序消费。 -   true：表示在单个shard中按顺序消费。shard分裂后，先消费原shard数据，然后并列消费两个新shard的数据。
 -   false：表示不按顺序消费。
 
