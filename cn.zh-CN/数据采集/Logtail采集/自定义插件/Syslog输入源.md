@@ -1,33 +1,33 @@
 # Syslog输入源 {#concept_lb4_vg2_z2b .concept}
 
-Logtail支持通过自定义插件采集Syslog。
+Logtail支持通过自定义插件采集syslog。
 
 ## 简介 {#section_cvc_3h2_z2b .section}
 
-在Linux上，本地的Syslog数据可以通过rSyslog等Syslog agent转发到指定服务器IP地址和端口。为指定服务器添加Logtail配置之后，Logtail插件会以TCP或UDP协议接收转发过来的Syslog数据。并且，插件能够将接收到的数据按照指定的Syslog协议进行解析，提取日志中的facility、tag（program）、severity、content等字段。Syslog协议支持[RFC3164](https://tools.ietf.org/html/rfc3164)和[RFC5424](https://tools.ietf.org/html/rfc5424)。
+在Linux上，本地的syslog数据可以通过rsyslog等syslog agent转发到指定服务器IP地址和端口。为指定服务器添加Logtail配置之后，Logtail插件会以TCP或UDP协议接收转发过来的syslog数据。并且，插件能够将接收到的数据按照指定的syslog协议进行解析，提取日志中的facility、tag（program）、severity、content等字段。syslog协议支持[RFC3164](https://tools.ietf.org/html/rfc3164)和[RFC5424](https://tools.ietf.org/html/rfc5424)。
 
 **说明：** Windows Logtail不支持该插件。
 
 ## 实现原理 {#section_tj1_kh2_z2b .section}
 
-通过插件对指定的地址和端口进行监听后，Logtail能够作为Syslog服务器采集来自各个数据源的日志，包括通过rSyslog采集的系统日志、 [Nginx](http://nginx.org/en/docs/syslog.html)转发的访问日志或错误日志，以及[Java](https://github.com/CloudBees-community/syslog-java-client)等语言的Syslog客户端库转发的日志。
+通过插件对指定的地址和端口进行监听后，Logtail能够作为syslog服务器采集来自各个数据源的日志，包括通过rsyslog采集的系统日志、 [Nginx](http://nginx.org/en/docs/syslog.html)转发的访问日志或错误日志，以及[Java](https://github.com/CloudBees-community/syslog-java-client)等语言的syslog客户端库转发的日志。
 
-![实现原理](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/19015/156688582110990_zh-CN.png)
+![实现原理](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/19015/156751530510990_zh-CN.png)
 
 ## 注意事项 {#section_agj_zh2_z2b .section}
 
 -   Linux版 Logtail 0.16.13及以上版本支持该功能。
--   Logtail可同时配置多个Syslog插件，例如同时使用TCP和UDP监听127.0.0.1:9999。
+-   Logtail可同时配置多个syslog插件，例如同时使用TCP和UDP监听127.0.0.1:9999。
 
 ## Logtail配置项 {#section_vnx_kh2_z2b .section}
 
-该插件的输入类型为：`service_Syslog`。
+该插件的输入类型为：`service_syslog`。
 
 |配置项|类型|是否必须|说明|
 |:--|:-|:---|:-|
 |Address|string|否|指定插件监听的协议、地址和端口，Logtail插件会根据配置进行监听并获取日志数据。格式为`[tcp/udp]://[ip]:[port]`，默认为`tcp://127.0.0.1:9999`。 **说明：** 
 
--   Logtail插件配置监听的协议、地址和端口号必须与rSyslog配置文件设置的转发规则相同。
+-   Logtail插件配置监听的协议、地址和端口号必须与rsyslog配置文件设置的转发规则相同。
 -   如果安装Logtail的服务器有多个IP地址可接收日志，可以将地址配置为0.0.0.0，表示监听服务器的所有IP地址。
 
  |
@@ -58,26 +58,26 @@ Logtail支持通过自定义插件采集Syslog。
 
 -   已创建Project和Logstore。
 -   已创建机器组，并在机器组内服务器上安装了0.16.13及以上版本的Logtail。
--   需要被采集Syslog的服务器上已安装了rSyslog。
+-   需要被采集syslog的服务器上已安装了rsyslog。
 
-## 配置Logtail插件采集Syslog {#section_agb_232_z2b .section}
+## 配置Logtail插件采集syslog {#section_agb_232_z2b .section}
 
-1.  为rSyslog添加一条转发规则。
+1.  为rsyslog添加一条转发规则。
 
-    在需要采集Syslog的服务器上修改rSyslog的配置文件/etc/rSyslog.conf，在配置文件的最后添加一行转发规则。添加转发规则后，rSyslog会将Syslog转发至指定地址端口。
+    在需要采集syslog的服务器上修改rsyslog的配置文件/etc/rsyslog.conf，在配置文件的最后添加一行转发规则。添加转发规则后，rsyslog会将syslog转发至指定地址端口。
 
-    -   通过当前服务器采集本机Syslog：配置转发地址为127.0.0.1，端口为任意非知名的空闲端口。
-    -   通过其他服务器采集本机Syslog：配置转发地址为其他服务器的公网IP，端口为任意非知名的空闲端口。
+    -   通过当前服务器采集本机syslog：配置转发地址为127.0.0.1，端口为任意非知名的空闲端口。
+    -   通过其他服务器采集本机syslog：配置转发地址为其他服务器的公网IP，端口为任意非知名的空闲端口。
     例如以下配置表示将所有的日志都通过TCP转发至127.0.0.1:9000，配置文件详细说明请参考[官网说明](https://www.rsyslog.com/doc/v8-stable/configuration/index.html)。
 
     ``` {#codeblock_nky_u5k_0no}
     *.* @@127.0.0.1:9000
     ```
 
-2.  执行以下命令重启rSyslog，使日志转发规则生效。
+2.  执行以下命令重启rsyslog，使日志转发规则生效。
 
     ``` {#codeblock_swp_wuk_e23}
-    sudo service rSyslog restart
+    sudo service rsyslog restart
     ```
 
 3.  登录[日志服务控制台](https://sls.console.aliyun.com)，单击Project名称。
@@ -90,7 +90,7 @@ Logtail支持通过自定义插件采集Syslog。
 
     在创建机器组之前，您需要首先确认已经安装了Logtail。 安装完Logtail后单击**确认安装完毕**创建机器组。如果您之前已经创建好机器组 ，请直接单击**使用现有机器组**。
 
-    **说明：** 接收Syslog的服务器必须在机器组中，且安装了0.16.13及以上版本的Logtail。
+    **说明：** 接收syslog的服务器必须在机器组中，且安装了0.16.13及以上版本的Logtail。
 
     选择一个机器组，将该机器组从**源机器组**移动到**应用机器组**。
 
@@ -130,7 +130,7 @@ Logtail支持通过自定义插件采集Syslog。
 
 ## 配置Logtail插件采集Nginx日志 {#section_rcs_bj2_z2b .section}
 
-Nginx支持直接把访问日志以Syslog协议转发到指定地址和端口。如果您希望把服务器上包括Nginx访问日志在内的所有数据都以Syslog的形式集中投递到日志服务，可以创建Logtail配置并应用到该服务器所在的机器组。
+Nginx支持直接把访问日志以syslog协议转发到指定地址和端口。如果您希望把服务器上包括Nginx访问日志在内的所有数据都以syslog的形式集中投递到日志服务，可以创建Logtail配置并应用到该服务器所在的机器组。
 
 1.  在Nginx服务器的 nginx.conf文件中增加转发规则。
 
@@ -143,7 +143,7 @@ Nginx支持直接把访问日志以Syslog协议转发到指定地址和端口。
         ...
     
         # Add this line.
-        access_log Syslog:server=127.0.0.1:9000,facility=local7,tag=nginx,severity=info combined;
+        access_log syslog:server=127.0.0.1:9000,facility=local7,tag=nginx,severity=info combined;
     
         ...
     }
@@ -158,7 +158,7 @@ Nginx支持直接把访问日志以Syslog协议转发到指定地址和端口。
 
 3.  创建Logtail配置并应用到该服务器所在的机器组。
 
-    配置过程请参考[配置Logtail插件采集Syslog](#)。
+    配置过程请参考[配置Logtail插件采集syslog](#)。
 
 4.  检验Logtail配置是否生效。
 
