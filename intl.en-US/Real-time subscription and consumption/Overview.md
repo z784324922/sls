@@ -16,7 +16,7 @@ LogHub provides the API operation to pull logs and support real-time log consump
 2.  Read logs by using the cursor and step, and return the next cursor.
 3.  Move the cursor continuously to consume logs.
 
-**Note:** To consume or query logs, Log Service needs to read logs. For more information about the differences between consuming logs and querying logs, see [../../../../dita-oss-bucket/SP\_7/DNSLS11857903/EN-US\_TP\_13302\_V1.md\#](../../../../reseller.en-US/.md#).
+**Note:** To consume or query logs, Log Service needs to read logs. For more information about the differences between consuming logs and querying logs, see [Differences between log consumption and log query](../../../../reseller.en-US/.md#).
 
 **Consume logs by using SDKs**
 
