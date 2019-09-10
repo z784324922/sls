@@ -45,12 +45,12 @@ Example:
 
 -   The following figure shows the output result.
 
-    ![](images/41211_en-US.png)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/146896/156808446141211_en-US.png)
 
 
 The following figure shows the structure of the result.
 
-![](images/41212_en-US.png)
+![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/146896/156808446141212_en-US.png)
 
 The following table describes the display items.
 
