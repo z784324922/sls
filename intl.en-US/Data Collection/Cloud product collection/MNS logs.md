@@ -1,15 +1,15 @@
 # MNS logs {#concept_v3m_v3q_zdb .concept}
 
-Message Service \(MNS\) log feature pushes your message operation logs to the specified  Logging Bucket. You can configure to push logs to Log Service in the console, and enable the log feature for a queue/topic in the region. MNS automatically pushes operation logs of the queue/topic messages to the specified Logging Bucket. Logging Bucket.
+Message Service \(MNS\) log feature pushes your message operation logs to the specified Logging Bucket. You can configure to push logs to Log Service in the console, and enable the log feature for a queue/topic in the region. MNS automatically pushes operation logs of the queue/topic messages to the specified Logging Bucket. Logging Bucket.
 
--   If you delete a Log Service project or Logstore corresponding to the Logging Bucket, or revoke the permission granted to MNS,  logs cannot be pushed to Log Service normally.
+-   If you delete a Log Service project or Logstore corresponding to the Logging Bucket, or revoke the permission granted to MNS, logs cannot be pushed to Log Service normally.
 -   The log delay time is about five minutes.
 -   A Logging Bucket is configured for each region. All the message operation logs of the queues/topics with the log feature enabled in the region are pushed to this Logging Bucket.
 -   You can set whether to enable the log feature for each queue/topic separately. The function is disabled by default.
 
 ## Precautions {#section_gxn_sss_zdb .section}
 
--   If you delete a Log Service project or Logstore corresponding to the Logging Bucket, or revoke the permission granted to MNS,  logs cannot be pushed to Log Service normally.
+-   If you delete a Log Service project or Logstore corresponding to the Logging Bucket, or revoke the permission granted to MNS, logs cannot be pushed to Log Service normally.
 -   The log delay time is about five minutes.
 -   A Logging Bucket is configured for each region. All the message operation logs of the queues/topics with the log feature enabled in the region are pushed to this Logging Bucket.
 -   You can set whether to enable the log feature for each queue/topic separately. The function is disabled by default.
@@ -43,7 +43,7 @@ Message Service \(MNS\) log feature pushes your message operation logs to the sp
 4.  Confirm authorization and Log Service project.
     -   If you configure MNS logs push for the first time, follow the prompts on the [Quick authorization](https://ram.console.aliyun.com/?spm=a2c4g.11186623.2.6.IlFP8O#/role/authorize?request=%7B%22Requests%22:%20%7B%22request1%22:%20%7B%22RoleName%22:%20%22AliyunMNSLoggingRole%22,%20%22TemplateId%22:%20%22Logging%22%7D%7D,%20%22ReturnUrl%22:%20%22https:%2F%2Fmns.console.aliyun.com%2F%3Fspm%3D5176.6660585.774526198.1.97zTJs%23%2Flogging%2Fcn-hangzhou%22,%20%22Service%22:%20%22MNS%22%7D) page.
 
-    -   If you do not have a proper project and Logstore, go to the Log Service consoleLog Service console, and follow the page prompts to create a project and Logstore.  For more information, see [Preparation](reseller.en-US/User Guide/Basic operation.md).
+    -   If you do not have a proper project and Logstore, go to the Log Service consoleLog Service console, and follow the page prompts to create a project and Logstore. For more information, see [Preparation](reseller.en-US/Preparation/Preparation.md#).
 
 5.  Push configuration.
 
@@ -63,14 +63,14 @@ Message Service \(MNS\) log feature pushes your message operation logs to the sp
 
 Queue message operation logs are generated when queue messages are operated, such as sending a message, consuming a message, or deleting a message.
 
-A message operation log contains multiple fields.  Fields contained in message operation logs vary with operations.
+A message operation log contains multiple fields. Fields contained in message operation logs vary with operations.
 
-**Log field description**
+ **Log field description** 
 
 The description of each field is shown in the following table.
 
-|Field|Meaning |
-|:----|:-------|
+|Field|Meaning|
+|:----|:------|
 |Time|The operation occurrence time.|
 |MessageId|The ID of the message processed in this operation.|
 |QueueName|The name of the queue corresponding to this operation.|
@@ -80,12 +80,12 @@ The description of each field is shown in the following table.
 |ReceiptHandleInRequest|The ReceiptHandle parameter passed in when this operation is performed.|
 |ReceiptHandleInResponse|The ReceiptHandle parameter returned when this operation is complete.|
 
-**Field description for each operation**
+ **Field description for each operation** 
 
 Logs of different operations contain different fields. The following table lists fields contained in each operation.
 
-|Operation |Time|QueueName|AccountId|MessageId|RemoteAddress|NextVisibleTime|ReceiptHandleInResponse|ReceiptHandleInRequest|
-|:---------|:---|:--------|:--------|:--------|:------------|:--------------|:----------------------|:---------------------|
+|Operation|Time|QueueName|AccountId|MessageId|RemoteAddress|NextVisibleTime|ReceiptHandleInResponse|ReceiptHandleInRequest|
+|:--------|:---|:--------|:--------|:--------|:------------|:--------------|:----------------------|:---------------------|
 |SendMessage/BatchSendMessage|Yes|Yes|Yes|Yes|Yes|Yes|-|-|
 |PeekMessage/BatchPeekMessage|Yes|Yes|Yes|Yes|Yes|-|-|-|
 |ReceiveMessage/BatchReceiveMessage|Yes|Yes|Yes|Yes|Yes|Yes|Yes|-|
@@ -98,7 +98,7 @@ Topic message operation logs are generated when topic messages are operated, inc
 
 The following sections describe the meaning of each field in the topic message operation logs, and fields contained in different operations.
 
-**Log field description**
+ **Log field description** 
 
 A message operation log contains multiple fields. The following table lists the description of each field.
 
@@ -112,7 +112,7 @@ A message operation log contains multiple fields. The following table lists the 
 |RemoteAddress|The address of the client that initiates this operation.|
 |NotifyStatus|The status code or corresponding error information returned by the user when MNS pushes a message to the user.|
 
-**Field description for each operation**
+ **Field description for each operation** 
 
 Logs of different operations contain different fields. The following table lists fields contained in each operation.
 
@@ -121,18 +121,18 @@ Logs of different operations contain different fields. The following table lists
 |PublishMessage|Yes|Yes|Yes|-|Yes|Yes|-|-|
 |Notify|Yes|Yes|Yes|Yes|Yes|-|Yes|Yes|
 
-**NotifyStatus**
+ **NotifyStatus** 
 
 NotifyStatus is a field contained only in logs for pushing messages. This field helps you investigate the reason why MNS fails to push messages to the endpoint.
 
-Depending on the different  NotifyStatus values, you can perform troubleshooting according to the suggestions provided in the following table.
+Depending on the different NotifyStatus values, you can perform troubleshooting according to the suggestions provided in the following table.
 
 |Error code|Description|Troubleshooting method|
 |:---------|:----------|:---------------------|
-|2xx|The message is pushed successfully. |-|
-|Other HTTP status code |After a message is pushed to an endpoint, the endpoint returns a non-2xx status code. |Check the processing logic of the endpoint.|
-|InvalidHost|The endpoint specified in the subscription is invalid. |Use curl or telnet to check whether the endpoint in the subscription is valid.|
-|ConnectTimeout|The connection to the endpoint specified in the subscription times out. |Use curl or telnet to check whether the endpoint in the subscription is accessible.|
-|ConnectFailure|The connection to the endpoint specified in the subscription fails. |Use curl or telnet to check whether the endpoint in the subscription is accessible.|
-|UnknownError|Unknown error. |Contact MNS technical support.|
+|2xx|The message is pushed successfully.|-|
+|Other HTTP status code|After a message is pushed to an endpoint, the endpoint returns a non-2xx status code.|Check the processing logic of the endpoint.|
+|InvalidHost|The endpoint specified in the subscription is invalid.|Use curl or telnet to check whether the endpoint in the subscription is valid.|
+|ConnectTimeout|The connection to the endpoint specified in the subscription times out.|Use curl or telnet to check whether the endpoint in the subscription is accessible.|
+|ConnectFailure|The connection to the endpoint specified in the subscription fails.|Use curl or telnet to check whether the endpoint in the subscription is accessible.|
+|UnknownError|Unknown error.|Contact MNS technical support.|
 
