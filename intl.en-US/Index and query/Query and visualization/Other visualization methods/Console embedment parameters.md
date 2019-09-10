@@ -2,7 +2,7 @@
 
 You can set relevant parameters to customize the display effects on webpages when the Log Service console is embedded into a self-built website.
 
-Log Service allows you to [embed the console into a self-built website and access the console without logon](reseller.en-US/Index and query/Query and visualization/Other visualization methods/Console sharing embedment.md). Then, you can quickly and conveniently query and analyze logs in a visualized manner. In addition, Log Service also provides parameters for you to customize the UI and integrate the console UI with third-party webpages.
+Log Service allows you to [embed the console into a self-built website and access the console without logon](intl.en-US/Index and query/Query and visualization/Other visualization methods/Console sharing embedment.md). Then, you can quickly and conveniently query and analyze logs in a visualized manner. In addition, Log Service also provides parameters for you to customize the UI and integrate the console UI with third-party webpages.
 
 ## URL encoding {#section_dlr_4l3_mgb .section}
 
@@ -35,10 +35,10 @@ https://sls4service.console.aliyun.com/next/project/projectaaa/logsearch/logstor
 
 |Function|Parameter|Type|Required|Description|Example|
 |:-------|:--------|:---|:-------|:----------|:------|
-|**[Hide sidebars](#)**|hideTopbar|Boolean|No|Specifies whether to hide the top navigation bar.|hideTopbar=true|
+|[Hide sidebars](#)|hideTopbar|Boolean|No|Specifies whether to hide the top navigation bar.|hideTopbar=true|
 |hideSidebar|Boolean|No|Specifies whether to hide the left-side navigation pane.|hideSidebar=true|
-|**[Hide the back button in the navigation pane](#)**|hiddenBack|Boolean|No|Specifies whether to hide the back button on the Logstores page.|hiddenBack=true|
-|**[Filter the resources listed in the navigation pane](#)**|keyFilter|JSON|No|The filtered resources listed in the navigation pane. Valid values: -   logstore
+|[Hide the back button in the navigation pane](#)|hiddenBack|Boolean|No|Specifies whether to hide the back button on the Logstores page.|hiddenBack=true|
+|[Filter the resources listed in the navigation pane](#)|keyFilter|JSON|No|The filtered resources listed in the navigation pane. Valid values: -   logstore
 -   savedsearch
 -   dashboard
 
@@ -48,7 +48,7 @@ https://sls4service.console.aliyun.com/next/project/projectaaa/logsearch/logstor
 -   The parameter value must be in JSON format and URI-encoded.
 
  |`{"logstore":["logstore-xx"],"savedsearch":["savedsearch-xx"],"dashboard":["dashboard-xx"]}`|
-|**[Configure a time selector](#)**|queryTimeType|Long|No|The time range of queried data. Valid values:
+|[Configure a time selector](#)|queryTimeType|Long|No|The time range of queried data. Valid values:
 
 -   \[1, 26\]: specifies an integer in the interval. Each integer corresponds to a time range. For more information, see the following table.
 -   99: specifies a custom time range. In this case, you must set the `startTime` and `endTime` parameters.
@@ -99,7 +99,7 @@ https://sls4service.console.aliyun.com/next/project/projectaaa/logsearch/logstor
 
         To hide the top navigation bar and left-side navigation pane on the search page, set parameters as follows: hideTopbar=true&hideSidebar=true. The following figure shows the display effects.
 
-        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/106800/156575542437608_en-US.png)
+        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/106800/156808367737608_en-US.png)
 
 -   Hide the back button in the navigation pane
     -   URL
@@ -112,7 +112,7 @@ https://sls4service.console.aliyun.com/next/project/projectaaa/logsearch/logstor
 
     -   Display effects
 
-        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/106800/156575542437609_en-US.png)
+        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/106800/156808367737609_en-US.png)
 
 -   Filter the resources listed in the navigation pane
 
@@ -128,7 +128,7 @@ https://sls4service.console.aliyun.com/next/project/projectaaa/logsearch/logstor
 
     -   Display effects
 
-        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/106800/156575542537610_en-US.png)
+        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/106800/156808367737610_en-US.png)
 
 -   Configure a time selector
     -   URL
@@ -139,7 +139,7 @@ https://sls4service.console.aliyun.com/next/project/projectaaa/logsearch/logstor
 
     -   Display effects
 
-        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/106800/156575542537611_en-US.png)
+        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/106800/156808367737611_en-US.png)
 
 
 ## Parameters of the raw log query page {#section_ovd_zq3_mgb .section}
@@ -162,7 +162,7 @@ Example
 
     -   Display effects
 
-        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/106800/156575542537618_en-US.png)
+        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/106800/156808367737618_en-US.png)
 
 -   Set the readOnly parameter
     -   URL
@@ -173,7 +173,7 @@ Example
 
     -   Display effects
 
-        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/106800/156575542537613_en-US.png)
+        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/106800/156808367737613_en-US.png)
 
 
 ## Parameters of the saved search page {#section_acb_1r3_mgb .section}
@@ -192,7 +192,7 @@ Example
 
 -   Display effects
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/106800/156575542537612_en-US.png)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/106800/156808367737612_en-US.png)
 
 
 ## Parameters of the dashboard page {#section_trb_1r3_mgb .section}
@@ -221,7 +221,7 @@ Example
 
     -   Display effects
 
-        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/106800/156575542537614_en-US.png)
+        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/106800/156808367837614_en-US.png)
 
 -   Add two filter conditions, namely, key1=value1 and key2=value2, for the dashboard page. Then, the system uses query and analysis statements to filter all charts based on the filter conditions and continues to use these statements.
 
@@ -235,7 +235,7 @@ Example
 
     -   Display effects
 
-        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/106800/156575542538975_en-US.png)
+        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/106800/156808367838975_en-US.png)
 
 -   Add multiple conditions for replacing variables.
 
@@ -249,7 +249,7 @@ Example
 
     -   Display effects
 
-        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/106800/156575542638976_en-US.png)
+        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/106800/156808367838976_en-US.png)
 
 -   Set the autoFresh parameter in the URL to refresh the dashboard page every 5 minutes.
     -   URL
@@ -260,7 +260,7 @@ Example
 
     -   Display effects
 
-        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/106800/156575542647224_en-US.png)
+        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/106800/156808367847224_en-US.png)
 
 
 ## Advanced parameters of the dashboard page {#section_ng5_sr3_mgb .section}
