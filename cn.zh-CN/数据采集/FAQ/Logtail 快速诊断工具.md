@@ -54,7 +54,7 @@
 
 ## 诊断流程 {#section_z2q_dlk_sfb .section}
 
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13295/156465653130599_zh-CN.png)
+![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13295/156818934330599_zh-CN.png)
 
 ## 机器组心跳检查 {#section_flm_2lk_sfb .section}
 
@@ -106,7 +106,7 @@
     [Input]: Is your server non-Alibaba Cloud ECS or not belong to the same account with the current Project of Log Service ? (y/N)
     ```
 
-    当输入`y`后，检查工具会输出本地配置的AliUid信息，请确认其中是否包含了您的AliUid，若未包含请参考文档[创建AliUid标识](../../../../cn.zh-CN/数据采集/Logtail采集/机器组/配置主账号AliUid.md)。
+    当输入`y`后，检查工具会输出本地配置的AliUid信息，请确认其中是否包含了您的AliUid，若未包含请参考文档[创建AliUid标识](../../../../intl.zh-CN/数据采集/Logtail采集/机器组/配置主账号AliUid.md)。
 
     ``` {#codeblock_f1t_wat_nrx}
     [Input]:  Is your server non-Alibaba Cloud ECS or not belong to the same account with the current Project of Log Service ? (y/N)y
@@ -119,7 +119,7 @@
 
 3.  检查Region。
 
-    请确认您的Project所在区域是否和Logtail安装时所选区域一致，若不一致请[重新安装Logtail](../../../../cn.zh-CN/数据采集/Logtail采集/安装/安装Logtail（Linux系统）.md)。
+    请确认您的Project所在区域是否和Logtail安装时所选区域一致，若不一致请[重新安装Logtail](../../../../intl.zh-CN/数据采集/Logtail采集/安装/安装Logtail（Linux系统）.md)。
 
     ``` {#codeblock_p3a_zd2_ffh}
     [Input]: please make sure your project is in this region : { cn-hangzhou } (y/N) :
@@ -127,9 +127,9 @@
 
 4.  检查IP配置。
 
-    请确认您机器组配置的IP和Logtail工作IP一致，若不一致请参考[IP地址机器组](../../../../cn.zh-CN/数据采集/Logtail采集/机器组/创建IP地址机器组.md)修改。
+    请确认您机器组配置的IP和Logtail工作IP一致，若不一致请参考[IP地址机器组](../../../../intl.zh-CN/数据采集/Logtail采集/机器组/创建IP地址机器组.md)修改。
 
-    若您配置的是自定义标识机器组，请确认本地配置的标识与服务端配置一致，若不一致请参考[自定义标识机器组](../../../../cn.zh-CN/数据采集/Logtail采集/机器组/创建用户自定义标识机器组.md)修改。
+    若您配置的是自定义标识机器组，请确认本地配置的标识与服务端配置一致，若不一致请参考[自定义标识机器组](../../../../intl.zh-CN/数据采集/Logtail采集/机器组/创建用户自定义标识机器组.md)修改。
 
     ``` {#codeblock_4mw_p2x_1z5}
     [Input]:  please make sure your machine group's ip is same with : { 11.XX.XX.187 } or your machine group's userdefined-id is in : { XX-XXXXX } (y/N) :
@@ -142,7 +142,7 @@
 
 1.  确认IP配置。
 
-    请确认您机器组配置的ip和Logtail工作ip一致且心跳正常，若不一致请[修改机器组](../../../../cn.zh-CN/数据采集/Logtail采集/机器组/管理机器组.md)。
+    请确认您机器组配置的ip和Logtail工作ip一致且心跳正常，若不一致请[修改机器组](../../../../intl.zh-CN/数据采集/Logtail采集/机器组/管理机器组.md)。
 
     ``` {#codeblock_ttm_3t9_suf}
     [Input]:  please make sure your machine group's ip is same with : { 11.XX.XX.187 } (y/N) :
@@ -150,7 +150,7 @@
 
 2.  确认采集配置应用。
 
-    请确认您的采集配置已经成功应用到该机器组中，如何查看机器组应用配置参见[管理机器组](../../../../cn.zh-CN/数据采集/Logtail采集/机器组/管理机器组.md)。
+    请确认您的采集配置已经成功应用到该机器组中，如何查看机器组应用配置参见[管理机器组](../../../../intl.zh-CN/数据采集/Logtail采集/机器组/管理机器组.md)。
 
     ``` {#codeblock_qg2_de0_vgp}
     [Input]: please make sure you have applied collection config to the machine group (y/N) :Y
@@ -189,15 +189,15 @@
 
 快速检查运行时无需确认，可用于二次封装自定义检查脚本。
 
-**说明：** 快速检查运行时会输出客户端配置的**阿里云ID**和**动态机器组/自定义标识**，不存在时并不会给出告警，如果客户端需要阿里云ID或动态机器组/自定义标识的配置，请查看工具的输出和您配置的是否一致，不一致时按照以下方法重新配置：[创建AliUid标识](../../../../cn.zh-CN/数据采集/Logtail采集/机器组/配置主账号AliUid.md)、[自定义标识机器组](../../../../cn.zh-CN/数据采集/Logtail采集/机器组/创建用户自定义标识机器组.md)。
+**说明：** 快速检查运行时会输出客户端配置的**阿里云ID**和**动态机器组/自定义标识**，不存在时并不会给出告警，如果客户端需要阿里云ID或动态机器组/自定义标识的配置，请查看工具的输出和您配置的是否一致，不一致时按照以下方法重新配置：[创建AliUid标识](../../../../intl.zh-CN/数据采集/Logtail采集/机器组/配置主账号AliUid.md)、[自定义标识机器组](../../../../intl.zh-CN/数据采集/Logtail采集/机器组/创建用户自定义标识机器组.md)。
 
 **操作步骤**
 
 请运行脚本`./checkingtool.sh --logFile [LogFileFullPath]`进行检查。 检测脚本发现异常时，请根据脚本提示进行处理。
 
-**说明：** 若指定日志文件检查通过且Logtail运行环境正常，建议进入阿里云控制台中查看该日志服务配置项的异常日志，参见[诊断采集错误](../../../../cn.zh-CN/常见问题/日志采集/诊断采集错误.md)。
+**说明：** 若指定日志文件检查通过且Logtail运行环境正常，建议进入阿里云控制台中查看该日志服务配置项的异常日志，参见[诊断采集错误](../../../../intl.zh-CN/常见问题/日志采集/诊断采集错误.md)。
 
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13295/156465653130600_zh-CN.png)
+![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13295/156818934330600_zh-CN.png)
 
 ## Logtail采集异常的常见问题 {#section_hdn_lmk_sfb .section}
 
@@ -209,7 +209,7 @@
 |Logtail未运行|使用命令`/etc/init.d/ilogtaild start`开启Logtail。|
 |多个Logtail进程|使用命令`/etc/init.d/ilogtaild stop`关闭Logtail，然后执行命令`/etc/init.d/ilogtaild start`开启。|
 |443端口被禁用|防火墙开放443端口。|
-|无法找到配置服务器|确认是否已正确[安装 Linux Logtail](../../../../cn.zh-CN/数据采集/Logtail采集/安装/安装Logtail（Linux系统）.md)，若安装错误，重新执行安装命令。|
+|无法找到配置服务器|确认是否已正确[安装 Linux Logtail](../../../../intl.zh-CN/数据采集/Logtail采集/安装/安装Logtail（Linux系统）.md)，若安装错误，重新执行安装命令。|
 |不存在用户配置|确认是否已执行以下操作： 1.  控制台已经创建好Logtail配置。
 2.  机器组中包含该服务器。
 3.  已经将配置应用到机器组。
