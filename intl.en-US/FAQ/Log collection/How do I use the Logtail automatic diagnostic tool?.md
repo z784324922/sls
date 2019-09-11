@@ -54,7 +54,7 @@ If an exception occurs during log collection, you can use the Logtail automatic 
 
 ## Diagnostic flowchart {#section_z2q_dlk_sfb .section}
 
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13295/156808412730599_en-US.png)
+![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13295/156816884630599_en-US.png)
 
 ## Machine group heartbeat check {#section_flm_2lk_sfb .section}
 
@@ -197,7 +197,7 @@ Run the script `./checkingtool.sh --logFile [LogFileFullPath]` to perform the ch
 
 **Note:** If the Logtail client passes the specified log file check and the Logtail running environment is normal, we recommend that you log on to the Alibaba Cloud console to view the exception logs of the relevant Logtail configuration. For more information, see [Query diagnosed errors](../../../../intl.en-US/FAQ/Log collection/Diagnose collection errors.md).
 
-![](images/30600_en-US.png)
+![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13295/156816884630600_en-US.png)
 
 ## Common Logtail collection errors {#section_hdn_lmk_sfb .section}
 
