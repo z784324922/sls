@@ -1,18 +1,18 @@
 # Query local collection status {#concept_rf1_43q_zdb .concept}
 
-1.  [Overview](reseller.en-US/FAQ/Log collection/Query local collection status.md#section_wyc_hjs_zdb)
-2.  [User guide](reseller.en-US/FAQ/Log collection/Query local collection status.md#section_ebd_jjs_zdb) 
-    1.  [all command](reseller.en-US/FAQ/Log collection/Query local collection status.md#section_wmp_rjs_zdb)
-    2.  [active command](reseller.en-US/FAQ/Log collection/Query local collection status.md#section_yml_cks_zdb)
-    3.  [logstore command](reseller.en-US/FAQ/Log collection/Query local collection status.md#section_uxb_kks_zdb)
-    4.  [logfile command](reseller.en-US/FAQ/Log collection/Query local collection status.md#section_png_vks_zdb)
-    5.  [history command](reseller.en-US/FAQ/Log collection/Query local collection status.md#section_rzj_cls_zdb)
-3.  [Return values](reseller.en-US/FAQ/Log collection/Query local collection status.md#section_ff4_hls_zdb)
-4.  [Use cases](reseller.en-US/FAQ/Log collection/Query local collection status.md#section_ysz_pls_zdb) 
-    1.  [Monitor the running status of Logtail](reseller.en-US/FAQ/Log collection/Query local collection status.md#section_jcw_rls_zdb)
-    2.  [Monitor log collection progress](reseller.en-US/FAQ/Log collection/Query local collection status.md#section_tsq_sls_zdb)
-    3.  [Determine whether or not Logtail has finished collecting log files](reseller.en-US/FAQ/Log collection/Query local collection status.md#section_uxz_tls_zdb)
-    4.  [Troubleshoot log collection issues](reseller.en-US/FAQ/Log collection/Query local collection status.md#section_gg1_vls_zdb)
+1.  [Overview](#section_wyc_hjs_zdb)
+2.  [User guide](#section_ebd_jjs_zdb) 
+    1.  [all command](#section_wmp_rjs_zdb)
+    2.  [active command](#section_yml_cks_zdb)
+    3.  [logstore command](#section_uxb_kks_zdb)
+    4.  [logfile command](#section_png_vks_zdb)
+    5.  [history command](#section_rzj_cls_zdb)
+3.  [Return values](#section_ff4_hls_zdb)
+4.  [Use cases](#section_ysz_pls_zdb) 
+    1.  [Monitor the running status of Logtail](#section_jcw_rls_zdb)
+    2.  [Monitor log collection progress](#section_tsq_sls_zdb)
+    3.  [Determine whether or not Logtail has finished collecting log files](#section_uxz_tls_zdb)
+    4.  [Troubleshoot log collection issues](#section_gg1_vls_zdb)
 
 ## Overview {#section_wyc_hjs_zdb .section}
 
