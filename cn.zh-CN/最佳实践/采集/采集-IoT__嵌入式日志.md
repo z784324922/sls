@@ -1,10 +1,10 @@
 # 采集-IoT/嵌入式日志 {#concept_u3y_q2j_wfb .concept}
 
-IoT（Internet of Things）正在高速增长，越来越多设备开始逐步走进日常生活，例如智能路由器、各种电视棒、天猫精灵、扫地机器人等，让我们体验到智能领域的便利。距Gartner预测，到2020年末预计会有200亿智能设备，可见该领域的巨大市场。传统软件领域的嵌入式开发模式在IoT设备领域的应用遇到了很多挑战，IoT设备数目多、分布广，难以调试且硬件受限，传统的设备日志解决方案无法完美满足需求。
+IoT（Internet of Things）正在高速增长，越来越多设备开始逐步走进日常生活，例如智能路由器、各种电视棒、天猫精灵、扫地机器人等，让我们体验到智能领域的便利。传统软件领域的嵌入式开发模式在IoT设备领域的应用遇到了很多挑战，IoT设备数目多、分布广，难以调试且硬件受限，传统的设备日志解决方案无法完美满足需求。
 
 日志服务团队根据多年Logtail的开发经验，结合IoT设备的特点，为IoT设备量身定制一套日志数据采集方案：C Producer。
 
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13213/156084644532650_zh-CN.png)
+![日志数据采集方案](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13213/156863309432650_zh-CN.png)
 
 ## 嵌入式开发需求 {#section_lls_gmj_wfb .section}
 
@@ -16,7 +16,7 @@ IoT（Internet of Things）正在高速增长，越来越多设备开始逐步�
 -   监控：当前有多少个设备在线？工作状态分布如何？地理位置分布如何？出错设备如何实时告警？
 -   数据实时分析：设备产生数据如何与实时计算、大数据仓库对接，构建用户画像？
 
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13213/156084644532652_zh-CN.png)
+![嵌入式开发需求](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13213/156863309432652_zh-CN.png)
 
 ## IoT领域面临的主要挑战 {#section_nwz_lmj_wfb .section}
 
@@ -24,23 +24,25 @@ IoT（Internet of Things）正在高速增长，越来越多设备开始逐步�
 
 -   设备数目多：在传统运维领域管理1W台服务器属于一家大公司了，但10W在线对于IoT设备而言只是一个小门槛。
 -   分布广：硬件一旦部署后，往往会部署在全国、甚至全球各地。
--   黑盒：难以登陆并调试，大部分情况属于不可知状态。
+-   黑盒：难以登录并调试，大部分情况属于不可知状态。
 -   资源受限：出于成本考虑，IoT设备硬件较为受限（例如总共只有32MB内存），传统PC领域手段往往失效。
 
-## C Prodecer:日志服务量身定制的日志数据采集解决方案 {#section_s5s_pmj_wfb .section}
+## C Prodecer {#section_s5s_pmj_wfb .section}
 
-[日志服务](https://www.alibabacloud.com/zh/product/log-service?spm)客户端Logtail在X86服务器上有百万级部署，可以参见文章：Logtail技术分享 : ，。除此之外，日志服务提供多样化的采集方案：
+日志服务量身定制的日志数据采集解决方案。
+
+[日志服务](https://www.alibabacloud.com/zh/product/log-service?spm)客户端Logtail在X86服务器上有百万级部署，可以参见文章：Logtail技术分享： ，。除此之外，日志服务提供多样化的采集方案：
 
 -   移动端SDK：Android/IOS平台数据采集，一天已有千万级DAU。
--   Web Tracking（JS）：类似百度统计，Google Analytics 轻量级采集方式，无需签名。
+-   Web Tracking（JS）：类似百度统计，Analytics 轻量级采集方式，无需签名。
 
 在IoT领域，我们从多年Logtail的开发经验中，汲取其中精华的部分，并结合IoT设备针对CPU、内存、磁盘、网络、应用方式等特点，开发出一套专为IoT定制的日志数据采集方案：C Producer。
 
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13213/156084644632653_zh-CN.png)
+![采集解决方案](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13213/156863309432653_zh-CN.png)
 
 ## C Producer特点 {#section_lxj_3nj_wfb .section}
 
-C Producer Library 继承Logtail稳定、边界特点，可以定位是一个“轻量级Logtail”，虽没有Logtail实时配置管理机制，但具备除此之外70%功能，包括：
+C Producer Library 继承Logtail稳定、高性能、低资源消耗等特点，可以定位是一个“轻量级Logtail”，虽没有Logtail实时配置管理机制，但具备除此之外70%功能，包括：
 
 -   提供多租户概念：可以对多种日志（例如Metric，DebugLog，ErrorLog）进行优先级分级处理，同时配置多个客户端，每个客户端可独立配置采集优先级、目的project/logstore等。
 -   支持上下文查询：同一个客户端产生的日志在同一上下文中，支持查看某条日志前后相关日志。
@@ -52,19 +54,19 @@ C Producer Library 继承Logtail稳定、边界特点，可以定位是一个“
 -   细粒度资源控制：支持针对不同类型数据/日志设置不同的缓存上线、聚合方式。
 -   日志压缩缓存：支持将未发送成功的数据压缩缓存，减少设备内存占用。
 
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13213/156084644632654_zh-CN.png)
+![C Producer特点](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13213/156863309532654_zh-CN.png)
 
 ## 功能优势 {#section_bmt_4nj_wfb .section}
 
 C-Producer作为IoT设备的量身定制方案，在以下方面具备明显优势：
 
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13213/156084644632656_zh-CN.png)
+![功能优势](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13213/156863309532656_zh-CN.png)
 
 -   客户端高并发写入：可配置的发送线程池，支持每秒数十万条日志写入，详情参见性能测试。
 -   低资源消耗：每秒20W日志写入只消耗70% CPU；同时在低性能硬件（例如树莓派）上，每秒产生100条日志对资源基本无影响。
 -   客户端日志不落盘：既数据产生后直接通过网络发往服务端。
 -   客户端计算与 I/O 逻辑分离：日志异步输出，不阻塞工作线程。
--   支持多优先级：不通客户端可配置不同的优先级，保证高优先级日志最先发送。
+-   支持多优先级：不同客户端可配置不同的优先级，保证高优先级日志最先发送。
 -   本地调试：支持设置本地调试，便于您在网络不通的情况下本地测试应用程序。
 
 在以上场景中，C Producer Library 会简化您程序开发的步骤，您无需关心日志采集细节实现、也不用担心日志采集会影响您的业务正常运行，大大降低数据采集门槛。
@@ -95,39 +97,39 @@ C-Producer结合阿里云[日志服务](https://www.alibabacloud.com/zh/product/
 
 -   规模大
     -   支持亿级别客户端实时写入。
-    -   支持 PB/**Day** 数据量。
+    -   支持 PB/Day数据量。
 -   速度快
     -   采集快：0延迟：写入0延迟，写入即可消费。
-        -   查询快：一秒内，复杂查询（5个条件）可处理10亿级数据。
-        -   分析快：一秒内，复杂分析（5个维度聚合+GroupBy）可聚合亿级别数据。
+    -   查询快：一秒内，复杂查询（5个条件）可处理10亿级数据。
+    -   分析快：一秒内，复杂分析（5个维度聚合+GroupBy）可聚合亿级别数据。
 -   对接广
     -   与阿里云各类产品无缝打通。
     -   各种开源格式存储、计算、可视化系统完美兼容。
 
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13213/156084644732657_zh-CN.png)
+![C-Producer解决方案](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13213/156863309532657_zh-CN.png)
 
 ## 下载与使用 {#section_lvy_svj_wfb .section}
 
-**下载地址**：[Github](https://github.com/aliyun/aliyun-log-c-sdk?spm=a2c4g.11186623.2.29.2dfc505eazEyHL)
+下载地址：[Github](https://github.com/aliyun/aliyun-log-c-sdk?spm=a2c4g.11186623.2.29.2dfc505eazEyHL)
 
 一个应用可创建多个producer，每个producer可包含多个client，每个client可单独配置目的地址、日志level、是否本地调试、缓存大小、自定义标识、topic等信息。
 
 详细安装方式及操作步骤，请参考Github页面的[README](https://github.com/aliyun/aliyun-log-c-sdk?spm=a2c4g.11186623.2.30.2dfc505eazEyHL)。
 
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13213/156084644732658_zh-CN.png)
+![下载与使用](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13213/156863309532658_zh-CN.png)
 
 ## 性能测试 {#section_e1k_xvj_wfb .section}
 
- **环境配置** 
+环境配置
 
 -   高性能场景：传统X86服务器。
 -   低性能场景：树莓派（低功耗环境）。
 
 配置分别如下：
 
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13213/156084644832659_zh-CN.png)
+![环境配置](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13213/156863309532659_zh-CN.png)
 
-**C-Producer配置** 
+C-Producer配置
 
 -   ARM（树莓派）
 
@@ -136,7 +138,7 @@ C-Producer结合阿里云[日志服务](https://www.alibabacloud.com/zh/product/
     -   聚合数据包大小：1MB
     -   聚合日志数：1000
     -   发送线程：1
-    -   自定义tag : 5
+    -   自定义tag：5
 -   X86
 
     -   缓存：10MB
@@ -146,12 +148,12 @@ C-Producer结合阿里云[日志服务](https://www.alibabacloud.com/zh/product/
     -   发送线程：4
     -   自定义tag：5
 
- **日志样例** 
+日志样例
 
-1.  10个键值对，总数据量约为600字节
-2.  9个键值对，数据量约为350字节
+1.  10个键值对，总数据量约为600字节。
+2.  9个键值对，数据量约为350字节。
 
-``` {#codeblock_twr_4jy_wge}
+``` {#codeblock_ued_t4j_tm8}
 __source__: 11.164.233.187
 __tag__:1: 2
 __tag__:5: 6
@@ -170,24 +172,22 @@ Interconnection: Grafana and JDBC/SQL92
 Visualized: dashboard and report functions
 ```
 
- **测试结果** 
+测试结果
 
-**X86平台结果**
+-   X86平台结果
 
--   C Producer可以轻松到达90M/s的发送速度，每秒上传日志20W，占用CPU只有70%，内存140M。
--   服务器在200条/s，发送数据对于cpu基本无影响（降低到0.01%以内）。
--   客户线程发送一条数据（输出一条log）的平均耗时为：1.2us。
+    -   C Producer可以轻松到达90M/s的发送速度，每秒上传日志20W，占用CPU只有70%，内存140M。
+    -   服务器在200条/s，发送数据对于cpu基本无影响（降低到0.01%以内）。
+    -   客户线程发送一条数据（输出一条log）的平均耗时为：1.2us。
+    ![X86平台结果](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13213/156863309532660_zh-CN.png)
 
+-   树莓派平台结果
 
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13213/156084644832660_zh-CN.png)
+    -   在树莓派的测试中，由于CPU的频率只有600MHz，性能差不多是服务器的1/10左右，每秒可发送最多2W条日志。
+    -   树莓派在20条/s的时候，发送数据对于cpu基本无影响（降低到0.01%以内）。
+    -   客户线程发送一条数据（输出一条log）的平均耗时为：12us左右（树莓派通过USB连接到PC共享网络）。
+    ![树莓派平台结果](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13213/156863309532661_zh-CN.png)
 
-**树莓派平台结果**
-
--   在树莓派的测试中，由于CPU的频率只有600MHz，性能差不多是服务器的1/10左右，最高每秒可发送2W条日志。
--   树莓派在20条/s的时候，发送数据对于cpu基本无影响（降低到0.01%以内）。
--   客户线程发送一条数据（输出一条log）的平均耗时为：12us左右（树莓派通过USB连接到PC共享网络）。
-
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13213/156084644832661_zh-CN.png)
 
 更多日志服务典型场景可以参见[云栖论坛](https://yq.aliyun.com/teams/4/type_blog-cid_8?spm=a2c4g.11186623.2.35.2dfc505eazEyHL) 和[最佳实践](intl.zh-CN/最佳实践/典型使用场景.md#)。
 
