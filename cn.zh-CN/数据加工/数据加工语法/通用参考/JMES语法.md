@@ -2,7 +2,7 @@
 
 本文档主要介绍JMES的常用语法。
 
-JMES是一个增强型的JSON查询计算语言，不仅可以对JSON数据进行提取，还可以做计算与转换。关于JMES语法的详细介绍请参见[JMES Tutorial](http://jmespath.org/tutorial.html)
+JMES是一个增强型的JSON查询计算语言，不仅可以对JSON数据进行提取，还可以做计算与转换。关于JMES语法的详细介绍请参见[JMES Tutorial](http://jmespath.org/tutorial.html)。
 
 数据加工中的`json_select`、`e_json`、`e_split`支持通过JMES提取字段或JSON表达式的值，或者通过JMES计算特定的值。其用法为：
 
@@ -12,7 +12,7 @@ e_json(字段名, jmes="jmes表达式", ...)
 e_split(字段名, ... jmes="jmes表达式", ...)
 ```
 
-函数的具体用法请参见[json\_select](../../../../cn.zh-CN/.md#section_xrt_z1k_awb)，[e\_json](../../../../cn.zh-CN/数据加工/数据加工语法/全局操作函数/字段值提取函数.md#section_o7x_7rl_2qh)和[e\_split](../../../../cn.zh-CN/数据加工/数据加工语法/全局操作函数/事件操作函数.md#section_urg_dob_o79)。
+函数的具体用法请参见[e\_json](../../../../cn.zh-CN/数据加工/数据加工语法/全局操作函数/字段值提取函数.md#section_o7x_7rl_2qh)和[e\_split](../../../../cn.zh-CN/数据加工/数据加工语法/全局操作函数/事件操作函数.md#section_urg_dob_o79)。
 
 ## 通过key获取值 {#section_jeb_ps8_14g .section}
 
