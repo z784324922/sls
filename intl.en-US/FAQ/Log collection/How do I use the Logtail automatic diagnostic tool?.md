@@ -54,7 +54,7 @@ If an exception occurs during log collection, you can use the Logtail automatic 
 
 ## Diagnostic flowchart {#section_z2q_dlk_sfb .section}
 
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13295/156816884630599_en-US.png)
+![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13295/156871880030599_en-US.png)
 
 ## Machine group heartbeat check {#section_flm_2lk_sfb .section}
 
@@ -106,7 +106,7 @@ After you select the machine group heartbeat check, the diagnostic tool checks t
     [Input]: Is your server non-Alibaba Cloud ECS or not belong to the same account with the current Project of Log Service ? (y/N)
     ```
 
-    If you enter `y`, the diagnostic tool returns the AliUid information configured on the server where Logtail is installed. Check whether it includes your AliUid. If not, [configure an AliUid for an ECS instance under another Alibaba Cloud account or a server in an on-premises IDC](../../../../intl.en-US/Data Collection/Logtail collection/Machine Group/Configure AliUids for ECS servers under other Alibaba Cloud accounts or on-premises IDCs.md).
+    If you enter `y`, the diagnostic tool returns the AliUid information configured on the server where Logtail is installed. Check whether it includes your AliUid. If not, [configure an AliUid for an ECS instance under another Alibaba Cloud account or a server in an on-premises IDC](../../../../reseller.en-US/Data Collection/Logtail collection/Machine Group/Configure AliUids for ECS servers under other Alibaba Cloud accounts or on-premises IDCs.md).
 
     ``` {#codeblock_f1t_wat_nrx}
     [Input]:  Is your server non-Alibaba Cloud ECS or not belong to the same account with the current Project of Log Service ? (y/N)y
@@ -119,7 +119,7 @@ After you select the machine group heartbeat check, the diagnostic tool checks t
 
 3.  Check the region.
 
-    Check whether the region of your project is the same as that selected during Logtail installation. If not, [reinstall Logtail](../../../../intl.en-US/Data Collection/Logtail collection/Install/Install Logtail in Linux.md).
+    Check whether the region of your project is the same as that selected during Logtail installation. If not, [reinstall Logtail](../../../../reseller.en-US/Data Collection/Logtail collection/Install/Install Logtail in Linux.md).
 
     ``` {#codeblock_p3a_zd2_ffh}
     [Input]: please make sure your project is in this region : { cn-hangzhou } (y/N) :
@@ -127,9 +127,9 @@ After you select the machine group heartbeat check, the diagnostic tool checks t
 
 4.  Check the IP address configuration.
 
-    Check whether the IP address of the server where Logtail is installed is configured in your machine group. If not, modify the IP address configuration. For more information, see [Create a machine group with IP addresses as its identifier](../../../../intl.en-US/Data Collection/Logtail collection/Machine Group/Create a machine group with an IP address as its identifier.md).
+    Check whether the IP address of the server where Logtail is installed is configured in your machine group. If not, modify the IP address configuration. For more information, see [Create a machine group with IP addresses as its identifier](../../../../reseller.en-US/Data Collection/Logtail collection/Machine Group/Create a machine group with an IP address as its identifier.md).
 
-    If your machine group is identified by a custom ID, check whether the custom ID configured on the server where Logtail is installed is the same as that configured in your machine group. If not, modify the custom ID configuration. For more information, see [Create a machine group with a custom ID as its identifier](../../../../intl.en-US/Data Collection/Logtail collection/Machine Group/Create an ID to identify a machine group.md).
+    If your machine group is identified by a custom ID, check whether the custom ID configured on the server where Logtail is installed is the same as that configured in your machine group. If not, modify the custom ID configuration. For more information, see [Create a machine group with a custom ID as its identifier](../../../../reseller.en-US/Data Collection/Logtail collection/Machine Group/Create an ID to identify a machine group.md).
 
     ``` {#codeblock_4mw_p2x_1z5}
     [Input]:  please make sure your machine group's ip is same with : { 11.XX.XX.187 } or your machine group's userdefined-id is in : { XX-XXXXX } (y/N) :
@@ -142,7 +142,7 @@ After you select the log collection check, the diagnostic tool checks the follow
 
 1.  Check the IP address configuration.
 
-    Check whether the IP address of the server where Logtail is installed is configured in your machine group, and whether the heartbeat status is normal. If not, [modify the machine group](../../../../intl.en-US/Data Collection/Logtail collection/Machine Group/Manage a machine group.md).
+    Check whether the IP address of the server where Logtail is installed is configured in your machine group, and whether the heartbeat status is normal. If not, [modify the machine group](../../../../reseller.en-US/Data Collection/Logtail collection/Machine Group/Manage a machine group.md).
 
     ``` {#codeblock_ttm_3t9_suf}
     [Input]:  please make sure your machine group's ip is same with : { 11.XX.XX.187 } (y/N) :
@@ -150,7 +150,7 @@ After you select the log collection check, the diagnostic tool checks the follow
 
 2.  Check the application of the Logtail configuration.
 
-    Check whether your Logtail configuration is applied to the machine group. For more information about how to check the Logtail configurations that are applied to a machine group, see [Manage a machine group](../../../../intl.en-US/Data Collection/Logtail collection/Machine Group/Manage a machine group.md).
+    Check whether your Logtail configuration is applied to the machine group. For more information about how to check the Logtail configurations that are applied to a machine group, see [Manage a machine group](../../../../reseller.en-US/Data Collection/Logtail collection/Machine Group/Manage a machine group.md).
 
     ``` {#codeblock_qg2_de0_vgp}
     [Input]: please make sure you have applied collection config to the machine group (y/N) :Y
@@ -160,7 +160,7 @@ After you select the log collection check, the diagnostic tool checks the follow
 
     Enter the full path of the log file to be checked. Check whether this log file can be matched in the log path of your Logtail configuration.
 
-    If the Logtail configuration is incorrect, modify the configuration and save it. Run the script again in 1 minute to check this item for a second time.
+    If the Logtail configuration is incorrect, modify the configuration and save it. Run the script again in one minute later to check this item for a second time.
 
     ``` {#codeblock_vuk_gkk_rei}
     [Input]:  please input your log file's full path (eg. /var/log/nginx/access.log) :/disk2/logs/access.log
@@ -189,15 +189,15 @@ Add the output of the script as an attachment and submit a ticket to Alibaba Clo
 
 The quick check runs without confirmation. You can encapsulate and customize a quick check script.
 
-**Note:** During quick check, the diagnostic tool returns the **AliUid** and **custom ID that identifies the machine group** configured on the server where Logtail is installed. If either of them does not exist, no alert is reported. If an AliUid or a custom ID that identifies the machine group is configured for the Logtail client, check whether the configuration returned by the diagnostic tool is the same as that you configured. If not, modify the configuration as required. For more information, see [Configure an AliUid for an ECS instance under another Alibaba Cloud account or a server in an on-premises IDC](../../../../intl.en-US/Data Collection/Logtail collection/Machine Group/Configure AliUids for ECS servers under other Alibaba Cloud accounts or on-premises IDCs.md) and [Create a machine group with a custom ID as its identifier](../../../../intl.en-US/Data Collection/Logtail collection/Machine Group/Create an ID to identify a machine group.md).
+**Note:** During quick check, the diagnostic tool returns the **AliUid** and **custom ID that identifies the machine group** configured on the server where Logtail is installed. If either of them does not exist, no alert is reported. If an AliUid or a custom ID that identifies the machine group is configured for the Logtail client, check whether the configuration returned by the diagnostic tool is the same as that you configured. If not, modify the configuration as required. For more information, see [Configure an AliUid for an ECS instance under another Alibaba Cloud account or a server in an on-premises IDC](../../../../reseller.en-US/Data Collection/Logtail collection/Machine Group/Configure AliUids for ECS servers under other Alibaba Cloud accounts or on-premises IDCs.md) and [Create a machine group with a custom ID as its identifier](../../../../reseller.en-US/Data Collection/Logtail collection/Machine Group/Create an ID to identify a machine group.md).
 
 Procedure
 
 Run the script `./checkingtool.sh --logFile [LogFileFullPath]` to perform the check. If an exception is detected, proceed as instructed by the script.
 
-**Note:** If the Logtail client passes the specified log file check and the Logtail running environment is normal, we recommend that you log on to the Alibaba Cloud console to view the exception logs of the relevant Logtail configuration. For more information, see [Query diagnosed errors](../../../../intl.en-US/FAQ/Log collection/Diagnose collection errors.md).
+**Note:** If the Logtail client passes the specified log file check and the Logtail running environment is normal, we recommend that you log on to the Alibaba Cloud console to view the exception logs of the relevant Logtail configuration. For more information, see [Query diagnosed errors](../../../../reseller.en-US/FAQ/Log collection/Diagnose collection errors.md).
 
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13295/156816884630600_en-US.png)
+![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13295/156871880030600_en-US.png)
 
 ## Common Logtail collection errors {#section_hdn_lmk_sfb .section}
 
@@ -209,7 +209,7 @@ After running the Logtail automatic diagnostic tool, you can identify the causes
 |Logtail is not running.|Run the `/etc/init.d/ilogtaild start` command to start Logtail.|
 |Multiple Logtail processes exist.|Run the `/etc/init.d/ilogtaild stop` command to stop Logtail, and then run the `/etc/init.d/ilogtaild start` command to restart Logtail.|
 |Port 443 is disabled.|Configure the firewall to enable port 443.|
-|The configuration server cannot be found.|Check whether Logtail is properly installed on a Linux server. If not, uninstall and then reinstall Logtail. For more information, see [Install Logtail in Linux](../../../../intl.en-US/Data Collection/Logtail collection/Install/Install Logtail in Linux.md).|
+|The configuration server cannot be found.|Check whether Logtail is properly installed on a Linux server. If not, uninstall and then reinstall Logtail. For more information, see [Install Logtail in Linux](../../../../reseller.en-US/Data Collection/Logtail collection/Install/Install Logtail in Linux.md).|
 |The user configuration does not exist.|Check whether the following operations are performed: 1.  A Logtail configuration is created in the console.
 2.  The server is included in a machine group.
 3.  The Logtail configuration is applied to the machine group.
