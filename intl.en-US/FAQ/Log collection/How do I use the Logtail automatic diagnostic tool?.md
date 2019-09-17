@@ -54,7 +54,7 @@ If an exception occurs during log collection, you can use the Logtail automatic 
 
 ## Diagnostic flowchart {#section_z2q_dlk_sfb .section}
 
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13295/156871880030599_en-US.png)
+![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13295/156871971530599_en-US.png)
 
 ## Machine group heartbeat check {#section_flm_2lk_sfb .section}
 
@@ -160,7 +160,7 @@ After you select the log collection check, the diagnostic tool checks the follow
 
     Enter the full path of the log file to be checked. Check whether this log file can be matched in the log path of your Logtail configuration.
 
-    If the Logtail configuration is incorrect, modify the configuration and save it. Run the script again in one minute later to check this item for a second time.
+    If the Logtail configuration is incorrect, modify the configuration and save it. Run the script again one minute later to check this item for a second time.
 
     ``` {#codeblock_vuk_gkk_rei}
     [Input]:  please input your log file's full path (eg. /var/log/nginx/access.log) :/disk2/logs/access.log
@@ -197,7 +197,7 @@ Run the script `./checkingtool.sh --logFile [LogFileFullPath]` to perform the ch
 
 **Note:** If the Logtail client passes the specified log file check and the Logtail running environment is normal, we recommend that you log on to the Alibaba Cloud console to view the exception logs of the relevant Logtail configuration. For more information, see [Query diagnosed errors](../../../../reseller.en-US/FAQ/Log collection/Diagnose collection errors.md).
 
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13295/156871880030600_en-US.png)
+![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13295/156871971530600_en-US.png)
 
 ## Common Logtail collection errors {#section_hdn_lmk_sfb .section}
 
