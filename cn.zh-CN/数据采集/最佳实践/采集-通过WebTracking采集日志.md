@@ -17,7 +17,7 @@
 
 从以上几点看，当一个面向内容投放的运营需求来了后，如何能以快捷的手段满足这类用户行为采集、分析需求是一个很大的挑战。
 
-[日志服务\(原SLS\)](https://www.aliyun.com/product/sls?spm)提供Web Tracking/JS/Tracking Pixel SDK 就是为解决以上轻量级埋点采集场景而生，我们可以在1分钟时间内完成埋点和数据上报工作。此外日志服务每账号\*每月提供 500MB [免费额度](https://www.aliyun.com/price/product?spm=5176.55536.857803.practice.12e37c02LUJddO#/sls/detail)，让您不花钱也能处理业务。
+[日志服务](https://www.alibabacloud.com/zh/product/log-service?spm)提供Web Tracking/JS/Tracking Pixel SDK 就是为解决以上轻量级埋点采集场景而生，我们可以在1分钟时间内完成埋点和数据上报工作。此外日志服务每账号\*每月提供 500MB [免费额度](https://www.aliyun.com/price/product?spm=5176.55536.857803.practice.12e37c02LUJddO#/sls/detail)，让您不花钱也能处理业务。
 
 ## 功能特点 {#section_xln_f4b_wfb .section}
 
@@ -27,7 +27,7 @@
 -   数据投递：LogShipper。与MaxCompute、E-MapReduce、OSS、Function Compute打通。
 -   查询与实时分析：LogSearch/Analytics。与DataV，Grafana，Zipkin，Tableua等打通。
 
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13216/156465615032482_zh-CN.png)
+![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13216/156877594632482_zh-CN.png)
 
 ## 采集端优势 {#section_b51_sen_5le .section}
 
@@ -37,11 +37,11 @@
 -   Android/iOS：针对移动端SDK。
 -   Producer Library：面向受限CPU/内存、智能设备。
 
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13216/156465615032483_zh-CN.png)
+![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13216/156877594732483_zh-CN.png)
 
 本文档中介绍的轻量级采集方案（Web Tracking）只需一个http get请求即可将数据传输至日志服务Logstore端，适应各种无需任何验证的静态网页、广告投放、宣传资料和移动端数据采集。相比其他日志采集方案，特点如下：
 
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13216/156465615032484_zh-CN.png)
+![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13216/156877594732484_zh-CN.png)
 
 ## Web Tracking接入流程 {#section_zqg_inu_dr1 .section}
 
@@ -88,7 +88,7 @@ Web Tracking接入流程如下：
         ```
 
 
-详细步骤请参考[Web Tracking](../../../../cn.zh-CN/数据采集/其他采集方式/Web Tracking.md)。
+详细步骤请参考[Web Tracking](../../../../intl.zh-CN/数据采集/其他采集方式/Web Tracking.md)。
 
 ## 内容多渠道推广实例 {#section_ctd_q1k_csx .section}
 
@@ -98,7 +98,7 @@ Web Tracking接入流程如下：
 
 以游戏发行为例，市场很大一笔费用进行游戏推广，例如投放了1W次广告。广告成功加载的有2000人次，约占20%。其中点击的有800人次，最终下载并注册账号试玩的往往少之又少。
 
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13216/156465615132485_zh-CN.png)
+![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13216/156877594732485_zh-CN.png)
 
 可见，能够准确、实时地获得内容推广有效性对于业务非常重要。为了达到整体推广目标，运营人员往往会挑选各个渠道来进行推广，例如：
 
@@ -106,7 +106,7 @@ Web Tracking接入流程如下：
 -   短信，用户Email，传单等。
 -   新浪微博，钉钉用户群，微信公众账号，知乎论坛，今日头条等新媒体。
 
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13216/156465615132486_zh-CN.png)
+![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13216/156877594732486_zh-CN.png)
 
 ## 操作步骤 {#section_72e_zgy_cs9 .section}
 
@@ -142,19 +142,19 @@ Web Tracking接入流程如下：
 
 ## 步骤三 分析日志 {#section_4cg_lej_bxr .section}
 
-在完成埋点采集后，我们使用日志服务[LogSearch/Analytics](../../../../cn.zh-CN/查询与分析/简介.md)功能可以对海量日志数据进行实时查询与分析。在结果分析可视化上，除[自带Dashboard](../../../../cn.zh-CN/查询与分析/可视化分析/仪表盘/创建和删除仪表盘.md)外，还支持[DataV](../../../../cn.zh-CN/查询与分析/可视化分析/其他可视化方案/对接DataV.md)、[Grafana](../../../../cn.zh-CN/查询与分析/可视化分析/其他可视化方案/对接Grafana.md)、Tableua等对接方式。
+在完成埋点采集后，我们使用日志服务[LogSearch/Analytics](../../../../intl.zh-CN/查询与分析/简介.md)功能可以对海量日志数据进行实时查询与分析。在结果分析可视化上，除[自带Dashboard](../../../../intl.zh-CN/查询与分析/可视化分析/仪表盘/创建和删除仪表盘.md)外，还支持[DataV](../../../../intl.zh-CN/查询与分析/可视化分析/其他可视化方案/对接DataV.md)、[Grafana](../../../../intl.zh-CN/查询与分析/可视化分析/其他可视化方案/对接Grafana.md)、Tableua等对接方式。
 
 以下是截止目前采集日志数据，您可以在搜索框中输入关键词进行查询。
 
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13216/156465615132487_zh-CN.png)
+![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13216/156877594732487_zh-CN.png)
 
 也可以在查询后输入SQL进行秒级的实时分析并可视化：
 
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13216/156465615132488_zh-CN.png)
+![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13216/156877594732488_zh-CN.png)
 
 1.  设计查询语句。
 
-    以下是我们对用户点击/阅读日志的实时分析语句，更多字段和分析场景可以参见[分析语法](../../../../cn.zh-CN/查询与分析/实时分析简介.md)。
+    以下是我们对用户点击/阅读日志的实时分析语句，更多字段和分析场景可以参见[分析语法](../../../../intl.zh-CN/查询与分析/实时分析简介.md)。
 
     -   当前投放总流量与阅读数。
 
@@ -188,7 +188,7 @@ Web Tracking接入流程如下：
 
 2.  将这些实时数据配置到一个实时刷新Dashboard中，效果如下：
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13216/156465615232489_zh-CN.png)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13216/156877594732489_zh-CN.png)
 
 
 **说明：** 当您看完本文时，会有一个不可见的Img标签记录本次访问，您可以在本页面源代码中查看该标签。
