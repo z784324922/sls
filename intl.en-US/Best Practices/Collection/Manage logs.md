@@ -8,7 +8,7 @@ Here is a typical scenario: A server or container stores a large amount of appli
 -   The server can scale in or out as needed. Specifically, the servers scale out during the peak periods and scale in during the slack periods.
 -   The log data is to be queried, monitored, and warehoused depending on the different and ever-changing requirements.
 
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13198/156877547032391_en-US.png)
+![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13198/156877572232391_en-US.png)
 
 ## Challenges {#section_ate_uje_mih .section}
 
@@ -36,8 +36,6 @@ The following table lists the different types of logs collected for a takeaway w
 ## 2. Log consumption for different purposes {#section_tqy_spk_5fb .section}
 
 For example, access logs can be used for billing, and for users to download. Operations logs can be queried by a database administrator \(DBA\). These logs require Business Intelligence \(BI\) analysis and full-link monitoring.
-
-![](images/32392_en-US.png)
 
 ## 3. Environment changes {#section_vej_ili_tzi .section}
 
@@ -112,6 +110,4 @@ The relationships between these concepts are as follows:
     -   LogHub: real-time collection and consumption. LogHub uses more than 30 approaches to collect large amounts of data for real-time downstream consumption.
     -   LogShipper: stable and reliable log shipping. It ships data from LogHub to storage services such as Object Storage Service \(OSS\), MaxCompute, and Table Store, for storage and big data analysis.
     -   LogSearch: real-time data indexing and querying. It allows for centralized log query without caring about where active server logs are located.
-    ![](images/32393_en-US.png)
-
 
