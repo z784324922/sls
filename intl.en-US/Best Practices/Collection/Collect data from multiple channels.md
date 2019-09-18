@@ -13,7 +13,7 @@ Data is usually collected in two different modes as described in the following t
 
 "I Want Take-away" is an e-commerce website with a platform involving users, restaurants, and couriers. Users can place their take-away orders on the website, app, WeChat, or Alipay. Once receiving an order from a user, a merchant starts preparing the ordered dishes. At the same time, the system automatically notifies the nearest couriers. Then, one of the couriers accepts the order and delivers the dishes to the user.
 
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13197/156877446431813_en-US.png)
+![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13197/156877519231813_en-US.png)
 
 ## Operation requirements {#section_980_2p1_wus .section}
 
@@ -37,7 +37,7 @@ In digital operations, the first step is to figure out how to centrally collect 
 
 In the past, you need to complete a large amount of diversified work to collect the logs distributed externally and internally for unified management. But now, you can use the collection feature of LogHub for unified access.
 
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13197/156877446731889_en-US.png)
+![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13197/156877519431889_en-US.png)
 
 ## Unified log management and configuration {#section_m0q_ute_s6m .section}
 
@@ -93,8 +93,8 @@ The logs contain the following parameters:
 
 Collection methods:
 
--   The application generates logs to hard disks by using [Logtail]().
--   The application writes data to Log Service by using the [SDK]().
+-   The application generates logs to hard disks by using [Logtail](../../../../reseller.en-US/Data Collection/Logtail collection/Overview/Overview.md#).
+-   The application writes data to Log Service by using the [SDK](../../../../reseller.en-US/SDK Reference/Basic Descriptions /Overview.md#).
 
 ## Server-side data collection {#section_gln_gxv_68e .section}
 
