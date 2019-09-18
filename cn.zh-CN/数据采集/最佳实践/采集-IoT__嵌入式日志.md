@@ -4,7 +4,7 @@ IoT（Internet of Things）正在高速增长，越来越多设备开始逐步�
 
 日志服务团队根据多年Logtail的开发经验，结合IoT设备的特点，为IoT设备量身定制一套日志数据采集方案：C Producer。
 
-![日志数据采集方案](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13213/156863313332650_zh-CN.png)
+![日志数据采集方案](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13213/156877589532650_zh-CN.png)
 
 ## 嵌入式开发需求 {#section_lls_gmj_wfb .section}
 
@@ -16,7 +16,7 @@ IoT（Internet of Things）正在高速增长，越来越多设备开始逐步�
 -   监控：当前有多少个设备在线？工作状态分布如何？地理位置分布如何？出错设备如何实时告警？
 -   数据实时分析：设备产生数据如何与实时计算、大数据仓库对接，构建用户画像？
 
-![嵌入式开发需求](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13213/156863313332652_zh-CN.png)
+![嵌入式开发需求](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13213/156877589532652_zh-CN.png)
 
 ## IoT领域面临的主要挑战 {#section_nwz_lmj_wfb .section}
 
@@ -31,14 +31,14 @@ IoT（Internet of Things）正在高速增长，越来越多设备开始逐步�
 
 日志服务量身定制的日志数据采集解决方案。
 
-[日志服务（原SLS）](https://www.aliyun.com/product/sls?spm)客户端Logtail在X86服务器上有百万级部署，可以参见文章：Logtail技术分享： [多租户隔离技术+双十一实战效果](https://yq.aliyun.com/articles/251629?spm=a2c4g.11186623.2.22.2dfc505eazEyHL)，[Polling + Inotify 组合下的日志保序采集方案](https://yq.aliyun.com/articles/204554?spm=a2c4g.11186623.2.23.2dfc505eazEyHL)。除此之外，日志服务提供多样化的采集方案：
+[日志服务](https://www.alibabacloud.com/zh/product/log-service?spm)客户端Logtail在X86服务器上有百万级部署，可以参见文章：Logtail技术分享： ，。除此之外，日志服务提供多样化的采集方案：
 
 -   移动端SDK：Android/IOS平台数据采集，一天已有千万级DAU。
 -   Web Tracking（JS）：类似百度统计，Analytics 轻量级采集方式，无需签名。
 
 在IoT领域，我们从多年Logtail的开发经验中，汲取其中精华的部分，并结合IoT设备针对CPU、内存、磁盘、网络、应用方式等特点，开发出一套专为IoT定制的日志数据采集方案：C Producer。
 
-![采集解决方案](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13213/156863313332653_zh-CN.png)
+![采集解决方案](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13213/156877589532653_zh-CN.png)
 
 ## C Producer特点 {#section_lxj_3nj_wfb .section}
 
@@ -54,13 +54,13 @@ C Producer Library 继承Logtail稳定、高性能、低资源消耗等特点，
 -   细粒度资源控制：支持针对不同类型数据/日志设置不同的缓存上线、聚合方式。
 -   日志压缩缓存：支持将未发送成功的数据压缩缓存，减少设备内存占用。
 
-![C Producer特点](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13213/156863313432654_zh-CN.png)
+![C Producer特点](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13213/156877589532654_zh-CN.png)
 
 ## 功能优势 {#section_bmt_4nj_wfb .section}
 
 C-Producer作为IoT设备的量身定制方案，在以下方面具备明显优势：
 
-![功能优势](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13213/156863313432656_zh-CN.png)
+![功能优势](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13213/156877589532656_zh-CN.png)
 
 -   客户端高并发写入：可配置的发送线程池，支持每秒数十万条日志写入，详情参见性能测试。
 -   低资源消耗：每秒20W日志写入只消耗70% CPU；同时在低性能硬件（例如树莓派）上，每秒产生100条日志对资源基本无影响。
@@ -93,7 +93,7 @@ C-Producer作为IoT设备的量身定制方案，在以下方面具备明显优�
 
 ## C-Producer+日志服务解决方案 {#section_k22_m5j_wfb .section}
 
-C-Producer结合阿里云[日志服务](https://www.aliyun.com/product/sls?spm)产品配合使用，即可完成IoT设备日志全套解决方案。
+C-Producer结合阿里云[日志服务](https://www.alibabacloud.com/zh/product/log-service?spm)产品配合使用，即可完成IoT设备日志全套解决方案。
 
 -   规模大
     -   支持亿级别客户端实时写入。
@@ -106,7 +106,7 @@ C-Producer结合阿里云[日志服务](https://www.aliyun.com/product/sls?spm)�
     -   与阿里云各类产品无缝打通。
     -   各种开源格式存储、计算、可视化系统完美兼容。
 
-![C-Producer解决方案](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13213/156863313432657_zh-CN.png)
+![C-Producer解决方案](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13213/156877589532657_zh-CN.png)
 
 ## 下载与使用 {#section_lvy_svj_wfb .section}
 
@@ -116,7 +116,7 @@ C-Producer结合阿里云[日志服务](https://www.aliyun.com/product/sls?spm)�
 
 详细安装方式及操作步骤，请参考Github页面的[README](https://github.com/aliyun/aliyun-log-c-sdk?spm=a2c4g.11186623.2.30.2dfc505eazEyHL)。
 
-![下载与使用](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13213/156863313432658_zh-CN.png)
+![下载与使用](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13213/156877589532658_zh-CN.png)
 
 ## 性能测试 {#section_e1k_xvj_wfb .section}
 
@@ -127,7 +127,7 @@ C-Producer结合阿里云[日志服务](https://www.aliyun.com/product/sls?spm)�
 
 配置分别如下：
 
-![环境配置](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13213/156863313432659_zh-CN.png)
+![环境配置](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13213/156877589632659_zh-CN.png)
 
 C-Producer配置
 
@@ -179,15 +179,15 @@ Visualized: dashboard and report functions
     -   C Producer可以轻松到达90M/s的发送速度，每秒上传日志20W，占用CPU只有70%，内存140M。
     -   服务器在200条/s，发送数据对于cpu基本无影响（降低到0.01%以内）。
     -   客户线程发送一条数据（输出一条log）的平均耗时为：1.2us。
-    ![X86平台结果](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13213/156863313432660_zh-CN.png)
+    ![X86平台结果](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13213/156877589632660_zh-CN.png)
 
 -   树莓派平台结果
 
     -   在树莓派的测试中，由于CPU的频率只有600MHz，性能差不多是服务器的1/10左右，每秒可发送最多2W条日志。
     -   树莓派在20条/s的时候，发送数据对于cpu基本无影响（降低到0.01%以内）。
     -   客户线程发送一条数据（输出一条log）的平均耗时为：12us左右（树莓派通过USB连接到PC共享网络）。
-    ![树莓派平台结果](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13213/156863313532661_zh-CN.png)
+    ![树莓派平台结果](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13213/156877589632661_zh-CN.png)
 
 
-更多日志服务典型场景可以参见[云栖论坛](https://yq.aliyun.com/teams/4/type_blog-cid_8?spm=a2c4g.11186623.2.35.2dfc505eazEyHL) 和[最佳实践](cn.zh-CN/最佳实践/典型使用场景.md#)。
+更多日志服务典型场景可以参见[云栖论坛](https://yq.aliyun.com/teams/4/type_blog-cid_8?spm=a2c4g.11186623.2.35.2dfc505eazEyHL) 和[最佳实践](intl.zh-CN/最佳实践/典型使用场景.md#)。
 
