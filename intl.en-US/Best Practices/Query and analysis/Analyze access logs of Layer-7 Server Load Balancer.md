@@ -11,7 +11,7 @@ Currently, Layer-7 SLB access logs are available in all regions.
 ## Prerequisites {#section_u94_l3a_5o0 .section}
 
 1.  Log Service and Layer-7 SLB are activated.
-2.  Layer-7 SLB logs are collected. For more information about how to collect the logs, see [Access logs of Layer-7 Server Load Balancer](../../../../reseller.en-US/Data Collection/Cloud product collection/Access logs of Layer-7 Server Load Balancer.md#).
+2.  Layer-7 SLB logs are collected. For more information about how to collect the logs, see [Access logs of Layer-7 Server Load Balancer](../../../../intl.en-US/Data Collection/Cloud product collection/Access logs of Layer-7 Server Load Balancer.md#).
 
 ## Visual analysis {#section_yy6_phk_d4o .section}
 
@@ -32,13 +32,13 @@ SLB supports horizontal scaling of RealServers and fault redundancy recovery, su
 
     In this example, most requests are sent from the Pearl River Delta and the Yangtze River Delta, as shown in the following figure.
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/162629/156894733045387_en-US.png)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/162629/156894752645387_en-US.png)
 
 -   In the dashboard of Log Service, you can add filter conditions and display the data that meets the filter conditions, such as the IP address of the client and the ID of the SLB instance, in the current chart.
 
     For example, you can view the trend of the PVs and UVs of a specified SLB instance over time.
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/162629/156894733045389_en-US.png)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/162629/156894752645389_en-US.png)
 
 
 **Request scheduling analysis**
@@ -63,11 +63,11 @@ Perform aggregate computing on the traffic and latency in each minute.
 
 -   Statistics from the request\_length and body\_bytes\_sent dimensions
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/162629/156894733045404_en-US.png)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/162629/156894752645404_en-US.png)
 
 -   Statistics from the request\_time and upstream\_response\_time dimensions
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/162629/156894733145405_en-US.png)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/162629/156894752645405_en-US.png)
 
 
 **Request overview**
@@ -76,23 +76,23 @@ You can analyze the HTTP or HTTPS requests in access logs from multiple dimensio
 
 You can select a time range and specify the status code to locate a RealServer in the logs based on the query and analysis features of Log Service, as shown in the following figure.
 
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/162629/156894733145408_en-US.png)
+![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/162629/156894752645408_en-US.png)
 
 1.  You can collect statistics about the PVs for different request methods.
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/162629/156894733145409_en-US.png)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/162629/156894752645409_en-US.png)
 
 2.  With the time dimension, you can view the trend lines of PVs for different request methods over time.
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/162629/156894733145410_en-US.png)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/162629/156894752645410_en-US.png)
 
 3.  You can learn about the service running status from the proportion of the requests with different status codes. If there are a lot of requests with the status code 500, internal errors occur with the applications of the back-end RealServers.
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/162629/156894733145411_en-US.png)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/162629/156894752745411_en-US.png)
 
 4.  You can view the trend lines of PVs for each status code.
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/162629/156894733145412_en-US.png)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/162629/156894752745412_en-US.png)
 
 
 **Request source analysis**
@@ -101,7 +101,7 @@ You can obtain the geographic location \(country, province, or city\) and teleco
 
 1.  You can make a PV distribution chart for the requests from the IP addresses of the different operators.
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/162629/156894733145413_en-US.png)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/162629/156894752745413_en-US.png)
 
 2.  You can view the request sources in descending order of the PVs by analyzing the client IP addresses.
 3.  You can view the user agent information.
@@ -110,7 +110,7 @@ You can obtain the geographic location \(country, province, or city\) and teleco
 
     You can search the access logs for related records based on the SLB instance ID, application host, and user agent. The following figure shows the log of GET requests sent from the Sogou web crawler. The requests are not frequent and have no adverse impact on applications.
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/162629/156894733145419_en-US.png)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/162629/156894752745419_en-US.png)
 
 
 **Operations overview**
@@ -121,7 +121,7 @@ SLB access logs are vital to the marketing team, who can use the access logs for
 
     By viewing the PVs of different regions in the geographical dimension, you can know the areas where the key customers of the services are, and the areas with low PVs that may need further promotion.
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/162629/156894733145420_en-US.png)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/162629/156894752745420_en-US.png)
 
 2.  View the host and URI of the requests.
 
@@ -131,6 +131,6 @@ SLB access logs are vital to the marketing team, who can use the access logs for
 
     For popular resources \(specified by the request\_uri field in access logs\), you can pay attention to the http\_referer field in the log details to view the request source of the website. Strengthen good request sources and enable hotlinking protection. The following figure shows the log details of a page redirection request from Baidu Image.
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/162629/156894733145422_en-US.png)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/162629/156894752745422_en-US.png)
 
 
