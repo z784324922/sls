@@ -20,11 +20,11 @@ Logtail status logs are stored in the internal-diagnostic\_log Logstore. On the 
 
 -   Query snapshot
 
-    ![Query and analysis](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/158200/156895101044459_en-US.png)
+    ![Query and analysis](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/158200/156895120444459_en-US.png)
 
 -   Alert rule configuration \(assume that the number of machines in the machine group is 100\)
 
-    ![Create an alert](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/158200/156895101144460_en-US.png)
+    ![Create an alert](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/158200/156895120744460_en-US.png)
 
 
 If an alert is triggered, you can go to the console to view the status of the machine group and check the heartbeat information of the machines.
@@ -93,7 +93,7 @@ You can use metering logs to obtain information about the read and write traffic
 
     Set the alert rule so that an alert is triggered when the traffic decline ratio of the logs written to a Logstore exceeds 50%.
 
-    ![Create an alert](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/158200/156895101544524_en-US.png)
+    ![Create an alert](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/158200/156895120844524_en-US.png)
 
 
 ## Audit operations logs {#section_kl7_sys_3xc .section}
