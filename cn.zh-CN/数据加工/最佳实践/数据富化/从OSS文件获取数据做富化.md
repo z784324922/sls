@@ -18,7 +18,7 @@
 
     使用写入AK向OSS中名叫`test`的bucket中传入一个包含`test text`内容的`test.text`文件。
 
-    ![OSS富化规则](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/1644556/156898014559594_zh-CN.png)
+    ![OSS富化规则](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/1644556/156898132159594_zh-CN.png)
 
     截图中加工规则为：
 
@@ -94,7 +94,7 @@
 
 ## 使用e\_table\_map进行富化 {#section_5hz_e4k_nds .section}
 
-根据输入字段的值，在从OSS上获取的CSV格式的数据中查找对应的行，返回对应字段的信息。更多富化信息请参见[使用搜索映射做高级数据富化](cn.zh-CN/.md#)。
+根据输入字段的值，在从OSS上获取的CSV格式的数据中查找对应的行，返回对应字段的信息。
 
 -   原始日志
 
