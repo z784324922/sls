@@ -10,7 +10,7 @@ For ease of understanding, this topic uses one day in a bank as an example to il
 
 Jay Kreps, a former LinkedIn employee, defines a log as "an append-only, totally-ordered sequence of records ordered by time" in [The Log: What every software engineer should know about real-time data's unifying abstraction](https://engineering.linkedin.com/distributed-systems/log-what-every-software-engineer-should-know-about-real-time-datas-unifying).
 
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13205/156896506032423_en-US.png)
+![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13205/156896552032423_en-US.png)
 
 -   Append only: Log entries are appended to the end of the log. They cannot be modified after they are generated.
 -   Totally ordered by time: Log entries are strictly ordered. Each log entry is assigned a unique sequential log entry number to indicate its timestamp. Different log entries may be generated at the same timestamp in seconds. For example, a GET operation and a SET operation are performed at the same timestamp. However, the two operations are still performed in order on a computer.
@@ -39,7 +39,7 @@ To help you understand abstract concepts, this section uses the LogHub data mode
 
 The following figure shows the relationships between the logs and log group.
 
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13205/156896506032424_en-US.png)
+![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13205/156896552032424_en-US.png)
 
 -   A shard is the basic read/write unit of a log group. It can be regarded as a 48-hour first in, first out \(FIFO\) queue. Each shard allows you to write data at 5 MB/s and read data at 10 MB/s. The logical range of a shard is specified by the BeginKey and EndKey. This range enables the shard to contain a type of data different from other shards.
 -   A Logstore stores log data of the same type. Each Logstore is a carrier that consists of one or more shards whose range is \[0000, FFFF..\).
@@ -47,7 +47,7 @@ The following figure shows the relationships between the logs and log group.
 
 The following figure shows the relationships among the logs, log group, shards, Logstores, and project.
 
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13205/156896506032425_en-US.png)
+![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13205/156896552032425_en-US.png)
 
 ## One day in a bank {#section_e2q_91q_40k .section}
 
@@ -55,7 +55,7 @@ For example, in the nineteenth century, several users in a city went to a bank t
 
 In a distributed log processing system, clerks are standalone servers that have fixed memory and computing capabilities, users are requests from various data sources, and the bank hall is a Logstore where users can read and write data.
 
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13205/156896506032426_en-US.png)
+![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13205/156896552132426_en-US.png)
 
 -   Logs or log group: the user operations such as money deposit and withdrawal.
 -   User: the producer of operations.
@@ -69,7 +69,7 @@ Two clerks A and B were working in the bank. Zhang San visited the bank and depo
 
 Based on this example, money deposit and withdrawal must be strictly ordered. Requests from the same user must be handled by the same clerk to ensure that the status of user operations is consistent.
 
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13205/156896506032427_en-US.png)
+![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13205/156896552132427_en-US.png)
 
 To ensure ordering, users can queue up to submit requests. A shard can be created, where only clerk A is assigned to handle user requests based on the FIFO principle. However, this method leads to low efficiency, even when 10 clerks are assigned to handle requests from 1,000 users.
 
@@ -80,7 +80,7 @@ To improve efficiency in this scenario, you can use the following solution:
 
 If many users whose surname is Zhang, the solution can be adjusted. For example, use the hash function to map users to shards by account ID or zip code so that user requests can be more evenly distributed to each shard.
 
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13205/156896506032428_en-US.png)
+![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13205/156896552132428_en-US.png)
 
 ## Issue 2: At least once {#section_01s_cle_y50 .section}
 
@@ -92,7 +92,7 @@ To avoid data loss in this scenario, you can use the following solution:
 
 Clerk A records the position of the current request in the shard as the progress of the request in a notebook \(not account book A\). In this case, clerk A calls the next user only after the deposit request of Zhang San is handled.
 
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13205/156896506032429_en-US.png)
+![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13205/156896552132429_en-US.png)
 
 However, this solution may lead to repetition. For example, after handling the deposit request of Zhang San and updating data in account book A, clerk A was called away but did not record the position of the current request in the shard in the notebook. When clerk A came back and did not find the progress of the request from Zhang San in the notebook, clerk A may handle the request again.
 
@@ -106,7 +106,7 @@ In reality, most operations, such as money deposit and withdrawal, are not idemp
 
 If clerk A leaves temporarily or permanently, other clerks can continue as follows: If a checkpoint exists for the current user request, proceed to the next user request. If no checkpoint exists for the current user request, handle this request. Guarantee the atomicity of operations.
 
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13205/156896506032430_en-US.png)
+![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13205/156896552132430_en-US.png)
 
 A checkpoint is a persistent object in which you can record the position or time of an element in a shard as the key to indicate that the element is processed.
 
@@ -125,7 +125,7 @@ The principles are not complex. However, in the real world, changes and uncertai
 
 All user requests are assigned to the only shard, shard 0. Clerk A is responsible for handling such requests.
 
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13205/156896506132431_en-US.png)
+![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13205/156896552132431_en-US.png)
 
 ## Peak hours after 10:00 {#section_ab0_gwt_u89 .section}
 
@@ -133,7 +133,7 @@ The bank manager decides to split shard 0 into shard 1 and shard 2 after 10:00. 
 
 The following figure shows the status of user requests in shards from 10:00 to 12:00.
 
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13205/156896506132432_en-US.png)
+![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13205/156896552132432_en-US.png)
 
 When clerk A has difficulty in handling requests in two shards, the bank manager dispatches clerk B and clerk C. Clerk B takes over one of the shards, whereas clerk C is currently idle.
 
@@ -143,7 +143,7 @@ The bank manager thinks that clerk A is under much pressure for handling request
 
 The following figure shows the status of user requests in shards after 12:00.
 
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13205/156896506132433_en-US.png)
+![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13205/156896552132433_en-US.png)
 
 ## Fewer and fewer users after 16:00 {#section_nqk_vkz_jou .section}
 
@@ -160,6 +160,4 @@ The preceding process can be abstracted into a typical log processing scenario. 
 5.  Supports logs from more sources. For banks, users can send requests from various channels such as online banking, mobile banking, and checks.
 
 You can use LogHub and the LogHub consumer library to process logs in real time in typical scenarios. Using a consumer library, you only need to focus on the business logic and do not need to worry about traffic scaling or failover.
-
-Based on the LogHub consumer library, you can also use Storm and Spark Streaming to consume log data in Log Service. For more information, see [the product details page of Log Service](https://cn.aliyun.com/product/sls) and [Yunqi Community](https://yq.aliyun.com/groups/50).
 
