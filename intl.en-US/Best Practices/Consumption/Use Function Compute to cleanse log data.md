@@ -21,13 +21,11 @@ ETL is the process of extracting data from the source, transforming data, and th
 
 Log Service allows you to quickly collect, process, query, and analyze logs.
 
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13202/156896157532403_en-US.png)
+![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13202/156896191432403_en-US.png)
 
 ## Data shipping {#section_6iu_1lp_fra .section}
 
 You can ship data to the destination and build data pipelines between big data products in the cloud.
-
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13202/156896157532404_en-US.png)
 
 ## ETL model {#section_bsd_n1l_5fb .section}
 
@@ -37,7 +35,7 @@ Shards can be scaled out to ensure the auto scaling of the ETL process. Tasks ar
 
 During the implementation of the ETL process, in consideration of the flexibility of user-defined functions \(UDFs\), functions are called in Function Compute to process data. Function Compute provides pay-as-you-go, auto scaling, and custom code execution to meet the requirements of many cloud users. In addition, considering the end-to-end latency of user data, big data throughput, and SQL usability, the Log Service ETL runtime will involve stream computing engines, such as Alibaba Cloud StreamCompute, in the future to meet more user requirements.
 
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13202/156896157632405_en-US.png)
+![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13202/156896191432405_en-US.png)
 
 ## ETL logs {#section_rsd_n1l_5fb .section}
 
@@ -62,29 +60,14 @@ You can use the Logtail client of Log Service to quickly collect log files from 
 
 Nginx access logs collected by the client are all stored in a Logstore of Log Service. As shown in the following figure, the value of the forward field indicates the IP address from which the user sends the request.
 
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13202/156896157632406_en-US.png)
+![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13202/156896191432406_en-US.png)
 
 ## Step 2: Process data in the cloud {#section_2lg_cvc_lrg .section}
 
-1.  Log on to the Function Compute console and create a service.
-
-    In the advanced configuration section, we recommend that you configure a Logstore to store logs generated during data processing for the ETL function to be created, so that you can use the logs to locate exceptions during data processing. Grant the AliyunLogFullAccess permission of Log Service to the ETL function. Then, the function can read data from the source Logstore during execution and write the data to the destination Logstore after data processing.
-
-    ![](images/32407_en-US.png)
-
-2.  Use a built-in template to create the ETL function.
-
-    ![](images/32408_en-US.png)
-
-    The following figure shows the default function configuration.
-
-    ![](images/32409_en-US.png)
-
-3.  Create a Log Service trigger for the function.
+1.  Use a built-in template to create the ETL function.
+2.  Create a Log Service trigger for the function.
 
     The following figure shows the configuration of the Log Service trigger.
-
-    ![](images/32410_en-US.png)
 
     Set the data source to the Logstore that stores Nginx access logs as described in step 1, that is, `etl-test/logstore:nginx_access_log` in this example.
 
@@ -92,13 +75,13 @@ Nginx access logs collected by the client are all stored in a Logstore of Log Se
 
     The implementation and features of functions vary with the function configuration. For more information about the configuration items of the ip-lookup template, see its README file.
 
-4.  Save the configuration and wait 1 minute for the ETL task to start.
+3.  Save the configuration and wait 1 minute for the ETL task to start.
 
     Pay attention to the generated ETL process logs and scheduling logs. Based on the preceding configuration, the two types of logs are stored in the etl-function-log and etl-trigger-log Logstores, respectively.
 
     You can also use query statements to create reports based on ETL logs.
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13202/156896157632411_en-US.png)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13202/156896191432411_en-US.png)
 
     -   The chart in the upper-left corner shows the number of times that the ETL function is triggered per minute. This chart is created by using the following query statement:
 
@@ -133,7 +116,7 @@ Nginx access logs collected by the client are all stored in a Logstore of Log Se
 
 Nginx access logs on the machine are collected by the Logtail client to the source Logstore in real time, processed by the ETL function in a quasi-real-time manner, and then written to the destination Logstore. The following figure shows the data that is processed by the ETL function and contains the IP address information.
 
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13202/156896157632412_en-US.png)
+![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13202/156896191432412_en-US.png)
 
 Compared with the data before processing, the data after processing adds four fields: country, province, city, and isp. Based on the four fields, you can know that the request whose IP address is 117.136.90.160 comes from Taiyuan, Shanxi, China, and the carrier is China Mobile.
 
